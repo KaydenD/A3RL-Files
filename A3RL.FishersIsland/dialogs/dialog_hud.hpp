@@ -61,9 +61,9 @@ class Dialog_HUD
 		{
 			idc = 1001;
 			text = ""; //--- ToDo: Localize;
-			x = 0.678905 * safezoneW + safezoneX;
-			y = 0.927 * safezoneH + safezoneY;
-			w = 0.2475 * safezoneW;
+			x = 0.87125 * safezoneW + safezoneX;
+			y = 0.896 * safezoneH + safezoneY;
+			w = 0.125  * safezoneW;
 			h = 0.044 * safezoneH;
 			sizeEx = "0.05 * safezoneH";
 			style = 0x01;
@@ -73,30 +73,30 @@ class Dialog_HUD
 		{
 			idc = 1200;
 			text = "A3PL_Common\HUD\new\HealthIcon.paa";
-			x = 0.840312 * safezoneW + safezoneX;
+			x = 0.958906 * safezoneW + safezoneX;
 			y = 0.841 * safezoneH + safezoneY;
-			w = 0.04125 * safezoneW;
-			h = 0.077 * safezoneH;
+			w = 0.020625* safezoneW;
+			h = 0.0385 * safezoneH;
 		};
 
 		class RscPicture_1202: RscPicture
 		{
 			idc = 1202;
 			text = "A3PL_Common\HUD\hunger_icon.paa";
-			x = 0.783594 * safezoneW + safezoneX;
+			x = 0.922812 * safezoneW + safezoneX;
 			y = 0.841 * safezoneH + safezoneY;
-			w = 0.04125 * safezoneW;
-			h = 0.077 * safezoneH;
+			w = 0.020625* safezoneW;
+			h = 0.0385 * safezoneH;
 		};
 
 		class RscPicture_1203: RscPicture
 		{
 			idc = 1203;
 			text = "A3PL_Common\HUD\thirst_icon.paa";
-			x = 0.726875 * safezoneW + safezoneX;
+			x = 0.886719 * safezoneW + safezoneX;
 			y = 0.841 * safezoneH + safezoneY;
-			w = 0.04125 * safezoneW;
-			h = 0.077 * safezoneH;
+			w = 0.020625* safezoneW;
+			h = 0.0385 * safezoneH;
 		};
 
 		class struc_system: RscStructuredText
@@ -139,8 +139,8 @@ class Dialog_HUD
 			text = "A3PL_Common\HUD\new\MBLoad_45.paa";
 			x = 0.840312 * safezoneW + safezoneX;
 			y = 0.841 * safezoneH + safezoneY;
-			w = 0.0422916 * safezoneW;
-			h = 0.077926 * safezoneH;
+			w = 0.0211458 * safezoneW;
+			h = 0.0389629 * safezoneH;
 		};
 
 		class RscPicture_1204: RscPicture
@@ -149,18 +149,18 @@ class Dialog_HUD
 			text = "A3PL_Common\HUD\new\MBLoad_45.paa";
 			x = 0.783333 * safezoneW + safezoneX;
 			y = 0.840741 * safezoneH + safezoneY;
-			w = 0.0422916 * safezoneW;
-			h = 0.077926 * safezoneH;
+			w = 0.0211458 * safezoneW;
+			h = 0.0389629 * safezoneH;
 		};
 
 		class RscPicture_1205: RscPicture
 		{
 			idc = 1205;
 			text = "A3PL_Common\HUD\new\MBLoad_45.paa";
-			x = 0.727083 * safezoneW + safezoneX;
-			y = 0.840741 * safezoneH + safezoneY;
-			w = 0.0422916 * safezoneW;
-			h = 0.077926 * safezoneH;
+			x = 0.886719 * safezoneW + safezoneX;
+			y = 0.841 * safezoneH + safezoneY;
+			w = 0.0211458 * safezoneW;
+			h = 0.0389629 * safezoneH;
 		};
 
 		//HUD STATS

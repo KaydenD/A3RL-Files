@@ -8,7 +8,7 @@ class Dialog_ExecutiveMenu
 	class controls
 	{
 		////////////////////////////////////////////////////////
-		// GUI EDITOR OUTPUT START (by Jon VanderZee, v1.063, #Woxabe)
+		// GUI EDITOR OUTPUT START (by Austin Blackwater, v1.063, #Fatolo)
 		////////////////////////////////////////////////////////
 
 		class Background_PlayerList: IGUIBack
@@ -145,27 +145,30 @@ class Dialog_ExecutiveMenu
 			h = 0.022 * safezoneH;
 			sizeEx = .8 * GUI_GRID_H;
 		};
-		class RscButton_1603: RscButton
+		class Button_Restart: RscButton
 		{
 			idc = 1603;
+			text = "Restart"; //--- ToDo: Localize;
 			x = 0.536094 * safezoneW + safezoneX;
 			y = 0.335 * safezoneH + safezoneY;
 			w = 0.0515625 * safezoneW;
 			h = 0.022 * safezoneH;
 			sizeEx = .8 * GUI_GRID_H;
 		};
-		class RscButton_1604: RscButton
+		class Button_Ban: RscButton
 		{
 			idc = 1604;
+			text = "Ban"; //--- ToDo: Localize;
 			x = 0.536094 * safezoneW + safezoneX;
 			y = 0.368 * safezoneH + safezoneY;
 			w = 0.0515625 * safezoneW;
 			h = 0.022 * safezoneH;
 			sizeEx = .8 * GUI_GRID_H;
 		};
-		class RscButton_1605: RscButton
+		class Button_Kick: RscButton
 		{
 			idc = 1605;
+			text = "Kick"; //--- ToDo: Localize;
 			x = 0.536094 * safezoneW + safezoneX;
 			y = 0.401 * safezoneH + safezoneY;
 			w = 0.0515625 * safezoneW;
@@ -313,13 +316,31 @@ class Dialog_ExecutiveMenu
 			h = 1 * GUI_GRID_H;
 			sizeEx = .8 * GUI_GRID_H;
 		};
+		class DropDown_ChatTag: RscCombo
+		{
+			idc = 2102;
+			x = 0.536094 * safezoneW + safezoneX;
+			y = 0.676 * safezoneH + safezoneY;
+			w = 0.165 * safezoneW;
+			h = 0.022 * safezoneH;
+			sizeEx = .8 * GUI_GRID_H;
+		};
+		class DropDown_Whitelisting: RscCombo
+		{
+			idc = 2103;
+			x = 0.536094 * safezoneW + safezoneX;
+			y = 0.709 * safezoneH + safezoneY;
+			w = 0.165 * safezoneW;
+			h = 0.022 * safezoneH;
+			sizeEx = .8 * GUI_GRID_H;
+		};
 		////////////////////////////////////////////////////////
 		// GUI EDITOR OUTPUT END
 		////////////////////////////////////////////////////////
 	};
 };
 
-/* #Woxabe
+/* #Fatolo
 $[
 	1.063,
 	["A3PL_AdminPanel",[[0,0,1,1],0.025,0.04,"GUI_GRID"],0,0,0],
@@ -338,9 +359,9 @@ $[
 	[1600,"Button_AddToPlayer",[1,"Add to Player",["0.536094 * safezoneW + safezoneX","0.236 * safezoneH + safezoneY","0.0515625 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"",".8"],[]],
 	[1601,"Button_AddToFactory",[1,"Add to Factory",["0.536094 * safezoneW + safezoneX","0.269 * safezoneH + safezoneY","0.0515625 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"",".8"],[]],
 	[1602,"Button_CreateOnPlayer",[1,"Create on Player",["0.536094 * safezoneW + safezoneX","0.302 * safezoneH + safezoneY","0.0515625 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"",".8"],[]],
-	[1603,"",[1,"",["0.536094 * safezoneW + safezoneX","0.335 * safezoneH + safezoneY","0.0515625 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"",".8"],[]],
-	[1604,"",[1,"",["0.536094 * safezoneW + safezoneX","0.368 * safezoneH + safezoneY","0.0515625 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"",".8"],[]],
-	[1605,"",[1,"",["0.536094 * safezoneW + safezoneX","0.401 * safezoneH + safezoneY","0.0515625 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"",".8"],[]],
+	[1603,"Button_Restart",[1,"Restart",["0.536094 * safezoneW + safezoneX","0.335 * safezoneH + safezoneY","0.0515625 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"",".8"],[]],
+	[1604,"Button_Ban",[1,"Ban",["0.536094 * safezoneW + safezoneX","0.368 * safezoneH + safezoneY","0.0515625 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"",".8"],[]],
+	[1605,"Button_Kick",[1,"Kick",["0.536094 * safezoneW + safezoneX","0.401 * safezoneH + safezoneY","0.0515625 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"",".8"],[]],
 	[1606,"Button_PlayerHeal",[1,"Heal",["0.536094 * safezoneW + safezoneX","0.434 * safezoneH + safezoneY","0.0515625 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"",".8"],[]],
 	[1607,"Button_TeleportTo",[1,"Teleport to",["0.536094 * safezoneW + safezoneX","0.467 * safezoneH + safezoneY","0.0515625 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"",".8"],[]],
 	[1608,"Button_TeleportToMe",[1,"Teleport to Me",["0.536094 * safezoneW + safezoneX","0.5 * safezoneH + safezoneY","0.0515625 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"",".8"],[]],
@@ -355,6 +376,9 @@ $[
 	[2100,"DropDown_Factory",[1,"",["0.422656 * safezoneW + safezoneX","0.236 * safezoneH + safezoneY","0.108281 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"",".8"],[]],
 	[2101,"DropDown_PlayerInventories",[1,"",["0.592812 * safezoneW + safezoneX","0.368 * safezoneH + safezoneY","0.108281 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"",".8"],[]],
 	[1000,"Text_AdminName",[2,"",["0 * GUI_GRID_W + GUI_GRID_X","24 * GUI_GRID_H + GUI_GRID_Y","22.5 * GUI_GRID_W","1 * GUI_GRID_H"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"",".8"],[]],
-	[1001,"Text_PanelName",[2,"",["34 * GUI_GRID_W + GUI_GRID_X","24 * GUI_GRID_H + GUI_GRID_Y","6 * GUI_GRID_W","1 * GUI_GRID_H"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"",".8"],[]]
+	[1001,"Text_PanelName",[2,"",["34 * GUI_GRID_W + GUI_GRID_X","24 * GUI_GRID_H + GUI_GRID_Y","6 * GUI_GRID_W","1 * GUI_GRID_H"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"",".8"],[]],
+	[2102,"DropDown_ChatTag",[1,"",["0.536094 * safezoneW + safezoneX","0.676 * safezoneH + safezoneY","0.165 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"",".8"],[]],
+	[2103,"DropDown_Whitelisting",[1,"",["0.536094 * safezoneW + safezoneX","0.709 * safezoneH + safezoneY","0.165 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"",".8"],[]]
 ]
 */
+

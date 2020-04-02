@@ -393,6 +393,10 @@
 	[player] spawn A3PL_Player_SetMarkers;
 }] call Server_Setup_Compile;
 
+['A3PL_Player_TeamspeakID', {
+	player setVariable ["A3PL_TeamspeakID", (floor random 9999999999) toFixed 0 ]; 
+}] call Server_Setup_Compile;
+
 ['A3PL_Player_NewPlayer',{
 	disableSerialization;
 	private ["_display","_control","_sex","_day","_month","_year"];

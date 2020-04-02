@@ -30,16 +30,16 @@ npc_guns setVariable ["stock",[0,0,0,0,0,0,0,1,0,0,0,0,0,0,0]];
 
 Config_Shops_StockSystem =
 [
-	"Shop_Supermarket",
-	"Shop_Guns_Vendor"
+	//"Shop_Supermarket",
+	//"Shop_Guns_Vendor"
 ];
 publicVariable "Config_Shops_StockSystem";
 
 //only has to excist on server, it is used to save the "stock" variables on these objects
 Config_Shops_StockSystemObjects =
 [
-	npc_supermarket_1,
-	npc_guns
+	//npc_supermarket_1,
+	//npc_guns
 ];
 publicVariableServer "Config_Shops_StockSystemObjects";
 

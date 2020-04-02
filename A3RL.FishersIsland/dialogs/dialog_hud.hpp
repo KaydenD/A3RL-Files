@@ -137,7 +137,7 @@ class Dialog_HUD
 		{
 			idc = 1201;
 			text = "A3PL_Common\HUD\new\MBLoad_45.paa";
-			x = 0.840312 * safezoneW + safezoneX;
+			x = 0.958906 * safezoneW + safezoneX;
 			y = 0.841 * safezoneH + safezoneY;
 			w = 0.0211458 * safezoneW;
 			h = 0.0389629 * safezoneH;
@@ -147,8 +147,8 @@ class Dialog_HUD
 		{
 			idc = 1204;
 			text = "A3PL_Common\HUD\new\MBLoad_45.paa";
-			x = 0.783333 * safezoneW + safezoneX;
-			y = 0.840741 * safezoneH + safezoneY;
+			x = 0.922813 * safezoneW + safezoneX;
+			y = 0.841 * safezoneH + safezoneY;
 			w = 0.0211458 * safezoneW;
 			h = 0.0389629 * safezoneH;
 		};

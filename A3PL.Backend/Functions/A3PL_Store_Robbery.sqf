@@ -94,7 +94,7 @@
 		if(_cops < 5) then 
 		{
 			_reward = 2000 + (round (random 3000));
-			[format ["System: You robbed $1 from this store!",str(_reward)], Color_Green] call A3PL_Player_Notification;
+			[format ["System: You robbed %1 from this store!",str(_reward)], Color_Green] call A3PL_Player_Notification;
 			player setVariable ["player_cash",((player getVariable ["player_cash",0]) + _reward),true];
 		};
 		
@@ -102,7 +102,7 @@
 		if(_cops > 4) then 
 		{
 			_reward = 4000 + (round (random 4000));
-			[format ["System: You robbed $1 from this store!",str(_reward)], Color_Green] call A3PL_Player_Notification;
+			[format ["System: You robbed %1 from this store!",str(_reward)], Color_Green] call A3PL_Player_Notification;
 			player setVariable ["player_cash",((player getVariable ["player_cash",0]) + _reward),true];
 		};
 	};

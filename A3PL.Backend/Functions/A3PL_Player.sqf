@@ -579,7 +579,7 @@
 
 	_i = 0;
 
-	_title = "<t align = 'center' shadow = '1' size='1.1' font='PuristaBold'>Arma 3 Project Life<br />Notifications</t>";
+	_title = "<t align = 'center' shadow = '1' size='1.1' font='PuristaBold'>Arma 3 Reality Life<br />Notifications</t>";
 
 	_final = "";
 
@@ -593,7 +593,7 @@
 		};
 	} forEach Player_Notifications;
 	if (profilenamespace getVariable ["A3PL_HINT_Enabled",true]) then {
-	hint parseText (_title + _final);
+	//hint parseText (_title + _final);
 	};
 
 	if((count(Player_Notifications)) > 4) then {

@@ -206,7 +206,7 @@
 		};
 	} foreach nearestTerrainObjects [[6690.16,7330.15,0], [], 10000];
 
-	[format ["Server Debug: %1 terrain objects were repaired",_c]] remoteExec ["A3PL_Player_Notification", -2];
+	//[format ["Server Debug: %1 terrain objects were repaired",_c]] remoteExec ["A3PL_Player_Notification", -2];
 },true] call Server_Setup_Compile;
 
 ["Server_Core_Restart",

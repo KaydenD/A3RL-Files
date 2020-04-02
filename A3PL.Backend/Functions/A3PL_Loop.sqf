@@ -6,8 +6,8 @@
 	["itemAdd", ["Loop_Paycheck", {[] spawn A3PL_Loop_Paycheck;}, 60, 'seconds']] call BIS_fnc_loop;
 	["itemAdd", ["Loop_PlayTime", {[] spawn A3PL_Loop_PlayTime;}, 1, 'seconds']] call BIS_fnc_loop;
 	["itemAdd", ["Loop_HUD", {[] spawn A3PL_HUD_Loop;}, 1, 'seconds']] call BIS_fnc_loop;
-	["itemAdd", ["Loop_Hunger", {[] spawn A3PL_Loop_Hunger;}, 240, 'seconds']] call BIS_fnc_loop;
-	["itemAdd", ["Loop_Thirst", {[] spawn A3PL_Loop_Thirst;}, 95, 'seconds']] call BIS_fnc_loop;
+	["itemAdd", ["Loop_Hunger", {[] spawn A3PL_Loop_Hunger;}, 960, 'seconds']] call BIS_fnc_loop;
+	["itemAdd", ["Loop_Thirst", {[] spawn A3PL_Loop_Thirst;}, 380, 'seconds']] call BIS_fnc_loop;
 	["itemAdd", ["A3PL_BowlingAmbient", {{_x say3D "BowlingAmbient"} foreach A3PL_BowlingAlleys}, 120]] call BIS_fnc_loop; //bowling alley sounds
 
 	//create array for A3PL_Player_DrawText

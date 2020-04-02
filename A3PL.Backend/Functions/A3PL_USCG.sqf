@@ -51,8 +51,8 @@
 		_civ setVariable ["dragged",Nil,true];
 	};
 
-	[[player],"A3PL_USCG_DragReceive",_civ,false] call BIS_FNC_MP;
-
+	//[[player],"A3PL_USCG_DragReceive",_civ,false] call BIS_FNC_MP;
+	[player] remoteExec ["A3PL_USCG_DragReceive", _civ];
 
 }] call Server_Setup_Compile;
 

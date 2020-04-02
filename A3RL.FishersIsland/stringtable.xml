@@ -6459,7 +6459,7 @@
       <Original>Please enter a valid amount</Original>
    </Key>
    <Key ID="STR_SHOP_NOTENOUGHCANDY">
-      <Original>You are missing %1 candy (s) in order to buy this</Original>
+      <Original>System: You don't have enough candy to buy this item</Original>
    </Key>
    <Key ID="STR_SHOP_NOTENOUGHGIFT">
       <Original>You are missing %1 gift (x) in order to buy this</Original>

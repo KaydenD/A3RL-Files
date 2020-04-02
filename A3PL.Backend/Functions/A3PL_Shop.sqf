@@ -111,7 +111,7 @@
 		{
 			if ((player getVariable [_currency,0]) >= _totalPrice) then {_moneyCheck = true;} else
 			{
-				[localize "STR_SHOP_NOTENOUGHMONEY",Color_Red] call A3PL_Player_Notification; //System: You don't have enough money to buy this item
+				[format [(localize "STR_SHOP_NOTENOUGHMONEY"), (_totalPrice - (player getVariable [_currency,0]))], Color_Red] call A3PL_Player_Notification; //System: You don't have enough money to buy this item
 			};
 		};
 	};

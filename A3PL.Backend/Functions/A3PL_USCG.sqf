@@ -39,9 +39,10 @@
 
 ['A3PL_USCG_Drag',
 {
-
 	private ['_civ',"_dragged"];
 	_civ = _this select 0;
+
+	hint "test"
 
 	_dragged = _civ getVariable ["dragged",false];
 	//stop dragging here
@@ -50,7 +51,7 @@
 		_civ setVariable ["dragged",Nil,true];
 	};
 
-		[[player],"A3PL_USCG_DragReceive",_civ,false] call BIS_FNC_MP;
+	[[player],"A3PL_USCG_DragReceive",_civ,false] call BIS_FNC_MP;
 
 
 }] call Server_Setup_Compile;

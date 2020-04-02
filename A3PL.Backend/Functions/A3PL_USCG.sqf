@@ -42,7 +42,7 @@
 	private ['_civ',"_dragged"];
 	_civ = _this select 0;
 
-	hint "test"
+	hint "test";
 
 	_dragged = _civ getVariable ["dragged",false];
 	//stop dragging here

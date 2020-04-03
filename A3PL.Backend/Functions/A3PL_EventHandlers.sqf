@@ -414,7 +414,7 @@
 		if(_distance <= 30 && (!(_weaponClass IN _except))) then
 		{
 			Player_LockView = true;
-			Player_LockView_Time = time + (2 * 60);
+			Player_LockView_Time = time + 60;
 		};
 	}];
 }] call Server_Setup_Compile;

@@ -37,8 +37,6 @@
 		/* ["System: TEST",Color_Red] call A3PL_Player_Notification; */
 		
 		if ((random 10) >= 5) then { _plant setVariable ["female",true,true]; };
-		
-		["Server: Test", Color_Green] remoteExec ["A3PL_Player_Notification", _player];
 	}
 	else {};
 	//get the plants variable

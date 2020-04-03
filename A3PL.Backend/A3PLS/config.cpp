@@ -791,5 +791,9 @@ class CfgRemoteExec {
 		class A3PL_FD_DatabaseEnterReceive {
 			allowedTargets=0;
 		};
+
+		class Server_Criminal_RemoveJail {
+			allowedTargets=2;
+		};
 	};
 };

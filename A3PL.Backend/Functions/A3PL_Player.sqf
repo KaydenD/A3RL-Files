@@ -734,6 +734,7 @@
 	private ["_target","_ehFired","_ehReload"];
 	_target = param [0,objNull];
 
+	if (player distance _target > 2) exitWith {["Ran too far away",Color_Red] call A3PL_Player_notification;};
 	if (!(_target IN allPlayers)) exitwith {[localize "STR_PLAYER_NOTLOOKINGVALPL",Color_Red] call A3PL_Player_notification;}; //System: You are not looking at a valid player
 	if ((handgunWeapon player == "") OR ((handgunWeapon player) IN ["A3PL_Pickaxe","A3PL_Shovel","A3PL_High_Pressure"])) exitwith {["System: You are not carrying a handgun",Color_Red] call A3PL_Player_notification;};
 	if (!isNil "A3PL_EnableHostage") exitwith {[localize "STR_PLAYER_TAKESOMEONEHOST",Color_Red] call A3PL_Player_Notification;}; //System: You are already taking someone hostage!

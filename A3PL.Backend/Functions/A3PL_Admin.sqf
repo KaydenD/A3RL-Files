@@ -41,9 +41,11 @@
 		buttonSetAction [1600, "[] call A3PL_AdminAddToPlayer"];
 		buttonSetAction [1601, "[] call A3PL_AdminAddToFactory"];
 		buttonSetAction [1602, "[] call A3PL_AdminCreateOnPlayer"];
+		buttonSetAction [1603, "[] call A3PL_Admin_RestartSoon"];
 		buttonSetAction [1606, "[] call A3PL_AdminHealPlayer"];
 		buttonSetAction [1607, "[] call A3PL_AdminTeleportTo"];
 		buttonSetAction [1608, "[] call A3PL_AdminTeleportToMe"];
+		
 
 		// Messaging Buttons //
 
@@ -63,6 +65,8 @@
 		[] call A3PL_AdminFactoryComboList;
 		[] call A3PL_Admin_InventoryCombo;
 		[] call A3PL_AdminToolsList;
+		[] call A3PL_AdminTwitterTagsList;
+		[] call A3PL_AdminFactionList;
 
 		// Default Text //
 
@@ -181,24 +185,135 @@
 	_selectedInventory ctrlAddEventHandler ["lbSelChanged","[] call A3PL_Admin_PlayerInventoryFill;"];
 }] call Server_Setup_Compile;
 
+["A3PL_Admin_TwitterTag", {
+	_display = findDisplay 98;
+	_selectedTag = lbText [2102,lbCurSel 2102];
+
+	switch(_selectedTag) do 
+	{
+		case "Director": 
+		{
+			player setVariable ["twitterprofile", ["\A3PL_Common\icons\director.paa","#ffff00","#B5B5B5",[["\A3PL_Common\icons\citizen.paa","Citizen Tag"]],[["#ed7202","Citizen"]],[["#B5B5B5","Default"]]], true];
+		};
+		case "Sub-Director": 
+		{
+			player setVariable ["twitterprofile", ["\A3PL_Common\icons\subdirector.paa","#ed8a18","#B5B5B5",[["\A3PL_Common\icons\citizen.paa","Citizen Tag"]],[["#ed7202","Citizen"]],[["#B5B5B5","Default"]]], true];
+		};
+		case "Lead Chief": 
+		{ 
+			player setvariable ["twitterprofile",["\A3PL_Common\icons\leadchief.paa","#2f95c6","#B5B5B5",[["\A3PL_Common\icons\citizen.paa","Citizen Tag"],["\A3PL_Common\icons\executive.paa","Exec Tag"],["\A3PL_Common\icons\chief.paa","Chief"],["\A3PL_Common\icons\leadchief.paa","Lead Chief"]],[["#ed7202","Citizen"],["#84329F","Executive"],["#2f95c6","Chief"],["#2f7ec6","Lead Chief"]],[["#B5B5B5","Default"]]],true];
+		};
+		case "Chief": 
+		{ 
+			player setVariable ["twitterprofile", ["\A3PL_Common\icons\chief.paa","#00bfff","#B5B5B5",[["\A3PL_Common\icons\citizen.paa","Citizen Tag"]],[["#ed7202`,`Citizen"]],[["#B5B5B5","Default"]]],true];
+		};
+		case "Developer":
+		{
+			player setVariable ["twitterprofile", ["\A3PL_Common\icons\creator.paa","#75716c","#B5B5B5",[["\A3PL_Common\icons\citizen.paa","Citizen Tag"]],[["#ed7202`,`Citizen"]],[["#B5B5B5","Default"]]],true];
+		};
+		case "Executive Supervisor": 
+		{
+			player setvariable ["twitterprofile",["\A3PL_Common\icons\exec_supervisor.paa","#77bcff","#B5B5B5",[["\A3PL_Common\icons\citizen.paa","Citizen Tag"],["\A3PL_Common\icons\exec_supervisor.paa","Exec Sup"]],[["#ed7202","Citizen"],["#77bcff","Exec Sup"]],[["#B5B5B5","Default"]]],true];
+		};
+		case "Executive": 
+		{ 
+			player setvariable ["twitterprofile",["\A3PL_Common\icons\executive.paa","#8833a4","#B5B5B5",[["\A3PL_Common\icons\citizen.paa","Citizen Tag"],["\A3PL_Common\icons\executive.paa","Executive"]],[["#ed7202","Citizen"],["#8833a4","Executive"]],[["#B5B5B5","Default"]]],true];
+		};
+		case "Citizen": 
+		{ 
+			player setVariable ["twitterprofile", ["\A3PL_Common\icons\citizen.paa","#ed7202","#B5B5B5",[["\A3PL_Common\icons\citizen.paa","Citizen Tag"]],[["#ed7202","Citizen"]],[["#B5B5B5","Default"]]],true];
+		};
+	};
+}] call Server_Setup_Compile;
+
+["A3PL_AdminTwitterTagsList", {
+	_display = findDisplay 98;
+	_selectedTag = _display displayCtrl 2102;
+	_tags = ["Director", "Sub-Director", "Lead Chief", "Chief", "Developer", "Executive Supervisor", "Executive", "Citizen"];
+
+	{
+		lbAdd [2102,_x];
+	} foreach _tags;
+
+	_selectedTag ctrlAddEventHandler ["lbSelChanged","[] call A3PL_Admin_TwitterTag;"];
+}] call Server_Setup_Compile;
+
+["A3PL_Admin_FactionSetter", {
+	if ((player getVariable "dbVar_AdminLevel") >= 2) then {
+		_display = findDisplay 98;
+		_selectedPlayerIndex = lbCurSel 1500;
+		_selectedFaction = lbText [2103,lbCurSel 2103];
+		_selectedPlayer = (A3PL_Admin_PlayerList select _selectedPlayerIndex);
+
+		switch(_selectedFaction) do
+		{
+			case "Sheriff Department": 
+			{ 
+				_selectedPlayer setVariable ["faction","police",true];
+				_selectedPlayer setVariable ["job","police",true];
+			};
+			case "United States Coast Guard": 
+			{ 
+				_selectedPlayer setVariable ["faction","uscg",true];
+				_selectedPlayer setVariable ["job","uscg",true];
+			};
+			case "Fire and Rescue": 
+			{ 
+				_selectedPlayer setVariable ["faction","fifr",true];
+				_selectedPlayer setVariable ["job","fifr",true];
+			};
+			case "Department of Justice": 
+			{ 
+				_selectedPlayer setVariable ["faction","doj",true];
+				_selectedPlayer setVariable ["job","doj",true];
+			};
+			case "Marshal Service": 
+			{ 
+				_selectedPlayer setVariable ["faction","usms",true];
+				_selectedPlayer setVariable ["job","usms",true];
+			};
+			case "Civilian": 
+			{
+				_selectedPlayer setVariable ["faction","unemployed",true];
+				_selectedPlayer setVariable ["job","unemployed",true];
+			};
+		};
+	} else {
+		["You don't have permission to execute this command!",Color_Red] call A3PL_Player_Notification;
+	};
+}] call Server_Setup_Compile;
+
+["A3PL_AdminFactionList", {
+	_display = findDisplay 98;
+	_selectedFaction = _display displayCtrl 2103;
+	_factions = ["Sheriff Department", "United States Coast Guard", "Fire and Rescue", "Department of Justice", "Marshal Service", "Civilian"];
+
+	{
+		lbAdd [2103,_x];
+	} foreach _factions;
+
+	_selectedFaction ctrlAddEventHandler ["lbSelChanged","[] call A3PL_Admin_FactionSetter;"];
+}] call Server_Setup_Compile;
+
 ["A3PL_AdminToolsList", {
 	_display = findDisplay 98;
 	_control = _display displayCtrl 1504;
+	
 	dVar_AdminToolsList = [
-		["Invisible",false,A3PL_Admin_Invisible],
-		["Red Name",player getVariable ["pVar_RedNameOn",false],A3PL_AdminRedName],
-		["Map Teleport",pVar_MapTeleportReady,A3PL_AdminMapTeleport],
-		["Map Player Markers",pVar_MapPlayerMarkersOn,A3PL_AdminMapMarkers],
-		["Map Resource Markers",pVar_MapResourceMarkersOn,A3PL_AdminMapResourceMarkers],
+		["Teleport",pVar_MapTeleportReady,A3PL_AdminMapTeleport],
+		["Toggle Twitter",false,A3PL_AdminTwitterToggle],
+		["Fix Garage",false,A3PL_Admin_FixGarage],
+		["Admin Mode",player getVariable ["pVar_RedNameOn",false],A3PL_AdminRedName],
+		["Create Fire",false,A3PL_Admin_CreateFire],
+		["Pause Fire",pVar_FiresFrozen,A3PL_Admin_PauseFire],
+		["Remove Fire",false,A3PL_Admin_RemoveFire],
 		["Fast Animation",pVar_FastAnimationOn,A3PL_AdminFastAnimation],
 		["Self Heal",false,A3PL_AdminSelfHeal],
 		["Self Feed",false,A3PL_AdminSelfFeed],
-		["Toggle Twitter",false,A3PL_AdminTwitterToggle],
-		["Create Fire",false,A3PL_Admin_CreateFire],
-		["Freeze Fire",pVar_FiresFrozen,A3PL_Admin_PauseFire],
-		["Remove Fire",false,A3PL_Admin_RemoveFire],
-		["Fix Garage",false,A3PL_Admin_FixGarage],
-		["Restart Server",false,A3PL_Admin_RestartSoon],
+		
+		["Invisible",false,A3PL_Admin_Invisible],
+		["Map Player Markers",pVar_MapPlayerMarkersOn,A3PL_AdminMapMarkers],
+		["Map Resource Markers",pVar_MapResourceMarkersOn,A3PL_AdminMapResourceMarkers],
 		// LEVEL 3 //
 		["Virtual Arsenal",false,A3PL_Admin_VirtualArsenal]
 	];
@@ -231,20 +346,19 @@
 	_selectedTool = ((dVar_AdminToolsList select _selectedIndex) select 0);
 
 	switch (_selectedTool) do {
-		case "Invisible": {[] call A3PL_Admin_Invisible};
-		case "Red Name": {[] call A3PL_AdminRedName};
-		case "Map Teleport": {[] call A3PL_AdminMapTeleport};
-		case "Map Player Markers": {[] call A3PL_AdminMapMarkers};
-		case "Map Resource Markers": {[] call A3PL_AdminMapResourceMarkers};
-		case "Fast Animation": {[] call A3PL_AdminFastAnimation};
-		case "Self Heal": {[] call A3PL_AdminSelfHeal};
-		case "Self Feed": {[] call A3PL_AdminSelfFeed};
+		case "Teleport": {[] call A3PL_AdminMapTeleport};
 		case "Toggle Twitter": {[] call A3PL_AdminTwitterToggle};
+		case "Fix Garage": {[] call A3PL_Admin_FixGarage};
+		case "Admin Mode": {[] call A3PL_AdminRedName};
 		case "Create Fire": {[] call A3PL_Admin_CreateFire};
 		case "Freeze Fire": {[] call A3PL_Admin_PauseFire};
 		case "Remove Fire": {[] call A3PL_Admin_RemoveFire};
-		case "Fix Garage": {[] call A3PL_Admin_FixGarage};
-		case "Restart Server": {[] call A3PL_Admin_RestartSoon};
+		case "Fast Animation": {[] call A3PL_AdminFastAnimation};
+		case "Self Heal": {[] call A3PL_AdminSelfHeal};
+		case "Self Feed": {[] call A3PL_AdminSelfFeed};
+		case "Invisible": {[] call A3PL_Admin_Invisible};
+		case "Map Player Markers": {[] call A3PL_AdminMapMarkers};
+		case "Map Resource Markers": {[] call A3PL_AdminMapResourceMarkers};
 		case "Virtual Arsenal": {[] call A3PL_Admin_VirtualArsenal};
 	};
 }] call Server_Setup_Compile;
@@ -630,6 +744,7 @@
 //////////////////////////////
 
 ["A3PL_AdminRedName", {
+	[] call A3PL_AdminSelfFeed;
 	if (player getVariable ["pVar_RedNameOn",false]) then {
 		player setVariable ["pVar_RedNameOn",false,true];
 		lbSetColor [1504, 0, [1,1,1,1]];
@@ -704,6 +819,7 @@
 
 ["A3PL_AdminMapTeleport", {
 	closeDialog 0;
+	openMap true;
 	lbSetColor [1504, 1, [1,.8,0,1]];
 	pVar_MapTeleportReady = true;
 	onMapSingleClick "_currentPos = getPos player;

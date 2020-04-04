@@ -83,7 +83,7 @@
 
 	A3PL_HUD_Text = "";
 
-	["System: A3PL message system initialized"] call A3PL_HUD_Message;
+	["System: A3RL message system initialized"] call A3PL_HUD_Message;
 }] call Server_Setup_Compile;
 
 ["A3PL_Hud_IDCard",

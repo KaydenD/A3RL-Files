@@ -120,6 +120,31 @@
 		//[] call A3PL_iPhoneX_Master;
 		[] call A3PL_Phone_Open;
 	};
+	
+	if(_dikCode == 24 && _shift) exitWith {
+		_sound = player getVariable["earplug", 0];
+
+		_newsound = 0;
+		if(_sound == 0) then { _newsound = 100; } else { _newsound = (_sound - 10); };
+		
+		0 fadeSound (_sound / 100);
+		player setVariable ["earplug", _newsound, true]; 
+		
+		switch(_newsound) do
+		{
+			case 100: { ["Earplug 0%",Color_Green] call A3PL_Player_Notification; };
+			case 90: { ["Earplug 10%",Color_Green] call A3PL_Player_Notification; };
+			case 80: { ["Earplug 20%",Color_Green] call A3PL_Player_Notification; };
+			case 70: { ["Earplug 30%",Color_Green] call A3PL_Player_Notification; };
+			case 60: { ["Earplug 40%",Color_Green] call A3PL_Player_Notification; };
+			case 50: { ["Earplug 50%",Color_Green] call A3PL_Player_Notification; };
+			case 40: { ["Earplug 60%",Color_Green] call A3PL_Player_Notification; };
+			case 30: { ["Earplug 70%",Color_Green] call A3PL_Player_Notification; };
+			case 20: { ["Earplug 80%",Color_Green] call A3PL_Player_Notification; };
+			case 10: { ["Earplug 90%",Color_Green] call A3PL_Player_Notification; };
+			case 0: { ["Earplug 100%",Color_Green] call A3PL_Player_Notification; };
+		};
+	};
 /*
 	//Golfing hit
 	if ((_dikCode == 57) && A3PL_Player_Golfing) exitWith {

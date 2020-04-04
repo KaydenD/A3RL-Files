@@ -220,6 +220,8 @@
 	if (_cash == 0) exitwith {};
 	_index = lbAdd [14571, format["%1 (x%2)", "Cash", (player getVariable "Player_Cash")]];
 	lbSetData [14571, _index, "cash"];
+	
+	((findDisplay 1001) displayCtrl 14571) ctrlAddEventHandler ["LBDblClick","[] call A3PL_Inventory_Use"];
 }] call Server_Setup_Compile;
 
 /*----------------------------------------------------------------------------*/

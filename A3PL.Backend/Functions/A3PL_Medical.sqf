@@ -357,7 +357,7 @@
 	_partF = false; //_partFound
 	_set = true;
 	_wounds = _player getVariable ["A3PL_Wounds",[]];
-	if (player getVariable ["pVar_RedNameOn",false]) exitwith {[format ["Medical Debug: You're in Adminmode, taking damage to the %1",_part],Color_Orange] call A3PL_Player_Notification;};
+	if (player getVariable ["pVar_RedNameOn",false]) exitwith {};
 	//check if we already have a part defined
 	{
 		if ((_x select 0) == _part) then

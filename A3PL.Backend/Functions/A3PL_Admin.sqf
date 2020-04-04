@@ -632,13 +632,13 @@
 	_return = "";
 	
 	switch(_level) do {
-		case 0: { _return = "Executive" };
-		case 1: { _return = "Executive Supervisor" };
-		case 2: { _return = "Developer" };
-		case 3: { _return = "Chief" };
-		case 4: { _return = "Lead Chief" };
-		case 5: { _return = "Sub-Director" };
-		case 6: { _return = "Director" };
+		case 1: { _return = "Executive" };
+		case 2: { _return = "Executive Supervisor" };
+		case 3: { _return = "Developer" };
+		case 4: { _return = "Chief" };
+		case 5: { _return = "Lead Chief" };
+		case 6: { _return = "Sub-Director" };
+		case 7: { _return = "Director" };
 	};
 	
 	_return;

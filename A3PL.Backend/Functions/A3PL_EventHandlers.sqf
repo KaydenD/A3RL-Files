@@ -210,7 +210,7 @@
 	};
 
 	/* Holster */
-	if (_dikCode == 35 && _ctrlKey) exitWith {
+	if (_dikCode == 35 && _shift) exitWith {
 
 		if (currentWeapon player != "") exitWith {
 			A3PL_Holster = currentWeapon player;

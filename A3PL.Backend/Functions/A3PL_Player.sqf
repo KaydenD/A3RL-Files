@@ -411,7 +411,7 @@
 			_abortButton = (findDisplay 49) displayCtrl 104;
 			_abortButton ctrlEnable false;
 			_timeLeft = 10;
-			while {isNull (findDisplay 49) && _timeLeft > 0} do {
+			while {(!isNull (findDisplay 49)) && _timeLeft > 0} do {
 				_abortButton ctrlSetText (format ["Abort (%1)", _timeLeft]);
 				_timeLeft = _timeLeft - 1;
 				uiSleep 1.0;

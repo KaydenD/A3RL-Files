@@ -310,7 +310,7 @@
 			_pos = visiblePositionASL _p;
 			_pos set [2, ((_p modelToWorld [0,0,0]) select 2) + 2];
 			if (_p getVariable ["pVar_RedNameOn",false]) then {
-				drawIcon3D ["", [0.98,0,0,1],_pos, 0.2, 0.2, 45,format ["ADMIN: %1 (OOC)",((_x select 0) getvariable["name",name (_x select 0)])], 1, 0.03, "EtelkaNarrowMediumPro"];
+				drawIcon3D ["", [0.98,0,0,1],_pos, 0.2, 0.2, 45,format ["%2: %1 (OOC)",((_x select 0) getvariable["name",name (_x select 0)]), [] call A3PL_AdminGetRank], 1, 0.03, "EtelkaNarrowMediumPro"];
 			} else {
 				drawIcon3D ["", [1, 1, 1, 1],_pos, 0.2, 0.2, 45, _x select 1, 1, 0.03, "EtelkaNarrowMediumPro"];
 			};

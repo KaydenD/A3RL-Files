@@ -741,8 +741,8 @@
 			switch (_classtype) do
 			{
 				case ("weapon"): {player addWeapon _id;};
-				case ("magazine"): {player addMagazine _id;};
-				case ("mag"): {player addMagazine _id;};
+				case ("magazine"): {for "_i" from 1 to (_amount) do {player addMagazine _id;};};
+				case ("mag"): {for "_i" from 1 to (_amount) do {player addMagazine _id;};};
 				case ("uniform"): {player addUniform _id; };
 				case ("vest"): {player addVest _id;};
 				case ("headgear"): {player addHeadGear _id;};

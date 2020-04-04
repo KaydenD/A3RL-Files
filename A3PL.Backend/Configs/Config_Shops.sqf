@@ -1,6 +1,6 @@
 Config_Shops_VehicleColours =
 [
-	["red",["demon_18_base2","demon_18_base","e350_14_base","explorer_16_base","camaro_18_base","taurus_13_base","hellcat_15_base","huracan_17_base","harley_18_base","blimp_base","corvette_14_base","e350_14_d_p_base","e350_14_d_p_base2","f150_18_base","raptor_16_base","f350_18_base","f350_18_base2","ambulance_14_p_base","ambulance_18_p_base","e350_14_e_base","mustang_15_base","sierra_14_base","sierra_14_base2"]],
+//	["red",["demon_18_base2","demon_18_base","e350_14_base","explorer_16_base","camaro_18_base","taurus_13_base","hellcat_15_base","huracan_17_base","harley_18_base","blimp_base","corvette_14_base","e350_14_d_p_base","e350_14_d_p_base2","f150_18_base","raptor_16_base","f350_18_base","f350_18_base2","ambulance_14_p_base","ambulance_18_p_base","e350_14_e_base","mustang_15_base","sierra_14_base","sierra_14_base2"]],
 	["A3PL_Ski",["Base"]],
 	["A3PL_Goose",["Base","Radar","USCG"]],
 	["A3PL_C",["Plane_Civil_01_F"]],
@@ -676,7 +676,6 @@ Config_Shops_Items =
 			["weapon","A3PL_FireAxe",500,0],
             ["weapon","A3PL_Taser",100,0],
             ["weapon","hgun_Rook40_F",500,0],
-			["weapon","red_glock_base",500,0],
 			["weapon","hgun_ACPC2_F",500,0],
 
             ["magazine","A3PL_TaserMag",50,0],
@@ -806,7 +805,6 @@ Config_Shops_Items =
 			["weapon","A3PL_Taser",500,0],
 			["weapon","hgun_P07_F",500,0],
 			["weapon","hgun_Rook40_F",500,0],
-			["weapon","red_glock_base",500,0],
 			["magazine","red_17Rnd_9x19_Mag",50,0],
             ["magazine","A3PL_TaserMag",100,0],
             ["magazine","16Rnd_9x21_Mag",50,0],
@@ -896,7 +894,6 @@ Config_Shops_Items =
             ["weapon","A3PL_Taser",100,0],
             ["magazine","A3PL_TaserMag",50,0],
             ["weapon","hgun_Rook40_F",100,0],
-            ["weapon","red_glock_base",100,0],
             ["magazine","red_17Rnd_9x19_Mag",50,0],
             ["magazine","16Rnd_9x21_Mag",50,0],
             ["weaponPrimary","srifle_LRR_SOS_F",100,0],

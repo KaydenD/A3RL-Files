@@ -71,7 +71,7 @@
 		// Default Text //
 
 		ctrlSetText [1403, "1"];
-		ctrlSetText [1000, format ["(%1) - [%2]",player getVariable "name","Executive Menu"]];
+		ctrlSetText [1000, format ["%2 %1",player getVariable "name", [] call A3PL_AdminGetRank]];
 		ctrlSetText [1001, "Version: 1.0"];
 	};
 
@@ -239,7 +239,7 @@
 }] call Server_Setup_Compile;
 
 ["A3PL_Admin_FactionSetter", {
-	if ((player getVariable "dbVar_AdminLevel") >= 2) then {
+	if ((player getVariable "dbVar_AdminLevel") >= 3) then {
 		_display = findDisplay 98;
 		_selectedPlayerIndex = lbCurSel 1500;
 		_selectedFaction = lbText [2103,lbCurSel 2103];
@@ -380,7 +380,7 @@
 }] call Server_Setup_Compile;
 
 ["A3PL_Admin_RestartSoon", {
-	if ((player getVariable "dbVar_AdminLevel") == 3) then {
+	if ((player getVariable "dbVar_AdminLevel") >= 5) then {
 		[] remoteExec ["Server_Core_Restart",2];
 	} else {
 		["System: You don't have permission to execute this command!",Color_Red] call A3PL_Player_Notification;
@@ -902,7 +902,7 @@
 // Map Markers //
 
 ["A3PL_AdminMapMarkers", {
-	if ((player getVariable "dbVar_AdminLevel") == 3) then {
+	if ((player getVariable "dbVar_AdminLevel") >= 3) then {
 		if(pVar_MapPlayerMarkersOn) then
 		{
 			pVar_MapPlayerMarkersOn = false;
@@ -1015,7 +1015,7 @@
 }] call Server_Setup_Compile;
 
 ["A3PL_AdminMapResourceMarkers", {
-	if ((player getVariable "dbVar_AdminLevel") == 3) then {
+	if ((player getVariable "dbVar_AdminLevel") >= 6) then {
 		if(pVar_MapResourceMarkersOn) then
 		{
 			pVar_MapResourceMarkersOn = false;

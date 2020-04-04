@@ -117,6 +117,7 @@
 	if (_dikCode == 34) exitWith {
 		closeDialog 0;
 		if (!([] call A3PL_Lib_HasPhone)) exitwith {["You don't have phone"] call A3PL_Player_Notification;};
+		if (player getVariable["Cuffed",true]) exitwith {["You are cuffed",Color_Red] call A3PL_Player_Notification;};
 		//[] call A3PL_iPhoneX_Master;
 		[] call A3PL_Phone_Open;
 	};

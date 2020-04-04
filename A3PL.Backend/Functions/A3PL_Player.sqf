@@ -389,6 +389,7 @@
 
 	[] spawn A3PL_Housing_Init;
 	
+	[] spawn A3PL_Pause_Menu_Loop;
 	//Markers setup
 	[player] spawn A3PL_Player_SetMarkers;
 }] call Server_Setup_Compile;
@@ -397,7 +398,7 @@
 	player setVariable ["A3PL_TeamspeakID", (floor random 9999999999) toFixed 0 ]; 
 }] call Server_Setup_Compile;
 
-['A3PL_Abort_Blocker', {
+['A3PL_Pause_Menu_Loop', {
 	/*
 	(findDisplay 49) displayAddEventHandler ["Load", {
 		params ["_display","_key"];
@@ -408,20 +409,27 @@
 		while {true} do
 		{
 			waitUntil{!isNull (findDisplay 49)};
-			_abortButton = (findDisplay 49) displayCtrl 104;
-			_abortButton ctrlEnable false;
-			_timeLeft = 10;
-			while {(!isNull (findDisplay 49)) && _timeLeft > 0} do {
-				_abortButton ctrlSetText (format ["Abort (%1)", _timeLeft]);
-				_timeLeft = _timeLeft - 1;
-				uiSleep 1.0;
-			};
-			_abortButton ctrlEnable true;
+			[] spawn A3PL_Abort_Blocker;
 			waitUntil{isNull (findDisplay 49)};
 		};
 
 	};
 }] call Server_Setup_Compile;
+
+['A3PL_Abort_Blocker', {
+	_abortButton = (findDisplay 49) displayCtrl 104;
+	_abortButton ctrlEnable false;
+	_timeLeft = 10;
+	while {(!isNull (findDisplay 49)) && _timeLeft > 0} do {
+		_abortButton ctrlSetText (format ["Abort (%1)", _timeLeft]);
+		_timeLeft = _timeLeft - 1;
+		uiSleep 1.0;
+	};
+	_abortButton ctrlEnable true;
+	_abortButton ctrlSetText "Abort";
+}] call Server_Setup_Compile;
+
+
 
 ['A3PL_Player_NewPlayer',{
 	disableSerialization;

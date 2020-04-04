@@ -162,7 +162,7 @@
 	
 	//loop
 	_timeLeft = 180;
-	_disillery setVariable ["timeleft",_timeLeft,false];
+	_dist setVariable ["timeleft",_timeLeft,false];
 	_succes = false;
 	while {(_timeLeft > 0) && (_dist getVariable ["running",false])} do
 	{
@@ -181,7 +181,7 @@
 		
 		//do timeleft
 		_timeLeft = _timeLeft - 1;
-		_disillery setVariable ["timeleft",_timeLeft,false];
+		_dist setVariable ["timeleft",_timeLeft,false];
 		if (_timeLeft < 1) exitwith {_succes = true; true;};
 		sleep 1;
 	};

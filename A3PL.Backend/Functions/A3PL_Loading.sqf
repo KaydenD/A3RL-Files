@@ -21,17 +21,15 @@
 
 		//changelog text
 		_control = (_display displayCtrl 69);
-		_format = "<t size='3' font='PuristaSemiBold' align='center' color='#B8B8B8'>VERSION 1.4.0.5.4</t>"
+		_format = "<t size='3' font='PuristaSemiBold' align='center' color='#B8B8B8'>VERSION 1.0.6.9</t>"
 		+ "<br/><br/>"
-		+ "<t size='1' align='left' color='#00ff00'> Added: </t><t size='1' align='left'>Community Textures</t>"
+		+ "<t size='1' align='left' color='#00ff00'> Added: </t><t size='1' align='left'>Huge bug fixes</t>"
 		+ "<br/>"	
-		//+ "<t size='1' align='left' color='#00ff00'> Added: </t><t size='1' align='left'>New red vehicles</t>"
-		//+ "<br/>"
-		+ "<t size='1' align='left' color='#00ff00'> Fixed: </t><t size='1' align='left'>Error with PBO Texture.</t>"
+		+ "<t size='1' align='left' color='#00ff00'> Fixed: </t><t size='1' align='left'>New textures for factions</t>"
 		+ "<br/>"
-		//+ "<t size='1' align='left' color='#00ff00'> Deleted: </t><t size='1' align='left'>Red ambulance.</t>"
+		//+ "<t size='1' align='left' color='#00ff00'> Deleted: </t><t size='1' align='left'>Made all ^ up</t>"
 		//+ "<br/><br/>"
-		+ "<t size='0.8' align='center'>For full changelog and more info visit the forum @ arma3projectlife.com/forums</t>";
+		+ "<t size='0.8' align='center'>For full changelog and more info visit the forum @ arma3realitylife.com/forums</t>";
 		_control ctrlSetStructuredText (parseText _format);
 
 		_control = (_display displayCtrl 10360);

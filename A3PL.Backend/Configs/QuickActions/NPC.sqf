@@ -162,7 +162,7 @@
 			["Shop_Perk_Gamer"] call A3PL_Shop_Open;
 		} else
 		{
-			["You don't have the ""Gamer perk"", you can buy it on the forum (wwww.arma3projectlife.com/forum)",Color_Red] call A3PL_Player_Notification
+			["You don't have the ""Gamer perk"", you can buy it on the forum (wwww.arma3realitylife.com/forum)",Color_Red] call A3PL_Player_Notification
 		};
 	}
 ],
@@ -176,7 +176,7 @@
 			["Shop_Perk_Garden"] call A3PL_Shop_Open;
 		} else
 		{
-			["You don't have the ""Garden perk"", you can buy it on the forum (wwww.arma3projectlife.com/forum)",Color_Red] call A3PL_Player_Notification
+			["You don't have the ""Garden perk"", you can buy it on the forum (wwww.arma3realitylife.com/forum)",Color_Red] call A3PL_Player_Notification
 		};
 	}
 ],
@@ -189,7 +189,7 @@
 			["Shop_Perk_Mancave"] call A3PL_Shop_Open;
 		} else
 		{
-			["You don't have the ""Mancave perk"", you can buy it on the forum (wwww.arma3projectlife.com/forum)",Color_Red] call A3PL_Player_Notification
+			["You don't have the ""Mancave perk"", you can buy it on the forum (wwww.arma3realitylife.com/forum)",Color_Red] call A3PL_Player_Notification
 		};
 	}
 ],
@@ -202,7 +202,7 @@
 			["Shop_Perk_WallDecor"] call A3PL_Shop_Open;
 		} else
 		{
-			["You don't have the ""WallDecor perk"", you can buy it on the forum (wwww.arma3projectlife.com/forum)",Color_Red] call A3PL_Player_Notification
+			["You don't have the ""WallDecor perk"", you can buy it on the forum (wwww.arma3realitylife.com/forum)",Color_Red] call A3PL_Player_Notification
 		};
 	}
 ],
@@ -215,7 +215,7 @@
 			["Shop_Perk_Winchester"] call A3PL_Shop_Open;
 		} else
 		{
-			["You don't have the ""Winchester perk"", you can buy it on the forum (wwww.arma3projectlife.com/forum)",Color_Red] call A3PL_Player_Notification
+			["You don't have the ""Winchester perk"", you can buy it on the forum (wwww.arma3realitylife.com/forum)",Color_Red] call A3PL_Player_Notification
 		};
 	}
 ],

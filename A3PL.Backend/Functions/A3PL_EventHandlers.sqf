@@ -123,12 +123,12 @@
 	};
 	
 	if(_dikCode == 24 && _shift) exitWith {
-		_sound = player getVariable["earplug", 0];
+		_sound = player getVariable["earplug", 100];
 
 		_newsound = 0;
 		if(_sound == 0) then { _newsound = 100; } else { _newsound = (_sound - 10); };
 		
-		0 fadeSound (_sound / 100);
+		0 fadeSound (_newsound / 100);
 		player setVariable ["earplug", _newsound, true]; 
 		
 		switch(_newsound) do
@@ -229,9 +229,7 @@
 
 	// Debug //
 
-	if (_dikCode == 62) exitWith {
-		if ((player getVariable ["dbVar_AdminLevel",0]) != 3) exitWith {};
-
+	if (_dikCode == 62 && ((player getVariable ["dbVar_AdminLevel",0]) >= 3)) exitWith {
 		[] call A3PL_Debug_Open;
 	};
 

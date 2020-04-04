@@ -154,7 +154,7 @@ Server_Setup_Compile = {
 		call compile str(_compile);
 	} else
 	{
-		call compileFinal str _compile;
+		call compile str _compile;
 	};
 
 	if (_compileBlock) exitwith {}; //no need to go further, this is for singleplayer purpose

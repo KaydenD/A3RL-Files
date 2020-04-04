@@ -5,7 +5,7 @@ class CfgPatches {
 
 		author[]= {
 
-			"Kane"
+			"Muse"
 		};
 		fileName="A3PLS.pbo";
 		units[]={};
@@ -34,11 +34,11 @@ class CfgRemoteExec {
 
 	class Commands {
 
-		mode=0;
+		mode=2;
 	};
 	class Functions {
 
-		mode=1;
+		mode=2;
 		jip=0;
 		class A3PL_Player_SetMarkers{allowedTargets=0;};
 		class BIS_fnc_effectKilledAirDestruction {

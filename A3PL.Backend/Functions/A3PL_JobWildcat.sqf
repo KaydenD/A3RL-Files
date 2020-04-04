@@ -24,11 +24,11 @@
 			
 			_oilArray = missionNameSpace getVariable ["Server_JobWildCat_Oil",[]];
 			_exactLocation = (_oilArray select (round (random ((count _oilArray) - 1)))) select 0; 
-			_pos = [((_exactLocation select 0) + (-300 + (random 300))),((_exactLocation select 1) + (-300 + (random 300)))]; //offset the real location
+			_pos = [((_exactLocation select 0) + (-100 + (random 200))),((_exactLocation select 1) + (-100 + (random 200)))]; //offset the real location
 
 			_marker = createMarkerLocal [format["%1_marker",floor (random 5000)],_pos];
 			_marker setMarkerShapeLocal "ELLIPSE";
-			_marker setMarkerSizeLocal [350,350]; //same as oildistance defined in A3PL_JobWildCat + max of 300
+			_marker setMarkerSizeLocal [142,142]; //same as oildistance defined in A3PL_JobWildCat + max of 300
 			_marker setMarkerColorLocal "ColorGreen";
 			_marker setMarkerTypeLocal "Mil_dot";
 			_marker setMarkerAlphaLocal 0.7;
@@ -55,11 +55,11 @@
 			} foreach _resArray;
 			
 			_exactLocation = (_newResArray select (round (random ((count _newResArray) - 1)))) select 1;
-			_pos = [((_exactLocation select 0) + (-300 + random 300)),((_exactLocation select 1) + (-300 + random 300))];
+			_pos = [((_exactLocation select 0) + (-100 + random 200)),((_exactLocation select 1) + (-100 + random 200))];
 
 			_marker = createMarkerLocal [format["%1_marker",floor (random 5000)],_pos];
 			_marker setMarkerShapeLocal "ELLIPSE";
-			_marker setMarkerSizeLocal [350,350]; //same as oildistance defined in A3PL_JobWildCat + max of 300
+			_marker setMarkerSizeLocal [142,142]; //same as oildistance defined in A3PL_JobWildCat + max of 300
 			_marker setMarkerColorLocal "ColorGreen";
 			_marker setMarkerTypeLocal "Mil_dot";
 			_marker setMarkerAlphaLocal 0.7;

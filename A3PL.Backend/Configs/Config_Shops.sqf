@@ -207,7 +207,7 @@ Config_Shops_Items =
 	[
 		"Shop_Buckeye", //moonshine shop
 		[
-			["item","distillery",1500,0],
+			["item","distillery",25000,0],
 			["item","distillery_hose",150,0],
 			["item","grinder",500,0],
 			["item","jug",50,0],
@@ -218,7 +218,7 @@ Config_Shops_Items =
 	[
 		"Shop_Willy", //moonshine shop
 		[
-			["item","jug_moonshine",999999,1000]
+			["item","jug_moonshine",999999,6500]
 		],
 		{[6960.71,5425.69,1]}
 	],

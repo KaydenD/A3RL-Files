@@ -188,7 +188,7 @@
 		};
 	} foreach _toDelete;
 
-	[format ["Server Cleanup: %1 unused objects deleted",_objects]] remoteExec ["A3PL_Player_Notification", -2];
+	//[format ["Server Cleanup: %1 unused objects deleted",_objects]] remoteExec ["A3PL_Player_Notification", -2];
 },true] call Server_Setup_Compile;
 
 //repairs all terrain objects

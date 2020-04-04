@@ -502,7 +502,7 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="Arma 3 Project Life";
+		briefingName="Arma 3 Reality Life";
 		startWeather=0.27549976;
 		startWind=0.30498803;
 		startWindDir=45;

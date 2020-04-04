@@ -30,7 +30,7 @@ class Dialog_Loading
 		class text_welcomeHeader: RscStructuredText
 		{
 			idc = 69;
-			text = "Welcome to ArmA 3 Project Life"; //--- ToDo: Localize;
+			text = "Welcome to ArmA 3 Reality Life"; //--- ToDo: Localize;
 			x = 0.296823 * safezoneW + safezoneX;
 			y = 0.390926 * safezoneH + safezoneY;
 			w = 0.401146 * safezoneW;
@@ -39,7 +39,7 @@ class Dialog_Loading
 		class Progress_welcomeHeader: RscStructuredText
 		{
 			idc = IDC_DIALOG_LOADING_LOADINGTEXT;
-			text = "Welcome to ArmA 3 Project Life";
+			text = "Welcome to ArmA 3 Reality Life";
 			x = 0.295781 * safezoneW + safezoneX;
 			y = 0.768445 * safezoneH + safezoneY;
 			w = 0.403542 * safezoneW;

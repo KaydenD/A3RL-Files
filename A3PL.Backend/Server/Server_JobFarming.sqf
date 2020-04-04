@@ -30,6 +30,7 @@
 	if (_plantClass == "") exitwith {};
 	_plant = createVehicle [_plantClass,[_pos select 0,_pos select 1, (_pos select 2) + _ATLChange], [], 0, "CAN_COLLIDE"]; //spawn inside the ground
 	_plant animateSource ["plant_growth",1];
+	_plant allowDamage false;
 
 	if(typeOf _plant == "A3PL_Cannabis") then 
 	{

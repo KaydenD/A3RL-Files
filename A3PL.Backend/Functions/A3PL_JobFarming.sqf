@@ -161,6 +161,7 @@
 		//create the plant and start growing
 		_plant = createVehicle ["A3PL_Cannabis",[_posATL select 0,_posATL select 1,((_posATL select 2) - 0.05)], [], 0, "CAN_COLLIDE"];
 		_plant setDir (random 360);
+		_plant allowDamage false;
 		[_plant, _planter] call BIS_fnc_attachToRelative;
 		_plant animateSource ["plant_growth",1];
 		A3PL_Cannabis_Plants = missionNameSpace getVariable ["A3PL_Cannabis_Plants",[]];

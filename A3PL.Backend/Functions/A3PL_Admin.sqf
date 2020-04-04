@@ -626,6 +626,24 @@
 	};
 }] call Server_Setup_Compile;
 
+["A3PL_AdminGetRank", {
+	private ["_return"];
+	_level = player getVariable "dbVar_AdminLevel";
+	_return = "";
+	
+	switch(_level) do {
+		case 0: { _return = "Executive" };
+		case 1: { _return = "Executive Supervisor" };
+		case 2: { _return = "Developer" };
+		case 3: { _return = "Chief" };
+		case 4: { _return = "Lead Chief" };
+		case 5: { _return = "Sub-Director" };
+		case 6: { _return = "Director" };
+	};
+	
+	_return;
+}] call Server_Setup_Compile;
+
 ///////////////////////////////
 //  PLAYER BUTTON FUNCTIONS  //
 ///////////////////////////////

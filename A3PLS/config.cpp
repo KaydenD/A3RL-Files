@@ -127,6 +127,9 @@ class CfgRemoteExec {
 		class A3PL_Police_SurrenderAnim {
 			allowedTargets=0;
 		};
+		class A3PL_USCG_DragReceive {
+			allowedTargets=0;
+		};
 		class A3PL_Police_DragReceive {
 			allowedTargets=0;
 		};

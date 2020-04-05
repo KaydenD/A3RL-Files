@@ -468,6 +468,7 @@
 			A3PL_HitTime = diag_ticktime;
 			[_unit] spawn A3PL_Medical_Hit;
 			systemChat "Called hit";
+			diag_log "Called hit";
 		};
 		_dmg;
 	}];

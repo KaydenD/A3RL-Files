@@ -688,6 +688,11 @@
 	_control = _display displayCtrl 352;
 	_control ctrlSetStructuredText parseText "<t size='1.8' font='RobotoCondensed' align='center' color='#B8B8B8'>0%</t>";
 
+	(_display displayCtrl 394) ctrlShow true;
+	(_display displayCtrl 350) ctrlShow true;
+	(_display displayCtrl 351) ctrlShow true;
+	(_display displayCtrl 352) ctrlShow true;
+
 	_controlPosition = _display displayCtrl 350;
 	while {(_time < _actionTime) && Player_ActionDoing} do
 	{
@@ -697,6 +702,11 @@
 		uiSleep 0.1;
 		_time = _time + 0.1;
 	};
+
+	(_display displayCtrl 394) ctrlShow false;
+	(_display displayCtrl 350) ctrlShow false;
+	(_display displayCtrl 351) ctrlShow false;
+	(_display displayCtrl 352) ctrlShow false;
 
 	//set completed
 	Player_ActionCompleted = true;

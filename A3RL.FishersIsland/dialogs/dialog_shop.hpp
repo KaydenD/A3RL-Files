@@ -48,7 +48,7 @@ class Dialog_Shop
 		class button_sell: RscButton
 		{
 			idc = 1603;
-			text = "Sell" //--- ToDo: Localize;
+			text = "Sell"; //--- ToDo: Localize;
 			x = 0.515469 * safezoneW + safezoneX;
 			y = 0.786 * safezoneH + safezoneY;
 			w = 0.0773437 * safezoneW;

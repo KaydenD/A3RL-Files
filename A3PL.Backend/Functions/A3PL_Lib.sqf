@@ -688,51 +688,19 @@
 	_control = _display displayCtrl 352;
 	_control ctrlSetStructuredText parseText "<t size='1.8' font='RobotoCondensed' align='center' color='#B8B8B8'>0%</t>";
 
-	//set opacity
-	_opacity = 1;
-	for "_i" from 1 to 100 do
-	{
-		_opacity = _opacity - 0.01;
-		(_display displayCtrl 394) ctrlSetFade _opacity;
-		(_display displayCtrl 350) ctrlSetFade _opacity;
-		(_display displayCtrl 351) ctrlSetFade _opacity;
-		(_display displayCtrl 352) ctrlSetFade _opacity;
-		(_display displayCtrl 394) ctrlCommit 0;
-		(_display displayCtrl 350) ctrlCommit 0;
-		(_display displayCtrl 351) ctrlCommit 0;
-		(_display displayCtrl 352) ctrlCommit 0;
-		uiSleep 0.01;
-	};
 	_controlPosition = _display displayCtrl 350;
 	while {(_time < _actionTime) && Player_ActionDoing} do
 	{
 		_percent = _time / _actionTime;
 		_control ctrlSetStructuredText parseText format ["<t size='1.8' font='RobotoCondensed' align='center' color='#B8B8B8'>%2%1</t>","%",round(_percent*100)];
 		_controlPosition progressSetPosition _percent;
-		_random = 0.01 + random (0.005); //really small difference that should help counter duping etc
-		uiSleep _random;
-		_time = _time + _random;
+		uiSleep 0.1;
+		_time = _time + 0.1;
 	};
 
 	//set completed
 	Player_ActionCompleted = true;
 	Player_ActionDoing = false;
-
-	//set opacity
-	_opacity = 0;
-	for "_i" from 1 to 100 do
-	{
-		_opacity = _opacity + 0.01;
-		(_display displayCtrl 394) ctrlSetFade _opacity;
-		(_display displayCtrl 350) ctrlSetFade _opacity;
-		(_display displayCtrl 351) ctrlSetFade _opacity;
-		(_display displayCtrl 352) ctrlSetFade _opacity;
-		(_display displayCtrl 394) ctrlCommit 0;
-		(_display displayCtrl 350) ctrlCommit 0;
-		(_display displayCtrl 351) ctrlCommit 0;
-		(_display displayCtrl 352) ctrlCommit 0;
-		uiSleep 0.01;
-	};
 }] call Server_Setup_Compile;
 
 ["A3PL_Lib_AnimBusStopInit",

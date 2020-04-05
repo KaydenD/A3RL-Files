@@ -1048,7 +1048,7 @@
 	if(_building getVariable ["FireAlarmBroke",false]) then {
 		if (!Player_ActionCompleted) exitwith {["You are already doing an action",Color_Red] call A3PL_Player_Notification;};
 		Player_ActionCompleted = false;
-		["Alarm repair ...",25+random 20] spawn A3PL_Lib_LoadAction;
+		["Alarm repair ...",30] spawn A3PL_Lib_LoadAction;
 		while {sleep 1.5; !Player_ActionCompleted } do {
 			player playMove "Acts_carFixingWheel";
 		};

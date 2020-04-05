@@ -6,7 +6,7 @@
 	
 	if (!Player_ActionCompleted) exitwith {["System: You are already performing an action",Color_Red] call A3PL_Player_Notification;};
 	Player_ActionCompleted = false;
-	["Picking apple...",1+random 2] spawn A3PL_Lib_LoadAction;
+	["Picking apple...",2] spawn A3PL_Lib_LoadAction;
 	while {sleep 1.5; !Player_ActionCompleted } do
 	{
 		player playMove 'AmovPercMstpSnonWnonDnon_AinvPercMstpSnonWnonDnon_Putdown';

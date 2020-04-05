@@ -182,7 +182,7 @@
 	//start timer
 	Player_ActionCompleted = false;
 	_targetPos = getpos _target;
-	["Attempting pat down...",3+random 2] spawn A3PL_Lib_LoadAction;
+	["Attempting pat down...",4] spawn A3PL_Lib_LoadAction;
 	while {sleep 1; !Player_ActionCompleted } do
 	{
 		if ((_targetPos distance (getpos _target)) > 0.5) exitwith {player playMove ""; true;};

@@ -10,7 +10,7 @@
 	
 	if (!Player_ActionCompleted) exitwith {["System: You are already performing an action",Color_Red] call A3PL_Player_Notification;};
 	Player_ActionCompleted = false;
-	["Skinning animal...",10+random 2] spawn A3PL_Lib_LoadAction;
+	["Skinning animal...",11] spawn A3PL_Lib_LoadAction;
 	while {sleep 1.5; !Player_ActionCompleted } do
 	{
 		player playMove 'AmovPercMstpSnonWnonDnon_AinvPercMstpSnonWnonDnon_Putdown';

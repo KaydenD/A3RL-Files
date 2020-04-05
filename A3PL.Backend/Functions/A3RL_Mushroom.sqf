@@ -1,4 +1,4 @@
-["A3PL_Mushroom_Gather",
+["A3RL_Mushroom_Gather",
 {
 	if(!([] call A3PL_Player_AntiSpam)) exitWith {};
 	if (Player_ActionDoing) exitwith {["System: You are already performing an action",Color_Red] call A3PL_Player_Notification;};

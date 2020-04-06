@@ -19,7 +19,7 @@
 	};
 
 	{
-		if (toLowerANSI(_name) == (toLowerANSI (_x select 0))) then
+		if (_name ==  (_x select 0)) then
 		{
 			if (call (_x select 3)) then
 			{

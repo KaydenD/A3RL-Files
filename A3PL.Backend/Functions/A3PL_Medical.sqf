@@ -361,8 +361,8 @@
 	_set = true;
 	_wounds = _player getVariable ["A3PL_Wounds",[]];
 
-	systemChat (format("ApplyWound | %1 | %2", _part, _wound));
-	diag_log (format("ApplyWound | %1 | %2", _part, _wound));
+	systemChat (format["ApplyWound | %1 | %2", _part, _wound]);
+	diag_log (format["ApplyWound | %1 | %2", _part, _wound]);
 
 	if (player getVariable ["pVar_RedNameOn",false]) exitwith {};
 	//check if we already have a part defined

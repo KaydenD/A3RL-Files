@@ -1176,6 +1176,15 @@ A3PL_Interaction_Options =
 		},
 		{(typeOf cursorobject == "Land_A3PL_GreenHouse") && ((player distance cursorobject) < 4.3)}
 	],
+	
+	// Gather Mushrooms
+	[
+		"Gather", 
+		{
+			[] spawn A3RL_Mushroom_Gather;
+		},
+		{player inArea "mushroom_zone"}
+	],
 
 	[
 		localize"STR_INTSECT_REPVEH", //Repair Vehicle

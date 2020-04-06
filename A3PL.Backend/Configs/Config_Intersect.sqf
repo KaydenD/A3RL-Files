@@ -690,33 +690,33 @@ Config_IntersectArray =
 	["Door_13",localize"STR_INTSECT_DELPACKAGE",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(player getVariable ["job","unemployed"]) == "mailman"}], //Deliver Package
 	["Door_14",localize"STR_INTSECT_DELPACKAGE",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(player getVariable ["job","unemployed"]) == "mailman"}], //Deliver Package
 
-	//Casion
-	["door01",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
-	["door02",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
-	["door03",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
-	["door04",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
-	["door05",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
-	["door06",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
-	["door07",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
-	["door08",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
-	["door09",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
-	["door10",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
-	["door11",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
-	["door12",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
-	["door13",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
-	["door14",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
-	["door15",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
-	["door16",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
-	["door17",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
-	["door18",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
-	["door19",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
-	["door20",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
-	["door21",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
-	["door22",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
-	["door23",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
-	["door24",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
-	["door25",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
-	["door26",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
+	//Casino
+	["buildingcasino2_door01",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
+	["buildingcasino2_door02",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
+	["buildingcasino2_door03",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
+	["buildingcasino2_door04",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
+	["buildingcasino2_door05",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
+	["buildingcasino2_door06",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
+	["buildingcasino2_door07",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
+	["buildingcasino2_door08",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
+	["buildingcasino2_door09",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
+	["buildingcasino2_door10",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
+	["buildingcasino2_door11",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
+	["buildingcasino2_door12",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
+	["buildingcasino2_door13",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
+	["buildingcasino2_door14",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
+	["buildingcasino2_door15",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
+	["buildingcasino2_door16",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
+	["buildingcasino2_door17",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
+	["buildingcasino2_door18",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
+	["buildingcasino2_door19",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
+	["buildingcasino2_door20",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
+	["buildingcasino2_door21",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
+	["buildingcasino2_door22",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
+	["buildingcasino2_door23",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
+	["buildingcasino2_door24",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
+	["buildingcasino2_door25",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
+	["buildingcasino2_door26",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
 	["vaultdoor",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
 	["garagedoor",localize"STR_INTSECT_DOOR",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(typeOf player_objintersect) == "Land_buildingsCasino2"}], //Door
 

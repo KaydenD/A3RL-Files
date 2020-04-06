@@ -688,10 +688,14 @@
 	_control = _display displayCtrl 352;
 	_control ctrlSetStructuredText parseText "<t size='1.8' font='RobotoCondensed' align='center' color='#B8B8B8'>0%</t>";
 
-	(_display displayCtrl 394) ctrlShow true;
-	(_display displayCtrl 350) ctrlShow true;
-	(_display displayCtrl 351) ctrlShow true;
-	(_display displayCtrl 352) ctrlShow true;
+	(_display displayCtrl 394) ctrlSetFade 0;
+	(_display displayCtrl 350) ctrlSetFade 0;
+	(_display displayCtrl 351) ctrlSetFade 0;
+	(_display displayCtrl 352) ctrlSetFade 0;
+	(_display displayCtrl 394) ctrlCommit 0;
+	(_display displayCtrl 350) ctrlCommit 0;
+	(_display displayCtrl 351) ctrlCommit 0;
+	(_display displayCtrl 352) ctrlCommit 0;
 
 	_controlPosition = _display displayCtrl 350;
 	while {(_time < _actionTime) && Player_ActionDoing} do
@@ -703,10 +707,14 @@
 		_time = _time + 0.1;
 	};
 
-	(_display displayCtrl 394) ctrlShow false;
-	(_display displayCtrl 350) ctrlShow false;
-	(_display displayCtrl 351) ctrlShow false;
-	(_display displayCtrl 352) ctrlShow false;
+	(_display displayCtrl 394) ctrlSetFade 1;
+	(_display displayCtrl 350) ctrlSetFade 1;
+	(_display displayCtrl 351) ctrlSetFade 1;
+	(_display displayCtrl 352) ctrlSetFade 1;
+	(_display displayCtrl 394) ctrlCommit 0;
+	(_display displayCtrl 350) ctrlCommit 0;
+	(_display displayCtrl 351) ctrlCommit 0;
+	(_display displayCtrl 352) ctrlCommit 0;
 
 	//set completed
 	Player_ActionCompleted = true;

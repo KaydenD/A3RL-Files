@@ -841,6 +841,9 @@
 	_job = player getVariable ["job","unemployed"];
 	_faction = _player getVariable ["faction","citizen"];
 
+	"mushroom_zone" setMarkerAlpha 0;
+	if((_job != "uscg") && (_job != "faa") && (_job != "doj") && (_job != "police") && (_job != "fifr")) then {{_x setMarkerAlpha 1;} forEach ["mushroom_marker"];} else {{_x setMarkerAlpha 0;} forEach ["mushroom_marker"];};
+
 	if (!(["motorhead"] call A3PL_Lib_hasPerk)) then {deleteMarkerLocal "perk_store_marker";};
 	if(_job != "uscg") then {{_x setMarkerAlpha 0;} forEach ["USCG_Shop","USCG_Boat","USCG_Boat_Spawn","USCG_Vehicle","USCG_Aircraft"];} else {{_x setMarkerAlpha 1;} forEach ["USCG_Shop","USCG_Boat","USCG_Boat_Spawn","USCG_Vehicle","USCG_Aircraft"];};
 	if(_job != "faa") then {{_x setMarkerAlpha 0;} forEach ["FAA_vehicles","FAA_shop"];} else {{_x setMarkerAlpha 1;} forEach ["FAA_vehicles","FAA_shop"];};

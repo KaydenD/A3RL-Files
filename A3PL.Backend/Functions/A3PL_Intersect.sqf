@@ -266,7 +266,7 @@
 				Player_NameIntersect = "";
 			};
 
-			if ((!(getModelInfo _parent select 2)) OR ((player distance _obj) > 20)) exitWith {
+			if ((!(getModelInfo _parent select 2)) OR (((player distance _obj) > 20) && (typeOf _obj != "Land_buildingCasino2"))) exitWith {
 				Player_NameIntersect = "";
 				Player_ObjIntersect = _obj;
 

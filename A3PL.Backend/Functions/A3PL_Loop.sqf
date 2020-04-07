@@ -35,9 +35,8 @@
 
 ["A3RL_Fatigue_Handler",
 {
-	if (isNil "A3RLFatigueFreeTimeLeft") then {A3RLFatigueFreeTimeLeft = 0;};
-	if (A3RLFatigueFreeTimeLeft < 0) then {A3RLFatigueFreeTimeLeft = 0;};
-
+	if (isNil "A3RLFatigueFreeTimeLeft" || {A3RLFatigueFreeTimeLeft < 0}) then {A3RLFatigueFreeTimeLeft = 0;};
+	
 	if(A3RLFatigueFreeTimeLeft > 0) then {
 		player enableFatigue false;
 		A3RLFatigueFreeTimeLeft = A3RLFatigueFreeTimeLeft - 5;

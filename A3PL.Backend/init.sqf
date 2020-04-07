@@ -76,6 +76,7 @@ Server_Setup_Files = [
 	['Functions', 'A3PL_Locker'],
 	['Functions', 'A3PL_iPhoneX'],
 	['Functions', 'A3RL_Mushroom'],
+	['Functions', 'A3RL_EvidenceLocker'],
 	['Backend', 'Server_Setup'],
 	['Server', 'Server_JobVDelivery'],
 	['Server', 'Server_JobMDelivery'],

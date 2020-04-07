@@ -442,36 +442,31 @@
 	private ["_player","_change","_medicalVar","_newValue"];
 	_player = param [0,player];
 	_change = param [1,[]];
-	systemChat (format ["ApplyVar | %1 ", _change select 0]);
-	diag_log (format ["ApplyVar | %1 ", _change select 0]);
+	systemChat (format ["ApplyVar | %1 ", _change]);
+	diag_log (format ["ApplyVar | %1 ", _change]);
+	systemChat "test2";
+	diag_log "test3";
 	_medicalVar = _player getVariable ["A3PL_MedicalVars",[MAXBLOODLVL,"120/80",37]];
 	{
 		_newValue = (_medicalVar select _forEachIndex) + _x;
 		if (_newValue < 0) then {_newValue = 0;};
-		switch (_forEachIndex) do
-		{
-			if (_player == player) then //take care of instant changes
-			{
-				case (0): //blood level change
-				{
-					private ["_newBloodLvl"];
-					_newBloodLvl = (_medicalVar select 0) + _x;
-					if (_newBloodLvl <= 0) then
-					{
-						_newBloodLvl = 0;
-						if (isNil "A3PL_MedicalVar_Unconscious") then {[] spawn A3PL_Medical_Die;};
-					};
-					if(!(_player getVariable["A3PL_Medical_Alive",true]) && (_newBloodLvl > 0)) then {_player setVariable ["A3PL_Medical_Alive",true,true];};
-					["\A3PL_Common\GUI\medical\overlay_blood.paa",1,(_newBloodLvl/MAXBLOODLVL)] call A3PL_HUD_SetOverlay;
-				};
-			};
-			if (_newValue > MAXBLOODLVL) then {_newValue = MAXBLOODLVL;};
-			_medicalVar set [_forEachIndex,_newValue];
-		};
+		if (_newValue > MAXBLOODLVL) then {_newValue = MAXBLOODLVL;};
+		_medicalVar set [_forEachIndex,_newValue];
 	} foreach _change;
-
 	_player setVariable ["A3PL_MedicalVars",_medicalVar,true];
 	[(findDisplay 73)] call A3PL_Medical_LoadParts; //if the medical menu is open we can refresh the blood level
+
+	if(_player != player) exitWith {};
+
+	if((_medicalVar select 0) > 0) then {
+		if(!(_player getVariable["A3PL_Medical_Alive",true])) then {_player setVariable ["A3PL_Medical_Alive",true,true];};
+
+	} else {
+			if (isNil "A3PL_MedicalVar_Unconscious") then {[] spawn A3PL_Medical_Die;};
+	};
+	["\A3PL_Common\GUI\medical\overlay_blood.paa",1,((_medicalVar select 0)/MAXBLOODLVL)] call A3PL_HUD_SetOverlay;
+
+
 }] call Server_Setup_Compile;
 
 ["A3PL_Medical_Die",

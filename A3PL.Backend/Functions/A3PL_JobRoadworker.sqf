@@ -104,3 +104,17 @@
 	["System: Send request to server to impound this vehicle, you were rewarded with $2000", Color_Green] call A3PL_Player_Notification;
 	[_car,player] remoteExec ["Server_JobRoadWorker_Impound",2];
 }] call Server_Setup_Compile;
+
+["A3RL_JobRoadWorker_RentTruck",
+{
+	//Checks
+	if(!([] call A3PL_Player_AntiSpam)) exitWith {};
+	if ((player getVariable ["job","unemployed"]) != "Roadside_Service") exitwith {["System: You dont seem to be working here as a Roadside Service Worker", Color_Red] call A3PL_Player_Notification;};
+	_towTruckPrice = 1500;
+	
+	_playercash = player getvariable ["Player_Cash",0];
+	if (_playercash <= (_towTruckPrice - 1)) exitwith {[format ["You need $%1 in order to rent a tow truck",_towTruckPrice],Color_Red] call A3PL_Player_Notification;};
+	[[player, 'Player_Cash', ((player getVariable 'Player_Cash') - _towTruckPrice)], 'Server_Core_ChangeVar', false] call BIS_fnc_MP;
+	
+	["A3PL_P362_TowTruck",[2350.95,5473.43,0.00143862],"Roadside_Service",1800] spawn A3PL_Lib_JobVehicle_Assign;
+}] call Server_Setup_Compile;

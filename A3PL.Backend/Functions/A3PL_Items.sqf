@@ -14,6 +14,7 @@
 	{
 		["You are already drinking something",Color_Red] call A3PL_Player_Notification;
 	};
+	if(_classname == "coke") then {A3RLFatigueFreeTimeLeft = 180; player enableFatigue false;};
 	Player_isDrinking = true;
 
 	//take items away

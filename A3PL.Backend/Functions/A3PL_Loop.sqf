@@ -26,9 +26,21 @@
 	//Drugs system
 	["itemAdd", ["Drugs_Loop", {[false] spawn A3PL_Drugs_Loop;}, 60, 'seconds']] call BIS_fnc_loop;
 
+
+	["itemAdd", ["Loop_Fatigue", {[] spawn A3RL_Fatigue_Handler;}, 5, 'seconds']] call BIS_fnc_loop;
 	//halloween loops
 	// ["itemAdd", ["Hw_angel_loop", {[] spawn A3PL_Halloween_Randomiser;}, 30, 'seconds']] call BIS_fnc_loop;
 
+}] call Server_Setup_Compile;
+
+["A3RL_Fatigue_Handler",
+{
+	if (isNil "A3RLFatigueFreeTimeLeft" || A3RLFatigueFreeTimeLeft < 0) then {A3RLFatigueFreeTimeLeft = 0;};
+	if(A3RLFatigueFreeTimeLeft > 0) then {
+		player enableFatigue false;
+		A3RLFatigueFreeTimeLeft = A3RLFatigueFreeTimeLeft - 5;
+	};
+	player enableFatigue true;
 }] call Server_Setup_Compile;
 
 ["A3PL_Loop_RoadSigns",

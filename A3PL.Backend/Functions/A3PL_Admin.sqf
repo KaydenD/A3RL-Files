@@ -330,7 +330,7 @@
 		};
 	} foreach dVar_AdminToolsList;
 
-	if ((player getVariable ["dbVar_AdminLevel",0]) != 3) then {
+	if ((player getVariable ["dbVar_AdminLevel",0]) < 3) then {
 		lbDelete [1504,11];
 	};
 
@@ -1163,7 +1163,7 @@ File: A3PL_Debug.sqf
 
 ["A3PL_Debug_Open", {
 
-	if ((player getVariable "dbVar_AdminLevel") != 3) exitWith {};
+	if ((player getVariable "dbVar_AdminLevel") < 3) exitWith {};
 
 	disableSerialization;
 

@@ -346,6 +346,13 @@ A3PL_Interaction_Options =
 		},
 		{isPlayer cursorObject && alive cursorObject && ((player getVariable ["job","unemployed"]) IN ["police","uscg","usms"]) && (player distance cursorObject < 3)}
 	],
+	
+	//Evidence_Locker
+	[
+		"Lockpick", //Check tanker content
+		{[] call A3RL_EvidenceLocker_Lockpick;},
+		{((typeOf cursorObject) == "B_supplyCrate_F")}
+	],
 
 	[
 		localize "STR_INTER_SEIZEITEMS", //Seize Items

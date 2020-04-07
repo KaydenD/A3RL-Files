@@ -114,9 +114,6 @@
 		};
 	};
 
-	systemChat (format ["A3PL_Medical_Hit | %1 | %2 | %3", _sHit,_sDamage,_sBullet]);
-	diag_log (format ["A3PL_Medical_Hit | %1 | %2 | %3", _sHit,_sDamage,_sBullet]);
-
 	//generate wound
 	[_sHit,_sDamage,_sBullet] call A3PL_Medical_GenerateWounds;
 
@@ -361,9 +358,6 @@
 	_set = true;
 	_wounds = _player getVariable ["A3PL_Wounds",[]];
 
-	systemChat (format["ApplyWound | %1 | %2", _part, _wound]);
-	diag_log (format["ApplyWound | %1 | %2", _part, _wound]);
-
 	if (player getVariable ["pVar_RedNameOn",false]) exitwith {};
 	//check if we already have a part defined
 	{
@@ -442,10 +436,6 @@
 	private ["_player","_change","_medicalVar","_newValue"];
 	_player = param [0,player];
 	_change = param [1,[]];
-	systemChat (format ["ApplyVar | %1 ", _change]);
-	diag_log (format ["ApplyVar | %1 ", _change]);
-	systemChat "test2";
-	diag_log "test3";
 	_medicalVar = _player getVariable ["A3PL_MedicalVars",[MAXBLOODLVL,"120/80",37]];
 	{
 		_newValue = (_medicalVar select _forEachIndex) + _x;

@@ -8,7 +8,7 @@ class EditorData
 	toggles=10;
 	class ItemIDProvider
 	{
-		nextID=2384;
+		nextID=2387;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={10893.956,9.2502193,7263.5962};
-		dir[]={-0.067619748,-0.46148139,0.88457423};
-		up[]={-0.03517523,0.88714647,0.46014512};
-		aside[]={0.9970966,1.8340324e-007,0.076221287};
+		pos[]={4775.8384,4.4960628,6315.0894};
+		dir[]={0.30067825,-0.5034532,-0.8100664};
+		up[]={0.17520036,0.86400485,-0.4720107};
+		aside[]={-0.93753743,2.4563633e-007,-0.34799489};
 	};
 };
 binarizationWanted=0;
@@ -58,7 +58,8 @@ addons[]=
 	"A3_Structures_F_Exp_Civilian_Sheds",
 	"A3_Structures_F_Mil_Helipads",
 	"A3_Structures_F_EPC_Items_Electronics",
-	"A3PL_Objects_BusStop"
+	"A3PL_Objects_BusStop",
+	"A3_Weapons_F_Ammoboxes"
 };
 class AddonsMetaData
 {
@@ -521,7 +522,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=710;
+		items=711;
 		class Item0
 		{
 			dataType="Object";
@@ -8513,7 +8514,7 @@ class Mission
 			};
 			id=987;
 			type="A3PL_DogCage";
-			atlOffset=0.11167288;
+			atlOffset=0.11146593;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -9973,7 +9974,7 @@ class Mission
 					};
 					id=971;
 					type="C_man_w_worker_F";
-					atlOffset=0.066640854;
+					atlOffset=0.01625824;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -10094,7 +10095,7 @@ class Mission
 					};
 					id=1269;
 					type="C_man_w_worker_F";
-					atlOffset=0.10317039;
+					atlOffset=0.10296345;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -10173,7 +10174,7 @@ class Mission
 					};
 					id=1267;
 					type="C_man_w_worker_F";
-					atlOffset=0.11232567;
+					atlOffset=0.11211872;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -10252,7 +10253,7 @@ class Mission
 					};
 					id=1271;
 					type="C_man_w_worker_F";
-					atlOffset=0.027490377;
+					atlOffset=0.027489901;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -10403,7 +10404,7 @@ class Mission
 					};
 					id=1273;
 					type="C_man_w_worker_F";
-					atlOffset=0.0071678162;
+					atlOffset=0.0071554184;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -11620,7 +11621,7 @@ class Mission
 					};
 					id=1450;
 					type="C_man_w_worker_F";
-					atlOffset=0.080166101;
+					atlOffset=0.079959154;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -11833,7 +11834,7 @@ class Mission
 					};
 					id=1459;
 					type="C_man_w_worker_F";
-					atlOffset=0.0097134113;
+					atlOffset=0.0097129345;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -12607,7 +12608,7 @@ class Mission
 					};
 					id=1562;
 					type="C_man_w_worker_F";
-					atlOffset=5.7220459e-005;
+					atlOffset=5.6743622e-005;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -12875,7 +12876,7 @@ class Mission
 					};
 					id=1579;
 					type="C_man_w_worker_F";
-					atlOffset=0.057999611;
+					atlOffset=0.0075883865;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -14497,7 +14498,7 @@ class Mission
 					};
 					id=1974;
 					type="C_man_w_worker_F";
-					atlOffset=0.018299103;
+					atlOffset=0.01829958;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -14650,7 +14651,7 @@ class Mission
 					};
 					id=2050;
 					type="C_man_w_worker_F";
-					atlOffset=0.010226727;
+					atlOffset=0.010225773;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -14729,7 +14730,7 @@ class Mission
 					};
 					id=2099;
 					type="C_man_w_worker_F";
-					atlOffset=0.016952991;
+					atlOffset=0.016952038;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -14948,6 +14949,7 @@ class Mission
 					};
 					id=2052;
 					type="C_man_w_worker_F";
+					atlOffset=-4.7683716e-007;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -15104,7 +15106,7 @@ class Mission
 					};
 					id=1886;
 					type="C_man_w_worker_F";
-					atlOffset=0.0011672974;
+					atlOffset=0.0011663437;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -15183,7 +15185,7 @@ class Mission
 					};
 					id=1907;
 					type="C_man_w_worker_F";
-					atlOffset=0.028864861;
+					atlOffset=0.028863907;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -15796,7 +15798,7 @@ class Mission
 					};
 					id=1884;
 					type="C_man_w_worker_F";
-					atlOffset=0.11671925;
+					atlOffset=0.1165123;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -15933,7 +15935,7 @@ class Mission
 			};
 			id=1250;
 			type="A3PL_Gas_Hose";
-			atlOffset=0.67258739;
+			atlOffset=0.90199471;
 		};
 		class Item223
 		{
@@ -15951,7 +15953,7 @@ class Mission
 			};
 			id=1251;
 			type="A3PL_Gas_Box";
-			atlOffset=2.2184505;
+			atlOffset=2.4479971;
 		};
 		class Item224
 		{
@@ -16064,7 +16066,7 @@ class Mission
 			};
 			id=1262;
 			type="A3PL_CCTV";
-			atlOffset=2.7732458;
+			atlOffset=2.7732334;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -16146,7 +16148,7 @@ class Mission
 			};
 			id=1264;
 			type="A3PL_CCTV";
-			atlOffset=2.7841883;
+			atlOffset=2.7841759;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -16697,7 +16699,7 @@ class Mission
 			};
 			id=1451;
 			type="Land_CampingTable_F";
-			atlOffset=0.17017508;
+			atlOffset=0.16996813;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -16822,7 +16824,7 @@ class Mission
 			};
 			id=1460;
 			type="Land_CampingTable_small_F";
-			atlOffset=0.010909557;
+			atlOffset=0.010909081;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -18376,7 +18378,7 @@ class Mission
 			};
 			id=1678;
 			type="A3PL_WheelieBin";
-			atlOffset=9.059906e-005;
+			atlOffset=0.0001707077;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -20132,7 +20134,7 @@ class Mission
 			};
 			id=1789;
 			type="A3PL_Mcfisher_Grill";
-			atlOffset=0.072999954;
+			atlOffset=0.072999716;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -20174,7 +20176,7 @@ class Mission
 			};
 			id=1790;
 			type="A3PL_Mcfisher_Grill";
-			atlOffset=0.059999943;
+			atlOffset=0.06000483;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -20703,7 +20705,7 @@ class Mission
 			};
 			id=1865;
 			type="A3PL_CCTV";
-			atlOffset=5.8673;
+			atlOffset=2.4990096;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -20949,7 +20951,7 @@ class Mission
 			};
 			id=1871;
 			type="A3PL_CCTV";
-			atlOffset=5.8678927;
+			atlOffset=2.5027204;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -20990,7 +20992,7 @@ class Mission
 			};
 			id=1872;
 			type="A3PL_CCTV";
-			atlOffset=5.6648083;
+			atlOffset=5.5330176;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -21545,6 +21547,7 @@ class Mission
 				angles[]={0,4.7191958,0};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 				init="call{this setVariable [""positionSpawn"",[6937.97,3685.8,3,262],false]; this setVariable [""type"",""vehicle""];}";
@@ -21552,7 +21555,7 @@ class Mission
 			};
 			id=1999;
 			type="A3PL_CarInfo";
-			atlOffset=11.776001;
+			atlOffset=0.15173531;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -21586,6 +21589,7 @@ class Mission
 				angles[]={0,4.208652,0};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 				init="call{this setVariable [""positionSpawn"",[5806.51,4933,3,262],false]; this setVariable [""type"",""vehicle""];}";
@@ -21593,7 +21597,7 @@ class Mission
 			};
 			id=2003;
 			type="A3PL_CarInfo";
-			atlOffset=7.006;
+			atlOffset=0.14829445;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -21635,7 +21639,7 @@ class Mission
 			};
 			id=2009;
 			type="A3PL_CarInfo";
-			atlOffset=0.00013303757;
+			atlOffset=0.00013279915;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -21815,7 +21819,7 @@ class Mission
 			type="A3PL_Markers_Bank";
 			colorName="ColorBlue";
 			id=2037;
-			atlOffset=0.25316286;
+			atlOffset=0.25316238;
 		};
 		class Item457
 		{
@@ -23535,7 +23539,7 @@ class Mission
 			};
 			id=2138;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.0086967349;
+			atlOffset=0.0086962581;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -23577,7 +23581,7 @@ class Mission
 			};
 			id=2140;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.010129631;
+			atlOffset=0.010129154;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -23619,7 +23623,7 @@ class Mission
 			};
 			id=2141;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.0089182258;
+			atlOffset=0.0089177489;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -23661,7 +23665,7 @@ class Mission
 			};
 			id=2142;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.010157526;
+			atlOffset=0.010157049;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -23703,7 +23707,7 @@ class Mission
 			};
 			id=2143;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.01136893;
+			atlOffset=0.011368454;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -23745,7 +23749,7 @@ class Mission
 			};
 			id=2144;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.0099360347;
+			atlOffset=0.0099355578;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -23787,7 +23791,7 @@ class Mission
 			};
 			id=2145;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.011122406;
+			atlOffset=0.011121929;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -23829,7 +23833,7 @@ class Mission
 			};
 			id=2146;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.012555301;
+			atlOffset=0.012554824;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -23871,7 +23875,7 @@ class Mission
 			};
 			id=2147;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.011343896;
+			atlOffset=0.01134342;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -23913,7 +23917,7 @@ class Mission
 			};
 			id=2148;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.010104597;
+			atlOffset=0.01010412;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -23955,7 +23959,7 @@ class Mission
 			};
 			id=2149;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.011316001;
+			atlOffset=0.011315525;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -23997,7 +24001,7 @@ class Mission
 			};
 			id=2150;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.0098831058;
+			atlOffset=0.0098826289;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -24039,7 +24043,7 @@ class Mission
 			};
 			id=2151;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.013407171;
+			atlOffset=0.013406694;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -24081,7 +24085,7 @@ class Mission
 			};
 			id=2152;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.014840066;
+			atlOffset=0.01483959;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -24123,7 +24127,7 @@ class Mission
 			};
 			id=2153;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.013628662;
+			atlOffset=0.013628185;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -24165,7 +24169,7 @@ class Mission
 			};
 			id=2154;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.014867961;
+			atlOffset=0.014867485;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -24207,7 +24211,7 @@ class Mission
 			};
 			id=2155;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.016079366;
+			atlOffset=0.016078889;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -24249,7 +24253,7 @@ class Mission
 			};
 			id=2156;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.014646471;
+			atlOffset=0.014645994;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -24291,7 +24295,7 @@ class Mission
 			};
 			id=2157;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.013681591;
+			atlOffset=0.013681114;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -24333,7 +24337,7 @@ class Mission
 			};
 			id=2158;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.014892995;
+			atlOffset=0.014892519;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -24375,7 +24379,7 @@ class Mission
 			};
 			id=2159;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.0134601;
+			atlOffset=0.013459623;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -24417,7 +24421,7 @@ class Mission
 			};
 			id=2160;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.012442291;
+			atlOffset=0.012441814;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -24459,7 +24463,7 @@ class Mission
 			};
 			id=2161;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.013653696;
+			atlOffset=0.013653219;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -24501,7 +24505,7 @@ class Mission
 			};
 			id=2162;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.0122208;
+			atlOffset=0.012220323;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -24543,7 +24547,7 @@ class Mission
 			};
 			id=2163;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.11674237;
+			atlOffset=0.11653543;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -24585,7 +24589,7 @@ class Mission
 			};
 			id=2164;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.11817527;
+			atlOffset=0.11796832;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -24627,7 +24631,7 @@ class Mission
 			};
 			id=2165;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.1169641;
+			atlOffset=0.11675715;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -24669,7 +24673,7 @@ class Mission
 			};
 			id=2166;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.11820292;
+			atlOffset=0.11799598;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -24711,7 +24715,7 @@ class Mission
 			};
 			id=2167;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.11941457;
+			atlOffset=0.11920762;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -24753,7 +24757,7 @@ class Mission
 			};
 			id=2168;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.11798167;
+			atlOffset=0.11777472;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -24795,7 +24799,7 @@ class Mission
 			};
 			id=2169;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.11701655;
+			atlOffset=0.11680961;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -24837,7 +24841,7 @@ class Mission
 			};
 			id=2170;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.1182282;
+			atlOffset=0.11802125;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -24879,7 +24883,7 @@ class Mission
 			};
 			id=2171;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.1167953;
+			atlOffset=0.11658835;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -24921,7 +24925,7 @@ class Mission
 			};
 			id=2172;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.11577773;
+			atlOffset=0.11557078;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -24963,7 +24967,7 @@ class Mission
 			};
 			id=2173;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.11698937;
+			atlOffset=0.11678243;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -25005,7 +25009,7 @@ class Mission
 			};
 			id=2174;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.11555648;
+			atlOffset=0.11534953;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -25047,7 +25051,7 @@ class Mission
 			};
 			id=2175;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.0019006729;
+			atlOffset=0.0019001961;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -25089,7 +25093,7 @@ class Mission
 			};
 			id=2176;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.0033330917;
+			atlOffset=0.0033326149;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -25131,7 +25135,7 @@ class Mission
 			};
 			id=2177;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.0021219254;
+			atlOffset=0.0021214485;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -25173,7 +25177,7 @@ class Mission
 			};
 			id=2178;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.0031394958;
+			atlOffset=0.003139019;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -25215,7 +25219,7 @@ class Mission
 			};
 			id=2179;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.0045723915;
+			atlOffset=0.0045719147;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -25257,7 +25261,7 @@ class Mission
 			};
 			id=2180;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.0033607483;
+			atlOffset=0.0033602715;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -25299,7 +25303,7 @@ class Mission
 			};
 			id=2181;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.0030865669;
+			atlOffset=0.0030860901;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -25341,7 +25345,7 @@ class Mission
 			};
 			id=2182;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.0045194626;
+			atlOffset=0.0045189857;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -25383,7 +25387,7 @@ class Mission
 			};
 			id=2183;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.0033082962;
+			atlOffset=0.0033078194;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -25425,7 +25429,7 @@ class Mission
 			};
 			id=2184;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.0043258667;
+			atlOffset=0.0043253899;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -25467,7 +25471,7 @@ class Mission
 			};
 			id=2185;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.0057587624;
+			atlOffset=0.0057582855;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -25509,7 +25513,7 @@ class Mission
 			};
 			id=2186;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.0045471191;
+			atlOffset=0.0045466423;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -25551,7 +25555,7 @@ class Mission
 			};
 			id=2187;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.0039172173;
+			atlOffset=0.0039167404;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -25593,7 +25597,7 @@ class Mission
 			};
 			id=2188;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.0024843216;
+			atlOffset=0.0024838448;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -25635,7 +25639,7 @@ class Mission
 			};
 			id=2189;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.0014672279;
+			atlOffset=0.0014667511;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -25677,7 +25681,7 @@ class Mission
 			};
 			id=2190;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.0026783943;
+			atlOffset=0.0026779175;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -25719,7 +25723,7 @@ class Mission
 			};
 			id=2191;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.0012454987;
+			atlOffset=0.0012450218;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -25761,7 +25765,7 @@ class Mission
 			};
 			id=2192;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.0024313927;
+			atlOffset=0.0024309158;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -25803,7 +25807,7 @@ class Mission
 			};
 			id=2193;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.0038642883;
+			atlOffset=0.0038638115;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -25845,7 +25849,7 @@ class Mission
 			};
 			id=2194;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.0026531219;
+			atlOffset=0.0026526451;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -25887,7 +25891,7 @@ class Mission
 			};
 			id=2195;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.0038919449;
+			atlOffset=0.003891468;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -25929,7 +25933,7 @@ class Mission
 			};
 			id=2196;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.0051035881;
+			atlOffset=0.0051031113;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -25971,7 +25975,7 @@ class Mission
 			};
 			id=2197;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.0036706924;
+			atlOffset=0.0036702156;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -26013,7 +26017,7 @@ class Mission
 			};
 			id=2198;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.002705574;
+			atlOffset=0.0027050972;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -26055,7 +26059,7 @@ class Mission
 			};
 			id=2199;
 			type="A3PL_EMS_Locker";
-			atlOffset=4.2200089e-005;
+			atlOffset=4.1246414e-005;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -26384,7 +26388,7 @@ class Mission
 			};
 			id=2207;
 			type="A3PL_EMS_Locker";
-			atlOffset=1.6927719e-005;
+			atlOffset=1.5974045e-005;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -26426,7 +26430,7 @@ class Mission
 			};
 			id=2208;
 			type="A3PL_EMS_Locker";
-			atlOffset=0.0012285709;
+			atlOffset=0.0012276173;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -30624,7 +30628,6 @@ class Mission
 				angles[]={0,1.5896459,0};
 			};
 			side="Empty";
-			flags=4;
 			class Attributes
 			{
 				init="call{this setVariable [""positionSpawn"",[3784.95,8499.37,3,262],false]; this setVariable [""type"",""vehicle""];}";
@@ -30632,7 +30635,7 @@ class Mission
 			};
 			id=2310;
 			type="A3PL_CarInfo";
-			atlOffset=4.5835972e-005;
+			atlOffset=34.391998;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -30753,7 +30756,7 @@ class Mission
 			};
 			id=2313;
 			type="Land_Laptop_device_F";
-			atlOffset=0.79648685;
+			atlOffset=0.79627991;
 		};
 		class Item689
 		{
@@ -30770,7 +30773,7 @@ class Mission
 			};
 			id=2314;
 			type="Land_Laptop_device_F";
-			atlOffset=0.80667162;
+			atlOffset=0.80667114;
 		};
 		class Item690
 		{
@@ -30787,7 +30790,7 @@ class Mission
 			};
 			id=2315;
 			type="Land_Laptop_device_F";
-			atlOffset=0.80376005;
+			atlOffset=0.8037591;
 		};
 		class Item691
 		{
@@ -30872,7 +30875,7 @@ class Mission
 			};
 			id=2320;
 			type="Land_Laptop_device_F";
-			atlOffset=0.79901505;
+			atlOffset=0.79901457;
 		};
 		class Item696
 		{
@@ -31396,6 +31399,48 @@ class Mission
 			type="A3RL_Markers_Mushroom";
 			id=2383;
 			atlOffset=0.0016927719;
+		};
+		class Item710
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={4776.3052,4.1369553,6313.3188};
+				angles[]={0,0.013212143,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				init="call{if (isServer) then { this enableSimulationGlobal false; this allowDamage false;};}";
+				name="Evidence_Locker";
+			};
+			id=2384;
+			type="B_supplyCrate_F";
+			atlOffset=0.010583878;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[],[]],[[],[]],[[],[]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 	};
 };

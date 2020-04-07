@@ -2195,6 +2195,7 @@ Config_GenArray =
 	"Talk to Supermarket NPC",
 	"Talk to Perks NPC",
 	"Talk to Roadside Service Worker",
+	"Rent a Tow Truck",
 	"Open Silverton CCTV",
 	"Open Elk City CCTV",
 	"Open Central CCTV",

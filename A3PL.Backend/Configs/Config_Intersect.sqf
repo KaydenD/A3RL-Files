@@ -271,6 +271,7 @@ Config_IntersectArray =
 	["spine3","Talk to Bank Employee",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect IN [npc_bank,npc_bank_1,npc_bank_2,npc_bank_3,npc_bank_4]}],
 	["spine3","Talk to USCG Officer",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == npc_uscg}],
 	["spine3","Talk to Roadside Service Worker",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect  IN [npc_roadworker,npc_roadworker_1,npc_roadworker_2,npc_roadworker_3]}],
+	["spine3","Rent a Tow Truck",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect  IN [npc_roadworker,npc_roadworker_1,npc_roadworker_2,npc_roadworker_3]}],
 	["spine3","Talk to Farmer",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect IN [npc_farmer,npc_farmer_1]}],
 	["spine3","Open Prisoner Shop",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect IN [npc_farmer_1]}],
 	["spine3","SFP Shop",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect IN [npc_sfp_sign]}],

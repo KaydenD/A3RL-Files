@@ -409,7 +409,7 @@
 	//Siren Hotkeys (up)
 	_dikCodeBegin = 4;
 	if (vehicle player IN ["A3PL_Pierce_Pumper","A3PL_Pierce_Ladder","A3PL_Pierce_Heavy_Ladder","Jonzie_Ambulance","A3PL_Tahoe_FD","A3PL_Tahoe_PD","red_ambulance_14_p_base","red_ambulance_18_p_base","red_e350_14_e_base"]) then {_dikCodeBegin = 5};
-	if ((_dikCode > _dikCodeBegin && _dikCode < 14) && {vehicle player != player} && {typeOf vehicle player in Config_Police_Vehs}) exitWith {
+	if ((_dikCode > _dikCodeBegin && _dikCode < 14) && {vehicle player != player} && {typeOf vehicle player in Config_Police_Vehs} && {(player == driver (vehicle player))}) exitWith {
 		[(_dikCode-1)] call A3PL_Vehicle_SirenHotkey;
 		A3PL_Manual_KeyDown = false;
 		true;

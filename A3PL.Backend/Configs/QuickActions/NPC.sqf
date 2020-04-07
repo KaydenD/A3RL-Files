@@ -1030,6 +1030,14 @@
 
 [
 	"",
+	"Rent a Tow Truck",
+	{
+		[] call A3RL_JobRoadWorker_RentTruck;
+	}
+],
+
+[
+	"",
 	"Access Gem Stone Shop",
 	{
 		["Shop_GemStone"] call A3PL_Shop_Open;

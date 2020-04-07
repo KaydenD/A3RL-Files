@@ -180,12 +180,12 @@
 	Server_Storage_ListVehicles pushback _veh;
 
 	//check for job vehicles
-	if (_id IN ["WASTE","DELIVER","EXTERMY","KARTING","DMV", "ROADSIDE_SERVIC"]) then
+	if (_id IN ["WASTE","DELIVER","EXTERMY","KARTING","DMV", "ROADSID"]) then
 	{
 		switch (_class) do
 		{
 			case ("A3PL_P362_Garbage_Truck"): {_veh setObjectTextureGlobal [0,"\A3PL_Textures\Peterbilt_Garbage_Truck\Waste_Management_Garbage_Truck.paa"];};
-			case ("A3PL_P362_TowTruck"): { if(_id == "dmv") then {_veh setObjectTextureGlobal [0,"\A3PL_Textures\Peterbilt_TowTruck\DMV_TowTruck.paa"]; }};
+			case ("A3PL_P362_TowTruck"): { if(_id == "DMV") then {_veh setObjectTextureGlobal [0,"\A3PL_Textures\Peterbilt_TowTruck\DMV_TowTruck.paa"]; }};
 			case ("A3PL_Mailtruck"):
 			{
 				if (_id == "EXTERMY") then

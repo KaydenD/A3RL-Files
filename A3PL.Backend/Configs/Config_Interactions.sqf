@@ -3,7 +3,7 @@ A3PL_Interaction_Options =
 	[
 		"Recompile",
 		{if (isServer) then {["A3PL.Backend"] call Server_Setup_SetupFiles} else {[[],"Server_Setup_SetupFiles",false,false,true] call BIS_FNC_MP;}; player globalChat localize "STR_INTER_FILESREC";}, //A3PL Files Recompiled.
-		{(getPlayerUID player) IN ["_SP_PLAYER_","76561198170351694"]} //jason
+		{(getPlayerUID player) IN ["_SP_PLAYER_","76561198131427403","76561198105892308"]} //jason
 	],
 
 	/* //check job vehicle time
@@ -1096,7 +1096,7 @@ A3PL_Interaction_Options =
 		{
 			[] spawn A3PL_Resources_StartDigging;
 		},
-		{currentWeapon player == "A3PL_Shovel" && (vehicle player == player)&& ((surfaceType getpos player) IN ["#cype_beach"])}
+		{currentWeapon player == "A3PL_Shovel" && (vehicle player == player)&& ((surfaceType getpos player) IN ["#Fishers_Sand"])}
 	],
 
 	[

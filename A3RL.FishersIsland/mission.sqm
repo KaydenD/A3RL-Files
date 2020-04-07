@@ -31412,7 +31412,7 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="call{if (isServer) then { this enableSimulationGlobal false; this allowDamage false;};}";
+				init="call{if (isServer) then {this allowDamage false;};}";
 				name="Evidence_Locker";
 			};
 			id=2384;

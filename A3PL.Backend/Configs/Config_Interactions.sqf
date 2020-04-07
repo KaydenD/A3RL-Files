@@ -349,7 +349,7 @@ A3PL_Interaction_Options =
 	
 	//Evidence_Locker
 	[
-		"Lockpick", //Check tanker content
+		"Lockpick",
 		{[] call A3RL_EvidenceLocker_Lockpick;},
 		{((typeOf cursorObject) == "B_supplyCrate_F")}
 	],

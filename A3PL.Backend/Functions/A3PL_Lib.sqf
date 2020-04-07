@@ -770,7 +770,11 @@
 	_assignTime = param [3,1200];
 	_inArea = param [4,""]; //if this vehicle needs to stay in specific area
 
-	[[_class,_pos,format ["%1",toUpper _job],player], "Server_Vehicle_Spawn", false, false] call BIS_fnc_MP;
+	if(_job != "Roadside_Service") then {
+		[[_class,_pos,format ["%1",toUpper _job],player], "Server_Vehicle_Spawn", false, false] call BIS_fnc_MP;
+	} else {
+		[[_class,_pos,"ROADSID",player], "Server_Vehicle_Spawn", false, false] call BIS_fnc_MP;
+	};
 	["System: Send request to server to spawn and assign job vehicle, please wait...",Color_Yellow] call A3PL_Player_Notification;
 
 	//wait for job vehicle assignment

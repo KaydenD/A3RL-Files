@@ -96,7 +96,7 @@
 ["A3PL_Loop_LockView",
 {
 
-	if(Player_LockView) then {
+	if(Player_LockView && (!(player getVariable["pVar_RedNameOn",false]))) then {
 
 		if((cameraView == "EXTERNAL") && (vehicle player == player)) then {
 			player switchCamera "INTERNAL";

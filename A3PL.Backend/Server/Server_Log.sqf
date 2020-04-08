@@ -26,7 +26,7 @@
 		_dataString = _data;
 	};
 
-	_insert = format ["INSERT INTO logs (uid, type, data, name) VALUES ('%1','%2','%3', '%4')",_uid,_action,_dataString];
+	_insert = format ["INSERT INTO logs (uid, type, data, name) VALUES ('%1','%2','%3', '%4')",_uid,_action,_dataString, _name];
 	[_insert,1] spawn Server_Database_Async;
 
 }, true] call Server_Setup_Compile;

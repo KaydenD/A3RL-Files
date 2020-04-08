@@ -14,7 +14,7 @@
 		{
 			_licenses pushback _license;
 			[format["Server: You were issued a %1 license",_license], Color_Green] remoteExec ["A3PL_Player_Notification",_target];
-			[_uid,"license_add",_license, player getVariable "name"] call Server_Log_New;
+			[_uid,"license_add",_license, _target getVariable "name"] call Server_Log_New;
 		};
 	} else
 	{
@@ -22,7 +22,7 @@
 		{
 			_licenses = _licenses - [_license];
 			[format["Server: Your %1 license was revoked",_license], Color_Red] remoteExec ["A3PL_Player_Notification",_target];
-			[_uid,"license_revoke",_license, player getVariable "name"] call Server_Log_New;
+			[_uid,"license_revoke",_license, _target getVariable "name"] call Server_Log_New;
 		};
 	};
 	

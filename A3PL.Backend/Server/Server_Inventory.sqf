@@ -65,7 +65,7 @@
 	};
 	[_player,_class,_amount] call Server_Inventory_Add;
 
-	[getPlayerUID _player,"PickupItem",[_class,_amount], player getVariable "name"] call Server_Log_New;
+	[getPlayerUID _player,"PickupItem",[_class,_amount], _player getVariable "name"] call Server_Log_New;
 }, true] call Server_Setup_Compile;
 
 ["Server_Inventory_Drop", {
@@ -92,7 +92,7 @@
 	};
 	[_player, _class, -(_amount)] call Server_Inventory_Add; // remove the item from the player inventory
 
-	[getPlayerUID _player,"DropItem",[_class,_amount], player getVariable "name"] call Server_Log_New;
+	[getPlayerUID _player,"DropItem",[_class,_amount], _player getVariable "name"] call Server_Log_New;
 }, true] call Server_Setup_Compile;
 
 ["Server_Inventory_Return", {

@@ -151,5 +151,5 @@
 	};
 
 
-	[getPlayerUID _player,"PickupItem",["Collected Net","bucket_full",1], player getVariable "name"] call Server_Log_New;
+	[getPlayerUID _player,"PickupItem",["Collected Net","bucket_full",1], _player getVariable "name"] call Server_Log_New;
 }] call Server_Setup_Compile;

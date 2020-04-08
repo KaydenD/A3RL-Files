@@ -131,7 +131,7 @@
 	_query = format ["UPDATE players SET player_fstorage='%1' WHERE uid='%2'",([_storage] call Server_Database_Array),getPlayerUID _player];
 	[_query,1] spawn Server_Database_Async; //set database
 	//END OF ADDING ITEM TO fSTORAGE
-	[getPlayerUID _player,"addFactory",[_type,_item]] call Server_Log_New;
+	[getPlayerUID _player,"addFactory",[_type,_item], player getVariable "name"] call Server_Log_New;
 },true] call Server_Setup_Compile;
 
 //script that runs upon collecting
@@ -185,7 +185,7 @@
 	//HANDLE CREATION OF ITEM HERE
 	[_player,_item,_type] call Server_Factory_Create;
 	//END OF HANDLING CREATION OF ITEM
-	[getPlayerUID _player,"collectFactoryVirtual",[_type,_item,_amount]] call Server_Log_New;
+	[getPlayerUID _player,"collectFactoryVirtual",[_type,_item,_amount], player getVariable "name"] call Server_Log_New;
 },true] call Server_Setup_Compile;
 
 //Takes care of spawning the item
@@ -294,5 +294,5 @@
 				};
 		};
 	};
-	[getPlayerUID _player,"collectFactoryPhysical",[_type,_item,_amount]] call Server_Log_New;
+	[getPlayerUID _player,"collectFactoryPhysical",[_type,_item,_amount], player getVariable "name"] call Server_Log_New;
 },true] call Server_Setup_Compile;

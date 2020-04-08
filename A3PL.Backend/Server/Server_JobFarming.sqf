@@ -116,7 +116,7 @@
 
 	[[5,_itemClass,_amount],"A3PL_JobFarming_PlantReceive",owner _player] call BIS_FNC_MP;
 
-	[getPlayerUID _player,"PickupItem",["Harvested Crop",_plant,_itemClass,_amount]] call Server_Log_New;
+	[getPlayerUID _player,"PickupItem",["Harvested Crop",_plant,_itemClass,_amount], player getVariable "name"] call Server_Log_New;
 },true] call Server_Setup_Compile;
 
 ["Server_JobFarming_DrugDealerPos",

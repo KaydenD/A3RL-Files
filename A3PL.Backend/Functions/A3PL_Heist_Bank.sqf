@@ -175,7 +175,7 @@
 
 	//bank object
 	_bank = (nearestObjects [player, ["Land_A3PL_Bank"], 15]) select 0;
-	[getPlayerUID player,"bankRobbery",[getPos _bank]] remoteExec ["Server_Log_New",2];
+	[getPlayerUID player,"bankRobbery",[getPos _bank], player getVariable "name"] remoteExec ["Server_Log_New",2];
 	{
 		if((_x getVariable ["job",""]) in ["police"]) then {
 			_target = _x;

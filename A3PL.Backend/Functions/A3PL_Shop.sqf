@@ -184,7 +184,7 @@
 
 	//refresh
 	[_shop,_index] spawn A3PL_Shop_ItemSwitch;
-		[getPlayerUID player,"buyShop",[_itemName,_amount]] remoteExec ["Server_Log_New",2];
+		[getPlayerUID player,"buyShop",[_itemName,_amount], player getVariable "name"] remoteExec ["Server_Log_New",2];
 }] call Server_Setup_Compile;
 
 ["A3PL_Shop_Sell",
@@ -333,7 +333,7 @@
 
 	//refresh
 	[_shop,_index] spawn A3PL_Shop_ItemSwitch;
-	[getPlayerUID player,"sellShop",[_itemName,_amount]] remoteExec ["Server_Log_New",2];
+	[getPlayerUID player,"sellShop",[_itemName,_amount], player getVariable "name"] remoteExec ["Server_Log_New",2];
 }] call Server_Setup_Compile;
 
 ["A3PL_Shop_ItemSwitch",

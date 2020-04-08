@@ -1,9 +1,10 @@
 ["Server_Log_New",
 {
-	private ["_uid","_action","_data","_insert","_dataString"];
+	private ["_uid","_action","_data","_insert","_dataString", "_name"];
 	_uid = param [0,""];
 	_action = param [1,""];
 	_data = param [2,[]];
+	_name = param [3,"Name Error"];
 
 	//Example Call
 	//[getPlayerUID player,"ACTION",["Data","Array"]] remoteExec ["Server_Log_New", 2];
@@ -25,7 +26,7 @@
 		_dataString = _data;
 	};
 
-	_insert = format ["INSERT INTO logs (uid, type, data) VALUES ('%1','%2','%3')",_uid,_action,_dataString];
+	_insert = format ["INSERT INTO logs (uid, type, data, name) VALUES ('%1','%2','%3', '%4')",_uid,_action,_dataString];
 	[_insert,1] spawn Server_Database_Async;
 
 }, true] call Server_Setup_Compile;

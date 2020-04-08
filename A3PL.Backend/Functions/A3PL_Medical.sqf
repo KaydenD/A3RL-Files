@@ -920,7 +920,7 @@
     _pos = getPos player;
     _weapon = currentWeapon _killer;
 
-    [getPlayerUID player,"Killed",[format["%1 (%2)",_sName,_sRealName],_sPos,_sWeapon,_pos,_weapon]] remoteExec ["Server_Log_New", 2];
+    [getPlayerUID player,"Killed",[format["%1 (%2)",_sName,_sRealName],_sPos,_sWeapon,_pos,_weapon], player getVariable "name"] remoteExec ["Server_Log_New", 2];
 
     /* Put him incapacitated on the ground */
 	moveOut player;

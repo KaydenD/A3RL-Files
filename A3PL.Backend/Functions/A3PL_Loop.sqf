@@ -37,7 +37,7 @@
 {
 	if (isNil "A3RLFatigueFreeTimeLeft" || {A3RLFatigueFreeTimeLeft < 0}) then {A3RLFatigueFreeTimeLeft = 0;};
 	
-	if(A3RLFatigueFreeTimeLeft > 0) then {
+	if(A3RLFatigueFreeTimeLeft > 0) exitWith {
 		player enableFatigue false;
 		A3RLFatigueFreeTimeLeft = A3RLFatigueFreeTimeLeft - 5;
 	};

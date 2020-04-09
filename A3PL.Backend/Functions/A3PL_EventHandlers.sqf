@@ -8,6 +8,7 @@
 	[] call A3PL_EventHandlers_Fired;
 	[] call A3PL_EventHandlers_TFRAnimation;
 	[] call A3PL_EventHandlers_OpenMap;
+	[] call A3RL_EventHandlers_EvidenceLocker;
 
 	[] spawn
 	{
@@ -633,6 +634,18 @@
 		player playActionNow "GestureNod";
 		player setVariable ["a3pl_transmittingGesture", false];
 	};
+}] call Server_Setup_Compile;
+
+["A3RL_EventHandlers_EvidenceLocker",
+{
+	player addEventHandler ["InventoryOpened", {
+		params ["_unit", "_container"];
+		
+		if((typeof _container) == "B_supplyCrate_F") then {
+			//TODO: Once Employment System in Implement check for Marshall Lead and Co Lead
+			if(_container getVariable["locked",true]) exitWith { ["You can't open the Evidence Locker it's locked",Color_Red] call A3PL_Player_Notification; true; };
+		};
+	}];
 }] call Server_Setup_Compile;
 
 

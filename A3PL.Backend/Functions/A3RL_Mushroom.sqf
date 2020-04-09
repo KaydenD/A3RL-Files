@@ -10,7 +10,7 @@
 	{
 		player playMove 'AmovPercMstpSnonWnonDnon_AinvPercMstpSnonWnonDnon_Putdown';
 		uiSleep 1.0;
-	}
+	};
 
 	_ammout = round(random 4);
 	[format ["You have picked up %1 mushroom(s)", _ammout],color_green] call A3PL_Player_Notification;

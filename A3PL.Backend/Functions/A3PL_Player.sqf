@@ -386,6 +386,7 @@
 
 	//debug - allow to teleport to map click
 	//onMapSingleClick "(vehicle player) setpos _pos;";
+	[] spawn A3PL_Player_TeamspeakID;
 
 	[] spawn A3PL_Housing_Init;
 	

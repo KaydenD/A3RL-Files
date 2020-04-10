@@ -361,6 +361,13 @@ A3PL_Interaction_Options =
 
 			{
 				deleteVehicle _x;
+				{
+					_classes = _x select 0;
+					_amounts = _x select 1;
+					{
+						Evidence_Locker addItemCargoGlobal [_x, _amounts select _forEachIndex];
+					} forEach _classes;
+				} forEach [getWeaponCargo _x, getMagazineCargo _x, getItemCargo _x, getBackpackCargo _x];
 			} forEach _items;
 		},
 		{((player getVariable ["job","unemployed"]) IN ["police","uscg","usms"]) && (count (nearestObjects [player,["weaponholder"],3] + nearestObjects [player,["groundWeaponHolder"],3]) > 0)}

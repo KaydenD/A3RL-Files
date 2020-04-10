@@ -197,7 +197,7 @@
 
 
 	//check if we have motorhead perk
-	if (!(["motorhead"] call A3PL_Lib_hasPerk)) exitwith {["System: You do not have the motorhead perk! Please visit the forum for information on how to purchase it.",Color_Red] call A3PL_Player_Notification;};
+	//if (!(["motorhead"] call A3PL_Lib_hasPerk)) exitwith {["System: You do not have the motorhead perk! Please visit the forum for information on how to purchase it.",Color_Red] call A3PL_Player_Notification;};
 
 	//check if we own the vehicle
 	if (!(((_veh getVariable ["owner",["",""]]) select 0) == (getPlayerUID player))) exitwith {["System: You don't own this vehicle, you can only change a material on a vehicle you own!",Color_Red] call A3PL_Player_Notification;};
@@ -264,7 +264,7 @@
 	_selectedIndex = lbCurSel _control;
 
 	//check if we have motorhead perk
-	if (!(["motorhead"] call A3PL_Lib_hasPerk)) exitwith {["System: You do not have the motorhead perk! Please visit the forum for information on how to purchase it.",Color_Red] call A3PL_Player_Notification;};
+	//if (!(["motorhead"] call A3PL_Lib_hasPerk)) exitwith {["System: You do not have the motorhead perk! Please visit the forum for information on how to purchase it.",Color_Red] call A3PL_Player_Notification;};
 
 	//check if we own the vehicle
 	if (!(((_veh getVariable ["owner",["",""]]) select 0) == (getPlayerUID player))) exitwith {["System: You don't own this vehicle, you can only change a material on a vehicle you own!",Color_Red] call A3PL_Player_Notification;};

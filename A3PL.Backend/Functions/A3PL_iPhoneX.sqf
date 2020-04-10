@@ -231,7 +231,7 @@
 	_phoneNumber = _phoneNumber joinString "";
 
 	if(!([] call A3PL_Player_AntiSpam)) exitWith {};
-	if (!(["motorhead"] call A3PL_Lib_hasPerk)) exitWith {["You need to have motorhead perk for buy secondary subscription! www.arma3realitylife.com",Color_Red] call A3PL_Player_Notification;};
+	//if (!(["motorhead"] call A3PL_Lib_hasPerk)) exitWith {["You need to have motorhead perk for buy secondary subscription! www.arma3realitylife.com",Color_Red] call A3PL_Player_Notification;};
 
 	[player, _type] remoteExec ["Server_iPhoneX_CheckPhoneNumberSubscription",2];
 	waitUntil {!(iPhoneX_CheckPhoneNumberSubscription isEqualTo [])};

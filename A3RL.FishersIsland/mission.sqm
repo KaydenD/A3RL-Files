@@ -21346,7 +21346,7 @@ class Mission
 			dataType="Marker";
 			position[]={2629.55,7.6059999,5605.5981};
 			name="perk_store_marker";
-			text="(Donator) Perk Store";
+			text="Tron Store";
 			type="A3PL_Markers_Shop";
 			colorName="ColorBlue";
 			angle=358.80682;

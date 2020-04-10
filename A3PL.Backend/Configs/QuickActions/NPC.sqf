@@ -155,68 +155,38 @@
 
 [
 	"",
-	"Access Gamer Perk Furniture Shop",
+	"Access Gamer Furniture Shop",
 	{
-		if (["gamer"] call A3PL_Lib_hasPerk) then
-		{
-			["Shop_Perk_Gamer"] call A3PL_Shop_Open;
-		} else
-		{
-			["You don't have the ""Gamer perk"", you can buy it on the forum (wwww.arma3realitylife.com/forum)",Color_Red] call A3PL_Player_Notification
-		};
+		["Shop_Perk_Gamer"] call A3PL_Shop_Open;
 	}
 ],
 
 [
 	"",
-	"Access Garden Perk Furniture Shop",
+	"Access Garden Furniture Shop",
 	{
-		if (["garden"] call A3PL_Lib_hasPerk) then
-		{
-			["Shop_Perk_Garden"] call A3PL_Shop_Open;
-		} else
-		{
-			["You don't have the ""Garden perk"", you can buy it on the forum (wwww.arma3realitylife.com/forum)",Color_Red] call A3PL_Player_Notification
-		};
+		["Shop_Perk_Garden"] call A3PL_Shop_Open;
 	}
 ],
 [
 	"",
-	"Access Mancave Perk Furniture Shop",
+	"Access Mancave Furniture Shop",
 	{
-		if (["mancave"] call A3PL_Lib_hasPerk) then
-		{
-			["Shop_Perk_Mancave"] call A3PL_Shop_Open;
-		} else
-		{
-			["You don't have the ""Mancave perk"", you can buy it on the forum (wwww.arma3realitylife.com/forum)",Color_Red] call A3PL_Player_Notification
-		};
+		["Shop_Perk_Mancave"] call A3PL_Shop_Open;
 	}
 ],
 [
 	"",
 	"Access WallDecor Perk Furniture Shop",
 	{
-		if (["walldecor"] call A3PL_Lib_hasPerk) then
-		{
-			["Shop_Perk_WallDecor"] call A3PL_Shop_Open;
-		} else
-		{
-			["You don't have the ""WallDecor perk"", you can buy it on the forum (wwww.arma3realitylife.com/forum)",Color_Red] call A3PL_Player_Notification
-		};
+		["Shop_Perk_WallDecor"] call A3PL_Shop_Open;
 	}
 ],
 [
 	"",
-	"Access Winchester Perk Furniture Shop",
+	"Access Winchester Furniture Shop",
 	{
-		if (["winchester"] call A3PL_Lib_hasPerk) then
-		{
-			["Shop_Perk_Winchester"] call A3PL_Shop_Open;
-		} else
-		{
-			["You don't have the ""Winchester perk"", you can buy it on the forum (wwww.arma3realitylife.com/forum)",Color_Red] call A3PL_Player_Notification
-		};
+		["Shop_Perk_Winchester"] call A3PL_Shop_Open;
 	}
 ],
 
@@ -810,9 +780,8 @@
 
 [
 	"",
-	"Talk to Perks NPC",
+	"Talk to Tron NPC",
 	{
-		if (!(["motorhead"] call A3PL_Lib_hasPerk)) exitwith {["System: You do not have the motorhead perk! Please visit the forum for information on how to purchase it.",Color_Red] call A3PL_Player_Notification;};
 		["Shop_Perks"] call A3PL_Shop_Open;
 	}
 ],

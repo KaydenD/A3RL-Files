@@ -575,21 +575,6 @@
 			player removeMagazines "A3PL_ScytheMag";
 			player addMagazine "A3PL_ScytheMag";
 		};
-
-		if (_itemClass IN ["U_B_Protagonist_VR","U_I_Protagonist_VR","U_O_Protagonist_VR"]) then
-		{
-			if (!(["motorhead"] call A3PL_Lib_hasPerk)) then
-			{
-				["System: This is a donator item, please purchase the motorhead perk on the forum in order to use this item!",Color_Red] call A3PL_Player_Notification;
-
-				if ((uniform player) == _itemClass) then
-				{
-					removeUniform player;
-				};
-				player removeItem _itemClass;
-
-			};
-		};
 	}];
 }] call Server_Setup_Compile;
 

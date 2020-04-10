@@ -903,7 +903,7 @@ Server_Setup_Compile = {
 
 	if (count _return == 0) exitwith 
 	{
-		"IUqof456sd=!&L" serverCommand format ["#kick %1",(name _unit)];
+		"IUqof456sd=!&L" serverCommand format ["#kick %1", _uid];
 	};
 }, true,true] call Server_Setup_Compile;
 

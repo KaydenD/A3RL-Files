@@ -2,7 +2,6 @@
 ['A3PL_Player_VariablesSetup',
 {
 	private ["_uid","_num"];
-	Player_Paycheck = 0;
 	Player_PaycheckTime = profileNamespace getVariable ["player_payCheckTime",0];
 	if (!(typeName Player_PayCheckTime == "SCALAR")) then {Player_payCheckTime = 0; Player_payCheckTime = profileNamespace setVariable ["player_payCheckTime",0]; };
 	Player_PaycheckXP = 0;
@@ -162,7 +161,6 @@
 
 	[] spawn {
 		uiSleep 20;
-		Player_Paycheck = 0;
 
 		//increase long range freq range, just to be sure this is set afterwards
 		TF_MAX_ASIP_FREQ = 130;
@@ -582,17 +580,17 @@
 ['A3PL_Player_PickupPaycheck', {
 	private ['_paycheckAmount', '_format'];
 
-	_paycheckAmount = Player_Paycheck;
+	_paycheckAmount = player getVariable "Player_Paycheck";
 	//_xpAmount = Player_PaycheckXP;
 
 	//make sure they have a paycheck to pickup
-	if (Player_Paycheck < 1) exitWith
+	if (_paycheckAmount < 1) exitWith
 	{
 		[localize "STR_PLAYER_NOPAYCHCOL", Color_Red] call A3PL_Player_Notification; //System: There doesn't seem to be a paycheck to collect
 	};
 
 	//reset variables
-	Player_Paycheck = 0;
+	player setVariable["Player_Paycheck", 0, true];
 	//Player_PaycheckXP = 0;
 
 	//Change bank variable

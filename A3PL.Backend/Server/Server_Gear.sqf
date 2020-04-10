@@ -162,6 +162,7 @@
 	_unit setVariable ["faction","citizen",true];
 	_unit setVariable ["Player_Cash",200,true];
 	_unit setVariable ["Player_Bank",500,true];
+	_unit setvariable ["Player_Paycheck",0,true];
 	_unit setVariable ["Player_Inventory",[],true];
 	_unit setVariable ["Cuffed",false,true];
 
@@ -364,6 +365,7 @@
 	//cash and bank, lets not check for Nil vars, see if this needs editing later
 	_cash = _unit getVariable "Player_Cash";
 	_bank = _unit getVariable "Player_Bank";
+	_paycheck = _unit getVariable "Player_Paycheck";
 	if ((isNil "_cash") OR (isNil "_bank")) exitwith
 	{
 		diag_log format ["Error in Server_Gear_Save: _cash or _bank is nil for %1",name _unit];
@@ -372,7 +374,7 @@
 	//get adminshit
 	_adminWatch = _unit getVariable ["adminWatch",0];
 
-	_query = format ["UPDATE players SET loadout='%2',position='%3',job='%4',virtualinv='%5',cash='%6',bank='%7',ship='%8',adminWatch='%9',medstats='%10' WHERE uid ='%1'",
+	_query = format ["UPDATE players SET loadout='%2',position='%3',job='%4',virtualinv='%5',cash='%6',bank='%7',ship='%8',adminWatch='%9',medstats='%10',paycheck='%11' WHERE uid ='%1'",
 		_uid,
 		([_loadout] call Server_Database_Array), //these need to be formatted for db save, only if array consists of strings
 		_pos,
@@ -382,7 +384,8 @@
 		_bank,
 		([_ship] call Server_Database_Array),
 		_adminWatch,
-		_medStat
+		_medStat,
+		_paycheck
 	];
 
 	[_query,1] spawn Server_Database_Async;

@@ -154,7 +154,7 @@
 			Player_PayCheckTime = 0;
 		} else
 		{
-			Player_Paycheck = Player_Paycheck + _payment;
+			player setVariable["Player_Paycheck", ((player getVariable ["Player_Paycheck", 0]) + _payment), true];
 			["I have received a paycheck, I have to go to the bank to pick it up", Color_Green] call A3PL_Player_Notification;
 			Player_PayCheckTime = 0;
 		};

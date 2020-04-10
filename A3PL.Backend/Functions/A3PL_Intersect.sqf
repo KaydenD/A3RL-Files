@@ -214,37 +214,18 @@
 				[] call A3PL_Intersect_Cockpit;
 			};
 
-			/* - old version
-			_begPos = positionCameraToWorld [0,0,0]; // <----- THIS IS WHERE THE ISSUE IS MOST LIKELY
-			_begPosASL = AGLToASL _begPos;
-			_endPos = positionCameraToWorld [0,0,1000]; // <----- THIS IS WHERE THE ISSUE IS
-			_endPosASL = AGLToASL _endPos;
-			*/
-
-			/* - awaiting new command from BIS R&D
-			_begPosASL = eyePos player;
-			_begpos = ASLToAGL _begposASL;
-			_endPosASL =
-			[
-				(eyePos player select 0) + ((getCameraViewDirection player select 0) * 10),
-				(eyePos player select 1) + ((getCameraViewDirection player select 1) * 10),
-				(eyePos player select 2) + ((getCameraViewDirection player select 2) * 10)
-			];
-			_endPos = ASLToAGL _endPosASL;
-			*/
-
 			_begPos = positionCameraToWorld [0,0,0]; // <----- THIS IS WHERE THE ISSUE IS MOST LIKELY
 			_begPosASL = AGLToASL _begPos;
 			_endPos = positionCameraToWorld [0,0,1000]; // <----- THIS IS WHERE THE ISSUE IS
 			_endPosASL = AGLToASL _endPos;
 
 			_ins = lineIntersectsSurfaces [_begPosASL, _endPosASL, player, objNull, true, 1, "FIRE", "NONE"];
-
+			_isWHS = (typeOf cursorObject) IN ["WeaponHolderSimulated"];
 			if (_ins isEqualTo []) exitWith {};
-
+			
 			_ins select 0 params ["_pos", "_norm", "_obj", "_parent"];
 
-			if (isNull _obj && !(typeOf cursorObject IN ["WeaponHolderSimulated"])) exitwith
+			if (isNull _obj && !_isWHS) exitwith
 			{
 				private ["_cur"];
 				_cur = cursortarget;
@@ -266,12 +247,12 @@
 				Player_NameIntersect = "";
 			};
 
-			if(typeOf cursorObject IN ["WeaponHolderSimulated"]) then {
+			if(_isWHS) then {
 				_obj = cursorObject;
 				_parent = cursorObject;
 			};
 
-			if (((!(getModelInfo _parent select 2)) && !(typeOf _parent IN ["WeaponHolderSimulated"])) OR (((player distance _obj) > 20) && !(typeOf _obj == "Land_buildingsCasino2"))) exitWith {
+			if (((!(getModelInfo _parent select 2)) && !_isWHS) OR (((player distance _obj) > 20) && !(typeOf _obj == "Land_buildingsCasino2"))) exitWith {
 				Player_NameIntersect = "";
 				Player_ObjIntersect = _obj;
 
@@ -289,7 +270,7 @@
 
 			_ins2 = [_parent, "FIRE"] intersect [_begPos, _endPos];
 
-			if (_ins2 isEqualTo [] && !(typeOf _obj IN ["WeaponHolderSimulated"])) exitWith {
+			if (_ins2 isEqualTo [] && !_isWHS) exitWith {
 				Player_NameIntersect = "";
 				Player_ObjIntersect = _veh;
 
@@ -332,11 +313,13 @@
 				};
 			};
 
-			_ins2 select 0 params [["_name", ""], "_dist"];
-			_posAGL = _obj modelToWorldVisual (_obj selectionPosition [_name,"Memory"]);
+			_ins2 select 0 params ["_name", "_dist"];
+			_posAGL = _obj modelToWorldVisual [.1,.55,-.61];
 
-			if(typeOf _obj IN ["WeaponHolderSimulated"]) then {
-				_posAGL = _obj modelToWorldVisual [.1,.55,-.61];
+			if (!_isWHS) then {
+				_posAGL = _obj modelToWorldVisual (_obj selectionPosition [_name,"Memory"]);
+			} else {
+				_name = "WeaponHolderSimulated";
 			};
 
 			if (([_posAGL,ASLToAGL (getposASL player)] call BIS_fnc_distance2D) > 3) exitwith {
@@ -391,8 +374,6 @@
 			};
 
 		}] call BIS_fnc_addStackedEventHandler;
-
-		//["A3PL_Intersect_Lines", "onEachFrame"] call BIS_fnc_removeStackedEventHandler;
 }] call Server_Setup_Compile;
 
 //Currently has a limit of 20m. Can be changed in A3PL_Intersect_Lines

@@ -20,6 +20,7 @@
 		if ((animationstate player) != "acts_carfixingwheel") then {
 			player playMoveNow 'Acts_carFixingWheel';
 		};
+		uiSleep 0.1;
 	};
 	player playMoveNow "";
 	

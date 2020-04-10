@@ -396,7 +396,7 @@
 }] call Server_Setup_Compile;
 
 ['A3PL_Player_TeamspeakID', {
-	player setVariable ["A3PL_TeamspeakID", (floor random 9999999999) toFixed 0 ]; 
+	player setVariable ["A3PL_TeamspeakID", (floor random 9999999999) toFixed 0, true]; 
 }] call Server_Setup_Compile;
 
 ['A3PL_Pause_Menu_Loop', {

@@ -324,8 +324,6 @@
 				_name = "headBag";
 			};
 			
-			diag_log _name;
-
 			if (([_posAGL,ASLToAGL (getposASL player)] call BIS_fnc_distance2D) > 3) exitwith {
 				Player_NameIntersect = "";
 				Player_ObjIntersect = _obj;

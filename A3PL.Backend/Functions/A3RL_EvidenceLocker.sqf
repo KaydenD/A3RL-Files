@@ -18,8 +18,7 @@
 	while{!Player_ActionCompleted} do
 	{
 		if ((animationstate player) != "acts_carfixingwheel") then {
-			uiSleep 0.5;
-			player playMove 'Acts_carFixingWheel';
+			player playMoveNow 'Acts_carFixingWheel';
 		};
 	};
 	player playMoveNow "";

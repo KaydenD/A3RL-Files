@@ -295,10 +295,10 @@
 	//create item
 	Player_Item = _itemClass createVehicle (getPos player);
 
-	if(_classname == "headbag"){
+	if(_classname == "headbag") then {
 		Player_Item = createvehicle [ "weaponholdersimulated",getpos player,[], 0, "can_Collide"];  
 		Player_Item addItemCargoGlobal [_classname,1];
-	}
+	};
 
 	//attach item to player's hand
 	if (_classname == "popcornbucket") then

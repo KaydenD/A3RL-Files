@@ -1283,6 +1283,12 @@ Config_IntersectArray =
 	["popcornBucket",localize"STR_INTSECT_BUYITEM",_dir+"IGUI\Cfg\Actions\take_ca.paa",{(!isNil {player_objintersect getVariable ["bitem",nil]})}],
 	["popcornBucket",localize"STR_INTSECT_SELLITEM",_dir+"IGUI\Cfg\Actions\take_ca.paa",{(player_objintersect getVariable ["owner","0"]) == (getPlayerUID player)}],	 //Sell Item
 
+	//Blindfold pickup
+	["WeaponHolderSimulated",localize"STR_INTSECT_PICKUPITEM",_dir+"IGUI\Cfg\Actions\take_ca.paa",{(isNil {player_objintersect getVariable ["bitem",nil]}) && ((player_objintersect getVariable ["class", ""]) == "headbag")}], //Pickup Item
+	["WeaponHolderSimulated",localize"STR_INTSECT_PICKITEMTOHAND",_dir+"IGUI\Cfg\Actions\take_ca.paa",{(isNil {player_objintersect getVariable ["bitem",nil]}) && ((player_objintersect getVariable ["class", ""]) == "headbag")}],	//Pickup Item To Hand
+	["WeaponHolderSimulated",localize"STR_INTSECT_BUYITEM",_dir+"IGUI\Cfg\Actions\take_ca.paa",{(!isNil {player_objintersect getVariable ["bitem",nil]}) && ((player_objintersect getVariable ["class", ""]) == "headbag")}],
+	["WeaponHolderSimulated",localize"STR_INTSECT_SELLITEM",_dir+"IGUI\Cfg\Actions\take_ca.paa",{((player_objintersect getVariable ["owner","0"]) == (getPlayerUID player)) && ((player_objintersect getVariable ["class", ""]) == "headbag")}],	 //Sell Item
+
 	//new garage
 	["garage_2_button",localize"STR_INTSECT_GARAGEDOOR",_dir+"IGUI\Cfg\Actions\take_ca.paa",{true}], //Garage Door
 	["garage_1_button",localize"STR_INTSECT_GARAGEDOOR",_dir+"IGUI\Cfg\Actions\take_ca.paa",{true}], //Garage Door

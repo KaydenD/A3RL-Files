@@ -298,6 +298,7 @@
 
 	if(_needsWeaponHolder) then {
 		Player_Item addItemCargoGlobal [([_classname, 'holderName'] call A3PL_Config_GetItem),1];
+		Player_Item setDamage 1;
 	};
 
 	//attach item to player's hand

@@ -244,7 +244,7 @@
 
 			_ins select 0 params ["_pos", "_norm", "_obj", "_parent"];
 
-			if (isNull _obj) exitwith
+			if (isNull _obj && !(typeOf cursorObject IN ["WeaponHolderSimulated"])) exitwith
 			{
 				private ["_cur"];
 				_cur = cursortarget;
@@ -266,7 +266,12 @@
 				Player_NameIntersect = "";
 			};
 
-			if ((!(getModelInfo _parent select 2)) OR (((player distance _obj) > 20) && (typeOf _obj != "Land_buildingsCasino2"))) exitWith {
+			if(typeOf cursorObject IN ["WeaponHolderSimulated"]) then {
+				_obj = cursorObject;
+				_parent = cursorObject;
+			}
+
+			if (((!(getModelInfo _parent select 2)) && !(typeOf _parent IN ["WeaponHolderSimulated"])) OR (((player distance _obj) > 20) && !(typeOf _obj == "Land_buildingsCasino2"))) exitWith {
 				Player_NameIntersect = "";
 				Player_ObjIntersect = _obj;
 
@@ -284,7 +289,7 @@
 
 			_ins2 = [_parent, "FIRE"] intersect [_begPos, _endPos];
 
-			if (_ins2 isEqualTo []) exitWith {
+			if (_ins2 isEqualTo [] && !(typeOf _obj IN ["WeaponHolderSimulated"])) exitWith {
 				Player_NameIntersect = "";
 				Player_ObjIntersect = _veh;
 
@@ -327,8 +332,12 @@
 				};
 			};
 
-			_ins2 select 0 params ["_name", "_dist"];
+			_ins2 select 0 params [["_name", ""], "_dist"];
 			_posAGL = _obj modelToWorldVisual (_obj selectionPosition [_name,"Memory"]);
+
+			if(typeOf _obj IN ["WeaponHolderSimulated"]) then {
+				_posAGL = _obj modelToWorldVisual [.1,.55,-.61];
+			};
 
 			if (([_posAGL,ASLToAGL (getposASL player)] call BIS_fnc_distance2D) > 3) exitwith {
 				Player_NameIntersect = "";

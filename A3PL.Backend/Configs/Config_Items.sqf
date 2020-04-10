@@ -15,7 +15,7 @@ Config_Items =
 	["SMG_Part_Barrel","SMG Barrel",5,"A3PL_Synthetic_Fiber",-90,true,true,true,false,false,"", [0,0,0], ""],
 	["matches", "Box of Matches", 0.5, "A3PL_Seed_Corn",0,true,true,true, true, true,"", [0,0,0], ""],
 	["zipties", "Zipties", 1, "A3PL_Handcuffs", 0, true, true, true, true, true, "", [0,0,0], ""],
-	["headbag", "Headbag", 1, "A3RL_Headbag", 0, true, true, true, true, true, "", [-.1,-.5,.6], ""],
+	["headbag", "Headbag", 1, "weaponholdersimulated", 0, true, true, true, true, true, "", [-.1,-.5,.6], "", true, "A3PL_Headbag"],
 	["dirty_cash", "Dirty Cash", 0.01, "A3PL_Money", 0, true, true, true, true, true, "", [0,0,0], ""],
   ["gas_hose","Gas Hose",3,"A3PL_GasHose",0,true,true,true,true,true,"", [0,0,0], ""],
 

@@ -229,7 +229,7 @@
 ["A3PL_Inventory_Use",
 {
 	disableSerialization;
-	private ['_selection', '_classname', '_itemClass', '_itemDir', '_canUse', '_format',"_display","_attach"];
+	private ['_selection', '_classname', '_itemClass', '_itemDir', '_canUse', '_format',"_display","_attach", "_needsWeaponHolder"];
 
 	_className = param [0,""];
 
@@ -244,6 +244,7 @@
 	_itemDir = [_classname, 'dir'] call A3PL_Config_GetItem;
 	_canUse = [_classname, 'canUse'] call A3PL_Config_GetItem;
 	_attach = [_classname, 'attach'] call A3PL_Config_GetItem; //attachpoint
+	_needsWeaponHolder = [_classname, 'needsWeaponHolder'] call A3PL_Config_GetItem;
 
 	//exit fnc if no selection
 	if ((_selection == -1) && (!isNil "_display")) exitWith {};
@@ -295,9 +296,8 @@
 	//create item
 	Player_Item = _itemClass createVehicle (getPos player);
 
-	if(_classname == "headbag") then {
-		Player_Item = createvehicle [ "weaponholdersimulated",getpos player,[], 0, "can_Collide"];  
-		Player_Item addItemCargoGlobal [_classname,1];
+	if(_needsWeaponHolder) then {
+		Player_Item addItemCargoGlobal [([_classname, 'holderName'] call A3PL_Config_GetItem),1];
 	};
 
 	//attach item to player's hand

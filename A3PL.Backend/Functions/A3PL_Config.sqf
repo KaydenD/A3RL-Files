@@ -41,6 +41,8 @@
 		case "fnc": { _return = _config select 10; };
 		case "attach": { _return = _config select 11; };
 		case "desc": { _return = _config select 12; };
+		case "needsWeaponHolder": { if (count _config < 15) then {_return = false;} else {_return = _config select 13;};};
+		case "holderName": { if (count _config < 15) then {_return = "";} else {_return = _config select 14;};};
 	};
 
 	_return;

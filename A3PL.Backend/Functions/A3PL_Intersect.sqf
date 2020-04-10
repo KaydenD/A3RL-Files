@@ -312,7 +312,10 @@
 				};
 			};
 
-			_ins2 select 0 params [["_name", "null"], "_dist"];
+			if(_isWHS) then {
+				_ins2 = [["", ""]];			
+			};
+			_ins2 select 0 params ["_name", "_dist"];
 			_posAGL = _obj modelToWorldVisual [.1,.55,-.61];
 
 			if (!_isWHS) then {

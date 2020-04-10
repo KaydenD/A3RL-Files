@@ -22,7 +22,7 @@
 
 ["A3RL_Remove_Blindfold_Receive", {
 	["Your blindfold has been removed", Color_Green] call A3PL_Player_Notification;
-	player removeHeadgear "A3RL_Headbag";
+	removeHeadgear player;
 	["", 0, 0] call A3PL_HUD_SetOverlay;
 	player setVariable ["A3RL_Blindfolded", false, true];
 }] call Server_Setup_Compile;

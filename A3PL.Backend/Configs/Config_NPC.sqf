@@ -37,7 +37,7 @@ Config_NPC_Text =
 
 	//bank
 	//"Welcome to the Bank Of Freedom.<br/><br/>How may I help you?",["1. I would like to sign my paycheck","2. I would like to check my bank account"]
-	["bank_initial",parseText localize"STR_NPC_BANKINIT",[localize"STR_NPC_BANKINIT1",localize"STR_NPC_BANKINIT2"],["if (Player_Paycheck < 1 ) then {['bank_paycheckrefuse'] call A3PL_NPC_Start;} else {['bank_paycheckaccepted'] call A3PL_NPC_Start;};","[] call A3PL_ATM_Open;"]],
+	["bank_initial",parseText localize"STR_NPC_BANKINIT",[localize"STR_NPC_BANKINIT1",localize"STR_NPC_BANKINIT2"],["if ((player getVariable ['Player_Paycheck',0]) < 1) then {['bank_paycheckrefuse'] call A3PL_NPC_Start;} else {['bank_paycheckaccepted'] call A3PL_NPC_Start;};","[] call A3PL_ATM_Open;"]],
 	//"It doesn't seem there is a check here for you to sign<br/>",["1. That's weird, alright. I'll come back later then."]
 	["bank_paycheckrefuse",parseText localize"STR_NPC_BANKPCREF",[localize"STR_NPC_BANKPCREF1"],[""]],
 	//"I found your check.<br/>Please sign it and I'll make sure the amount is deposited into your bank account.",["1. *sign paycheck* There you go, have a nice day!","2. I'll sign for my check later"]

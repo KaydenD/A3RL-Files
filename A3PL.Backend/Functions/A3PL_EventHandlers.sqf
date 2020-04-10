@@ -123,6 +123,11 @@
 		[] call A3PL_Phone_Open;
 	};
 	
+	//Esacape Animation
+	if(_dikcode == 19) exitWith {
+		player setVariable["escapeAnim",true,true];
+	};
+	
 	if(_dikCode == 24 && _shift) exitWith {
 		_sound = player getVariable["earplug", 100];
 

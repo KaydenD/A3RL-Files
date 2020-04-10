@@ -353,6 +353,12 @@ A3PL_Interaction_Options =
 		{[] spawn A3RL_EvidenceLocker_Lockpick;},
 		{((typeOf cursorObject) == "B_supplyCrate_F")}
 	],
+	
+	[
+		"Secure",
+		{[] spawn A3RL_EvidenceLocker_Secure;},
+		{((typeof cursorObject) == "B_supplyCrate_F") && (!(cursorObject getVariable "locked")) && (player getVariable["job", "unemployed"] == "usms")}
+	],
 
 	[
 		"Put on Blindfold",

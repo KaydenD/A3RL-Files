@@ -172,6 +172,9 @@ Server_Setup_Compile = {
 		_pos = getpos player;
 		sleep 1;
 
+		//Whitelisting Check
+		[[player],"Server_Whitelisting_Check",false,false,false] call BIS_FNC_MP;
+		
 		//Send request to server to load player gear
 		[[player],"Server_Gear_Load",false,false,false] call BIS_FNC_MP;
 

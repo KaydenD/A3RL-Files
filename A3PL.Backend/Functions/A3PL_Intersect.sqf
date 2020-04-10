@@ -269,7 +269,7 @@
 			if(typeOf cursorObject IN ["WeaponHolderSimulated"]) then {
 				_obj = cursorObject;
 				_parent = cursorObject;
-			}
+			};
 
 			if (((!(getModelInfo _parent select 2)) && !(typeOf _parent IN ["WeaponHolderSimulated"])) OR (((player distance _obj) > 20) && !(typeOf _obj == "Land_buildingsCasino2"))) exitWith {
 				Player_NameIntersect = "";

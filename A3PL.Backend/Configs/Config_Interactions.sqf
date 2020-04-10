@@ -355,6 +355,26 @@ A3PL_Interaction_Options =
 	],
 
 	[
+		"Put on Blindfold",
+		{[cursorObject] spawn A3RL_Blindfold;},
+		{isPlayer cursorObject && alive cursorObject && (player distance cursorObject < 3) && Player_ItemClass == "headbag" && !(cursorObject getVariable ["A3RL_Blindfolded", false]) 
+		&& (animationState cursorObject IN ["a3pl_idletohandsup", "a3pl_handsuptokneel", "amovpknlmstpsnonwnondnon","amovpknlmstpsraswpstdnon","amovpknlmstpsraswrfldnon","amovpknlmstpsraswlnrdnon", "amovppnemstpsnonwnondnon","amovppnemstpsraswrfldnon","amovppnemstpsraswpstdnon", "unconscious"]
+		|| cursorObject getVariable ["Zipped", true] || cursorObject getVariable ["Cuffed", true])}
+	],
+
+	[
+		"Take Off Blindfold",
+		{[cursorObject] spawn A3RL_Remove_Blindfold;},
+		{isPlayer cursorObject && alive cursorObject && (player distance cursorObject < 3) && cursorObject getVariable ["A3RL_Blindfolded", false]}
+	],
+
+	[
+		"Take Off Blindfold",
+		{[] spawn A3RL_Remove_Blindfold_Receive;},
+		{!(player getVariable ["Zipped", true]) && !(player getVariable ["Cuffed", true]) && player getVariable ["A3RL_Blindfolded", false]}
+	],
+
+	[
 		localize "STR_INTER_SEIZEITEMS", //Seize Items
 		{
 			_items = nearestObjects [player,["weaponholder"],3] + nearestObjects [player,["groundWeaponHolder"],3];

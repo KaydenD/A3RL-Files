@@ -108,6 +108,7 @@
 
 ["A3PL_Loop_LockView",
 {
+	if(player getVariable ["A3RL_Blindfolded", false]) && (cameraView == "EXTERNAL")) exitWith {player switchCamera "INTERNAL";};
 
 	if(Player_LockView && (!(player getVariable["pVar_RedNameOn",false]))) then {
 

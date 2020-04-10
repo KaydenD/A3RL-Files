@@ -33,110 +33,71 @@ corpseRemovalMaxTime = 60;
 
 #include "Dialogs\common.hpp"
 #include "Dialogs\marcos.hpp"
-
 #include "Dialogs\Dialog_Cellphone.hpp"
-
 #include "Dialogs\dialog_PlayerGarage.hpp"
-
 #include "Dialogs\Dialog_ATM.hpp"
 #include "Dialogs\Dialog_Inventory.hpp"
 #include "Dialogs\Dialog_Shop.hpp"
 #include "Dialogs\Dialog_CarShop.hpp"
 #include "Dialogs\Dialog_Level.hpp"
-
 #include "Dialogs\Dialog_NewPlayer.hpp"
 #include "Dialogs\Dialog_Loading.hpp"
-
 #include "Dialogs\Dialog_911.hpp"
 #include "Dialogs\Dialog_PoliceDatabase.hpp"
 #include "Dialogs\Dialog_PatDown.hpp"
-
 #include "Dialogs\Dialog_BowlingRegister.hpp"
 #include "Dialogs\Dialog_BowlingScoring.hpp"
-
 #include "Dialogs\Dialog_YoutubeAdmin.hpp"
 #include "Dialogs\Dialog_YoutubeMain.hpp"
-
 #include "Dialogs\Dialog_HouseBuy.hpp"
 #include "Dialogs\Dialog_HouseVirtual.hpp"
 #include "Dialogs\Dialog_Lottery.hpp"
 #include "Dialogs\Dialog_LotteryBuyTickets.hpp"
-
 #include "Dialogs\Dialog_CarStorage.hpp"
 #include "Dialogs\Dialog_ObjectStorage.hpp"
-
 #include "Dialogs\Dialog_NPC.hpp"
-
 #include "Dialogs\Dialog_interactionRadial.hpp"
-
 #include "Dialogs\Dialog_Medical.hpp"
 #include "Dialogs\Dialog_DeathScreen.hpp"
-
 #include "Dialogs\Dialog_CreateTicket.hpp"
 #include "Dialogs\Dialog_ReceiveTicket.hpp"
-
 #include "Dialogs\Dialog_JailPlayer.hpp"
-
 #include "Dialogs\Dialog_Admin.hpp"
 #include "Dialogs\Dialog_DeveloperDebug.hpp"
 #include "Dialogs\Dialog_ExecutiveMenu.hpp"
-
 #include "Dialogs\Dialog_CGSpawn.hpp"
-
 #include "Dialogs\Dialog_VDeliveryJobList.hpp"
-
-
 #include "Dialogs\Dialog_Phone_Active.hpp"
-
-
-
 #include "Dialogs\Dialog_Phone_UberMenu.hpp"
 #include "Dialogs\Dialog_UberAccept.hpp"
 #include "Dialogs\Dialog_Phone_Bank.hpp"
 #include "Dialogs\Dialog_Phone_BankTransferContact.hpp"
 #include "Dialogs\Dialog_Phone_BankTransferNumber.hpp"
-
 #include "Dialogs\Dialog_Nametag.hpp"
-
 #include "Dialogs\Dialog_Dispatch.hpp"
-
 #include "Dialogs\Dialog_Kane9.hpp"
-
 #include "Dialogs\Dialog_ATC.hpp"
 #include "Dialogs\Dialog_Transponder.hpp"
-
 #include "Dialogs\Dialog_Treasury.hpp"
 #include "Dialogs\Dialog_Paintball.hpp"
-#include "Dialogs\Dialog_Twitter.hpp" //twitter enter text
-
+#include "Dialogs\Dialog_Twitter.hpp"	//twitter enter text
 #include "Dialogs\Dialog_BusinessRent.hpp"
 #include "Dialogs\Dialog_ItemSale.hpp"
 #include "Dialogs\Dialog_ItemBuy.hpp"
 #include "Dialogs\Dialog_Gasstation.hpp"
-
 #include "Dialogs\Dialog_Factory.hpp"
 #include "Dialogs\Dialog_Garage.hpp"
-
 #include "Dialogs\Dialog_Vote.hpp"
 #include "Dialogs\Dialog_FactionSetup.hpp"
-
 #include "Dialogs\Dialog_Prospect.hpp"
 #include "Dialogs\Dialog_ProspectFound.hpp"
-
 #include "Dialogs\Dialog_CCTV.hpp"
-
 #include "Dialogs\Dialog_TaxiMeter.hpp"
-
 #include "Dialogs\Dialog_IE.hpp"
-
 #include "Dialogs\Dialog_DMV.hpp"
-
 #include "Dialogs\Dialog_BagWeed.hpp"
-
 #include "Dialogs\Dialog_CombineItems.hpp"
-
 #include "Dialogs\dialog_iPhone_X.hpp"
-
 
 class RscTitles
 {

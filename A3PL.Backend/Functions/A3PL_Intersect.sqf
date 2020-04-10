@@ -319,7 +319,7 @@
 			if (!_isWHS) then {
 				_posAGL = _obj modelToWorldVisual (_obj selectionPosition [_name,"Memory"]);
 			} else {
-				_name = "WeaponHolderSimulated";
+				_name = "headBag";
 			};
 
 			if (([_posAGL,ASLToAGL (getposASL player)] call BIS_fnc_distance2D) > 3) exitwith {

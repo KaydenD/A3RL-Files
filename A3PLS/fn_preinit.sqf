@@ -894,6 +894,19 @@ Server_Setup_Compile = {
 	(owner _unit) publicVariableClient "A3PL_RetrievedInventory";
 }, true,true] call Server_Setup_Compile;
 
+["Server_Whitelisting_Check", {
+	_unit = _this select 0;
+	_uid = getPlayerUID _unit;
+
+	_query = format ["SELECT name FROM whitelist WHERE uid='%1'", _uid];
+	_return = [_query, 2] call Server_Database_Async;
+
+	if (count _return == 0) exitwith 
+	{
+		"IUqof456sd=!&L" serverCommand format ["#kick %1",(name _unit)];
+	};
+}, true,true] call Server_Setup_Compile;
+
 ["Server_Housing_Initialize",
 {
 

@@ -15,14 +15,17 @@
 	Player_ActionCompleted = false;
 	["Attempting to lockpick evidence locker...",44] spawn A3PL_Lib_LoadAction;
 	
-	while{!Player_ActionCompleted} do
-	{
-		if ((animationstate player) != "acts_carfixingwheel") then {
-			player playMoveNow 'Acts_carFixingWheel';
+
+	player switchMove "Acts_carFixingWheel";
+	_event = player addEventHandler ["AnimDone", {
+		params ["_unit", "_anim"];
+		if ( _anim == "Acts_carFixingWheel") then {  //Make sure function is not break out by other anims 
+        	player switchMove "Acts_carFixingWheel";       
 		};
-		uiSleep 0.1;
-	};
-	player playMoveNow "";
+	}];
+	waitUntil{Player_ActionCompleted};
+	player removeEventHandler ["AnimDone", _event];
+	player switchMove "";
 	
 	["v_lockpick",1] call A3PL_Inventory_Remove;
 	_locker setVariable["locked", false, true];

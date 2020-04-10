@@ -9,8 +9,7 @@
 // This will calculate a new array (based on defined condition) and feed it to A3PL_Intersect_Lanes based on current nameintersect
 ['A3PL_Intersect_ConditionCalc',
 {
-	private ["_name","_newArray","_arrayToSearch"];
-	_name = _this;
+	_name = param[0, "null"];
 	_newArray = [];
 	_arrayToSearch = Config_IntersectArray;
 	if ((typeOf vehicle player) IN Config_Intersect_Cockpits) then
@@ -313,7 +312,7 @@
 				};
 			};
 
-			_ins2 select 0 params ["_name", "_dist"];
+			_ins2 select 0 params [["_name", "null"], "_dist"];
 			_posAGL = _obj modelToWorldVisual [.1,.55,-.61];
 
 			if (!_isWHS) then {

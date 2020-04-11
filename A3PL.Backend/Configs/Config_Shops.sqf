@@ -915,7 +915,7 @@ Config_Shops_Items =
             ["vehicle","A3PL_Mustang_PD_Slicktop",35000,0],
 			["vehicle","A3PL_Small_Boat_Trailer",10000,0]
         ],
-        {[2942.43,5891.42,-0.75]}
+        {[2220.41,5175.78,-.75]}
     ],
     [
         "Shop_USCG_Boat_Vendor",

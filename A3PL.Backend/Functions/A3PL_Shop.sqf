@@ -984,6 +984,8 @@
 		};
 	};
 
+	A3PL_SHOP_ITEMPREVIEW enableSimulation false;
+
 	switch (_itemClass) do
 	{
 		case ("A3PL_Jaws"): { A3PL_SHOP_ITEMPREVIEW setposATL [_pos select 0,_pos select 1,(_pos select 2)+1.2]; };

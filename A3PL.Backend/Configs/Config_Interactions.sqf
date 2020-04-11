@@ -383,9 +383,8 @@ A3PL_Interaction_Options =
 	[
 		localize "STR_INTER_SEIZEITEMS", //Seize Items
 		{
-			_items =nearestObjects [player,["groundWeaponHolder"],3];
-
-			
+			_items = nearestObjects [player,["groundWeaponHolder"],3];
+			{
 				deleteVehicle _x;
 				{
 					_classes = _x select 0;

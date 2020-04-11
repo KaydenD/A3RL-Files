@@ -355,9 +355,9 @@ Config_Shops_Items =
             ["item","med_icepack",100,0],
             ["item","med_splint",100,0],
             ["item","med_painkillers",100,0],
-						["headgear","A3PL_Santahat",100,0],
-						["headgear","A3PL_Santahatbeard",100,0],
-						["headgear","A3PL_Elfhat",100,0]
+			["headgear","A3PL_Santahat",100,0],
+			["headgear","A3PL_Santahatbeard",100,0],
+			["headgear","A3PL_Elfhat",100,0]
         ],
 
         {[2621.08,5610.15,0.08]}
@@ -681,7 +681,6 @@ Config_Shops_Items =
             ["magazine","A3PL_TaserMag",50,0],
             ["magazine","16Rnd_9x21_Mag",50,0],
             ["magazine","9Rnd_45ACP_Mag",50,0],
-            ["magazine","red_17Rnd_9x19_Mag",50,0],
 
             ["item","handcuffs",15,0],
             ["item","stinger",15,0],
@@ -767,8 +766,6 @@ Config_Shops_Items =
     [
         "Shop_DOC_Supplies_Vendor",
         [
-            ["uniform","A3PL_Correctional_Officer_Uniform",24,0],
-            ["uniform","A3PL_Correctional_Director_Uniform",24,0],
             ["uniform","A3PL_doc_green_Uniform",24,0],
             ["uniform","A3PL_doc_blue_Uniform",24,0],
             ["uniform","A3PL_doc_yellow_Uniform",24,0],
@@ -796,7 +793,6 @@ Config_Shops_Items =
 
 			["headgear","A3PL_US_Marshall_Cap",50,0],
 			["headgear","A3PL_Marshal_SOG_Helmet",50,0],
-			["headgear","A3PL_Sheriff_Hat",500,0],
 			["headgear","A3PL_FI_Marshal_Cadet_Cap",50,0],
 			["headgear","A3PL_FI_Marshal_Supervisor_Cap",50,0],
 			["headgear","A3PL_FI_Marshal_Command_Cap",50,0],
@@ -805,7 +801,6 @@ Config_Shops_Items =
 			["weapon","A3PL_Taser",500,0],
 			["weapon","hgun_P07_F",500,0],
 			["weapon","hgun_Rook40_F",500,0],
-			["magazine","red_17Rnd_9x19_Mag",50,0],
             ["magazine","A3PL_TaserMag",100,0],
             ["magazine","16Rnd_9x21_Mag",50,0],
             ["aitem","Rangefinder",1000,0],
@@ -832,7 +827,6 @@ Config_Shops_Items =
 			["vest","A3PL_CGVest_BLUE",24,0],
 			["vest","A3PL_USCG_Safety_Vest_Yellow",24,0],
 			["vest","V_RebreatherB",100,0],
-			["vest","Rebreather",100,0],
 			["vest","A3PL_Rangemaster_belt_blk",24,0],
 
             ["uniform","A3PL_CGPilot_Green_Ensign_Uniform",24,0],
@@ -883,18 +877,14 @@ Config_Shops_Items =
             ["headgear","A3PL_MSRT_Helmet",50,0],
 			["headgear","A3PL_MSRT_Hat",50,0],
 			["headgear","A3PL_USCG_BLMC_Cap",50,0],
-			["headgear","A3PL_USCGJAG_Cap",50,0],
 			["headgear","A3PL_CGAS_Hat",50,0],
 			["headgear","A3PL_USCG_Boat_Helmet_Test",50,0],
-			["aItem","G_Balaclava_blk",500,0],
-			["aItem","G_Balaclava_TI_blk_F",500,0],
 
             ["weapon","hgun_Pistol_heavy_01_F",100,0],
             ["magazine","11Rnd_45ACP_Mag",50,0],
             ["weapon","A3PL_Taser",100,0],
             ["magazine","A3PL_TaserMag",50,0],
             ["weapon","hgun_Rook40_F",100,0],
-            ["magazine","red_17Rnd_9x19_Mag",50,0],
             ["magazine","16Rnd_9x21_Mag",50,0],
             ["weaponPrimary","srifle_LRR_SOS_F",100,0],
             ["magazine","7Rnd_408_Mag",50,0],

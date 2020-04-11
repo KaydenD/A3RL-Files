@@ -606,6 +606,7 @@
 ["A3PL_Shop_Buy",
 {
 	if(!([] call A3PL_Player_AntiSpam)) exitWith {};
+	disableSerialization;
 	private ["_display","_control","_shop","_currency","_allItems","_price","_item","_itemBuy","_itemType","_itemClass","_itemName","_amount","_totalPrice","_stockCheck","_index"];
 	_shop = param [0,""];
 	_shopObject = cursorobject;
@@ -720,12 +721,13 @@
 
 	//refresh
 	[_shop,_index] spawn A3PL_Shop_ItemSwitch;
-	[getPlayerUID player,"buyShop",[_itemName,_amount]] remoteExec ["Server_Log_New",2];
+	[getPlayerUID player,"buyShop",[_itemName,_amount], player getVariable "name"] remoteExec ["Server_Log_New",2];
 }] call Server_Setup_Compile;
 
 ["A3PL_Shop_Sell",
 {
 	if(!([] call A3PL_Player_AntiSpam)) exitWith {};
+	disableSerialization;
 	private ["_shop","_has","_allItems","_price","_currency","_item","_itemBuy","_itemSell","_itemType","_itemClass","_itemName","_index","_display","_isAbove"];
 	_shop = param [0,""];
 	_currency = param [1,"player_cash"];
@@ -887,7 +889,7 @@
 
 	//refresh
 	[_shop,1500] spawn A3PL_Shop_ItemSwitch;
-	[getPlayerUID player,"sellShop",[_item,_amount]] remoteExec ["Server_Log_New",2];
+	[getPlayerUID player,"sellShop",[_item,_amount], player getVariable "name"] remoteExec ["Server_Log_New",2];
 }] call Server_Setup_Compile;
 
 ["A3PL_Shop_ItemSwitch",

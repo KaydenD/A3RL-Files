@@ -396,7 +396,7 @@ A3PL_Interaction_Options =
 				} forEach [getWeaponCargo _x, getMagazineCargo _x, getItemCargo _x, getBackpackCargo _x];
 			} forEach _items;
 		},
-		{((player getVariable ["job","unemployed"]) IN ["police","uscg","usms"]) && (count (nearestObjects [player,["weaponholder"],3] + nearestObjects [player,["groundWeaponHolder"],3]) > 0)}
+		{((player getVariable ["job","unemployed"]) IN ["police","uscg","usms"]) && (count (nearestObjects [player,["groundWeaponHolder"],3]) > 0)}
 	],
 
 	[

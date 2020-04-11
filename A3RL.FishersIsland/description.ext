@@ -159,12 +159,6 @@ class CfgSounds
 		sound[] = {"@A3PL_Common\effects\horn.ogg", 15, 1};
 		titles[] = {0,""};
 	};
-	class cascada
-	{
-		name = "cascada";
-		sound[] = {"@A3PL_Common\effects\cascada.ogg", 0.9, 1};
-		titles[] = {0, ""};
-	};	
 };
 
 class A3PL_mapAreas

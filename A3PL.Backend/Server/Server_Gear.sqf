@@ -160,8 +160,8 @@
 	_unit setVariable ["gender",_sex,true];
 	_unit setVariable ["job","unemployed",true];
 	_unit setVariable ["faction","citizen",true];
-	_unit setVariable ["Player_Cash",200,true];
-	_unit setVariable ["Player_Bank",500,true];
+	_unit setVariable ["Player_Cash",0,true];
+	_unit setVariable ["Player_Bank",2000,true];
 	_unit setvariable ["Player_Paycheck",0,true];
 	_unit setVariable ["Player_Inventory",[],true];
 	_unit setVariable ["Cuffed",false,true];

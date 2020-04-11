@@ -285,7 +285,7 @@ Config_IntersectArray =
 	["spine3","Talk to Black Market",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == npc_blackmarket}],
 	["spine3","Talk to Guns NPC",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == npc_guns}],
 	["spine3","Talk to Legal BP NPC",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == npc_guns}],
-	["spine3","Talk to Vehicles NPC",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == npc_vehicles}],
+	//["spine3","Talk to Vehicles NPC",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == npc_vehicles}],
 	["spine3","Talk to Supermarket NPC",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect IN [npc_supermarket_1]}],
 	["spine3","Talk to Perks NPC",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect IN [npc_perkshop]}],
 	["spine3","Talk to Government NPC",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect IN [npc_government,npc_government_1]}],

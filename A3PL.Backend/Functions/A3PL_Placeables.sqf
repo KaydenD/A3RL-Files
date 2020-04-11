@@ -203,7 +203,7 @@
 			};
 		};
 	} foreach Config_Items_ZOffset;
-	_offset
+	_offset;
 }] call Server_Setup_Compile;
 
 ['A3PL_Placeable_ObjectZFix',

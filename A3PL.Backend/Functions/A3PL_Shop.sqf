@@ -1,4 +1,4 @@
-["A3PL_Shop_Open",
+/* ["A3PL_Shop_Open",
 {
 	disableSerialization;
 	private ["_shop","_display","_currency","_control","_pos","_posConfig","_cam"];
@@ -11,11 +11,9 @@
 	createDialog "Dialog_Shop";
 	_display = findDisplay 20;
 
-	//set left button EH
-	_control = _display displayCtrl 1600;
-	_control ctrlAddEventHandler ["ButtonDown",format ["['%1','prev'] spawn A3PL_Shop_ItemSwitch;",_shop]];
-	_control = _display displayCtrl 1601;
-	_control ctrlAddEventHandler ["ButtonDown",format ["['%1','next'] spawn A3PL_Shop_ItemSwitch;",_shop]];
+
+	_control = _display displayCtrl 1500;
+	_control ctrlAddEventHandler ["LBSelChanged",format ["['%1','next'] spawn A3PL_Shop_ItemSwitch;",_shop]];
 	_control = _display displayCtrl 1602;
 	_control ctrlAddEventHandler ["ButtonDown",format ["['%1','%2'] call A3PL_Shop_Buy;",_shop,_currency]];
 	_control = _display displayCtrl 1603;
@@ -32,13 +30,10 @@
 
 	if(_shop == "Shop_Hemlock") then {
 	//disable amount ctrl
-	_control = _display displayCtrl 1400;
-	_control ctrlSetFade 1;
-	_control ctrlCommit 0;
-	_control = _display displayCtrl 1000;
-	_control ctrlSetFade 1;
-	_control ctrlCommit 0;
-};
+		_control = _display displayCtrl 1400;
+		_control ctrlSetFade 1;
+		_control ctrlCommit 0;
+	};
 	//Camera
 	A3PL_SHOP_CAMERA = "camera" camCreate [0,0,0];
 	A3PL_SHOP_CAMERA camSetPos (positionCameraToWorld [0,0,0]);
@@ -497,8 +492,8 @@
 }] call Server_Setup_Compile;
 
 /////////////////////////////// NEW SHOP UI - BUG  ///////////////////////////////////////////////////
+*/
 
-/*
 ["A3PL_Shop_Open",
 {
 	disableSerialization;
@@ -527,11 +522,11 @@
 	_control ctrlAddEventHandler ["ButtonDown",format ["['%1','%2'] call A3PL_Shop_Sell;",_shop,_currency]];
 	_control = _display displayCtrl 1500;
 	_control ctrlAddEventHandler ["LBSelChanged",format ["['%1',1500, '%2'] call A3PL_Shop_ItemSwitch;",_shop,_npc]];
-
+	lbClear _control;
 	//Fill listbox
 	_allItems = [_shop] call A3PL_Config_GetShop;
 	{
-		private ["_itemType","_itemClass","_itemName","_itemPicture"];
+		private ["_itemType","_itemClass","_itemName","_itemPicture", "_i"];
 
 		_itemType = _x select 0;
 		_itemClass = _x select 1;
@@ -958,7 +953,7 @@
 		_priceSCtrl ctrlSetStructuredText parseText format ["<t align='right'>$%1</t>",_itemSell];
 	};
 
-	if (!isNil "A3PL_SHOP_ITEMPREVIEW") then { deleteVehicle A3PL_SHOP_ITEMPREVIEW; sleep 0.05; };
+	if (!isNil "A3PL_SHOP_ITEMPREVIEW") then { deleteVehicle A3PL_SHOP_ITEMPREVIEW; };
 
 	switch (_type) do
 	{
@@ -1042,4 +1037,3 @@
 		_control ctrlCommit 0;
 	};
 }] call Server_Setup_Compile;
-*/

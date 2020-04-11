@@ -831,7 +831,8 @@ Server_Setup_Compile = {
 	_ownsHouse = false;
 	{
 		_houseVar = _x getVariable "owner";
-		if ((_houseVar select 0) == _uid) exitwith
+		_roommates = _x getVariable "roommates";
+		if ((_houseVar select 0) == _uid || _uid IN _roommates) exitwith
 		{
 			_ownsHouse = true;
 			_houseObj = _x;
@@ -915,12 +916,13 @@ Server_Setup_Compile = {
 
 	private ["_houses","_query","_return","_uid","_pos","_doorID","_near","_signs"];
 	//also make sure to update _obj location if it's changed (just incase we move anything slightly with terrain builder), delete it if it cannot be found nearby
-	_houses = ["SELECT uid,location,doorid FROM houses", 2, true] call Server_Database_Async;
+	_houses = ["SELECT uid,location,doorid,roommates FROM houses", 2, true] call Server_Database_Async;
 	{
 		private ["_pos","_uid","_doorid"];
 		_uid = _x select 0;
 		_pos = call compile (_x select 1);
 		_doorid = _x select 2;
+		_roommates = call compile (_x select 3);
 
 		_near = nearestObjects [_pos, ["Land_Home1g_DED_Home1g_01_F","Land_Mansion01","Land_A3PL_Ranch1","Land_A3PL_Ranch2","Land_A3PL_Ranch3","Land_A3PL_ModernHouse1","Land_A3PL_ModernHouse2","Land_A3PL_ModernHouse3","Land_A3PL_BostonHouse","Land_A3PL_Shed3","Land_A3PL_Shed4","Land_A3PL_Shed2"], 10,true];
 		if (count _near == 0) exitwith
@@ -947,6 +949,7 @@ Server_Setup_Compile = {
 		//Set variables
 		_near setVariable ["doorID",[_uid,_doorid],true];
 		_near setVariable ["owner",[_uid],true];
+		_near setVariable ["roommates", _roommates, true];
 		Server_HouseList pushback _near;
 	} foreach _houses;
 },true,true] call Server_Setup_Compile;

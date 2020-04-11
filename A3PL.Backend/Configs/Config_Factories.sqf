@@ -742,7 +742,10 @@ Config_Factories =
         ["f_A3PL_Freemans_Camo_Cap","","inh","inh","A3PL_Freemans_Camo_Cap","headgear",true,5,[["Polyester",1]],1,""],
         ["f_A3PL_LittleEnterprises_Cap","","inh","inh","A3PL_LittleEnterprises_Cap","headgear",true,5,[["Polyester",1]],1,""],
         ["f_A3PL_Indelicato_Family_Uniform","","inh","inh","A3PL_Indelicato_Family_Uniform","uniform",true,5,[["Polyester",1]],1,""],
-        ["f_A3PL_Blackwater_Uniform","","inh","inh","A3PL_Blackwater_Uniform","uniform",true,5,[["Polyester",1]],1,""]
+        ["f_A3PL_Blackwater_Uniform","","inh","inh","A3PL_Blackwater_Uniform","uniform",true,5,[["Polyester",1]],1,""],
+		["f_ARL_Hillbuns_Uniform","","inh","inh","ARL_Hillbuns_Uniform","uniform",true,5,[["Polyester",1]],1,""],
+		["f_Hillbuns_Command_Uniform","","inh","inh","Hillbuns_Command_Uniform","uniform",true,5,[["Polyester",1]],1,""],
+		["f_A3RL_Hillbuns_Cap","","inh","inh","A3RL_Hillbuns_Cap","headgear",true,5,[["Polyester",1]],1,""]
     ],
 
 	["Car Parts Factory",[11816.7,9296,0],

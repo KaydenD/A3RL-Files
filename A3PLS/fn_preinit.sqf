@@ -150,11 +150,12 @@ Server_Setup_Compile = {
 
 ["A3PL_Loading_Request", {
 
-	//Whitelisting Check
-	[[player],"Server_Whitelisting_Check",false,false,false] call BIS_FNC_MP;
-
 	[] spawn {
 		private ["_waiting","_display","_control", '_format',"_pos"];
+		
+		//Whitelisting Check
+		[[player],"Server_Whitelisting_Check",false,false,false] call BIS_FNC_MP;
+		
 		disableSerialization;
 
 		_display = findDisplay 15;

@@ -150,6 +150,9 @@ Server_Setup_Compile = {
 
 ["A3PL_Loading_Request", {
 
+	//Whitelisting Check
+	[[player],"Server_Whitelisting_Check",false,false,false] call BIS_FNC_MP;
+
 	[] spawn {
 		private ["_waiting","_display","_control", '_format',"_pos"];
 		disableSerialization;
@@ -171,9 +174,6 @@ Server_Setup_Compile = {
 		waitUntil {sleep 0.5; player == player};
 		_pos = getpos player;
 		sleep 1;
-
-		//Whitelisting Check
-		[[player],"Server_Whitelisting_Check",false,false,false] call BIS_FNC_MP;
 		
 		//Send request to server to load player gear
 		[[player],"Server_Gear_Load",false,false,false] call BIS_FNC_MP;

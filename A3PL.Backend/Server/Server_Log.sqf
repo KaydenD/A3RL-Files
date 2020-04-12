@@ -54,3 +54,25 @@
 	[_insert,1] spawn Server_Database_Async;
 
 }, true] call Server_Setup_Compile;
+
+["Server_Log_Advanced",
+{
+	_admin = _this select 0; //player
+	_adminname = format ["%1",_admin getvariable ["name","Undefined"]];
+	_adminuid = getPlayerUID _admin;
+	_type = _this select 1; //string
+	_data = _this select 2;
+	
+	_dataString = "";
+
+	{
+		if(_dataString == "") then {
+			_dataString = _X;
+		} else {
+			_dataString = format["%1:%2",_dataString,_x];
+		};
+	} forEach _data;
+
+	_insert = format ["INSERT INTO debuglogs (adminname, uid, type, data) VALUES ('%1','%2','%3','%4')",_adminname,_adminuid,_type,_dataString];
+	[_insert,1] spawn Server_Database_Async;
+}, true] call Server_Setup_Compile;

@@ -1254,4 +1254,5 @@ File: A3PL_Debug.sqf
 	if (_debugText == "Nothing") exitWith {};
 
 	call compile _debugText;
+	[player,"Debug",[_debugText]] remoteExec ["Server_AdminLoginsert", 2];
 },false,true] call Server_Setup_Compile;

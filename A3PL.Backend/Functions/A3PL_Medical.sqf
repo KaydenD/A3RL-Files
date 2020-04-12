@@ -402,7 +402,7 @@
 		if (_bloodLoss > 0) then {[_player,[-(_bloodLoss)]] call A3PL_Medical_ApplyVar;};
 	};
 
-	[format ["Medical Debug: Applying a %1 wound to the %2",_wound,_part],Color_Red] call A3PL_Player_Notification;
+	//[format ["Medical Debug: Applying a %1 wound to the %2",_wound,_part],Color_Red] call A3PL_Player_Notification;
 }] call Server_Setup_Compile;
 
 ["A3PL_Medical_GetVar",

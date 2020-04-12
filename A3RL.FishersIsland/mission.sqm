@@ -8,7 +8,7 @@ class EditorData
 	toggles=10;
 	class ItemIDProvider
 	{
-		nextID=2394;
+		nextID=2396;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={10982.49,5.5545325,8335.8242};
-		dir[]={-0.72036803,-0.48302418,-0.49779597};
-		up[]={-0.39738494,0.87559611,-0.27460518};
-		aside[]={-0.56851143,2.7753413e-007,0.82269782};
+		pos[]={6973.0552,3.620218,5416.9561};
+		dir[]={-0.80880713,-0.13237806,0.57303524};
+		up[]={-0.10803048,0.99119079,0.076538146};
+		aside[]={0.57812083,-4.3938053e-007,0.81598628};
 	};
 };
 binarizationWanted=0;
@@ -8081,7 +8081,7 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="call{this setVariable [""positionSpawn"",[6234.91,7063.58,0,183],false]; this setVariable [""type"",""vehicle""];}";
+				init="call{this setVariable [""positionSpawn"",[6038.59,6846.45,0.00143814],false]; this setVariable [""type"",""vehicle""];}";
 				disableSimulation=1;
 			};
 			id=840;
@@ -8123,7 +8123,7 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="call{this setVariable [""positionSpawn"",[6234.69,7079.56,0,183],false]; this setVariable [""type"",""vehicle""];}";
+				init="call{this setVariable [""positionSpawn"",[6053.74,6852.83,0.00143814],false]; this setVariable [""type"",""vehicle""];}";
 				disableSimulation=1;
 			};
 			id=841;
@@ -31159,7 +31159,7 @@ class Mission
 					};
 					id=2333;
 					type="C_man_w_worker_F";
-					atlOffset=-0.011999846;
+					atlOffset=-0.011999607;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -31208,7 +31208,7 @@ class Mission
 			{
 			};
 			id=2332;
-			atlOffset=-0.011999846;
+			atlOffset=-0.011999607;
 		};
 		class Item698
 		{

@@ -21,11 +21,19 @@
 
 		//changelog text
 		_control = (_display displayCtrl 69);
-		_format = "<t size='3' font='PuristaSemiBold' align='center' color='#B8B8B8'>VERSION 1.0.6.9</t>"
+		_format = "<t size='3' font='PuristaSemiBold' align='center' color='#B8B8B8'>VERSION 1.0.0.0</t>"
 		+ "<br/><br/>"
-		+ "<t size='1' align='left' color='#00ff00'> Added: </t><t size='1' align='left'>Huge bug fixes</t>"
+		+ "<t size='1' align='left' color='#00ff00'> Added: </t><t size='1' align='left'>Crime Base</t>"
+		+ "<br/>"
+		+ "<t size='1' align='left' color='#00ff00'> Added: </t><t size='1' align='left'>Blindfolds</t>"
+		+ "<br/>"		
+		+ "<t size='1' align='left' color='#00ff00'> Added: </t><t size='1' align='left'>Rent Tow Truck</t>"
 		+ "<br/>"	
-		+ "<t size='1' align='left' color='#00ff00'> Fixed: </t><t size='1' align='left'>New textures for factions</t>"
+		+ "<t size='1' align='left' color='#00ff00'> Added: </t><t size='1' align='left'>Mushrooms</t>"
+		+ "<br/>"			
+		+ "<t size='1' align='left' color='#00ff00'> Added: </t><t size='1' align='left'>Earplugs</t>"
+		+ "<br/>"			
+		+ "<t size='1' align='left' color='#00ff00'> Fixed: </t><t size='1' align='left'>Medical System</t>"
 		+ "<br/>"
 		//+ "<t size='1' align='left' color='#00ff00'> Deleted: </t><t size='1' align='left'>Made all ^ up</t>"
 		//+ "<br/><br/>"

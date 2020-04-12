@@ -170,8 +170,8 @@ Config_Factories =
 
     ["Clothing Factory",[3520.06,7622.76,2],
         ["f_Alpha_Uniform","","inh","inh","A3PL_Alpha_Uniform","uniform",true,5,[["Polyester",1]],1,""],
-        ["f_Beta_Clothing_Uniform","","inh","inh","A3PL_Beta_Clothing_Uniform","uniform",true,5,[["Polyester",1]],1,""],
-        ["f_Beta_Cap","","inh","inh","A3PL_Beta_Cap","headgear",true,5,[["Polyester",1]],1,""],
+       // ["f_Beta_Clothing_Uniform","","inh","inh","A3PL_Beta_Clothing_Uniform","uniform",true,5,[["Polyester",1]],1,""],
+        //["f_Beta_Cap","","inh","inh","A3PL_Beta_Cap","headgear",true,5,[["Polyester",1]],1,""],
         ["f_Daniel_Uniform","","inh","inh","A3PL_Daniel_Uniform","uniform",true,5,[["Polyester",1]],1,""],
         ["f_Eatsleep_Uniform","","inh","inh","A3PL_Eatsleep_Uniform","uniform",true,5,[["Polyester",1]],1,""],
         ["f_FartLoading_Uniform","","inh","inh","A3PL_FartLoading_Uniform","uniform",true,5,[["Polyester",1]],1,""],

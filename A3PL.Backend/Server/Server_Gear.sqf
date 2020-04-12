@@ -115,8 +115,7 @@
 	_newEntry = _this select 1;
 
 	//Assign default gear
-	_unit addUniform "A3PL_Beta_Clothing_Uniform";
-	_unit addHeadGear "A3PL_Beta_Cap";
+	_unit addUniform (selectRandom ["A3PL_citizen2_Uniform","A3PL_citizen3_Uniform","A3PL_citizen4_Uniform","A3PL_citizen5_Uniform"]);
 	_unit addItem "A3PL_Cellphone";
 	//Tell players his gear is loaded, because there is nothing to load
 	(owner _unit) publicVariableClient "A3PL_RetrievedInventory";

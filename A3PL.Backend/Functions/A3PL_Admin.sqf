@@ -71,7 +71,7 @@
 		// Default Text //
 
 		ctrlSetText [1403, "1"];
-		ctrlSetText [1000, format ["%2 %1",player getVariable "name", [] call A3PL_AdminGetRank]];
+		ctrlSetText [1000, format ["%2 %1",player getVariable "name", [player] call A3PL_AdminGetRank]];
 		ctrlSetText [1001, "Version: 1.0"];
 	};
 
@@ -628,7 +628,9 @@
 
 ["A3PL_AdminGetRank", {
 	private ["_return"];
-	_level = player getVariable "dbVar_AdminLevel";
+	_player = param[0];
+	
+	_level = _player getVariable "dbVar_AdminLevel";
 	_return = "";
 	
 	switch(_level) do {

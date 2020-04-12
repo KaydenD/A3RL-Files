@@ -565,9 +565,9 @@
 
 [
 	"",
-	"Access Weapon Factory",
+	"Access Illegal Weapon Factory",
 	{
-		["Weapon Factory"] call A3PL_Factory_Open;
+		["Illegal Weapon Factory"] call A3PL_Factory_Open;
 	}
 ],
 

@@ -946,6 +946,7 @@ Config_Shops_Items =
 				["item","Blueprint_Pistol_Illegal",15000,0],
 				["item","Blueprint_Pistol_Ammo_Illegal",3000,0],
 				["item","v_lockpick",3000,0],
+				["item","shrooms",999999,100],
 				["item","zipties",10000,0]
 		],
 		{[11008.7,8362.2,0.2]}
@@ -1004,7 +1005,7 @@ Config_Shops_Items =
 			["item","v_lockpick",2000,1000],
 			["item","turtle",999999,10000],
 			["item","shrooms",999999,850],
-            		["item","seed_marijuana",250,100],
+            ["item","seed_marijuana",250,100],
 			["item","weed_5g",9999999,600],
 			["item","weed_10g",99999999,1200],
 			["item","weed_15g",99999999,1800],

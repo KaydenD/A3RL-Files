@@ -864,7 +864,8 @@
 	} else {
 		{_x setMarkerAlphaLocal 1;} forEach ["Fishing1","Fishing2","Fishing3","Fishing3_1","Fishing4","Fishing5","Fishing5_1","Fishing6"];
 	};
+	"crime_marker" setMarkerAlpha 0;
 	if((_job != "uscg") && (_job != "faa") && (_job != "doj") && (_job != "police") && (_job != "fifr")) then {
-		"crime_marker" setMarkerAlpha 0;
+		"crime_marker" setMarkerAlpha 1;
 	};
 }] call Server_Setup_Compile;

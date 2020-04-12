@@ -110,7 +110,7 @@
 	//in format
 	/*
 		[
-			["weapon factory",[["f_rook1",1],["f_rook2",3]]],
+			["Illegal Weapon Factory",[["f_rook1",1],["f_rook2",3]]],
 			["vehicle factory",[["f_rook2",1],["f_rook2",1]]]
 		]
 	*/

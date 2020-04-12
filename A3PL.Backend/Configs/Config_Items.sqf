@@ -468,13 +468,8 @@ Config_Items =
 
 	//Blueprints
 	["Blueprint_A3PL_Taser","Taser Blueprint",0,"A3PL_File2",0,true,true,true,true,true,"", [0,0,0], ""],
-    ["Blueprint_P07","P07 Blueprint",0,"A3PL_File2",0,true,true,true,true,true,"", [0,0,0], ""],
-    ["Blueprint_P07_khk","P07 Khaki Blueprint",0,"A3PL_File2",0,true,true,true,true,true,"", [0,0,0], ""],
-    ["Blueprint_Pistol_heavy_01","4-five Blueprint",0,"A3PL_File2",0,true,true,true,true,true,"", [0,0,0], ""],
-    ["Blueprint_ACPC2","ACP Blueprint",0,"A3PL_File2",0,true,true,true,true,true,"", [0,0,0], ""],
-    ["Blueprint_Pistol_01","PM 9mm Blueprint",0,"A3PL_File2",0,true,true,true,true,true,"", [0,0,0], ""],
-    ["Blueprint_Rook40","Rook Blueprint",0,"A3PL_File2",0,true,true,true,true,true,"", [0,0,0], ""],
-    ["Blueprint_Pistol_heavy_02","Zubr Blueprint",0,"A3PL_File2",0,true,true,true,true,true,"", [0,0,0], ""],
+    ["Blueprint_Pistol_Illegal","Illegal Pistol Blueprint",0,"A3PL_File2",0,true,true,true,true,true,"", [0,0,0], ""],
+	["Blueprint_Pistol_Ammo_Illegal","Illegal Pistol Ammo Blueprint",0,"A3PL_File2",0,true,true,true,true,true,"", [0,0,0], ""],
 	["Blueprint_AK12","AK-12 Blueprint",0,"A3PL_File2",0,true,true,true,true,true,"", [0,0,0], ""],
     ["Blueprint_AKM","AKM Blueprint",0,"A3PL_File2",0,true,true,true,true,true,"", [0,0,0], ""],
     ["Blueprint_AKS","AKS-74U Blueprint",0,"A3PL_File2",0,true,true,true,true,true,"", [0,0,0], ""],
@@ -494,11 +489,6 @@ Config_Items =
 	["Blueprint_Mk14","DMR06-Olive Blueprint",0,"A3PL_File2",0,true,true,true,true,true,"", [0,0,0], ""],
 
 	["Blueprint_A3PL_TaserMag","Taser Mag Blueprint",0,"A3PL_File2",0,true,true,true,true,true,"", [0,0,0], ""],
-    ["Blueprint_16Rnd_9x21_Mag","16Rnd 9x21 Blueprint",0,"A3PL_File2",0,true,true,true,true,true,"", [0,0,0], ""],
-    ["Blueprint_11Rnd_45ACP_Mag","11Rnd ACP Blueprint",0,"A3PL_File2",0,true,true,true,true,true,"", [0,0,0], ""],
-    ["Blueprint_6Rnd_45ACP_Mag","6Rnd ACP Blueprint",0,"A3PL_File2",0,true,true,true,true,true,"", [0,0,0], ""],
-    ["Blueprint_9Rnd_45ACP_Mag","9Rnd ACP Blueprint",0,"A3PL_File2",0,true,true,true,true,true,"", [0,0,0], ""],
-    ["Blueprint_10Rnd_9x21_Mag","10Rnd PM Blueprint",0,"A3PL_File2",0,true,true,true,true,true,"", [0,0,0], ""],
     ["Blueprint_17Rnd_9x19_Mag","17Rnd 9x19 Blueprint",0,"A3PL_File2",0,true,true,true,true,true,"", [0,0,0], ""],
     ["Blueprint_16Rnd_9x21_green_Mag","16Rnd Green Blueprint",0,"A3PL_File2",0,true,true,true,true,true,"", [0,0,0], ""],
     ["Blueprint_16Rnd_9x21_red_Mag","16Rnd Red Blueprint",0,"A3PL_File2",0,true,true,true,true,true,"", [0,0,0], ""],

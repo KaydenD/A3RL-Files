@@ -176,7 +176,7 @@
 ["A3PL_Admin_InventoryCombo", {
 	_display = findDisplay 98;
 	_selectedInventory = _display displayCtrl 2101;
-	_inventories = ["Player","Chemical Plant","Steel Mill","Oil Refinery","Weapon Factory","Legal Weapon Factory","Black Market Trader","Food Processing plant","Goods Factory","Clothing Factory","Car Parts Factory","Vehicle Factory","Marine Factory","Aircraft Factory"];
+	_inventories = ["Player","Chemical Plant","Steel Mill","Oil Refinery","Illegal Weapon Factory","Legal Weapon Factory","Black Market Trader","Food Processing plant","Goods Factory","Clothing Factory","Car Parts Factory","Vehicle Factory","Marine Factory","Aircraft Factory"];
 
 	{
 		lbAdd [2101,_x];

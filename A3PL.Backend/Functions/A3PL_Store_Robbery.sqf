@@ -83,8 +83,8 @@
 		if(_reward2 < 4) then {_reward2 = 4;}; // min magazine reward = 2
 		if(_reward2 > 15) then {_reward2 = 15;}; // max magazine reward = 15
 
-		["Blueprint_Glock",_reward] call A3PL_Inventory_add;
-		["Blueprint_16Rnd_9x21_Mag",_reward2] call A3PL_Inventory_add;
+		["Blueprint_Pistol_Illegal",_reward] call A3PL_Inventory_add;
+		["Blueprint_Pistol_Ammo_Illegal",_reward2] call A3PL_Inventory_add;
 		[format ["System: You received %1x glock blueprints and %2 glock magazines!",str(_reward),str(_reward2)],Color_Green] call A3PL_Player_Notification;
 	};
 

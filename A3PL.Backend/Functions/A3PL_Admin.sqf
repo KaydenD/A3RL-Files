@@ -366,10 +366,12 @@
 ["A3PL_Admin_Invisible", {
 	if ((player getVariable "dbVar_AdminLevel") >= 3) then {
 		if(player getVariable ["admin_invisible",false]) then {
+			[player,"Invisible",["Disabled"]] remoteExec ["Server_Log_Advanced", 2];
 			[player,false] remoteExec ["A3PL_Lib_HideObject", 2];
 			player setVariable ["admin_invisible",false,true];
 			lbSetColor [1504, 0, [1,1,1,1]];
 		} else {
+			[player,"Invisible",["Enabled"]] remoteExec ["Server_Log_Advanced", 2];
 			[player,true] remoteExec ["A3PL_Lib_HideObject", 2];
 			player setVariable ["admin_invisible",true,true];
 			lbSetColor [1504, 0, [1,.8,0,1]];
@@ -381,6 +383,7 @@
 
 ["A3PL_Admin_RestartSoon", {
 	if ((player getVariable "dbVar_AdminLevel") >= 5) then {
+		[player,"Server Restart",["Server Restart"]] remoteExec ["Server_Log_Advanced", 2];
 		[] remoteExec ["Server_Core_Restart",2];
 	} else {
 		["System: You don't have permission to execute this command!",Color_Red] call A3PL_Player_Notification;
@@ -390,6 +393,7 @@
 ["A3PL_Admin_VirtualArsenal", {
 	if ((player getVariable "dbVar_AdminLevel") >= 3) then {
 		closeDialog 0;
+		[player,"VA Open",[getUnitLoadout player]] remoteExec ["Server_Log_Advanced", 2];
 		["Open",true] spawn BIS_fnc_arsenal;
 	} else {
 		["System: You don't have permission to execute this command!",Color_Red] call A3PL_Player_Notification;
@@ -907,6 +911,7 @@
 	if ((player getVariable "dbVar_AdminLevel") >= 3) then {
 		if(pVar_MapPlayerMarkersOn) then
 		{
+			[player,"Player Markers",["Disbaled"]] remoteExec ["Server_Log_Advanced", 2];
 			pVar_MapPlayerMarkersOn = false;
 			A3PL_Admin_MapMarkersEnabled = false;
 
@@ -1011,6 +1016,7 @@
 			};
 		};
 		[player,"mapmarkers",[A3PL_Admin_MapMarkersEnabled]] remoteExec ["Server_AdminLoginsert", 2];
+		[player,"Player Markers",["Enabled"]] remoteExec ["Server_Log_Advanced", 2];
 	} else {
 		["You don't have permission to execute this command!",Color_Red] call A3PL_Player_Notification;
 	};
@@ -1242,7 +1248,8 @@ File: A3PL_Debug.sqf
 		case "Local Execute": {_remoteExecType = clientOwner};
 		default {_remoteExecType = clientOwner};
 	};
-
+	
+	[player,_chosenExecType,[_debugText]] remoteExec ["Server_Log_Advanced", 2];
 	[_debugText] remoteExec ["A3PL_Debug_ExecuteCompiled",_remoteExecType];
 },false,true] call Server_Setup_Compile;
 
@@ -1254,5 +1261,4 @@ File: A3PL_Debug.sqf
 	if (_debugText == "Nothing") exitWith {};
 
 	call compile _debugText;
-	[player,"Debug",[_debugText]] remoteExec ["Server_AdminLoginsert", 2];
 },false,true] call Server_Setup_Compile;

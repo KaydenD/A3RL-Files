@@ -560,7 +560,7 @@ Config_Shops_Items =
             ["vehicle","A3PL_Pierce_Heavy_Ladder",35000,0],
             ["vehicle","A3PL_Pierce_Pumper",35000,0]
         ],
-        {[2942.43,5891.42,-0.75]}
+        {[2220.41,5175.78,-0.75]}
     ],
 
 		[
@@ -575,7 +575,7 @@ Config_Shops_Items =
 						["headgear","A3PL_DMV_Cap",24,0],
 						["item","roadcones",100,0]
 				],
-				{[2942.43,5891.42,-0.75]}
+				{[2220.41,5175.78,-0.75]}
 		],
 
 		[
@@ -671,7 +671,7 @@ Config_Shops_Items =
             ["vehicle","A3PL_Silverado_PD",25000,0],
             ["vehicle","A3PL_VetteZR1_PD",35000,0]
         ],
-        {[2942.43,5891.42,-0.75]}
+        {[2220.41,5175.78,-0.75]}
     ],
     [
         "Shop_FAA_Supplies_Vendor",

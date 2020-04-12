@@ -2236,6 +2236,7 @@ Config_GenArray =
 	localize"STR_INTSECT_CONVSTOLMONEY", //Convert stolen money
 	"Start working as the Mafia",
 	"Access Mafia Supplies",
+	"Access Criminal Supplies",
 
 	"Access Gem Stone Shop",
 	"Buy/Sell halloween items with Candy",

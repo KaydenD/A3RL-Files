@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={6053.9419,21.593603,6833.7202};
-		dir[]={0.96255767,-0.21719122,-0.16223578};
-		up[]={0.21419738,0.97612321,-0.036102548};
-		aside[]={-0.16620354,2.7008355e-007,-0.98609793};
+		pos[]={10982.49,5.5545325,8335.8242};
+		dir[]={-0.72036803,-0.48302418,-0.49779597};
+		up[]={-0.39738494,0.87559611,-0.27460518};
+		aside[]={-0.56851143,2.7753413e-007,0.82269782};
 	};
 };
 binarizationWanted=0;
@@ -30399,16 +30399,6 @@ class Mission
 		};
 		class Item682
 		{
-			dataType="Marker";
-			position[]={10531.519,18.32262,9194.6455};
-			name="mafia_marker";
-			text=" MAFIA NPC";
-			type="A3PL_Markers_Prison";
-			id=2325;
-			atlOffset=3.6992588;
-		};
-		class Item683
-		{
 			dataType="Group";
 			side="Civilian";
 			class Entities
@@ -30494,7 +30484,7 @@ class Mission
 			id=2326;
 			atlOffset=4.7683716e-007;
 		};
-		class Item684
+		class Item683
 		{
 			dataType="Marker";
 			position[]={3452.5969,3.4590001,7518.0332};
@@ -30505,7 +30495,7 @@ class Mission
 			id=2328;
 			atlOffset=2.0980835e-005;
 		};
-		class Item685
+		class Item684
 		{
 			dataType="Group";
 			side="Civilian";
@@ -30578,7 +30568,7 @@ class Mission
 			};
 			id=2329;
 		};
-		class Item686
+		class Item685
 		{
 			dataType="Marker";
 			position[]={6047.2378,5.8779998,7481.3511};
@@ -30590,82 +30580,7 @@ class Mission
 			id=2331;
 			atlOffset=0.050236225;
 		};
-		class Item687
-		{
-			dataType="Group";
-			side="Civilian";
-			class Entities
-			{
-				items=1;
-				class Item0
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={10531.425,14.671225,9194.1113};
-						angles[]={0,5.8948669,0};
-					};
-					side="Civilian";
-					flags=7;
-					class Attributes
-					{
-						init="call{if (isServer) then { this enableSimulationGlobal false; this disableAI ""ALL""; this allowDamage false; this addUniform ""A3PL_Moonshine_Willy_Uniform""; this setFace ""GreekHead_A3_04"";};}";
-						name="npc_mafia";
-					};
-					id=2333;
-					type="C_man_w_worker_F";
-					atlOffset=0.035845757;
-					class CustomAttributes
-					{
-						class Attribute0
-						{
-							property="speaker";
-							expression="_this setspeaker _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male04GRE";
-								};
-							};
-						};
-						class Attribute1
-						{
-							property="pitch";
-							expression="_this setpitch _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
-									value=1.02;
-								};
-							};
-						};
-						nAttributes=2;
-					};
-				};
-			};
-			class Attributes
-			{
-			};
-			id=2332;
-			atlOffset=0.035845757;
-		};
-		class Item688
+		class Item686
 		{
 			dataType="Group";
 			side="Civilian";
@@ -30740,7 +30655,7 @@ class Mission
 			id=2334;
 			atlOffset=0.24300003;
 		};
-		class Item689
+		class Item687
 		{
 			dataType="Object";
 			class PositionInfo
@@ -30757,7 +30672,7 @@ class Mission
 			type="Land_A3PL_BusStop";
 			atlOffset=-0.011854172;
 		};
-		class Item690
+		class Item688
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -30814,7 +30729,7 @@ class Mission
 				nAttributes=2;
 			};
 		};
-		class Item691
+		class Item689
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -30871,7 +30786,7 @@ class Mission
 				nAttributes=2;
 			};
 		};
-		class Item692
+		class Item690
 		{
 			dataType="Marker";
 			position[]={11940.513,5.8007345,8474.6992};
@@ -30883,7 +30798,7 @@ class Mission
 			id=2382;
 			atlOffset=-1.7448974;
 		};
-		class Item693
+		class Item691
 		{
 			dataType="Marker";
 			position[]={11940.515,5.8027344,8474.6914};
@@ -30893,7 +30808,7 @@ class Mission
 			id=2383;
 			atlOffset=-1.7428975;
 		};
-		class Item694
+		class Item692
 		{
 			dataType="Object";
 			class PositionInfo
@@ -30935,7 +30850,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item695
+		class Item693
 		{
 			dataType="Marker";
 			position[]={8333.5762,7.546,7014.106};
@@ -30950,7 +30865,7 @@ class Mission
 			id=1774;
 			atlOffset=0.00036811829;
 		};
-		class Item696
+		class Item694
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -31040,7 +30955,7 @@ class Mission
 				nAttributes=4;
 			};
 		};
-		class Item697
+		class Item695
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -31130,7 +31045,7 @@ class Mission
 				nAttributes=4;
 			};
 		};
-		class Item698
+		class Item696
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -31219,6 +31134,92 @@ class Mission
 				};
 				nAttributes=4;
 			};
+		};
+		class Item697
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={10980.487,3.4732225,8334.7236};
+						angles[]={0,6.2339058,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						init="call{if (isServer) then { this enableSimulationGlobal false; this disableAI ""ALL""; this allowDamage false; this addUniform ""A3PL_Moonshine_Willy_Uniform""; this setFace ""GreekHead_A3_04"";};}";
+						name="npc_crime";
+					};
+					id=2333;
+					type="C_man_w_worker_F";
+					atlOffset=-0.011999846;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male04GRE";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.02;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=2332;
+			atlOffset=-0.011999846;
+		};
+		class Item698
+		{
+			dataType="Marker";
+			position[]={10980.749,18.323,8337.2832};
+			name="crime_marker";
+			text="Crime Base";
+			type="A3PL_Markers_Prison";
+			colorName="ColorRed";
+			id=2325;
+			atlOffset=14.839216;
 		};
 	};
 };

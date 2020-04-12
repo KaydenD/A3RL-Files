@@ -972,6 +972,14 @@
 
 [
 	"",
+	"Access Criminal Supplies",
+	{
+		["Shop_CriminalBase"] call A3PL_Shop_Open;
+	}
+],
+
+[
+	"",
 	"Spawn DMV Tow Truck",
 	{
 		private ["_whitelist"];

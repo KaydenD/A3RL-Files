@@ -301,8 +301,9 @@ Config_IntersectArray =
 	["spine3","Open Silverton CCTV",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == NPC_Cameras_1}], //CCTV
 	["spine3","Open Elk City CCTV",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == NPC_Cameras_2}], //CCTV
 	["spine3","Open Central CCTV",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == NPC_Cameras_3}], //CCTV
-	["spine3","Start working as the Mafia",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == npc_mafia}], //Mafia sign on
-	["spine3","Access Mafia Supplies",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == npc_mafia}], //Mafia supplies
+	//["spine3","Start working as the Mafia",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == npc_mafia}], //Mafia sign on
+	//["spine3","Access Mafia Supplies",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == npc_mafia}], //Mafia supplies
+	["spine3","Access Criminal Supplies",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == npc_crime}], //Criminal Base Shop
 	["spine3","Chop Nearest Vehicle",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == npc_chopshop}], //Chop Vehicle
 
 

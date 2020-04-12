@@ -586,38 +586,6 @@ Config_Shops_Items =
 				{[3520.06,7622.76,2]}
 		],
 
-		[
-				"Shop_Mafia",
-				[
-					["item","v_lockpick",750,250],
-					["item","drill_bit",10000,5000],
-		            ["backpack","A3PL_Backpack_Drill",14000,12000],
-		            ["backpack","A3PL_Backpack_Money",6000,4000],
-		            ["item","Blueprint_Pistol_Illegal",8000,0],
-					["item","Blueprint_Pistol_Ammo_Illegal",2000,0],
-					["item","diamond_tourmaline_ill",3300,3300],
-					["item","diamond_aqua_ill",3500,3500],
-					["item","diamond_alex_ill",3750,3750],
-					["item","diamond_sapphire_ill",4000,4000],
-					["item","diamond_ruby_ill",6000,6000],
-					["item","diamond_emerald_ill",10000,10000],
-					["item","diamond_ill",25000,25000],
-					["item","zipties",1000,500],
-					["item","turtle",999999999,15000],
-					["item","seed_marijuana",200,100],
-					["item","weed_5g",999999999,1000],
-					["item","weed_50g",999999999,7500],
-					["item","weed_100g",999999999,17000],
-					["item","Blueprint_Rangemaster_belt",1000,0],
-					["item","Blueprint_Rangefinder",1000,0],
-					["item","Blueprint_balaclava_goggles",750,0],
-					["item","Blueprint_balaclavacom_goggles",750,0],
-					["item","Blueprint_Anon_mask",750,0],
-					["item","Blueprint_Glock",12000,8000],
-					["item","Blueprint_17Rnd_9x19_Mag",4000,2000]
-				],
-				{[3520.06,7622.76,2]}
-		],
 
     [
         "Shop_SD_Supplies_Vendor",
@@ -969,8 +937,19 @@ Config_Shops_Items =
 	[
 		"Shop_BP_Vendor",
 		[
-				["item","Blueprint_Pistol_Legal",12000,0],
+				["item","Blueprint_Pistol_Legal",8000,0],
 				["item","Blueprint_Pistol_Legal_Ammo",100,0]
+		],
+		{[6105.3,7367.8,0.2]}
+	],
+
+	[
+		"Shop_CriminalBase",
+		[
+				["item","Blueprint_Pistol_Illegal",15000,0],
+				["item","Blueprint_Pistol_Ammo_Illegal",3000,0],
+				["item","v_lockpick",3000,0],
+				["item","zipties",10000,0]
 		],
 		{[6105.3,7367.8,0.2]}
 	],
@@ -1080,7 +1059,7 @@ Config_Shops_Items =
             ["item","Blueprint_H_ShemagOpen_tan",1000,0],
             ["item","Blueprint_H_Shemag_olive_hs",1000,0],
             ["item","Blueprint_Pistol_Illegal",12000,0],
-			["item","Blueprint_Pistol_Ammo_Illegal",3000,0],
+			["item","Blueprint_Pistol_Ammo_Illegal",2000,0],
 			["item","Blueprint_SMG",100000,0]
         ],
         {ASLToATL (Ship_BlackMarket modelToWorld [-1,9,-4.4])}

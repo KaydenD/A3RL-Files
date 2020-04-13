@@ -832,7 +832,7 @@ Server_Setup_Compile = {
 	_ownsHouse = false;
 	{
 		_houseVar = _x getVariable "owner";
-		_roommates = _x getVariable "roommates";
+		_roommates = _x getVariable ["roommates", []];
 		if ((_houseVar select 0) == _uid || _uid IN _roommates) exitwith
 		{
 			_ownsHouse = true;

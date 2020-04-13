@@ -319,9 +319,16 @@
 	_intersect = player_objIntersect;
 	if (isNull _intersect) exitwith {};
 	if (!(typeOf _intersect == "Land_A3PL_storage")) exitwith {};
+	
+	_storeableObjects = [];
+	{ 
+  		if!(_x select 8) then { 
+   			_storeableObjects pushBack (_x select 3);  
+		}; 
+	} forEach Config_Items;
 
 	//Look for nearest vehicle
-	_near = nearestObjects [_intersect,["Land_CampingChair_V1_F"],9];
+	_near = nearestObjects [_intersect,_storeableObjects,9];
 	if (count _near == 0) exitwith
 	{
 		[1] call A3PL_Storage_ObjectStoreResponse;

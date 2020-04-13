@@ -18,7 +18,7 @@ class Dialog_NewPlayer
 		class struc_header: RscStructuredText
 		{
 			idc = 1100;
-			text = "Welcome to A3PL!<br />Our system has detected you are a new player<br />Please enter the first and last name for your new character!";
+			text = "Welcome to A3RL!<br />Our system has detected you are a new player<br />Please enter the first and last name for your new character!";
 			x = 0.365937 * safezoneW + safezoneX;
 			y = 0.346 * safezoneH + safezoneY;
 			w = 0.268125 * safezoneW;

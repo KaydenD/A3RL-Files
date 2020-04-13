@@ -17,7 +17,7 @@ Config_Items =
 	["zipties", "Zipties", 1, "A3PL_Handcuffs", 0, true, true, true, true, true, "", [0,0,0], ""],
 	["headbag", "Headbag", 1, "weaponholdersimulated", 0, true, true, true, true, true, "", [-.1,-.55,.65], "", true, "A3RL_Headbag"],
 	["dirty_cash", "Dirty Cash", 0.01, "A3PL_Money", 0, true, true, true, true, true, "", [0,0,0], ""],
-  ["gas_hose","Gas Hose",3,"A3PL_GasHose",0,true,true,true,true,true,"", [0,0,0], ""],
+    ["gas_hose","Gas Hose",3,"A3PL_GasHose",0,true,true,true,true,true,"", [0,0,0], ""],
 
 	["v_lockpick","Vehicle Lockpick",0.1,"A3PL_Grinder",0,true,true,true,true,true,"", [0,0,0], ""],
 

@@ -183,6 +183,7 @@
 
 	//set owner var on object
 	_object setVariable ["owner",[_uid],true];
+	_object setVariable ["roommates",[],true];
 
 	//take money
 	if (_takeMoney) then

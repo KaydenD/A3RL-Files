@@ -351,13 +351,19 @@ A3PL_Interaction_Options =
 	[
 		"Lockpick",
 		{[] spawn A3RL_EvidenceLocker_Lockpick;},
-		{((typeOf cursorObject) == "B_supplyCrate_F")}
+		{((typeOf cursorObject) == "B_supplyCrate_F") && (cursorObject getVariable ["locked", true])}
+	],
+	
+	[
+		"Virtual Inventory",
+		{[] spawn A3RL_EvidenceLocker_Open;},
+		{((typeof cursorObject) == "B_supplyCrate_F") && (!(cursorObject getVariable ["locked", true]))}
 	],
 	
 	[
 		"Secure",
 		{[] spawn A3RL_EvidenceLocker_Secure;},
-		{((typeof cursorObject) == "B_supplyCrate_F") && (!(cursorObject getVariable "locked")) && (player getVariable["job", "unemployed"] == "usms")}
+		{((typeof cursorObject) == "B_supplyCrate_F") && (!(cursorObject getVariable ["locked", true])) && (player getVariable["job", "unemployed"] == "usms")}
 	],
 
 	[
@@ -1128,7 +1134,7 @@ A3PL_Interaction_Options =
 		{
 			[] spawn A3PL_Resources_StartDigging;
 		},
-		{currentWeapon player == "A3PL_Shovel" && (vehicle player == player)&& ((surfaceType getpos player) IN ["#Fishers_Sand"])}
+		{currentWeapon player == "A3PL_Shovel" && (vehicle player == player)&& ((surfaceType getpos player) IN ["#cype_beach"])}
 	],
 
 	[

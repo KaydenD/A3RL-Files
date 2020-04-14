@@ -1102,6 +1102,14 @@ Config_Factories =
         ["f_Doc_Orange","","inh","inh","A3PL_doc_orange_Uniform","uniform",true,5,[["Polyester",1],["Blueprint_Doc_Uniform",1]],1,"police"],
         ["f_Doc_Red","","inh","inh","A3PL_doc_red_Uniform","uniform",true,5,[["Polyester",1],["Blueprint_Doc_Uniform",1]],1,"police"],
         ["f_Doc_Pink","","inh","inh","A3PL_doc_pink_Uniform","uniform",true,5,[["Polyester",1],["Blueprint_Doc_Uniform",1]],1,"police"],
+		["f_A3PL_Marshall_FGTF_Uniform","","inh","inh","A3PL_Marshall_FGTF_Uniform","uniform",true,5,[["Polyester",1],["Blueprint_Doc_Uniform",1]],1,"police"],
+		["f_A3PL_FI_Marshal_Cadet_Uniform","","inh","inh","A3PL_FI_Marshal_Cadet_Uniform","uniform",true,5,[["Polyester",1],["Blueprint_Doc_Uniform",1]],1,"police"],
+		["f_A3PL_FI_Marshal_DeputyDirector_Uniform","","inh","inh","A3PL_FI_Marshal_DeputyDirector_Uniform","uniform",true,5,[["Polyester",1],["Blueprint_Doc_Uniform",1]],1,"police"],
+		["f_A3PL_FI_Marshal_Director_Uniform","","inh","inh","A3PL_FI_Marshal_Director_Uniform","uniform",true,5,[["Polyester",1],["Blueprint_Doc_Uniform",1]],1,"police"],
+		["f_A3PL_FI_Marshal_HeadMarshal_Uniform","","inh","inh","A3PL_FI_Marshal_HeadMarshal_Uniform","uniform",true,5,[["Polyester",1],["Blueprint_Doc_Uniform",1]],1,"police"],
+		["f_A3PL_FI_Marshal_Marshal_Uniform","","inh","inh","A3PL_FI_Marshal_Marshal_Uniform","uniform",true,5,[["Polyester",1],["Blueprint_Doc_Uniform",1]],1,"police"],
+		["f_A3PL_FI_Marshal_SeniorMarshal_Uniform","","inh","inh","A3PL_FI_Marshal_SeniorMarshal_Uniform","uniform",true,5,[["Polyester",1],["Blueprint_Doc_Uniform",1]],1,"police"],
+		["f_A3PL_FI_Marshal_Supervisor_Uniform","","inh","inh","A3PL_FI_Marshal_Supervisor_Uniform","uniform",true,5,[["Polyester",1],["Blueprint_Doc_Uniform",1]],1,"police"],
         ["f_A3PL_DOC_Duty_Belt","","inh","inh","A3PL_DOC_Duty_Belt","vest",true,5,[["Polyester",1],["Blueprint_Sheriff_Uniform",1]],1,""],
         ["f_A3PL_Detective_BlueBlue_Uniform","","inh","inh","A3PL_Detective_BlueBlue_Uniform","uniform",true,5,[["Polyester",1],["Blueprint_DOJ_Uniform",1]],1,""],
         ["f_A3PL_Detective_White_Uniform","","inh","inh","A3PL_Detective_White_Uniform","uniform",true,5,[["Polyester",1],["Blueprint_DOJ_Uniform",1]],1,""],
@@ -1208,7 +1216,9 @@ Config_Factories =
         ["f_Zipties","","inh","inh","zipties","item",true,0,[["cash",1]],1,""],
         ["f_v_grinder","","inh","inh","v_lockpick","item",true,0,[["cash",1]],1,""],
         ["f_candy","","inh","inh","candy","item",true,0,[["cash",1]],1,""],
-        ["f_gashose","","inh","inh","gas_hose","item",true,0,[["cash",1]],1,""]
+        ["f_gashose","","inh","inh","gas_hose","item",true,0,[["cash",1]],1,""],
+		["f_A3PL_Taser","","inh","inh","A3PL_Taser","weapon",true,60,[["Steel",200],["Blueprint_Pistol_Legal",1]],1,""],
+		["f_A3PL_TaserMag","","inh","inh","A3PL_TaserMag","magazine",true,60,[["Steel",200],["Blueprint_Pistol_Legal",1]],1,""]
     ]
 ];
 publicVariable "Config_Factories";

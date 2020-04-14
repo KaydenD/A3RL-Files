@@ -407,6 +407,9 @@ Server_Setup_Compile = {
 	//Call the initial server storage
 	[] call Server_Storage_Init;
 
+	//Load Fuel in Gas Station
+	[] call Server_Hydrogen_Load;
+	
 	//Temporary Hotfix
 	//all this crap runs into post-init
 	[] spawn {
@@ -523,6 +526,9 @@ Server_Setup_Compile = {
 
 	//loop for import_export
 	["itemAdd", ["Server_Loop_IE", {[] spawn Server_IE_ShipImport;}, 2100]] call BIS_fnc_loop; //35 minutes
+	
+	//Gas Station Save
+	["itemAdd", ["Server_Loop_Server_GasSave", {[] spawn Server_Hydrogen_Save;}, 1800]] call BIS_fnc_loop; //30 minutes
 
 	//loop for animals
 	["itemAdd", ["Server_Loop_Goats",

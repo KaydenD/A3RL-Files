@@ -198,7 +198,7 @@
 			pVar_AdminPrePosition = getPosATL player;
 
 			player hideObjectGlobal true;
-
+			[player, true] call TFAR_fnc_forceSpectator;
 			if (!isObjectHidden player) then
 			{
 				[player] remoteExec ["A3PL_Lib_HideObject", 2];
@@ -230,6 +230,7 @@
 			player setposATL (missionNameSpace getVariable ['pVar_AdminPrePosition',getposATL player]);
 			pVar_AdminPrePosition = nil;
 			player hideObjectGlobal true;
+			[player, false] call TFAR_fnc_forceSpectator;
 		};
 	};
 

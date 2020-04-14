@@ -18,7 +18,7 @@
 			//wait
 			if (!Player_ActionCompleted) exitwith {["System: You are already performing an action",Color_Red] call A3PL_Player_Notification;};
 			Player_ActionCompleted = false;
-			["Grinding wheat...",3] spawn A3PL_Lib_LoadAction;
+			["Grinding wheat...",12] spawn A3PL_Lib_LoadAction;
 			while {sleep 1.5; !Player_ActionCompleted } do {};				
 			
 			//delete the wheat and grind it
@@ -42,7 +42,7 @@
 			//wait
 			if (!Player_ActionCompleted) exitwith {["System: You are already performing an action",Color_Red] call A3PL_Player_Notification;};
 			Player_ActionCompleted = false;
-			["Grinding wheat...",3] spawn A3PL_Lib_LoadAction;
+			["Grinding wheat...",12] spawn A3PL_Lib_LoadAction;
 			while {sleep 1.5; !Player_ActionCompleted } do {};				
 			
 			//delete the wheat and grind it
@@ -66,7 +66,7 @@
 			//wait
 			if (!Player_ActionCompleted) exitwith {["System: You are already performing an action",Color_Red] call A3PL_Player_Notification;};
 			Player_ActionCompleted = false;
-			["Grinding corn...",3] spawn A3PL_Lib_LoadAction;
+			["Grinding corn...",12] spawn A3PL_Lib_LoadAction;
 			while {sleep 1.5; !Player_ActionCompleted } do {};			
 			
 			//delete the wheat and grind it

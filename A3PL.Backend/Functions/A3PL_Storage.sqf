@@ -337,12 +337,15 @@
 	_nearOwner = [];
 	_uid = getPlayerUID player;
 	{
-		_var = _x getVariable "owner";
+		_var = _x getVariable ["owner", nil];
 		if (!isNil "_var") then
 		{
-			if ((_var select 0) == _uid) then
-			{
+			if(typeName _var == "ARRAY" && {_var select 0 == _uid}) then {
 				_nearOwner pushback _x;
+			} else {
+				if(_var == _uid) then {
+					_nearOwner pushback _x;
+				};
 			};
 		};
 	} foreach _near;
@@ -432,7 +435,7 @@
 	switch (_return) do
 	{
 		case 1: {_text = ["Client denied storage request, is there an object nearby?",Color_Red]};
-		case 2: {_text = ["Send request to server to spawn your object, please wait.",Color_Green]};
+		case 2: {_text = ["Send request to server to store your object, please wait.",Color_Green]};
 		case 3: {_text = ["Client denied storage request, is there any object nearby that belongs to you?",Color_Red]};
 	};
 

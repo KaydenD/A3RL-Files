@@ -5,7 +5,6 @@
 ['Server_Core_Variables', {
 	// Used in Server_A3Save
 	A3PL_RetrievedInventory = true;
-	Server_Storage_ListAll = [];
 	Server_Storage_ListVehicles = [];
 	server setVariable ['Server_DroppedItems', [], true];
 

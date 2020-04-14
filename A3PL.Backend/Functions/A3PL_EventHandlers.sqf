@@ -194,42 +194,43 @@
 	// Spectate //
 	if (_dikCode == 61) exitWith {
 		if (pVar_AdminMenuGranted) then {
-			disableSerialization;
-			pVar_AdminPrePosition = getPosATL player;
-
-			player hideObjectGlobal true;
-
-			if (!isObjectHidden player) then
-			{
-				[player] remoteExec ["A3PL_Lib_HideObject", 2];
-				uisleep 0.5;
-			};
-
-			["Initialize", [player, [], false, true, true, false, true, true, true, true]] call BIS_fnc_EGSpectator;
-			//[player,"spectate",[format ["ENABLED"]]] remoteExec ["Server_AdminLoginsert", 2];
-
-			_spectatorCamera = ["GetCamera"] call BIS_fnc_EGSpectatorCamera;
-			_magicCarpet = "logic" createVehicleLocal (getpos _spectatorCamera);
-			player attachTo [_magicCarpet,[0,0,0]];
-			while {!isNull (findDisplay 60492)} do
-			{
-				_magicCarpet setPosATL (getPosATL _spectatorCamera);
-				uiSleep 0.1;
-			};
-
 			[] spawn {
+				disableSerialization;
+				pVar_AdminPrePosition = getPosATL player;
+
+				player hideObjectGlobal true;
+				[player, true] call TFAR_fnc_forceSpectator;
+				if (!isObjectHidden player) then
+				{
+					[player] remoteExec ["A3PL_Lib_HideObject", 2];
+					uisleep 0.5;
+				};
+
+				["Initialize", [player, [], false, true, true, false, true, true, true, true]] call BIS_fnc_EGSpectator;
+				//[player,"spectate",[format ["ENABLED"]]] remoteExec ["Server_AdminLoginsert", 2];
+
+				_spectatorCamera = ["GetCamera"] call BIS_fnc_EGSpectatorCamera;
+				_magicCarpet = "logic" createVehicleLocal (getpos _spectatorCamera);
+				player attachTo [_magicCarpet,[0,0,0]];
+				while {!isNull (findDisplay 60492)} do
+				{
+					_magicCarpet setPosATL (getPosATL _spectatorCamera);
+					uiSleep 0.1;
+				};
+
 				waitUntil {!isNull findDisplay 49};
 				["Terminate"] call BIS_fnc_EGSpectator;
 				[player,false] remoteExec ["A3PL_Lib_HideObject", 2];
 				(findDisplay 49) closeDisplay 1;
 				waitUntil {isNull findDisplay 49};
-			};
 
-			deleteVehicle _magicCarpet;
-			detach player;
-			player setposATL (missionNameSpace getVariable ['pVar_AdminPrePosition',getposATL player]);
-			pVar_AdminPrePosition = nil;
-			player hideObjectGlobal true;
+				deleteVehicle _magicCarpet;
+				detach player;
+				player setposATL (missionNameSpace getVariable ['pVar_AdminPrePosition',getposATL player]);
+				pVar_AdminPrePosition = nil;
+				player hideObjectGlobal true;
+				[player, false] call TFAR_fnc_forceSpectator;
+			};
 		};
 	};
 

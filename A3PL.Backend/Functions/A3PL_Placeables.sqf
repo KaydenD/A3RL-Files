@@ -196,11 +196,7 @@
 	{
 		if (_x select 0 == _item) exitWith
 		{
-			if(_car) then {
-				_offset = _x select 1;
-			} else {
-				_offset = _x select 2;
-			};
+			_offset = _x select 1;
 		};
 	} foreach Config_Items_ZOffset;
 	_offset;

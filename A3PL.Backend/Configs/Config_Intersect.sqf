@@ -1269,10 +1269,15 @@ Config_IntersectArray =
 	["gasHose",localize"STR_INTSECT_GRABGASHOSE",_dir+"IGUI\Cfg\Actions\take_ca.paa",{true}], //Grab Gas Hose
 	["gasHose",localize"STR_INTSECT_TOGGLEFUELP",_dir+"IGUI\Cfg\Actions\take_ca.paa",{true}], //Toggle Fuel Pump
 	["gasTurn",localize"STR_INTSECT_TOGGLEFUELP",_dir+"IGUI\Cfg\Actions\take_ca.paa",{true}], //Toggle Fuel Pump
+	
 	["hoseback1",localize"STR_INTSECT_RETGASHOSE",_dir+"IGUI\Cfg\Actions\take_ca.paa",{true}], //Return Gas Hose
+	["hoseback1",localize"STR_INTSECT_GRABGASHOSE",_dir+"IGUI\Cfg\Actions\take_ca.paa",{true}], //Grab House
 	["hoseback2",localize"STR_INTSECT_RETGASHOSE",_dir+"IGUI\Cfg\Actions\take_ca.paa",{true}], //Return Gas Hose
+	["hoseback2",localize"STR_INTSECT_GRABGASHOSE",_dir+"IGUI\Cfg\Actions\take_ca.paa",{true}], //Grab House
 	["hoseback3",localize"STR_INTSECT_RETGASHOSE",_dir+"IGUI\Cfg\Actions\take_ca.paa",{true}], //Return Gas Hose
+	["hoseback3",localize"STR_INTSECT_GRABGASHOSE",_dir+"IGUI\Cfg\Actions\take_ca.paa",{true}], //Grab House
 	["hoseback4",localize"STR_INTSECT_RETGASHOSE",_dir+"IGUI\Cfg\Actions\take_ca.paa",{true}], //Return Gas Hose
+	["hoseback4",localize"STR_INTSECT_GRABGASHOSE",_dir+"IGUI\Cfg\Actions\take_ca.paa",{true}], //Grab House
 	["gastank",localize"STR_INTSECT_CONGASHOSE",_dir+"IGUI\RscIngameUI\RscUnitInfo\fuelwarning_ca.paa",{typeOf Player_Item IN ["A3PL_Gas_Hose","A3PL_GasHose"]}], //Connect Gas Hose
 	["gastank",localize"STR_INTSECT_USEJERRYC",_dir+"IGUI\RscIngameUI\RscUnitInfo\fuelwarning_ca.paa",{player_itemClass == "jerrycan"}], //Use jerrycan
 	["inspect_hitfuel1",localize"STR_INTSECT_CONGASHOSE",_dir+"IGUI\RscIngameUI\RscUnitInfo\fuelwarning_ca.paa",{typeOf Player_Item IN ["A3PL_Gas_Hose","A3PL_GasHose"]}], //Connect Gas Hose

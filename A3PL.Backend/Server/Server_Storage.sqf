@@ -303,7 +303,7 @@
 	_player = param [0,ObjNull];
 	_obj = param [1,ObjNull];
 
-	_var = _x getVariable ["owner", nil];
+	_var = _obj getVariable ["owner", nil];
 	if(isNil "_var") exitWith {};
 
 	if(typeName _var == "ARRAY") exitWith {
@@ -314,7 +314,7 @@
 	};
 
 	_id = [7] call Server_Housing_GenerateID;
-	_query = format ["INSERT INTO objects (id,type,class,uid,plystorage) VALUES ('%1','object','%2','%3','1')",_id,typeOf _obj,_uid];
+	_query = format ["INSERT INTO objects (id,type,class,uid,plystorage) VALUES ('%1','object','%2','%3','1')",_id,typeOf _obj,getPlayerUID _player];
 	[_query,1] spawn Server_Database_Async;
 	deleteVehicle _obj;
 },true] call Server_Setup_Compile;

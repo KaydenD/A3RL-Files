@@ -1036,4 +1036,12 @@
 	{
 		[player_objintersect] call A3PL_Hunting_Skin;
 	}
+],
+
+[
+	"",
+	"Purchase Drivers License($500)",
+	{
+		[] call A3RL_License_Buy;
+	}
 ]

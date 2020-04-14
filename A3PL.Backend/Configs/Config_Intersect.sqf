@@ -368,6 +368,9 @@ Config_IntersectArray =
 	["spine3","Access USCG Car Shop",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == NPC_uscg_vehicles}],
 	["spine3","Access USCG Boat Shop",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == NPC_uscg_boats}],
 	["spine3","Access USCG Aircraft Shop",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == NPC_uscg_aircraft}],
+	
+	//DMV
+	["spine3","Purchase Drivers License($500)",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == NPC_DMV && !("driver" IN (player getVariable ["licenses",[]]))}],
 
 	//bank drill
 	["pilecash",localize"STR_INTSECT_STVAULTMON",_dir+"IGUI\Cfg\Actions\take_ca.paa",{true}], //Steal Vault Money
@@ -2652,7 +2655,9 @@ Config_GenArray =
 	"Open/Close Locker",
 	"Store in locker",
 	"Rent locker",
-	"SFP Shop"
+	"SFP Shop",
+	
+	"Purchase Drivers License($500)"
 ];
 publicVariable "Config_GenArray";
 

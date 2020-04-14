@@ -266,7 +266,7 @@
 	"",
 	"Start/Stop working for Fishers Island Postal Service!",
 	{
-		[] spawn A3PL_Delivery_StartJob;
+		[player_objintersect] spawn A3PL_Delivery_StartJob;
 	}
 ],
 

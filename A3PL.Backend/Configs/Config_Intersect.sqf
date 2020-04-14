@@ -339,7 +339,7 @@ Config_IntersectArray =
 	["spine3","Access Hemlock Huck's shop",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect IN [NPC_Hemlock]}],
 	["spine3","Access Waste Management shop",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect IN [NPC_WasteManagement]}],
 	["spine3","Start/Stop working for Waste Management!",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect IN [NPC_WasteManagement]}],
-	["spine3","Start/Stop working for Fishers Island Postal Service!",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect IN [npc_mailman]}],
+	["spine3","Start/Stop working for Fishers Island Postal Service!",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect IN [npc_mailman_1,npc_mailman_2,npc_mailman_3]}],
 	["spine3","Start/Stop working for the Great Ratsby!",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect IN [NPC_Exterminator]}],
 	["spine3","Start/Stop renting a go-kart!",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect IN [NPC_Karts]}],
 

@@ -1,5 +1,7 @@
 ["A3PL_Delivery_StartJob",
 {
+	private["_building"];
+	_building = _this select 0;
 	if(!([] call A3PL_Player_AntiSpam)) exitWith {};
 	if ((player getVariable ["job","unemployed"]) == "deliver") exitwith {["System: You stopped working for Fishers Island Postal Service!",Color_Red]; [] call A3PL_NPC_LeaveJob};
 	player setVariable ["job","deliver"];
@@ -9,7 +11,12 @@
 	player addHeadGear "A3PL_Mailman_Cap";
 
 	sleep (random 2 + 2);
-	["A3PL_Mailtruck",[6056.77,7393.57,0],"DELIVER",1800] spawn A3PL_Lib_JobVehicle_Assign;
+	switch(_building) do 
+	{
+		case npc_mailman_1: {["A3PL_Mailtruck",[6056.77,7393.57,0],"DELIVER",1800] spawn A3PL_Lib_JobVehicle_Assign;};
+		case npc_mailman_2: {["A3PL_Mailtruck",[10315.3,8554.78,0],"DELIVER",1800] spawn A3PL_Lib_JobVehicle_Assign;};
+		case npc_mailman_3: {["A3PL_Mailtruck",[4140.56,6318.7,0],"DELIVER",1800] spawn A3PL_Lib_JobVehicle_Assign;};
+	};
 
 	sleep (random 2 + 2);
 	[] call A3PL_Delivery_GenPackage;

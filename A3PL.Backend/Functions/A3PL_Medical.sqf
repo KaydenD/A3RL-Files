@@ -63,7 +63,7 @@
 	A3PL_HitTime = nil;
 	_unit setVariable ["getHit",nil,false];
 
-	if((A3PL_MedicalVar_Unconscious) && (player getVariable "TimeRemaining" < 480)) then {player setVariable ["DoubleTapped",true,true];};
+	if((!(isNil "A3PL_MedicalVar_Unconscious")) && (player getVariable "TimeRemaining" < 480)) then {player setVariable ["DoubleTapped",true,true];};
 
 	//find what selection was hit
 	_tmpDmg = 0;

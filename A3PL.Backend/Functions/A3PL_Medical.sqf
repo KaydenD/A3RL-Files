@@ -411,6 +411,7 @@
 	_player = param [0,objNull];
 	_var = param [1,""];
 	_vars = _player getVariable ["A3PL_MedicalVars",[MAXBLOODLVL,"120/80",37]];
+	_return = "Error";
 	switch (_var) do
 	{
 		case ("blood"):

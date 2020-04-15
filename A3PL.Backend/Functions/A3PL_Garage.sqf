@@ -173,6 +173,8 @@
 		_veh setObjectMaterial [0,A3PL_Garage_MyMaterial];
 	};
 
+	_veh remoteExec ["Server_Garage_Update_Data", 2];
+
 	//clear any temp upgrades
 	if ((missionNameSpace getVariable ["A3PL_Garage_tUpgrade",""]) != "") then
 	{

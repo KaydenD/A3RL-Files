@@ -128,7 +128,7 @@
 		{
 			private ["_query","_id"];
 			_id = _obj getVariable ["owner",nil];
-			_isCustomPlate = _obj getVariable "isCustomPlate";
+			_isCustomPlate = _obj getVariable ["isCustomPlate",0];
 			if (isNil "_id") exitwith {};
 			_id = _id select 1;
 
@@ -158,7 +158,7 @@
 
 		case (!isNil {_obj getVariable ["class",nil]}):
 		{
-			_obj setVariable ["owner",[_id,_buyerUID],true];
+			_obj setVariable ["owner",_buyerUID,true];
 		};
 	};
 	[_obj] call Server_Business_Sellitemstop;

@@ -541,7 +541,7 @@ class Dialog_HUD_AdminCursor
 		class RscText_1008: RscText
 		{
 			idc = 1008;
-			text = "Press F1 to cancel."; //--- ToDo: Localize;
+			text = "Press F2 to cancel."; //--- ToDo: Localize;
 			x = 0.840303 * safezoneW + safezoneX;
 			y = 0.522006 * safezoneH + safezoneY;
 			w = 0.139215 * safezoneW;

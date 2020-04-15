@@ -42,7 +42,7 @@
 	_player = param [1,objNull];
 	_id = param [2,-1];
 
-	_query = format ["UPDATE objects SET plystorage = '0' WHERE id = '%1'",_id];
+	_query = format ["DELETE FROM objects WHERE id = '%1'",_id];
 	[_query,1] spawn Server_Database_Async;
 
 	[[2],"A3PL_Storage_ObjectRetrieveResponse",_player,false] call BIS_FNC_MP;
@@ -54,7 +54,7 @@
 		[_veh] call Server_Vehicle_EnableSimulation;
 	};
 	_veh setVariable ["class",_class,true];
-	_veh setVariable ["owner",[getPlayerUID _player, _id],true];
+	_veh setVariable ["owner",getPlayerUID _player,true];
 
 },true] call Server_Setup_Compile;
 
@@ -305,13 +305,6 @@
 
 	_var = _obj getVariable ["owner", nil];
 	if(isNil "_var") exitWith {};
-
-	if(typeName _var == "ARRAY") exitWith {
-		_id = _var select 1;
-		_query = format ["UPDATE objects SET plystorage = '1' WHERE id = '%1'",_id];
-		[_query,1] spawn Server_Database_Async;
-		deleteVehicle _obj;
-	};
 
 	_id = [7] call Server_Housing_GenerateID;
 	_query = format ["INSERT INTO objects (id,type,class,uid,plystorage) VALUES ('%1','object','%2','%3','1')",_id,typeOf _obj,getPlayerUID _player];

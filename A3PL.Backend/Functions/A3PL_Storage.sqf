@@ -340,12 +340,8 @@
 		_var = _x getVariable ["owner", nil];
 		if (!isNil "_var") then
 		{
-			if(typeName _var == "ARRAY" && {_var select 0 == _uid}) then {
+			if(_var == _uid) then {
 				_nearOwner pushback _x;
-			} else {
-				if(_var == _uid) then {
-					_nearOwner pushback _x;
-				};
 			};
 		};
 	} foreach _near;
@@ -366,18 +362,21 @@
 	disableSerialization;
 	private ["_display","_control","_intersect"];
 	//Control for listbox
-	_display = findDisplay 145;
+	_display = findDisplay 58;
 	_control = _display displayCtrl 1500;
 
 	_intersect = player_objIntersect;
 	//Dont forget area check here
 	if (isNull _intersect) exitwith {closeDialog 0; ["You are not looking at the storage building", Color_Red] call A3PL_Player_Notification;};
 	if ((typeOf _intersect) != "Land_A3PL_storage") exitwith {closeDialog 0; ["You are not looking at the storage building", Color_Red] call A3PL_Player_Notification;};
-
+	systemChat (format ["%1",A3PL_Storage_ReturnArray]);
+	systemChat (format ["%1",lbCurSel _control]);
 	//ask the server to spawn this vehicle for us
 	_array = (A3PL_Storage_ReturnArray select (lbCurSel _control));
 	_id = _array select 0;
 	_class = _array select 1;
+	systemChat (format ["%1",_id]);
+	systemChat (format ["%1",_class]);
 
 	[[_class,player,_id],"Server_Storage_RetrieveObject",false,false] call BIS_FNC_MP;
 
@@ -488,6 +487,7 @@
 
 	//save a copy of _returnarray, we will use this later in another function
 	A3PL_Storage_ReturnArray = _returnArray;
+	systemChat (format ["%1", A3PL_Storage_ReturnArray]);
 }] call Server_Setup_Compile;
 
 

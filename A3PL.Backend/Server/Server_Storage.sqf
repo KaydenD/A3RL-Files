@@ -53,6 +53,7 @@
 	{
 		[_veh] call Server_Vehicle_EnableSimulation;
 	};
+	_veh setOwner (owner _player);
 	_veh setVariable ["class",_class,true];
 	_veh setVariable ["owner",getPlayerUID _player,true];
 

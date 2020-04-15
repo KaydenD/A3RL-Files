@@ -127,6 +127,7 @@ Server_Setup_Files = [
 	['Server', 'Server_Chopshop'],
 	['Server', 'Server_iPhoneX'],
 	['Server', 'Server_SpeedCam'],
+	['Server', 'Server_EvidenceLocker'],
 	['Configs', 'Config_Setup'],
 	['Configs', 'Config_Gear'],
 	['Configs', 'Config_Shops'],
@@ -209,4 +210,4 @@ if (!isServer) then
 };
 //USE THIS TO START SENDING SCRIPTS:
 //hint "SENDING SCRIPTS TO SERVER!";
-//private ["_folder"]; _folder = "A3PL.Backend"; [_folder] call (compile preprocessFileLineNumbers format ["\%1\init.sqf",_folder]);
+//private ["_folder"]; _folder = "A3RL\A3PL.Backend"; [_folder] call (compile preprocessFileLineNumbers format ["\%1\init.sqf",_folder]);

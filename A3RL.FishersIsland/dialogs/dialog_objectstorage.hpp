@@ -40,6 +40,7 @@ class Dialog_ObjectStorage
 			y = 0.68237 * safezoneH + safezoneY;
 			w = 0.103125 * safezoneW;
 			h = 0.033 * safezoneH;
+			action = "[] call A3PL_Storage_ObjectRetrieveButton";
 			colorBackground[] = {0,0,0,0};
 			colorBackgroundActive[] = {0,0,0,0};
 

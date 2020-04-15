@@ -84,7 +84,7 @@
 	_control ctrlAddeventhandler ["ButtonDown",{[false] call A3RL_EvidenceLocker_VirtualChange;}];
 
 	//allow box to be used again
-	_display displayAddEventHandler ["unload",{Evidence_Locker setVariable ["inuse",nil,true]; Evidence_Locker = nil;}];
+	_display displayAddEventHandler ["unload",{Evidence_Locker setVariable ["inuse",nil,true];}];
 
 	[_display] call A3RL_EvidenceLocker_VirtualFill;
 }] call Server_Setup_Compile;

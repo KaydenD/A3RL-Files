@@ -50,7 +50,7 @@
 		_obj attachTo [player, [0,0,0.65], "RightHand"];
 	} else
 	{
-		systemChat "attached";
+		//systemChat "attached";
 		_dir = getDir _obj;
 		_obj attachTo [player];
 		_obj setDir (_dir + (360 - (getDir player))); //Add direction and add (360-direction player)

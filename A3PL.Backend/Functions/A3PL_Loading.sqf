@@ -37,6 +37,10 @@
 		+ "<br/>"
 		+ "<t size='1' align='left' color='#00ff00'> Fixed: </t><t size='1' align='left'>Northdale Grass</t>"
 		+ "<br/>"
+		+ "<t size='1' align='left' color='#00ff00'> Fixed: </t><t size='1' align='left'>Many map issues</t>"
+		+ "<br/>"
+		+ "<t size='1' align='left' color='#00ff00'> Improved: </t><t size='1' align='left'>Server Loading Time</t>"
+		+ "<br/>"
 		//+ "<t size='1' align='left' color='#00ff00'> Deleted: </t><t size='1' align='left'>Made all ^ up</t>"
 		//+ "<br/><br/>"
 		+ "<t size='0.8' align='center'>For full changelog and more info visit the forum @ arma3realitylife.com/forums</t>";

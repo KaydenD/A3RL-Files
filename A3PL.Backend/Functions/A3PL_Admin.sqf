@@ -95,6 +95,17 @@
 		if ((_x getVariable ["adminWatch",0]) == 1) then {
 			lbSetColor [1500,_forEachIndex,[1,0,0,1]];
 		};
+
+		switch(_x getVariable["dbVar_AdminLevel", 0]) do {
+			case 1: {lbSetColor [1500,_forEachIndex,[0.5,0.05,1,1]];}; // Executive
+			case 2: {lbSetColor [1500,_forEachIndex,[0.3,0.7,0.9,1]];}; // Executive Supervisor
+			case 3: {lbSetColor [1500,_forEachIndex,[0,0,0,1]];}; // Developer
+			case 4: {lbSetColor [1500,_forEachIndex,[0,0.5,0.6,1]];}; // Chief
+			case 5: {lbSetColor [1500,_forEachIndex,[0,0.4,0.6,1]];}; // Lead Chief
+			case 6: {lbSetColor [1500,_forEachIndex,[1,0.5,0.3,1]];}; //Sub Director
+			case 7: {lbSetColor [1500,_forEachIndex,[1,1,0,1]];}; // Director
+		};
+
 		A3PL_Admin_PlayerList pushBack _x;
 	} foreach allPlayers;
 

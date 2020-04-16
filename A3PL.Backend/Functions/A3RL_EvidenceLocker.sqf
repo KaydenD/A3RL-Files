@@ -174,3 +174,14 @@
 		Evidence_Locker setVariable ["storage", ((Evidence_Locker getVariable "storage") - ["REMOVE"]), true];
 	};
 }] call Server_Setup_Compile;
+
+["A3RL_EvidenceLocker_SeizeAble", {
+	_vitems = [];
+	{ 
+		if(_x select 8) then { 
+			_vitems pushBack (_x select 3);  
+		}; 
+	} forEach Config_Items;
+
+	return _vitems;
+}] call Server_Setup_Compile;

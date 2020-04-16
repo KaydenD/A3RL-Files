@@ -177,7 +177,7 @@
 ],
 [
 	"",
-	"Access WallDecor Perk Furniture Shop",
+	"Access WallDecor Furniture Shop",
 	{
 		["Shop_Perk_WallDecor"] call A3PL_Shop_Open;
 	}

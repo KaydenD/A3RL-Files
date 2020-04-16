@@ -228,7 +228,7 @@
 		(_signs select 0) setObjectTextureGlobal [0,"\A3PL_Objects\Street\estate_sign\house_rented_co.paa"];
 	};
 
-	[_uid,"House Purchased",["House Purchased from table",_pos,_keyID,_price]] call Server_Log_New;
+	[_uid,"House Purchased",["House Purchased from table",_pos,_keyID,_price], _player getVariable "name"] call Server_Log_New;
 
 },true] call Server_Setup_Compile;
 

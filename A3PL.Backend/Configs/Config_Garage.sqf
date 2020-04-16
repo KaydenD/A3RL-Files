@@ -207,8 +207,6 @@ Config_Garage_Materials =
 [
 	["A3PL_Cars\Common\rvmats\Chrome_new.rvmat","Chrome"],
 	["A3PL_Cars\Common\rvmats\Black_Plastic.rvmat","Glossy"],
-	["A3PL_Cars\Common\rvmats\CarbonFiber_Mat.rvmat","Carbon fibre"],
-	["A3PL_Cars\Common\rvmats\CarbonFiber.rvmat","Shiny carbon fibre"],
 	["A3PL_Cars\Common\rvmats\Metallic.rvmat","Metallic"],
 	["A3PL_Cars\common\rvmats\car_paint.rvmat","Default"]
 ];

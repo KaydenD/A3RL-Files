@@ -935,8 +935,10 @@ Server_Setup_Compile = {
 		if (count _near == 0) exitwith
 		{
 			//DELETE from database
-			_query = format ["DELETE FROM houses WHERE location ='%1'",_pos];
-			[_query,1] spawn Server_Database_Async;
+			//_query = format ["DELETE FROM houses WHERE location ='%1'",_pos];
+			//[_query,1] spawn Server_Database_Async;
+			[_uid,"House Deleted",["House deleted from table",_pos,_doorid]] call Server_Log_New;
+
 		};
 		_near = _near select 0;
 		if (!([_pos,(getpos _near)] call BIS_fnc_areEqual)) then

@@ -145,8 +145,10 @@
 		if (count _near == 0) exitwith
 		{
 			//DELETE from database
-			_query = format ["DELETE FROM houses WHERE location ='%1'",_pos];
-			[_query,1] spawn Server_Database_Async;
+			//_query = format ["DELETE FROM houses WHERE location ='%1'",_pos];
+			//[_query,1] spawn Server_Database_Async;
+			[_uid,"House Deleted",["House deleted from table",_pos,_doorid]] call Server_Log_New;
+
 		};
 		_near = _near select 0;
 		if (!([_pos,(getpos _near)] call BIS_fnc_areEqual)) then
@@ -225,6 +227,8 @@
 	{
 		(_signs select 0) setObjectTextureGlobal [0,"\A3PL_Objects\Street\estate_sign\house_rented_co.paa"];
 	};
+
+	[_uid,"House Purchased",["House Purchased from table",_pos,_keyID,_price]] call Server_Log_New;
 
 },true] call Server_Setup_Compile;
 

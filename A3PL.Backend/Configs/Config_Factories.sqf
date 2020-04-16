@@ -787,7 +787,15 @@ Config_Factories =
         ["f_A3PL_Blackwater_Uniform","","inh","inh","A3PL_Blackwater_Uniform","uniform",true,5,[["Polyester",1]],1,""],
 		["f_ARL_Hillbuns_Uniform","","inh","inh","ARL_Hillbuns_Uniform","uniform",true,5,[["Polyester",1]],1,""],
 		["f_Hillbuns_Command_Uniform","","inh","inh","Hillbuns_Command_Uniform","uniform",true,5,[["Polyester",1]],1,""],
-		["f_A3RL_Hillbuns_Cap","","inh","inh","A3RL_Hillbuns_Cap","headgear",true,5,[["Polyester",1]],1,""]
+		["f_A3RL_Hillbuns_Cap","","inh","inh","A3RL_Hillbuns_Cap","headgear",true,5,[["Polyester",1]],1,""],
+        ["f_A3RL_Civ_DEP_Chief_Uniform","","inh","inh","A3RL_Civ_DEP_Chief_Uniform","uniform",true,5,[["Polyester",1]],1,""],
+        ["f_A3RL_Civ_DEP_Command_Uniform","","inh","inh","A3RL_Civ_DEP_Command_Uniform","uniform",true,5,[["Polyester",1]],1,""],
+        ["f_A3RL_Civ_DEP_Senior_Uniform","","inh","inh","A3RL_Civ_DEP_Senior_Uniform","uniform",true,5,[["Polyester",1]],1,""],
+        ["f_A3RL_Civ_DEP_Soldier_Uniform","","inh","inh","A3RL_Civ_DEP_Soldier_Uniform","uniform",true,5,[["Polyester",1]],1,""],
+        ["f_A3RL_Civ_DEP_Uniform_1_Uniform","","inh","inh","A3RL_Civ_DEP_Uniform_1_Uniform","uniform",true,5,[["Polyester",1]],1,""],
+        ["f_A3RL_Civ_DEP_Uniform_2_Uniform","","inh","inh","A3RL_Civ_DEP_Uniform_2_Uniform","uniform",true,5,[["Polyester",1]],1,""],
+        ["f_A3RL_Civ_DEP_Capb","","inh","inh","A3RL_Civ_DEP_Capb","headgear",true,5,[["Polyester",1]],1,""],
+        ["f_A3RL_Jose_Construction_Safety_Vest","","inh","inh","A3RL_Jose_Construction_Safety_Vest","vest",true,5,[["Polyester",1]],1,""]
     ],
 
 	["Car Parts Factory",[11816.7,9296,0],

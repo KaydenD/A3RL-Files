@@ -140,10 +140,9 @@
 			case ("Land_A3PL_Ranch3"): {_spawnPos = _intersect modelToWorld [1,6.5,-2]; _dir = _dir - 90;_spawnPos = [_spawnPos select 0,_spawnPos select 1,_spawnPos select 2,_dir];};
 			case ("Land_A3PL_Sheriffpd"):
 			{
-				if (player_NameIntersect == "sdstoragedoor3") then {_pos = _intersect selectionPosition "SDStorageDoor_pos";_spawnPos = _intersect modelToWorld _pos;_intersect animateSource ["StorageDoor",1];};
-				if (player_NameIntersect == "sdstoragedoor6") then {_pos = _intersect selectionPosition "SDStorageDoor2_pos";_spawnPos = _intersect modelToWorld _pos;_intersect animateSource ["StorageDoor2",1];};
-				_spawnPos = ASLToATL _spawnPos;
-				_dir = _dir + 90;
+				if (player_NameIntersect == "sdstoragedoor3") then {_spawnPos = _intersect modelToWorld [-2.49829,0.34375,-2.5];_intersect animateSource ["StorageDoor",1];};
+				if (player_NameIntersect == "sdstoragedoor6") then {_spawnPos = _intersect modelToWorld [-2.729,3.75244,-2.5];_intersect animateSource ["StorageDoor2",1];};
+				_dir = _dir - 270;
 				_spawnPos = [_spawnPos select 0,_spawnPos select 1,((_spawnPos select 2)+0),_dir];
 
 			};
@@ -189,11 +188,10 @@
 					[[_class,player,_id,_spawnPos],"Server_Storage_RetrieveVehicle",false,false] call BIS_FNC_MP; //spawn the car
 			};
 
-			};
-			if(_type == "vehicle") then {
-
-				[[_class,player,_id,_spawnPos],"Server_Storage_RetrieveVehicle",false,false] call BIS_FNC_MP; //spawn the car
-			};
+		};
+		if(_type == "vehicle") then {
+			[[_class,player,_id,_spawnPos],"Server_Storage_RetrieveVehicle",false,false] call BIS_FNC_MP; //spawn the car
+		};
 	} else {
 		[[_class,player,_id,_intersect],"Server_Storage_RetrieveVehicle",false,false] call BIS_FNC_MP;
 	};

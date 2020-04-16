@@ -194,7 +194,6 @@
 	// Spectate //
 	if (_dikCode == 61) exitWith {
 		if (pVar_AdminMenuGranted) then {
-			if(!isNil "pVar_AdminPrePosition") exitWith {["Terminate"] call BIS_fnc_EGSpectator;};
 			[] spawn {
 				disableSerialization;
 				pVar_AdminPrePosition = getPosATL player;
@@ -213,18 +212,25 @@
 				_spectatorCamera = ["GetCamera"] call BIS_fnc_EGSpectatorCamera;
 				_magicCarpet = "logic" createVehicleLocal (getpos _spectatorCamera);
 				player attachTo [_magicCarpet,[0,0,0]];
-				while {!isNull (findDisplay 60492)} do
+				waitUntil {!isNull findDisplay 60492};
+				(findDisplay 60492) displayAddEventHandler ["KeyDown", {	
+					params["_ctrl", "_dikCode", "_shift", "_ctrlKey", "_alt"];
+					if(_dikCode != 61) exitWith {true;};
+					(findDisplay 60492) closeDisplay 1;
+					A3RL_Escape_Spectate = true;
+				}];
+				while {!isNull (findDisplay 60492) && isNull (findDisplay 49)} do
 				{
 					_magicCarpet setPosATL (getPosATL _spectatorCamera);
 					uiSleep 0.1;
 				};
 
-				waitUntil {!isNull findDisplay 49};
+				waitUntil {!isNull findDisplay 49 || !isNil "A3RL_Escape_Spectate"};
+				A3RL_Escape_Spectate = nil;
 				["Terminate"] call BIS_fnc_EGSpectator;
 				[player,false] remoteExec ["A3PL_Lib_HideObject", 2];
 				(findDisplay 49) closeDisplay 1;
 				waitUntil {isNull findDisplay 49};
-
 				deleteVehicle _magicCarpet;
 				detach player;
 				player setposATL (missionNameSpace getVariable ['pVar_AdminPrePosition',getposATL player]);

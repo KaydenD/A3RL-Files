@@ -375,7 +375,7 @@
 		{
 			waituntil {sleep 0.1; isNull (findDisplay 15)};
 			createDialog "Dialog_CGSpawn";
-			buttonSetAction [1600,"closeDialog 0; player setpos [2128.773,4988.195,0]"];
+			buttonSetAction [1600,"closeDialog 0; player setpos [2146.33,5015.62,0]"];
 			buttonSetAction [1601,"closeDialog 0;"];
 		};
 	};

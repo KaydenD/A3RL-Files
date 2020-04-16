@@ -560,7 +560,7 @@ Config_Shops_Items =
             ["vehicle","A3PL_Pierce_Heavy_Ladder",35000,0],
             ["vehicle","A3PL_Pierce_Pumper",35000,0]
         ],
-        {[2220.41,5175.78,-0.75]}
+        {[2238.66,5053.05,-0.75]}
     ],
 
 		[
@@ -575,7 +575,7 @@ Config_Shops_Items =
 						["headgear","A3PL_DMV_Cap",24,0],
 						["item","roadcones",100,0]
 				],
-				{[2220.41,5175.78,-0.75]}
+				{[2238.66,5053.05,-0.75]}
 		],
 
 		[
@@ -668,7 +668,7 @@ Config_Shops_Items =
             ["vehicle","A3PL_Silverado_PD",25000,0],
             ["vehicle","A3PL_VetteZR1_PD",35000,0]
         ],
-        {[2220.41,5175.78,-0.75]}
+        {[2238.66,5053.05,-0.75]}
     ],
     [
         "Shop_FAA_Supplies_Vendor",
@@ -876,7 +876,7 @@ Config_Shops_Items =
             ["vehicle","A3PL_Mustang_PD_Slicktop",35000,0],
 			["vehicle","A3PL_Small_Boat_Trailer",10000,0]
         ],
-        {[2220.41,5175.78,-.75]}
+        {[2238.66,5053.05,-0.75]}
     ],
     [
         "Shop_USCG_Boat_Vendor",

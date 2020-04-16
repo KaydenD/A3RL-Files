@@ -143,6 +143,7 @@
 				if (player_NameIntersect == "sdstoragedoor3") then {_spawnPos = _intersect modelToWorld [-2.49829,0.34375,-2.5];_intersect animateSource ["StorageDoor",1];};
 				if (player_NameIntersect == "sdstoragedoor6") then {_spawnPos = _intersect modelToWorld [-2.729,3.75244,-2.5];_intersect animateSource ["StorageDoor2",1];};
 				_dir = _dir - 270;
+				_spawnPos = ASLToATL _spawnPos;
 				_spawnPos = [_spawnPos select 0,_spawnPos select 1,((_spawnPos select 2)+0),_dir];
 
 			};

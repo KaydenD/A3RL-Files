@@ -50,10 +50,10 @@
 	uiSleep 0.5;
 	while{!Player_ActionCompleted} do
 	{
-		waitUntil{(animationstate player) != "acts_carfixingwheel" || Player_ActionCompleted || player getVariable ["Incapacitated",true] || !alive player};
+		waitUntil{(animationstate player) != "acts_carfixingwheel" || Player_ActionCompleted || player getVariable ["Incapacitated",false] || !alive player};
 		player switchMove ""; 
         player playMoveNow "Acts_carFixingWheel";  
-		if (player getVariable ["Incapacitated",true]) exitwith {};
+		if (player getVariable ["Incapacitated",false]) exitwith {};
 		if (!alive player) exitWith {};
 	};
 	player switchMove ""; 

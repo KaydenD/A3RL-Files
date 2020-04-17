@@ -6,12 +6,13 @@
 
 		if (!isServer) then
 		{
+			0 fadeSound 0.25;
 			["A3PL_Common\ogv\logo_animated.ogv"] call BIS_fnc_titlecard;
 			//["A3PL_Common\ogv\logo_animated.ogv"] spawn BIS_fnc_playVideo;
 
-			sleep 8;
+			sleep 6;
+			0 fadeSound 1;
 		};
-
 		player setVariable ["tf_voiceVolume", 0, true];
 		cutText["","BLACK"];
 

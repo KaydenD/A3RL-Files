@@ -225,7 +225,7 @@
 
 	//health
 	_control = _display displayCtrl 1201;
-	_bloodLvl = (player getVariable ["A3PL_MedicalVars",[5000]]) select 0;
+	_bloodLvl = (player getVariable ["A3PL_MedicalVars",[5000,"120/80",37]]) select 0;
 	_imgnr = round (((_bloodLvl/5000))*45);
 
 	if (_imgnr < 1) then

@@ -796,7 +796,7 @@
 	} else {
 		player setVariable ["pVar_RedNameOn",true,true];
 		player setVariable ["A3PL_Wounds",[],true];
-		player setVariable ["A3PL_MedicalVars",[5000],true];
+		player setVariable ["A3PL_MedicalVars",[5000,"120/80",37],true];
 		lbSetColor [1504, 0, [1,.8,0,1]];
 	};
 }] call Server_Setup_Compile;

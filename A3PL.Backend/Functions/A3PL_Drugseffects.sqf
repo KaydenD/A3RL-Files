@@ -84,7 +84,7 @@ player getvariable "drugs_array";
 ["A3PL_Drugs_Loop",
 {
 	private ["_drugsArray","_consumption"];
-	_drugsarray = player getvariable "drugs_array";
+	_drugsarray = player getvariable ["drugs_array", [[["alcohol",0],["cocaine",0],["shrooms",0]],false]];
 	_consumption = _this select 0; // If TRUE, doesn't reduce effect. only FALSE in the loop.
 	{
 		//Ignore the entire script if the drug is set to 0.

@@ -411,7 +411,8 @@
 	_player = param [0,objNull];
 	_var = param [1,""];
 	_vars = _player getVariable ["A3PL_MedicalVars",[MAXBLOODLVL,"120/80",37]];
-	_return = "Error";
+	if(count _vars < 3) then {_vars = [MAXBLOODLVL,"120/80",37]}; //Weird Error Here
+	_return = "Error"; //Weird Error Here
 	switch (_var) do
 	{
 		case ("blood"):
@@ -824,7 +825,7 @@
 	private ["_display","_control","_player","_log","_vars"];
 	_display = param [0,(findDisplay 73)];
 	_player = param [1,missionNameSpace getVariable ["A3PL_MedicalVar_Target",objNull]];
-	_vars = _player getVariable ["A3PL_MedicalVars",[MAXBLOODLVL]];
+	_vars = _player getVariable ["A3PL_MedicalVars",[MAXBLOODLVL,"120/80",37]];
 
 	//exit if display is null
 	if (isNull _display) exitwith {};

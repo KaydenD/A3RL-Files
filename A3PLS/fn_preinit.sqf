@@ -467,8 +467,6 @@ Server_Setup_Compile = {
 		} foreach _FuelPositions;
 
 		//load fuel to stations
-		[] spawn Server_Fuel_Load;
-
 		//spawn cranes
 		_craneright = createVehicle ["A3PL_MobileCrane", [3693.044,7625.027,39.260], [], 0, "CAN_COLLIDE"];
 		_craneright setDir 52.482;
@@ -503,7 +501,7 @@ Server_Setup_Compile = {
 
 	// Save Gear and Player Variables //
 
-	["itemAdd", ["Server_Loop_Gear_Save", {[] call Server_Gear_Save}, 300]] call BIS_fnc_loop;
+	["itemAdd", ["Server_Loop_Gear_Save", {[] spawn Server_Gear_SaveLoop}, 300]] call BIS_fnc_loop;
 
 	//deprecated ["itemAdd", ["Server_Loop_SpawnOres", {[] spawn Server_Resources_SpawnOres;}, 600]] call BIS_fnc_loop; //5min
 
@@ -557,10 +555,6 @@ Server_Setup_Compile = {
 		[] spawn Server_ShopStock_Save;
 	}, 70]] call BIS_fnc_loop;
 
-	["itemAdd", ["Server_Loop_SaveFuelValues",
-	{
-	    [] spawn Server_Fuel_Save;
-	}, 300]] call BIS_fnc_loop;
 
 	["itemAdd", ["Server_Loop_SaveLockers",
 	{
@@ -1352,4 +1346,12 @@ Server_Setup_Compile = {
 	---------------------------------------------------------------------------*/
 
 	//true
+}] call Server_Setup_Compile;
+
+["A3RL_Server_SaveAll", {
+	[] spawn Server_Gear_SaveLoop;
+	[] spawn Server_Hydrogen_Save;
+	[] spawn Server_EvidenceLocker_Save;
+	[] spawn Server_ShopStock_Save;
+	[] spawn Server_Locker_Save;
 }] call Server_Setup_Compile;

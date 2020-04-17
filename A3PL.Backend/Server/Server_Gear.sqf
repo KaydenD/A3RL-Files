@@ -358,7 +358,7 @@
 
 	//Med stats
 	_medStat = _unit getVariable ["A3PL_Wounds",[]];
-	_blood = _unit getVariable ["A3PL_MedicalVars",[5000,"12/8",37]];
+	_blood = _unit getVariable ["A3PL_MedicalVars",[5000,"120/80",37]];
 	_medStat = [_medStat,_blood];
 
 	//cash and bank, lets not check for Nil vars, see if this needs editing later
@@ -438,19 +438,14 @@
 	}];
 }, true] call Server_Setup_Compile;
 
-// Loop to save player stats every _timesave seconds
+// Loop to save player stats
 ["Server_Gear_SaveLoop",
 {
-	private ["_timesave"];
-	_timeSave = 60; // every 60 seconds
-	["itemAdd", ["A3PL_SaveLoop",
+	private ["_unit", "_uid"];
 	{
-		private ["_unit", "_uid"];
-		{
-			_unit = _x;
-			_uid = getPlayerUID _unit;
-			[_unit, _uid, true] spawn Server_Gear_Save;
-			sleep 0.1;
-		} foreach allPlayers;
-	}, _timeSave]] call BIS_fnc_loop;
+		_unit = _x;
+		_uid = getPlayerUID _unit;
+		[_unit, _uid, false] spawn Server_Gear_Save;
+		sleep 0.1;
+	} foreach allPlayers;
 }, true] call Server_Setup_Compile;

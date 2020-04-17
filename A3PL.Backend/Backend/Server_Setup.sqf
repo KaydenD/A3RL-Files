@@ -104,9 +104,6 @@
 			FuelStations pushBack _tank;
 		} foreach _FuelPositions;
 
-		//load fuel to stations
-		[] spawn Server_Fuel_Load;
-
 		//spawn cranes
 		_craneright = createVehicle ["A3PL_MobileCrane", [3693.044,7625.027,39.260], [], 0, "CAN_COLLIDE"];
 		_craneright setDir 52.482;
@@ -186,11 +183,6 @@
 	{
 		[] spawn Server_ShopStock_Save;
 	}, 70]] call BIS_fnc_loop;
-
-	["itemAdd", ["Server_Loop_SaveFuelValues",
-	{
-	    [] spawn Server_Fuel_Save;
-	}, 300]] call BIS_fnc_loop;
 
 	["itemAdd", ["Server_Loop_SaveLockers",
 	{

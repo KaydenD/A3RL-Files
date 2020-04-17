@@ -575,18 +575,6 @@
 			[_id,_veh] call Server_Vehicle_Init_SetLicensePlate;
 		};
 	};
-	
-	//getOut eventhandler for fuel saving
-	_veh addEventHandler ["GetOut",
-	{
-		private ["_vehicle","_role"];
-		_vehicle = param [0,objNull];
-		_role = param [1,"none"];
-		if(_role == "driver") then {
-			[_vehicle] spawn Server_Fuel_Vehicle;
-		};
-	}];
-	
 },true] call Server_Setup_Compile;
 
 ['Server_Vehicle_Trailer_Hitch',

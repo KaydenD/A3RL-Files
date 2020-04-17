@@ -22,5 +22,5 @@
 	{_box addItemCargoGlobal [_x,1]} foreach (_cargo select 2);
 	{_box addBackpackCargoGlobal [_x,1]} foreach (_cargo select 3);
 	_box setVariable ["storage",(_cargo select 4),true];
-	_box setVariable ["locked", true];
+	_box setVariable ["locked", true, true];
 }, true] call Server_Setup_Compile;

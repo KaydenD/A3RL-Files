@@ -14,6 +14,7 @@
 
 	clearItemCargoGlobal _box; 
 	clearWeaponCargoGlobal _box;
+	clearMagazineCargoGlobal _box;
 	clearBackpackCargoGlobal _box;
 
 	{_box addWeaponCargoGlobal [_x,1]} foreach (_cargo select 0);

@@ -278,6 +278,16 @@
 				_selectedPlayer setVariable ["faction","doj",true];
 				_selectedPlayer setVariable ["job","doj",true];
 			};
+			case "District Attorney Office":
+			{
+				_selectedPlayer setVariable ["faction","dao",true];
+				_selectedPlayer setVariable ["job","dao",true];
+			};
+			case "Public Defenders Office":
+			{
+				_selectedPlayer setVariable ["faction","pdo",true];
+				_selectedPlayer setVariable ["job","pdo",true];
+			};
 			case "Marshal Service": 
 			{ 
 				_selectedPlayer setVariable ["faction","usms",true];
@@ -297,7 +307,7 @@
 ["A3PL_AdminFactionList", {
 	_display = findDisplay 98;
 	_selectedFaction = _display displayCtrl 2103;
-	_factions = ["Sheriff Department", "United States Coast Guard", "Fire and Rescue", "Department of Justice", "Marshal Service", "Civilian"];
+	_factions = ["Sheriff Department", "United States Coast Guard", "Fire and Rescue", "Department of Justice", "District Attorney Office", "Public Defenders Office", "Marshal Service", "Civilian"];
 
 	{
 		lbAdd [2103,_x];

@@ -15,6 +15,8 @@ Config_Paychecks = [
     ["faa",3000,3],
     ["Roadside_Service",500,4],
     ["doj",3000,5],
+	["dao",3000,5],
+	["pdo",3000,5],
     ["fifr", 3000,5],
     ["police",3000,5],
     ["uscg",3000,5],

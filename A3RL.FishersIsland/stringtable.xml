@@ -1826,6 +1826,51 @@
             <English>You don't seem to be working here!&lt;br/&gt;You are not an doj employee</English>
             <Polish>Nie pracujesz tutaj!&lt;br/&gt;Nie jesteś członkiem palestry.</Polish>
         </Key>
+        <Key ID="STR_NPC_DAOINIT2">
+            <Original>2. Hello there! Am here to check-in as DAO employee</Original>
+            <English>2. Hello there! Am here to check-in as DAO employee</English>
+        </Key>
+        <Key ID="STR_NPC_DAOHOWTO">
+            <Original>You can find more info on our website:&lt;br/&gt;http://www.dao.gov/</Original>
+            <English>You can find more info on our website:&lt;br/&gt;http://www.dao.gov/</English>
+        </Key>
+        <Key ID="STR_NPC_DAOALR">
+            <Original>You are already working as the dao&lt;br/&gt;Would you like to stop working here?</Original>
+            <English>You are already working as the dao&lt;br/&gt;Would you like to stop working here?</English>
+        </Key>
+        <Key ID="STR_NPC_DAOWORK">
+            <Original>Welcome back dao member&lt;br/&gt;Are you sure you are ready to start your shift?</Original>
+            <English>Welcome back dao member&lt;br/&gt;Are you sure you are ready to start your shift?</English>
+        </Key>
+        <Key ID="STR_NPC_DAODEN">
+            <Original>You don't seem to be working here!&lt;br/&gt;You are not an dao employee</Original>
+            <English>You don't seem to be working here!&lt;br/&gt;You are not an dao employee</English>
+        </Key>
+        <Key ID="STR_NPC_PDOINIT2">
+            <Original>2. Hello there! Am here to check-in as PDO employee</Original>
+            <English>2. Hello there! Am here to check-in as PDO employee</English>
+        </Key>
+        <Key ID="STR_NPC_PDOHOWTO">
+            <Original>You can find more info on our website:&lt;br/&gt;http://www.pdo.gov/</Original>
+            <English>You can find more info on our website:&lt;br/&gt;http://www.pdo.gov/</English>
+        </Key>
+        <Key ID="STR_NPC_PDOALR">
+            <Original>You are already working as the pdo&lt;br/&gt;Would you like to stop working here?</Original>
+            <English>You are already working as the pdo&lt;br/&gt;Would you like to stop working here?</English>
+        </Key>
+        <Key ID="STR_NPC_PDOWORK">
+            <Original>Welcome back pdo member&lt;br/&gt;Are you sure you are ready to start your shift?</Original>
+            <English>Welcome back pdo member&lt;br/&gt;Are you sure you are ready to start your shift?</English>
+        </Key>
+        <Key ID="STR_NPC_PDODEN">
+            <Original>You don't seem to be working here!&lt;br/&gt;You are not an pdo employee</Original>
+            <English>You don't seem to be working here!&lt;br/&gt;You are not an pdo employee</English>
+        </Key>
+        <Key ID="STR_NPC_FAASTOP1">
+            <Original>1. Hello! I would like to sign off as ATC and go back down</Original>
+            <English>1. Hello! I would like to sign off as ATC and go back down</English>
+            <Polish>1. Witam! Chciałbym wypisać się z kontroli lotów i zejść na dół.</Polish>
+        </Key>
         <Key ID="STR_NPC_FAASTOP1">
             <Original>1. Hello! I would like to sign off as ATC and go back down</Original>
             <English>1. Hello! I would like to sign off as ATC and go back down</English>

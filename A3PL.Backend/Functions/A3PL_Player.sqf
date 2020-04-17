@@ -841,7 +841,7 @@
 	_faction = _player getVariable ["faction","citizen"];
 
 	"mushroom_zone" setMarkerAlpha 0;
-	if((_job != "uscg") && (_job != "faa") && (_job != "doj") && (_job != "police") && (_job != "fifr")) then {{_x setMarkerAlpha 1;} forEach ["mushroom_marker"];} else {{_x setMarkerAlpha 0;} forEach ["mushroom_marker"];};
+	if((_job != "uscg") && (_job != "faa") && (_job != "doj") && (_job != "police") && (_job != "fifr") && (_job != "dao") && (_job != "pdo")) then {{_x setMarkerAlpha 1;} forEach ["mushroom_marker"];} else {{_x setMarkerAlpha 0;} forEach ["mushroom_marker"];};
 
 	//if (!(["motorhead"] call A3PL_Lib_hasPerk)) then {deleteMarkerLocal "perk_store_marker";};
 	if(_job != "uscg") then {{_x setMarkerAlpha 0;} forEach ["USCG_Shop","USCG_Boat","USCG_Boat_Spawn","USCG_Vehicle","USCG_Aircraft"];} else {{_x setMarkerAlpha 1;} forEach ["USCG_Shop","USCG_Boat","USCG_Boat_Spawn","USCG_Vehicle","USCG_Aircraft"];};
@@ -865,7 +865,7 @@
 		{_x setMarkerAlphaLocal 1;} forEach ["Fishing1","Fishing2","Fishing3","Fishing3_1","Fishing4","Fishing5","Fishing5_1","Fishing6"];
 	};
 	"crime_marker" setMarkerAlpha 0;
-	if((_job != "uscg") && (_job != "faa") && (_job != "doj") && (_job != "police") && (_job != "fifr")) then {
+	if((_job != "uscg") && (_job != "faa") && (_job != "doj") && (_job != "police") && (_job != "fifr") && (_job != "doj") && (_job != "dao") && (_job != "pdo")) then {
 		"crime_marker" setMarkerAlpha 1;
 	};
 }] call Server_Setup_Compile;

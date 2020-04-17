@@ -18,16 +18,21 @@
 	Player_ActionCompleted = false;
 	["Attempting to lockpick evidence locker...",60] spawn A3PL_Lib_LoadAction;
 	player playMoveNow "Acts_carFixingWheel";  
-	uiSleep 0.5;
+	[player, "Acts_carFixingWheel"] remoteExec ["playMoveNow", clientOwner*-1];  
+	uiSleep 2.0;
 	while{!Player_ActionCompleted} do
 	{
 		waitUntil{(animationstate player) != "acts_carfixingwheel" || Player_ActionCompleted || player getVariable ["Incapacitated",false] || !alive player};
-		player switchMove ""; 
-        player playMoveNow "Acts_carFixingWheel";  
+		player switchMove "";
+		player playMoveNow "Acts_carFixingWheel";
+		[player, ""] remoteExec ["switchMove", clientOwner*-1];  
+		[player, "Acts_carFixingWheel"] remoteExec ["playMoveNow", clientOwner*-1];  
 		if (player getVariable ["Incapacitated",false]) exitwith {};
 		if (!alive player) exitWith {};
+		uiSleep 2.0;
 	};
 	player switchMove ""; 
+	[player, ""] remoteExec ["switchMove", clientOwner*-1];  
 	
 	if (player getVariable ["Incapacitated",false]) exitwith {};
 	if(!alive player) exitWith {};
@@ -47,16 +52,21 @@
 	Player_ActionCompleted = false;
 	["Securing evidence locker...",30] spawn A3PL_Lib_LoadAction;
 	player playMoveNow "Acts_carFixingWheel";  
-	uiSleep 0.5;
+	[player, "Acts_carFixingWheel"] remoteExec ["playMoveNow", clientOwner*-1];  
+	uiSleep 2.0;
 	while{!Player_ActionCompleted} do
 	{
 		waitUntil{(animationstate player) != "acts_carfixingwheel" || Player_ActionCompleted || player getVariable ["Incapacitated",false] || !alive player};
-		player switchMove ""; 
-        player playMoveNow "Acts_carFixingWheel";  
+		player switchMove "";
+		player playMoveNow "Acts_carFixingWheel";
+		[player, ""] remoteExec ["switchMove", clientOwner*-1];  
+		[player, "Acts_carFixingWheel"] remoteExec ["playMoveNow", clientOwner*-1];  
 		if (player getVariable ["Incapacitated",false]) exitwith {};
 		if (!alive player) exitWith {};
+		uiSleep 2.0;
 	};
 	player switchMove ""; 
+	[player, ""] remoteExec ["switchMove", clientOwner*-1]; 
 	
 	if (player getVariable ["Incapacitated",false]) exitwith {};
 	if(!alive player) exitWith {};

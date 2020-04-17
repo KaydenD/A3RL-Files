@@ -22,10 +22,10 @@
 	while{!Player_ActionCompleted} do
 	{
 		waitUntil{(animationstate player) != "acts_carfixingwheel" || Player_ActionCompleted || player getVariable ["Incapacitated",false] || !alive player};
-		if (player getVariable ["Incapacitated",false]) exitwith {};
-		if (!alive player) exitWith {};
 		player switchMove ""; 
         player playMoveNow "Acts_carFixingWheel";  
+		if (player getVariable ["Incapacitated",false]) exitwith {};
+		if (!alive player) exitWith {};
 	};
 	player switchMove ""; 
 	
@@ -51,10 +51,10 @@
 	while{!Player_ActionCompleted} do
 	{
 		waitUntil{(animationstate player) != "acts_carfixingwheel" || Player_ActionCompleted || player getVariable ["Incapacitated",true] || !alive player};
-		if (player getVariable ["Incapacitated",true]) exitwith {};
-		if (!alive player) exitWith {};
 		player switchMove ""; 
         player playMoveNow "Acts_carFixingWheel";  
+		if (player getVariable ["Incapacitated",true]) exitwith {};
+		if (!alive player) exitWith {};
 	};
 	player switchMove ""; 
 	

@@ -49,7 +49,7 @@
 ["A3PL_Factory_DialogLoop",
 {
 	disableSerialization;
-	private ["_display","_var","_craftID","_control","_duration","_secLeft","_id","_timeEnd","_name"];
+	private ["_display","_var","_craftID","_control","_duration","_secLeft","_id","_timeEnd","_name","_quantity"];
 	_display = findDisplay 45;
 	_type = ctrlText (_display displayCtrl 1100);
 	if (isNull _display) exitwith {};
@@ -66,7 +66,9 @@
 	if (isNil "_craftID") exitwith {}; //no point in running this loop if we aren't crafting shit here
 
 	_id = [_craftID, "id"] call A3PL_Config_GetPlayerFactory;
+	_quantity = [_craftID, "amount"] call A3PL_Config_GetPlayerFactory;
 	_duration = [_id,_type,"time"] call A3PL_Config_GetFactory; //duration for this item to finish crafting
+	_duration = _duration * _quantity;
 	_timeEnd = [_craftID, "finish"] call A3PL_Config_GetPlayerFactory; //time at which it ends
 	_name = [_id,_type,"name"] call A3PL_Config_GetFactory;
 	if (_name == "inh") then {_name = [([_id,_type,"class"] call A3PL_Config_GetFactory),([_id,_type,"type"] call A3PL_Config_GetFactory),"name"] call A3PL_Factory_Inheritance;};
@@ -167,6 +169,7 @@
 
 		if (!([_id,_amount,_type] call A3PL_Factory_Has)) exitwith {_failed=true}; //if dont have this required item exit
 	} foreach _required;
+	systemChat (format["%1", _required]);
 
 	if (!isNil "_failed") exitwith
 	{
@@ -200,6 +203,7 @@
 		[format ["System: %1 has finished crafting in your %2",_name,_type],Color_Green] call A3PL_Player_Notification;
 
 		//have server remove items from player_inventory permanently
+		systemChat (format ["%1", _quantity]);
 		[player,_type,_id, _quantity] remoteExec ["Server_Factory_Finalise", 2];
 
 		uiSleep 1.5; //account for server lag to prevent duping, during this sleep it 'can make it look' like more items are taken due to the temp factories var, it will be fixed after 1.5 seconds

@@ -22,7 +22,7 @@
 		_id = _x select 0;
 		_isFactory = _id splitString "_";
 		_amount = _x select 1;
-		_items = [_items, _id, -(_amount), true] call BIS_fnc_addToPairs; //remove item from his storage
+		_items = [_items, _id, -(_amount)*_quantity, true] call BIS_fnc_addToPairs; //remove item from his storage
 	} foreach _required;
 
 	{

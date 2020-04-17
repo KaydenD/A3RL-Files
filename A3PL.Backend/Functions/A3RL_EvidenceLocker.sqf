@@ -183,5 +183,5 @@
 		}; 
 	} forEach Config_Items;
 
-	return _vitems;
+	_vitems;
 }] call Server_Setup_Compile;

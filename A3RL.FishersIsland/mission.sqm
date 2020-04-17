@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={2504.9678,8.8573313,5637.1099};
-		dir[]={0.70778096,-0.20950983,0.6748181};
-		up[]={0.15184091,0.97773302,0.14476599};
-		aside[]={0.69012487,4.3585896e-007,-0.72384077};
+		pos[]={9970.9814,25,8661.335};
+		dir[]={-0.058003988,-0.73892385,-0.67130101};
+		up[]={-0.063610353,0.67378879,-0.73618132};
+		aside[]={-0.99629736,-1.0212534e-007,0.086086005};
 	};
 };
 binarizationWanted=0;
@@ -9382,7 +9382,7 @@ class Mission
 			side="Civilian";
 			class Entities
 			{
-				items=92;
+				items=91;
 				class Item0
 				{
 					dataType="Object";
@@ -9995,7 +9995,7 @@ class Mission
 					};
 					id=971;
 					type="C_man_w_worker_F";
-					atlOffset=0.01625824;
+					atlOffset=0.066640854;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -12836,7 +12836,7 @@ class Mission
 					};
 					id=1579;
 					type="C_man_w_worker_F";
-					atlOffset=0.0075883865;
+					atlOffset=0.057999611;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -14428,80 +14428,6 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={9969.2412,5.5824642,8643.8145};
-						angles[]={0,6.262002,0};
-					};
-					side="Civilian";
-					flags=5;
-					class Attributes
-					{
-						init="call{if (isServer) then { this enableSimulationGlobal false; this disableAI ""ALL""; this allowDamage false;}}";
-						name="NPC_Big_Weapon_Dealer";
-						class Inventory
-						{
-							class uniform
-							{
-								typeName="U_BG_Guerrilla_6_1";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Balaclava_blk";
-							headgear="H_Beret_Colonel";
-						};
-					};
-					id=1846;
-					type="C_man_w_worker_F";
-					atlOffset=0.11914635;
-					class CustomAttributes
-					{
-						class Attribute0
-						{
-							property="speaker";
-							expression="_this setspeaker _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male02GRE";
-								};
-							};
-						};
-						class Attribute1
-						{
-							property="pitch";
-							expression="_this setpitch _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
-									value=1.02;
-								};
-							};
-						};
-						nAttributes=2;
-					};
-				};
-				class Item76
-				{
-					dataType="Object";
-					class PositionInfo
-					{
 						position[]={10102.511,5.0936351,8523.9268};
 						angles[]={0,1.4242045,0};
 					};
@@ -14576,7 +14502,7 @@ class Mission
 						nAttributes=2;
 					};
 				};
-				class Item77
+				class Item76
 				{
 					dataType="Object";
 					class PositionInfo
@@ -14655,7 +14581,7 @@ class Mission
 						nAttributes=2;
 					};
 				};
-				class Item78
+				class Item77
 				{
 					dataType="Object";
 					class PositionInfo
@@ -14729,7 +14655,7 @@ class Mission
 						nAttributes=2;
 					};
 				};
-				class Item79
+				class Item78
 				{
 					dataType="Object";
 					class PositionInfo
@@ -14802,7 +14728,7 @@ class Mission
 						nAttributes=2;
 					};
 				};
-				class Item80
+				class Item79
 				{
 					dataType="Object";
 					class PositionInfo
@@ -14874,7 +14800,7 @@ class Mission
 						nAttributes=2;
 					};
 				};
-				class Item81
+				class Item80
 				{
 					dataType="Object";
 					class PositionInfo
@@ -14952,7 +14878,7 @@ class Mission
 						nAttributes=2;
 					};
 				};
-				class Item82
+				class Item81
 				{
 					dataType="Object";
 					class PositionInfo
@@ -15031,7 +14957,7 @@ class Mission
 						nAttributes=2;
 					};
 				};
-				class Item83
+				class Item82
 				{
 					dataType="Object";
 					class PositionInfo
@@ -15110,7 +15036,7 @@ class Mission
 						nAttributes=2;
 					};
 				};
-				class Item84
+				class Item83
 				{
 					dataType="Object";
 					class PositionInfo
@@ -15184,7 +15110,7 @@ class Mission
 						nAttributes=2;
 					};
 				};
-				class Item85
+				class Item84
 				{
 					dataType="Object";
 					class PositionInfo
@@ -15262,7 +15188,7 @@ class Mission
 						nAttributes=2;
 					};
 				};
-				class Item86
+				class Item85
 				{
 					dataType="Object";
 					class PositionInfo
@@ -15340,7 +15266,7 @@ class Mission
 						nAttributes=2;
 					};
 				};
-				class Item87
+				class Item86
 				{
 					dataType="Object";
 					class PositionInfo
@@ -15419,7 +15345,7 @@ class Mission
 						nAttributes=2;
 					};
 				};
-				class Item88
+				class Item87
 				{
 					dataType="Object";
 					class PositionInfo
@@ -15492,7 +15418,7 @@ class Mission
 						nAttributes=2;
 					};
 				};
-				class Item89
+				class Item88
 				{
 					dataType="Object";
 					class PositionInfo
@@ -15570,7 +15496,7 @@ class Mission
 						nAttributes=2;
 					};
 				};
-				class Item90
+				class Item89
 				{
 					dataType="Object";
 					class PositionInfo
@@ -15643,7 +15569,7 @@ class Mission
 						nAttributes=2;
 					};
 				};
-				class Item91
+				class Item90
 				{
 					dataType="Object";
 					class PositionInfo
@@ -21226,7 +21152,6 @@ class Mission
 				angles[]={0,4.7191958,0};
 			};
 			side="Empty";
-			flags=4;
 			class Attributes
 			{
 				init="call{this setVariable [""positionSpawn"",[6937.97,3685.8,3,262],false]; this setVariable [""type"",""vehicle""];}";
@@ -21234,7 +21159,7 @@ class Mission
 			};
 			id=1999;
 			type="A3PL_CarInfo";
-			atlOffset=0.15173531;
+			atlOffset=11.776001;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -21268,7 +21193,6 @@ class Mission
 				angles[]={0,4.208652,0};
 			};
 			side="Empty";
-			flags=4;
 			class Attributes
 			{
 				init="call{this setVariable [""positionSpawn"",[5806.51,4933,3,262],false]; this setVariable [""type"",""vehicle""];}";
@@ -21276,7 +21200,7 @@ class Mission
 			};
 			id=2003;
 			type="A3PL_CarInfo";
-			atlOffset=0.14829445;
+			atlOffset=7.006;
 			class CustomAttributes
 			{
 				class Attribute0

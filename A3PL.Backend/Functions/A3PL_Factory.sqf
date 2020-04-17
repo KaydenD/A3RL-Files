@@ -125,7 +125,7 @@
 ["A3PL_Factory_Craft",
 {
 	disableSerialization;
-	private ["_display","_control","_type","_id","_required","_failed","_sec","_classType","_craftID","_classname","_alreadyCrafting"];
+	private ["_display","_control","_type","_id","_required","_failed","_sec","_classType","_craftID","_classname","_alreadyCrafting", "_amount","_newRequired","_quantity"];
 	_display = findDisplay 45;
 	_type = ctrlText (_display displayCtrl 1100); //factory id from dialog text
 
@@ -146,6 +146,19 @@
 	_id = _control lbData (lbCurSel _control);
 	_required = [_id,_type,"required"] call A3PL_Config_GetFactory;
 	if (isNil "_required" OR (count _required < 1)) exitwith {["System: Unexpected error occured trying to retrieve items for recipe in _Craft",Color_Red] call A3PL_Player_Notification;};
+
+	_control = _display displayCtrl 1400;
+	_quantity = floor(parseNumber (ctrlText _control));
+	if(_quantity < 1) exitWith {["You must enter a quantity greater than 0",Color_Red] call A3PL_Player_Notification;};
+
+	_newRequired = [];
+	{
+		private ["_amount","_id"];
+		_id = _x select 0;
+		_amount = (_x select 1) * _quantity;
+		_newRequired pushBack [_id, _amount];
+	} foreach _required;
+	_required = _newRequired;
 	//first check if we have all the items
 	{
 		private ["_amount","_id"];
@@ -161,24 +174,25 @@
 	};
 
 	//set a variable that we will use later on to make these items UNAVAILABLE, and also to keep track of what we are still crafting
-	_sec = [_id,_type,"time"] call A3PL_Config_GetFactory;
+	_sec = ([_id,_type,"time"] call A3PL_Config_GetFactory) * _quantity;
 	_classType = [_id,_type,"type"] call A3PL_Config_GetFactory;
 	_classname = [_id,_type,"class"] call A3PL_Config_GetFactory;
 	_craftID = floor (random 10000);
 	_var = player getVariable ["Player_Factories",[]];
-	_var pushback [_craftID,_classname,_required,_type,_classType,_id,1,(diag_ticktime + _sec)]; //defined in A3PL_Config.sqf
+	_var pushback [_craftID,_classname,_required,_type,_classType,_id,_quantity,(diag_ticktime + _sec)]; //defined in A3PL_Config.sqf
 	player setVariable ["Player_Factories",_var,false];
 	[] spawn A3PL_Factory_DialogLoop; //seperate dialog loop
 
 	[_craftID,_sec] spawn
 	{
-		private ["_craftID","_sec","_type","_classType","_id","_name","_var"];
+		private ["_craftID","_sec","_type","_classType","_id","_name","_var","_quantity"];
 		_craftID = param [0,0];
 		_sec = param [1,0];
 		_type = [_craftID, "type"] call A3PL_Config_GetPlayerFactory;
 		_classtype = [_craftID, "classtype"] call A3PL_Config_GetPlayerFactory;
 		_classname = [_craftID, "classname"] call A3PL_Config_GetPlayerFactory;
 		_id = [_craftID, "id"] call A3PL_Config_GetPlayerFactory;
+		_quantity = [_craftID, "amount"] call A3PL_Config_GetPlayerFactory;
 		_name = [_id,_type,"name"] call A3PL_Config_GetFactory;
 		if (_name == "inh") then {_name = [_classname,_classType,"name"] call A3PL_Factory_Inheritance;};
 
@@ -186,7 +200,7 @@
 		[format ["System: %1 has finished crafting in your %2",_name,_type],Color_Green] call A3PL_Player_Notification;
 
 		//have server remove items from player_inventory permanently
-		[player,_type,_id] remoteExec ["Server_Factory_Finalise", 2];
+		[player,_type,_id, _quantity] remoteExec ["Server_Factory_Finalise", 2];
 
 		uiSleep 1.5; //account for server lag to prevent duping, during this sleep it 'can make it look' like more items are taken due to the temp factories var, it will be fixed after 1.5 seconds
 

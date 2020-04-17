@@ -10,6 +10,7 @@
 	_player = param [0,objNull];
 	_type = param [1,""]; //factory name
 	_id = param [2,""]; //id of crafting item
+	_quantity = param [3,1]; //quantity of crafting item
 	_items = [_type,"items",_player] call A3PL_Config_GetPlayerFStorage;
 	_storage = _player getVariable ["player_fstorage",[]];
 	_required = [_id,_type,"required"] call A3PL_Config_GetFactory; //required items to craft this
@@ -60,7 +61,7 @@
 	};
 
 	//add the item to the storage
-	[_player,_type,[_id,_amount],false] call Server_Factory_Add;
+	[_player,_type,[_id,_amount*_quantity],false] call Server_Factory_Add;
 },true] call Server_Setup_Compile;
 
 //adds an item to the _fStorage

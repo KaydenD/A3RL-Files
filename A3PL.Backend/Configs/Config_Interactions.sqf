@@ -400,6 +400,23 @@ A3PL_Interaction_Options =
 					} forEach _classes;
 				} forEach [getWeaponCargo _x, getMagazineCargo _x, getItemCargo _x, getBackpackCargo _x];
 			} forEach _items;
+			
+			_curArr = Evidence_Locker getVariable ["storage",[]];
+			{
+				private["_item", "_x", "_handled"];
+				_handled = false;
+				_item = _x;
+				{
+					private["_x"];
+					if(_item getVariable ["Class", ""] == (_x select 0)) exitWith {
+						_handled = true;
+						_curArr set [_forEachIndex, [_x select 0, _x select 1 + (_item getVariable ["amount",1])]]
+					};
+				} forEach _curArr;
+				if(!_handled) then {_curArr pushBack [_item getVariable ["Class", ""], (_item getVariable ["amount",1])];};
+				deleteVehicle _item;
+			} forEach (nearestObjects [player,[] call A3RL_EvidenceLocker_SeizeAble,3]);
+			Evidence_Locker setVariable ["storage",_curArr, true];
 		},
 		{((player getVariable ["job","unemployed"]) IN ["police","uscg","usms"]) && ((count (nearestObjects [player,["groundWeaponHolder"],3]) > 0) || (count (nearestObjects [player,[] call A3RL_EvidenceLocker_SeizeAble,3]) > 0)) }
 	],

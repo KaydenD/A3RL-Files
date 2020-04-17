@@ -636,8 +636,7 @@
 {
 	player addEventHandler ["InventoryOpened", {
 		params ["_unit", "_container", "_secondaryContainer"];
-	    if(_container == Evidence_Locker && (Evidence_Locker getVariable["locked", true])) then {true;};
-	    if(!isNil "_secondaryContainer" && {_secondaryContainer == Evidence_Locker} && {(Evidence_Locker getVariable["locked", true])}) then {true;};
+	    if(_container getVariable ["locked", false] || _secondaryContainer getVariable ["locked", false]) then {true;};
 	}];
 }] call Server_Setup_Compile;
 

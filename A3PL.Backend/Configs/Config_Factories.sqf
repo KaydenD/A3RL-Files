@@ -1226,7 +1226,8 @@ Config_Factories =
         ["f_candy","","inh","inh","candy","item",true,0,[["cash",1]],1,""],
         ["f_gashose","","inh","inh","gas_hose","item",true,0,[["cash",1]],1,""],
 		["f_A3PL_Taser","","inh","inh","A3PL_Taser","weapon",true,60,[["Steel",200],["Blueprint_Pistol_Legal",1]],1,""],
-		["f_A3PL_TaserMag","","inh","inh","A3PL_TaserMag","magazine",true,60,[["Steel",200],["Blueprint_Pistol_Legal",1]],1,""]
+		["f_A3PL_TaserMag","","inh","inh","A3PL_TaserMag","magazine",true,60,[["Steel",200],["Blueprint_Pistol_Legal",1]],1,""],
+        ["f_A3PL_Sheriff_Hat_Black","","inh","inh","A3PL_Sheriff_Hat_Black","headgear",true,0,[["cash",1]],1,""]
     ]
 ];
 publicVariable "Config_Factories";

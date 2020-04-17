@@ -609,6 +609,7 @@ Config_Shops_Items =
 			["headgear","A3PL_Sheriff_Test_Cap",24,0],
 			["headgear","A3PL_Sheriff_ERTGrn_Cap",24,0],
 			["headgear","A3PL_SD_ERT_Green_Test_Helm",24,0],
+			["headgear","A3PL_Sheriff_Hat_Black",24,0],
 
 			["uniform","A3PL_SD_Cadet_Test_Uniform",24,0],
 			["uniform","A3PL_SD_Deputy_Test_Uniform",24,0],

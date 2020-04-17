@@ -409,6 +409,8 @@ Server_Setup_Compile = {
 
 	//Load Fuel in Gas Station
 	[] call Server_Hydrogen_Load;
+
+	[] call Server_EvidenceLocker_Load;
 	
 	//Temporary Hotfix
 	//all this crap runs into post-init
@@ -529,6 +531,9 @@ Server_Setup_Compile = {
 	
 	//Gas Station Save
 	["itemAdd", ["Server_Loop_Server_GasSave", {[] spawn Server_Hydrogen_Save;}, 1800]] call BIS_fnc_loop; //30 minutes
+
+	//Evidence Locker Save
+	["itemAdd", ["Server_Loop_Server_EvidenceLockerSave", {[] spawn Server_EvidenceLocker_Save;}, 1800]] call BIS_fnc_loop; // 30 mintues
 
 	//loop for animals
 	["itemAdd", ["Server_Loop_Goats",

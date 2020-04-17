@@ -635,12 +635,9 @@
 ["A3RL_EventHandlers_EvidenceLocker",
 {
 	player addEventHandler ["InventoryOpened", {
-		params ["_unit", "_container"];
-		
-		if((typeof _container) == "B_supplyCrate_F") then {
-			//TODO: Once Employment System in Implement check for Marshall Lead and Co Lead
-			if(_container getVariable["locked",true]) exitWith { ["You can't open the Evidence Locker it's locked",Color_Red] call A3PL_Player_Notification; true; };
-		};
+		params ["_unit", "_container", "_secondaryContainer"];
+	    if(_container == Evidence_Locker && (Evidence_Locker getVariable["locked", true])) then {true;};
+	    if(!isNil "_secondaryContainer" && {_secondaryContainer == Evidence_Locker} && {(Evidence_Locker getVariable["locked", true])}) then {true;};
 	}];
 }] call Server_Setup_Compile;
 

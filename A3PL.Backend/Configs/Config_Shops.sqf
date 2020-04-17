@@ -639,10 +639,12 @@ Config_Shops_Items =
             ["weapon","A3PL_Taser",100,0],
             ["weapon","hgun_Rook40_F",500,0],
 			["weapon","hgun_ACPC2_F",500,0],
+			["weapon","RH_p226",500,0],
 
             ["magazine","A3PL_TaserMag",50,0],
             ["magazine","16Rnd_9x21_Mag",50,0],
             ["magazine","9Rnd_45ACP_Mag",50,0],
+			["magazine","RH_15Rnd_9x19_SIG",50,0],
 
             ["item","handcuffs",15,0],
             ["item","stinger",15,0],
@@ -650,7 +652,8 @@ Config_Shops_Items =
 			["item","wood_barrier",200,0],
 			["item","plastic_barrier_small",200,0],
 			["item","plastic_barrier_large",200,0],
-			["aitem","Rangefinder",1000,0]
+			["aitem","Rangefinder",1000,0],
+			["aitem","RH_x300",1000,0]
         ],
         {[2597.15,5429.76,10]}
     ],
@@ -763,15 +766,18 @@ Config_Shops_Items =
 			["weapon","A3PL_Taser",500,0],
 			["weapon","hgun_P07_F",500,0],
 			["weapon","hgun_Rook40_F",500,0],
+			["weapon","RH_p226",500,0],
             ["magazine","A3PL_TaserMag",100,0],
             ["magazine","16Rnd_9x21_Mag",50,0],
+			["magazine","RH_15Rnd_9x19_SIG",50,0],
             ["aitem","Rangefinder",1000,0],
             ["item","handcuffs",15,0],
             ["item","stinger",15,0],
 			["item","wood_barrier",200,0],
 			["item","plastic_barrier_small",200,0],
 			["item","plastic_barrier_large",200,0],
-            ["item","roadcones",100,0]
+            ["item","roadcones",100,0],
+			["aitem","RH_x300",1000,0]
         ],
 		{doc_table modelToWorld [0,0,-0.5]}
     ],
@@ -848,6 +854,8 @@ Config_Shops_Items =
             ["magazine","A3PL_TaserMag",50,0],
             ["weapon","hgun_Rook40_F",100,0],
             ["magazine","16Rnd_9x21_Mag",50,0],
+			["weapon","RH_p226",100,0],
+			["magazine","RH_15Rnd_9x19_SIG",50,0],
             ["weaponPrimary","srifle_LRR_SOS_F",100,0],
             ["magazine","7Rnd_408_Mag",50,0],
             ["item","handcuffs",15,0],
@@ -859,7 +867,8 @@ Config_Shops_Items =
 			["magazine","6Rnd_GreenSignal_F",100,0],
 			["magazine","6Rnd_RedSignal_F",100,0],
 			["aitem","Rangefinder",1000,0],
-			["aitem","NVGoggles_OPFOR",500,0]
+			["aitem","NVGoggles_OPFOR",500,0],
+			["aitem","RH_x300",1000,0]
         ],
         {uscg_table modelToWorld [0,0,-0.5]}
     ],

@@ -306,6 +306,7 @@ Config_IntersectArray =
 	//["spine3","Start working as the Mafia",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == npc_mafia}], //Mafia sign on
 	//["spine3","Access Mafia Supplies",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == npc_mafia}], //Mafia supplies
 	["spine3","Access Criminal Supplies",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == npc_crime}], //Criminal Base Shop
+	["spine3","Remove Ankle Tag",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == npc_crime}],
 	["spine3","Chop Nearest Vehicle",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == npc_chopshop}], //Chop Vehicle
 
 
@@ -322,9 +323,6 @@ Config_IntersectArray =
 	["spine3","Access Marine Factory",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == npc_marinefactory}],
 	["spine3","Access Aircraft Factory",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == npc_aircraftfactory}],
 	["spine3","Access Car Parts Factory",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == npc_carpartfactory}],
-	["spine3","Access Weapon Parts Factory",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == NPC_Big_Weapon_Dealer}],
-	["spine3","Access Weapon Attachments Shop",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == NPC_Big_Weapon_Dealer}],
-	["spine3","Remove Ankle Tag",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == NPC_Big_Weapon_Dealer}],
 
 	//shops
 	["spine3","Access Furniture Shop",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect IN [npc_furniture2,npc_furniture_4,npc_furniture_6]}],

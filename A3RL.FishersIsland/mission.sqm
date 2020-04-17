@@ -59,8 +59,7 @@ addons[]=
 	"A3_Structures_F_EPC_Items_Electronics",
 	"A3PL_Objects_BusStop",
 	"A3_Weapons_F_Ammoboxes",
-	"A3_Modules_F_Curator_Curator",
-	"DED_Simple_01"
+	"A3_Modules_F_Curator_Curator"
 };
 class AddonsMetaData
 {

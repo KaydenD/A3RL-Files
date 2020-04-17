@@ -446,6 +446,6 @@
 		_unit = _x;
 		_uid = getPlayerUID _unit;
 		[_unit, _uid, false] spawn Server_Gear_Save;
-		sleep 0.1;
+		sleep 1;
 	} foreach allPlayers;
 }, true] call Server_Setup_Compile;

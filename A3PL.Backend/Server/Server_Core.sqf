@@ -231,6 +231,7 @@
 		[format ["!!! ALERT !!! Restart in a few minutes"],Color_Red] remoteExec ["A3PL_Player_Notification", -2];
 		["A3PL_Common\effects\airalarm.ogg",2500,0,10] spawn A3PL_FD_FireStationAlarm;
 	};
+	[] spawn A3RL_Server_SaveAll;
 	sleep 120;
 	{
 		"IUqof456sd=!&L" serverCommand format ["#kick %1",name _x];

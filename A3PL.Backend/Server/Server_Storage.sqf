@@ -123,17 +123,15 @@
 
 
 	_veh = [_class,_storage,_id,_player] call Server_Vehicle_Spawn;
-	if (_veh isKindOf "Ship") then
-	{
-		_veh setpos _storage;
-	} else
-	{
-		_veh setPosATL _storage;
-	};
-
 	if (!isNil "_dir") then
 	{
 		_veh setDir _dir;
+	};
+	if (_veh isKindOf "Ship") then
+	{
+		_veh setpos _storage;
+	} else {
+		_veh setPosATL _storage;
 	};
 
 	if (_veh isKindOf "helicopter") then

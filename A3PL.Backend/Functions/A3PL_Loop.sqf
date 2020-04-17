@@ -140,6 +140,8 @@
 			case ("fifr"): {_payment = 3000; _directDeposit = true;};
 			case ("uscg"): {_payment = 3000; _directDeposit = true;};
 			case ("doj"): {_payment = 3000; _directDeposit = true;};
+			case ("dao"):  {_payment = 3000; _directDeposit = true;};
+			case ("pdo"): {_payment = 3000; _directDeposit = true;};
 			case ("faa"): {_payment = 3000; _directDeposit = true;};
 			case ("dmv"): {_payment = 2000; _directDeposit = true;};
 			case ("dispatch"): {_payment = 3000; _directDeposit = true;};

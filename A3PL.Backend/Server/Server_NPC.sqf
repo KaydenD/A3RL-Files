@@ -17,7 +17,7 @@
 
 	//add radio if EMS/Police/USCG/dispatch
 	if (backpack _player != "A3PL_LR") then {
-		if (_job IN ["uscg","fifr","police","dispatch","usms","doj"]) then
+		if (_job IN ["uscg","fifr","police","dispatch","usms","doj","pdo","dao"]) then
 		{
 			_player addBackpackGlobal "A3PL_LR";
 		};

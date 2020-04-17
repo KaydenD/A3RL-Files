@@ -2,7 +2,7 @@
 {
 	private ["_job"];
 	_job = player getVariable ["job","unemployed"];
-	if (!(_job IN ["uscg","police","fifr","faa","doc","doj","usms"])) exitwith {};
+	if (!(_job IN ["uscg","police","fifr","faa","doc","doj","pdo","dao","usms"])) exitwith {};
 	if (!isNil "A3PL_Police_GPSEnabled") exitwith {};
 
 	//vars

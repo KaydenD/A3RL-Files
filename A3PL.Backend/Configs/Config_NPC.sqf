@@ -191,6 +191,20 @@ Config_NPC_Text =
 	//"You don't seem to be working here!<br/>You are not an doj employee",["STR_NPC_SORRYILEAVE"]
 	["doj_workdenied",parseText localize"STR_NPC_DOJDEN",[localize"STR_NPC_SORRYILEAVE"],[""]],
 
+	//PDO
+	["pdo_initial",parseText localize"STR_NPC_HELLOWHOWHELP",[localize"STR_NPC_FAAINIT1",localize"STR_NPC_PDOINIT2"],["['pdo_howto'] call A3PL_NPC_Start;","if (player getVariable 'job' == 'pdo') exitwith {['pdo_already'] call A3PL_NPC_Start;}; if (player getVariable 'faction' == 'pdo') then { ['pdo_work'] call A3PL_NPC_Start; } else {['pdo_workdenied'] call A3PL_NPC_Start;}"]],
+	["pdo_howto",parseText localize"STR_NPC_PDOHOWTO",[localize"STR_NPC_AIGHTTNX"],[""]],
+	["pdo_already", parseText localize"STR_NPC_PDOALR",[localize"STR_NPC_STOPWORKINGHER",localize"STR_NPC_LIKEJOBNVM"],["[] call A3PL_NPC_LeaveJob;",""]],
+	["pdo_work",parseText localize"STR_NPC_PDOWORK",[localize"STR_NPC_IMREADY",localize"STR_NPC_BEBACKLATER"],["['pdo'] call A3PL_NPC_TakeJob;",""]],
+	["pdo_workdenied",parseText localize"STR_NPC_PDODEN",[localize"STR_NPC_SORRYILEAVE"],[""]],
+
+	//DAO
+	["dao_initial",parseText localize"STR_NPC_HELLOWHOWHELP",[localize"STR_NPC_FAAINIT1",localize"STR_NPC_DAOINIT2"],["['dao_howto'] call A3PL_NPC_Start;","if (player getVariable 'job' == 'dao') exitwith {['dao_already'] call A3PL_NPC_Start;}; if (player getVariable 'faction' == 'dao') then { ['dao_work'] call A3PL_NPC_Start; } else {['dao_workdenied'] call A3PL_NPC_Start;}"]],
+	["dao_howto",parseText localize"STR_NPC_DAOHOWTO",[localize"STR_NPC_AIGHTTNX"],[""]],
+	["dao_already", parseText localize"STR_NPC_DAOALR",[localize"STR_NPC_STOPWORKINGHER",localize"STR_NPC_LIKEJOBNVM"],["[] call A3PL_NPC_LeaveJob;",""]],
+	["dao_work",parseText localize"STR_NPC_DAOWORK",[localize"STR_NPC_IMREADY",localize"STR_NPC_BEBACKLATER"],["['dao'] call A3PL_NPC_TakeJob;",""]],
+	["dao_workdenied",parseText localize"STR_NPC_DAODEN",[localize"STR_NPC_SORRYILEAVE"],[""]],
+
 	//DMV
 	["dmv_initial",parseText "Hello there!<br/><br/>How can I help you?",["1. Hello! How do I work here?","2. Hello there! Am here to check-in as DMV employee"],["['dmv_howto'] call A3PL_NPC_Start;","if (player getVariable 'job' == 'dmv') exitwith {['dmv_already'] call A3PL_NPC_Start;}; if (player getVariable 'faction' == 'dmv') then { ['dmv_work'] call A3PL_NPC_Start; } else {['dmv_workdenied'] call A3PL_NPC_Start;}"]],
 	["dmv_howto",parseText "You can find more info on our website:<br/>http://www.DMV.gov/",["1. Alright, thank you!"],[""]],

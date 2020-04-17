@@ -471,9 +471,7 @@
 	"",
 	"Access DOJ Equipment Shop",
 	{
-		private ["_whitelist"];
-		_whitelist = "doj";
-		if ((player getVariable ["faction","citizen"]) != _whitelist) exitwith {[format ["System: Only the %1 faction can use this shop",_whitelist],Color_Red] call A3PL_Player_Notification;};
+		if !((player getVariable ["faction","citizen"]) in ["doj","dao","pdo"]) exitwith {[format ["System: Only the %1 faction can use this shop",_whitelist],Color_Red] call A3PL_Player_Notification;};
 		["Shop_DOJ_Supplies_Vendor"] call A3PL_Shop_Open;
 	}
 ],
@@ -919,6 +917,22 @@
 	"Talk to DOJ NPC",
 	{
 		["doj_initial"] call A3PL_NPC_Start;
+	}
+],
+
+[
+	"",
+	"Talk to DAO NPC",
+	{
+		["dao_initial"] call A3PL_NPC_Start;
+	}
+],
+
+[
+	"",
+	"Talk to PDO NPC",
+	{
+		["pdo_initial"] call A3PL_NPC_Start;
 	}
 ],
 

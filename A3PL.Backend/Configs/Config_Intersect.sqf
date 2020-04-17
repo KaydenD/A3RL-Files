@@ -290,6 +290,8 @@ Config_IntersectArray =
 	["spine3","Talk to Tron NPC",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect IN [npc_perkshop]}],
 	["spine3","Talk to Government NPC",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect IN [npc_government,npc_government_1]}],
 	["spine3","Talk to DOJ NPC",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == npc_doj_supplier}],
+	["spine3","Talk to DAO NPC",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == npc_doj_supplier}],
+	["spine3","Talk to PDO NPC",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == npc_doj_supplier}],
 	["spine3","Talk to DOC NPC",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == NPC_doc}],
 	//["spine3","Talk to DMV NPC",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == NPC_dmv}],
 	//["spine3","Access DMV Shop",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == NPC_dmv}],
@@ -1781,7 +1783,7 @@ Config_IntersectArray =
 	["Anchor",localize"STR_INTSECT_ANCHOR",_dir+"IGUI\Cfg\Actions\take_ca.paa",{!(player_objIntersect getVariable ["locked",true])}],//Drop/Retrieve Anchor
 
 	// Locker
-	["Door_1","Rent locker",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{((player_objIntersect getVariable ["owner",""]) isEqualTo "") && (typeOf player_objintersect == "A3PL_EMS_Locker") && (player getVariable["job","unemployed"] IN ["police","fifr","uscg","usms","doj","dispatch","faa","dmv"])}],
+	["Door_1","Rent locker",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{((player_objIntersect getVariable ["owner",""]) isEqualTo "") && (typeOf player_objintersect == "A3PL_EMS_Locker") && (player getVariable["job","unemployed"] IN ["police","fifr","uscg","usms","doj","dao", "pdo", "dispatch","faa","dmv"])}],
 	["Door_1","Open/Close Locker",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{((player_objIntersect getVariable ["owner",""]) isEqualTo getPlayerUID player) && (typeOf player_objintersect == "A3PL_EMS_Locker")}],
 	["lockerbottom","Store in locker","\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\cargoput_ca.paa",{((player_objIntersect getVariable ["owner",""]) isEqualTo getPlayerUID player) && (typeOf player_objintersect == "A3PL_EMS_Locker")}],
 	["lockertop","Store in locker","\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\cargoput_ca.paa",{((player_objIntersect getVariable ["owner",""]) isEqualTo getPlayerUID player) && (typeOf player_objintersect == "A3PL_EMS_Locker")}],
@@ -2236,6 +2238,8 @@ Config_GenArray =
 	"Talk to Guns NPC",
 	"Talk to Government NPC",
 	"Talk to DOJ NPC",
+	"Talk to DAO NPC",
+	"Talk to PDO NPC",
 	"Talk to DOC NPC",
 	//"Talk to DMV NPC",
 	//"Spawn DMV Tow Truck",

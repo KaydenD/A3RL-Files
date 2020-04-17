@@ -176,12 +176,12 @@
 }] call Server_Setup_Compile;
 
 ["A3RL_EvidenceLocker_SeizeAble", {
-	_vitems = [];
+	if(!inNil "A3RL_Seizeable_Items") exitWith {A3RL_Seizeable_Items;};
+	A3RL_Seizeable_Items = [];
 	{ 
 		if(_x select 8) then { 
-			_vitems pushBack (_x select 3);  
+			A3RL_Seizeable_Items pushBack (_x select 3);  
 		}; 
 	} forEach Config_Items;
-
-	_vitems;
+	A3RL_Seizeable_Items;
 }] call Server_Setup_Compile;

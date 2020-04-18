@@ -8,7 +8,7 @@ class EditorData
 	toggles=10;
 	class ItemIDProvider
 	{
-		nextID=2499;
+		nextID=2504;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={2030.5574,32.504002,5002.9604};
-		dir[]={0.25849682,-0.92342055,-0.28412807};
-		up[]={0.62136871,0.38392326,-0.6829834};
-		aside[]={-0.73975855,4.1330932e-006,-0.6730181};
+		pos[]={2232.1521,102.38409,4916.1455};
+		dir[]={-0.16308257,-0.61846459,0.76887161};
+		up[]={-0.12832753,0.78575373,0.60503626};
+		aside[]={0.97833222,2.3032408e-007,0.20749967};
 	};
 };
 binarizationWanted=0;
@@ -59,7 +59,8 @@ addons[]=
 	"A3_Structures_F_EPC_Items_Electronics",
 	"A3PL_Objects_BusStop",
 	"A3_Weapons_F_Ammoboxes",
-	"A3_Modules_F_Curator_Curator"
+	"A3_Modules_F_Curator_Curator",
+	"DED_Simple_01"
 };
 class AddonsMetaData
 {
@@ -527,7 +528,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=703;
+		items=705;
 		class Item0
 		{
 			dataType="Object";
@@ -11568,7 +11569,7 @@ class Mission
 					};
 					id=1448;
 					type="C_man_w_worker_F";
-					atlOffset=0.056418419;
+					atlOffset=0.056417465;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -12379,7 +12380,7 @@ class Mission
 					};
 					id=1494;
 					type="C_man_w_worker_F";
-					atlOffset=0.0012631416;
+					atlOffset=0.0012636185;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -15822,7 +15823,7 @@ class Mission
 			text="Silverton Clinic";
 			type="A3PL_Markers_Clinic";
 			colorName="ColorBlue";
-			angle=280.54648;
+			angle=280.54645;
 			id=1258;
 			atlOffset=-7.3545156;
 		};
@@ -16433,7 +16434,7 @@ class Mission
 			};
 			id=1446;
 			type="Land_CampingTable_F";
-			atlOffset=0.068948746;
+			atlOffset=0.068932533;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -16633,7 +16634,7 @@ class Mission
 			text="FIFR Equipment Shop";
 			type="A3PL_Markers_FIFD";
 			colorName="ColorBlue";
-			angle=280.54648;
+			angle=280.54645;
 			id=1466;
 			atlOffset=-7.3544664;
 		};
@@ -16742,7 +16743,7 @@ class Mission
 			};
 			id=1495;
 			type="Land_CampingTable_F";
-			atlOffset=0.013575554;
+			atlOffset=0.013576031;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -31714,7 +31715,7 @@ class Mission
 			};
 			id=2495;
 			type="Land_Home1g_DED_Home1g_01_F";
-			atlOffset=0.0010874271;
+			atlOffset=0.0010871887;
 		};
 		class Item701
 		{
@@ -31788,6 +31789,103 @@ class Mission
 			id=2498;
 			type="Land_Home6b_DED_Home6b_01_F";
 			atlOffset=0.030010939;
+		};
+		class Item703
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={2013.354,4.5381742,4941.1138};
+				angles[]={0,2.3106937,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				init="call{this setVariable [""positionSpawn"",[1987.27,4895.36,0,200],false]; this setVariable [""type"",""vehicle""];}";
+				disableSimulation=1;
+			};
+			id=2499;
+			type="A3PL_CarInfo";
+			atlOffset=0.018058062;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item704
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={2213.4246,3.1607966,5010.8809};
+			};
+			areaSize[]={1,0,1};
+			flags=1;
+			id=2500;
+			type="ModuleHideTerrainObjects_F";
+			atlOffset=-2.3841858e-007;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="#filter";
+					expression="_this setVariable [""#filter"",_value]";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=9;
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="#hideLocally";
+					expression="_this setVariable [""#hideLocally"",_value]";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=2;
+			};
 		};
 	};
 };

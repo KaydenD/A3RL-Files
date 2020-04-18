@@ -235,7 +235,7 @@
 			if (count _pos == 0) then {_pos = getpos _player}; //just use player pos if we cant find a suitable spot
 			_dir = 0;
 			switch (_type) do {
-				case (_type == "Vehicle Factory"): {_dir = 195};
+				case (_type == "Vehicle Factory"): {_dir = 195;};
 			}
 			_veh = [_id,_pos,_lp,_player, _dir] call Server_Vehicle_Spawn;
 			//_veh setVariable ["dealer",true,true]; //set a variable so we know it's a dealer vehicle

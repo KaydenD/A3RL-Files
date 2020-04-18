@@ -642,7 +642,7 @@
 			{
 				private ["_woundArr"];
 				_woundArr = _x select _i;
-				if ((_woundArr select 0) == _wound) then
+				if ((_woundArr select 0) == _wound) exitwith
 				{
 					//healing a wound by EMS
 					if ((_item == ([_wound,"itemHeal"] call A3PL_Config_GetWound)) && _isEMS) exitwith

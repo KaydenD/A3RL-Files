@@ -82,7 +82,6 @@ Server_Setup_Files = [
 	['Functions', 'A3RL_Waterfall'],
 	['Functions', 'A3RL_Blindfold'],
 	['Functions', 'A3RL_License'],
-	['Functions', 'A3RL_PortRobbery'],
 	['Backend', 'Server_Setup'],
 	['Server', 'Server_JobVDelivery'],
 	['Server', 'Server_JobMDelivery'],

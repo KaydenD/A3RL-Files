@@ -152,6 +152,7 @@
 	_pos = param [1,[]];
 	_id = param [2,-1];
 	_owner = param [3,objNull];
+	_dir = param [4,0];
 
 	_initfunction = !isNil ('Server_Vehicle_Init_' + _class);
 
@@ -170,6 +171,7 @@
 	{
 		_veh = createVehicle [_class, _pos, [], 0, 'CAN_COLLIDE'];
 		_veh allowDamage false;
+		_veh setDir _dir;
 	};
 
 	if (isNull _veh) exitwith {diag_log "Server_Vehicle_Spawn Error: _veh isNull"};

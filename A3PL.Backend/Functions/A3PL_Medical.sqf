@@ -375,7 +375,7 @@
 		_wounds pushback [_part,[_wound,false]];
 		switch(true) do
 		{
-			case (_part IN ["right upper leg","right lower leg","left lower leg","left upper leg"]):
+			case (_part IN ["right upper leg","right lower leg","left lower leg","left upper leg"] && _wound IN ["wound_major", "bone_broken"]):
 			{
 				_player setHit ["legs", 0.5];
 			};

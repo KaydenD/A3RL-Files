@@ -429,6 +429,23 @@ A3PL_Interaction_Options =
 		{((player getVariable ["job","unemployed"]) IN ["roadworker","Roadside_Service"]) && (vehicle player == player)}
 	],
 
+	[ 
+		"Open Trunk", 
+		{
+			[vehicle player] call A3RL_VITrunk_Open;
+		},
+		{(vehicle player != player) && {(getPlayerUID player in (vehicle player getVariable ["keyAccess",[]]))}}
+	],
+
+	[
+		"Open Trunk",
+		{
+			[player_objintersect] call A3RL_VITrunk_Open;
+
+		},
+		{(vehicle player == player) && {(simulationEnabled player_objintersect)} && {!isNil "player_objintersect"} && {(getPlayerUID player in (player_objintersect getVariable ["keyAccess",[]]))}}
+	],
+
 	[
 		localize "STR_INTER_MARKIMPPOL", //Unmark/Mark - impound (Police/FIFR)
 		{

@@ -83,6 +83,7 @@ Server_Setup_Files = [
 	['Functions', 'A3RL_Blindfold'],
 	['Functions', 'A3RL_License'],
 	['Functions', 'A3RL_PortRobbery'],
+	['Functions', 'A3RL_VehicleTrucks'],
 	['Backend', 'Server_Setup'],
 	['Server', 'Server_JobVDelivery'],
 	['Server', 'Server_JobMDelivery'],
@@ -146,7 +147,8 @@ Server_Setup_Files = [
 	['Configs', 'Config_Garage'],
 	['Configs', 'Config_Government'],
 	['Configs', 'Config_Licenses'],
-	['Configs', 'Config_CombineItems']
+	['Configs', 'Config_CombineItems'],
+	['Configs', 'Config_TrunkSpace']
 ];
 
 Server_Setup_Compile = {

@@ -762,7 +762,7 @@ Server_Setup_Compile = {
 
 
 ["Server_Gear_Load", {
-	private ["_unit", "_uid", "_return", "_query", "_pos", "_loadout","_name","_houseVar","_ownsHouse","_houseObj","_job","_virtinv","_cash","_bank","_facStorage","_licenses","_twitterProfile","_perks","_ship","_adminWatch","paycheck"];
+	private ["_unit", "_uid", "_return", "_query", "_pos", "_loadout","_name","_houseVar","_ownsHouse","_houseObj","_job","_virtinv","_cash","_bank","_facStorage","_licenses","_twitterProfile","_perks","_ship","_adminWatch","_paycheck"];
 	_unit = _this select 0;
 	_uid = getPlayerUID _unit;
 

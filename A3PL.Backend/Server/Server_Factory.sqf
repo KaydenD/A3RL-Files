@@ -229,7 +229,7 @@
 			{
 				_pos = [(getpos _player), 1, 50, 1, 2, 100, 1] call BIS_fnc_findSafePos;
 			} else
-			{.
+			{
 				_pos = (getpos _player) findEmptyPosition [2,25,_id];
 			};
 			if (count _pos == 0) then {_pos = getpos _player}; //just use player pos if we cant find a suitable spot

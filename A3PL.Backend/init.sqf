@@ -130,6 +130,7 @@ Server_Setup_Files = [
 	['Server', 'Server_iPhoneX'],
 	['Server', 'Server_SpeedCam'],
 	['Server', 'Server_EvidenceLocker'],
+	['Server', 'Server_Trunk'],
 	['Configs', 'Config_Setup'],
 	['Configs', 'Config_Gear'],
 	['Configs', 'Config_Shops'],

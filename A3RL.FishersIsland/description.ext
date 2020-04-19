@@ -175,10 +175,10 @@ class A3PL_mapAreas
 			"Recreational Activities", {"bowling","paintball_larry","marker_164","SallySpeedway","ShootingRange_1"}
 		},
 		{
-			"Banks", {"bank1","bank1_1","bank1_2","bank1_3"}
+			"Banks", {"bank1","bank2","bank3","bank4", "fishers_bank_7"}
 		},
 		{
-			"Gas stations", {"gasstation1","gasstation2","gasstation3","gasstation4","gasstation5","gasstation6","gasstation6_1","gasstation2_1","gasstation2_2"}
+			"Gas stations", {"gasstation1","gasstation2","gasstation3","gasstation4","gasstation5","gasstation6","gasstation7","gasstation8"}
 		},
 		{
 			"Clinics", {"Clinic","Clinic_1","Clinic_2","Clinic_3"}

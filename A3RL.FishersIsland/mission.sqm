@@ -8,7 +8,7 @@ class EditorData
 	toggles=10;
 	class ItemIDProvider
 	{
-		nextID=2504;
+		nextID=2513;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={2232.1521,102.38409,4916.1455};
-		dir[]={-0.16308257,-0.61846459,0.76887161};
-		up[]={-0.12832753,0.78575373,0.60503626};
-		aside[]={0.97833222,2.3032408e-007,0.20749967};
+		pos[]={10189.787,30.016399,8520.3975};
+		dir[]={0.26040164,-0.66858131,0.69656211};
+		up[]={0.23411685,0.74363458,0.62625283};
+		aside[]={0.93668991,-3.3032848e-009,-0.35017025};
 	};
 };
 binarizationWanted=0;
@@ -528,7 +528,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=705;
+		items=708;
 		class Item0
 		{
 			dataType="Object";
@@ -10741,7 +10741,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2630.8586,8.045104,5511.9292};
+						position[]={2630.8586,8.0451031,5511.9292};
 						angles[]={0,1.5089676,0};
 					};
 					side="Civilian";
@@ -12380,7 +12380,7 @@ class Mission
 					};
 					id=1494;
 					type="C_man_w_worker_F";
-					atlOffset=0.0012636185;
+					atlOffset=0.0012631416;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -15823,7 +15823,7 @@ class Mission
 			text="Silverton Clinic";
 			type="A3PL_Markers_Clinic";
 			colorName="ColorBlue";
-			angle=280.54645;
+			angle=280.54639;
 			id=1258;
 			atlOffset=-7.3545156;
 		};
@@ -16634,7 +16634,7 @@ class Mission
 			text="FIFR Equipment Shop";
 			type="A3PL_Markers_FIFD";
 			colorName="ColorBlue";
-			angle=280.54645;
+			angle=280.54639;
 			id=1466;
 			atlOffset=-7.3544664;
 		};
@@ -19463,7 +19463,7 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={2899.77,9.4778042,5548.7041};
+				position[]={2899.77,9.4788046,5548.7041};
 				angles[]={0,1.1984303,0};
 			};
 			side="Empty";
@@ -19475,6 +19475,7 @@ class Mission
 			};
 			id=1779;
 			type="A3PL_Mcfisher_Grill";
+			atlOffset=0.0010004044;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -31807,7 +31808,7 @@ class Mission
 			};
 			id=2499;
 			type="A3PL_CarInfo";
-			atlOffset=0.018058062;
+			atlOffset=0.018057823;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -31886,6 +31887,39 @@ class Mission
 				};
 				nAttributes=2;
 			};
+		};
+		class Item705
+		{
+			dataType="Marker";
+			position[]={10225.597,5.46,8490.8965};
+			name="gasstation6";
+			text="Gas Station";
+			type="A3PL_Markers_GasStation";
+			colorName="ColorBlack";
+			id=2506;
+			atlOffset=-0.00058746338;
+		};
+		class Item706
+		{
+			dataType="Marker";
+			position[]={2856.7781,8.8649998,5557};
+			name="gasstation7";
+			text="Gas Station";
+			type="A3PL_Markers_GasStation";
+			colorName="ColorBlack";
+			id=2507;
+			atlOffset=-0.00016307831;
+		};
+		class Item707
+		{
+			dataType="Marker";
+			position[]={6183.856,5.8280001,7425.2642};
+			name="gasstation8";
+			text="Gas Station";
+			type="A3PL_Markers_GasStation";
+			colorName="ColorBlack";
+			id=2508;
+			atlOffset=0.00023651123;
 		};
 	};
 };

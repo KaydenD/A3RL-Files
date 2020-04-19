@@ -1,8 +1,8 @@
-/* #Viladi
+/* #Kyzomu
 $[
 	1.063,
 	["Upgrades",[[0,0,1,1],0.025,0.04,"GUI_GRID"],0,0,0],
-	[1200,"static_bg",[1,"P:\A3PL_Common\GUI\A3PL_Garage.paa",["0 * safezoneW + safezoneX","0 * safezoneH + safezoneY","1 * safezoneW","1 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1200,"static_bg",[1,"\A3PL_Common\GUI\A3PL_Garage.paa",["0 * safezoneW + safezoneX","0 * safezoneH + safezoneY","1 * safezoneW","1 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
 	[1500,"lb_upgrades",[1,"",["0.736615 * safezoneW + safezoneX","0.114667 * safezoneH + safezoneY","0.23552 * safezoneW","0.258815 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
 	[1501,"lb_requiredupgrade",[1,"",["0.735625 * safezoneW + safezoneX","0.505556 * safezoneH + safezoneY","0.235 * safezoneW","0.0773336 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
 	[1502,"lb_repairlist",[1,"",["0.0276562 * safezoneW + safezoneX","0.116741 * safezoneH + safezoneY","0.235521 * safezoneW","0.192148 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
@@ -12,7 +12,7 @@ $[
 	[1101,"struc_desc",[1,"Shines light into criminals faces that are running away from you",["0.83 * safezoneW + safezoneX","0.39 * safezoneH + safezoneY","0.128906 * safezoneW","0.044 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
 	[1102,"struc_upgradeprice",[1,"$20000000",["0.856823 * safezoneW + safezoneX","0.434 * safezoneH + safezoneY","0.0721875 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
 	[1600,"button_upgrade",[1,"",["0.802136 * safezoneW + safezoneX","0.599 * safezoneH + safezoneY","0.0979166 * safezoneW","0.0404074 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1601,"button_repair",[1,"",["0.0926562 * safezoneW + safezoneX","0.554074 * safezoneH + safezoneY","0.0984375 * safezoneW","0.0413333 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1601,"button_repair",[1,"",["0.025625 * safezoneW + safezoneX","0.552333 * safezoneH + safezoneY","0.103125 * safezoneW","0.044 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
 	[1602,"button_painttexture",[1,"",["0.0364583 * safezoneW + safezoneX","0.92437 * safezoneH + safezoneY","0.0989584 * safezoneW","0.0376296 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
 	[1603,"button_paintrgb",[1,"",["0.153489 * safezoneW + safezoneX","0.925296 * safezoneH + safezoneY","0.0989584 * safezoneW","0.0376296 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
 	[1604,"button_close",[1,"",["0.958906 * safezoneW + safezoneX","0.038 * safezoneH + safezoneY","0.020625 * safezoneW","0.044 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
@@ -22,9 +22,12 @@ $[
 	[1505,"lb_materials",[1,"",["0.386047 * safezoneW + safezoneX","0.11324 * safezoneH + safezoneY","0.241771 * safezoneW","0.0818519 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
 	[1605,"button_setMaterial",[1,"",["0.4505 * safezoneW + safezoneX","0.21224 * safezoneH + safezoneY","0.0985417 * safezoneW","0.0411112 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
 	[1400,"edit_licenseplate",[1,"",["0.390687 * safezoneW + safezoneX","0.87114 * safezoneH + safezoneY","0.236198 * safezoneW","0.0357777 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1606,"button_setLicensePlate",[1,"",["0.458334 * safezoneW + safezoneX","0.923555 * safezoneH + safezoneY","0.0980209 * safezoneW","0.0411112 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]]
+	[1606,"button_setLicensePlate",[1,"",["0.458334 * safezoneW + safezoneX","0.923555 * safezoneH + safezoneY","0.0980209 * safezoneW","0.0411112 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+	[1607,"button_repairall",[1,"",["0.159687 * safezoneW + safezoneX","0.555 * safezoneH + safezoneY","0.103125 * safezoneW","0.044 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]]
 ]
 */
+
+
 
 
 
@@ -38,7 +41,7 @@ class Dialog_Garage
 	class controls
 	{
 		////////////////////////////////////////////////////////
-		// GUI EDITOR OUTPUT START (by Kane, v1.063, #Sisisa)
+		// GUI EDITOR OUTPUT START (by Austin Blackwater, v1.063, #Kyzomu)
 		////////////////////////////////////////////////////////
 
 		class static_bg: RscPicture
@@ -102,7 +105,7 @@ class Dialog_Garage
 		class struc_desc: RscStructuredText
 		{
 			idc = 1101;
-			text = "<t align='center' size ='1'></t>"; //--- ToDo: Localize;
+			text = "<t align='center' size ='1'></t>";
 			x = 0.83 * safezoneW + safezoneX;
 			y = 0.39 * safezoneH + safezoneY;
 			w = 0.128906 * safezoneW;
@@ -111,7 +114,7 @@ class Dialog_Garage
 		class struc_upgradeprice: RscStructuredText
 		{
 			idc = 1102;
-			text = "<t align='center' size ='1.2'></t>"; //--- ToDo: Localize;
+			text = "<t align='center' size ='1.2'></t>";
 			x = 0.856823 * safezoneW + safezoneX;
 			y = 0.434 * safezoneH + safezoneY;
 			w = 0.0721875 * safezoneW;
@@ -128,10 +131,10 @@ class Dialog_Garage
 		class button_repair: RscButtonEmpty
 		{
 			idc = 1601;
-			x = 0.0926562 * safezoneW + safezoneX;
-			y = 0.554074 * safezoneH + safezoneY;
-			w = 0.0984375 * safezoneW;
-			h = 0.0413333 * safezoneH;
+			x = 0.025625 * safezoneW + safezoneX;
+			y = 0.552333 * safezoneH + safezoneY;
+			w = 0.103125 * safezoneW;
+			h = 0.044 * safezoneH;
 		};
 		class button_painttexture: RscButtonEmpty
 		{
@@ -197,7 +200,6 @@ class Dialog_Garage
 			w = 0.0985417 * safezoneW;
 			h = 0.0411112 * safezoneH;
 		};
-
 		class edit_licenseplate: RscEdit
 		{
 			idc = 1400;
@@ -206,7 +208,6 @@ class Dialog_Garage
 			w = 0.236198 * safezoneW;
 			h = 0.0357777 * safezoneH;
 		};
-		
 		class button_setLicensePlate: RscButtonEmpty
 		{
 			idc = 1606;
@@ -214,7 +215,15 @@ class Dialog_Garage
 			y = 0.923555 * safezoneH + safezoneY;
 			w = 0.0980209 * safezoneW;
 			h = 0.0411112 * safezoneH;
-		};		
+		};
+		class button_repairall: RscButtonEmpty
+		{
+			idc = 1607;
+			x = 0.159687 * safezoneW + safezoneX;
+			y = 0.555 * safezoneH + safezoneY;
+			w = 0.103125 * safezoneW;
+			h = 0.044 * safezoneH;
+		};
 		////////////////////////////////////////////////////////
 		// GUI EDITOR OUTPUT END
 		////////////////////////////////////////////////////////

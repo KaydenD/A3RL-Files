@@ -705,6 +705,8 @@
 		_controlPosition progressSetPosition _percent;
 		uiSleep 0.1;
 		_time = _time + 0.1;
+
+		if(Player_ActionCanceled) exitWith {};
 	};
 
 	(_display displayCtrl 394) ctrlSetFade 1;
@@ -719,6 +721,7 @@
 	//set completed
 	Player_ActionCompleted = true;
 	Player_ActionDoing = false;
+	Player_ActionCanceled = false;
 }] call Server_Setup_Compile;
 
 ["A3PL_Lib_AnimBusStopInit",

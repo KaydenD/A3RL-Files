@@ -1058,4 +1058,12 @@
 	{
 		[] call A3RL_License_Buy;
 	}
+], 
+
+[
+	"",
+	"Rob the port",
+	{
+		[player_objintersect] call A3RL_PortRobbery_Rob;
+	}
 ]

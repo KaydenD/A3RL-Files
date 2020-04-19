@@ -693,7 +693,7 @@ Server_Setup_Compile = {
 			};
 		} else {
 			if (EQUAL(_queryResult,"[3]")) then {
-				diag_log format ["extDB3: uiSleep [4]: %1", diag_tickTime];
+				//diag_log format ["extDB3: uiSleep [4]: %1", diag_tickTime];
 				//uiSleep 0.1;
 			} else {
 				_loop = false;

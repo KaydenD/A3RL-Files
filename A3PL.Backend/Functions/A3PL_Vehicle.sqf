@@ -1250,11 +1250,8 @@
 	private ["_veh"];
 	_veh = param [0,objNull];
 
-	{
-		deleteVehicle _x;
-	} foreach (attachedObjects _veh);
+	[_veh] remoteExec ["Server_Vehicle_Despawn", 2];
 
-	deleteVehicle _veh;
 }] call Server_Setup_Compile;
 
 

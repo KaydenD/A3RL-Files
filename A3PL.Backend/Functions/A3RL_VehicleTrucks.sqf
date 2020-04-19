@@ -73,7 +73,7 @@
 		_itemAmount = parseNumber (ctrlText 1400);
 		if (_itemAmount < 1) exitwith {["System: Please enter a valid number",Color_Red] call A3PL_Player_Notification;};
 		if (_itemAmount > ((_inventory select _index) select 1)) exitwith {["System: You don't have this amount",Color_Red] call A3PL_Player_Notification;};
-		if (([_obj, [_itemClass, _itemAmount]] call A3PL_Trunk_VirtualTotalWeight) > ([typeOf _obj, "maxWeight"] call A3PL_Config_GetMaxTrunkWeight)) exitWith {["System: You doesn't have enough space",Color_Red] call A3PL_Player_Notification;};
+		if (([_obj, [_itemClass, _itemAmount]] call A3PL_Trunk_VirtualTotalWeight) > ([typeOf _obj, "maxWeight"] call A3RL_Config_GetMaxTrunkWeight)) exitWith {["System: You doesn't have enough space",Color_Red] call A3PL_Player_Notification;};
 
 		_obj setVariable ["storage",([_storage, _itemClass, _itemAmount,false] call BIS_fnc_addToPairs),true];
 		player setVariable ["player_inventory",([_inventory, _itemClass, -(_itemAmount),false] call BIS_fnc_addToPairs),true];

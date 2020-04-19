@@ -368,6 +368,8 @@ Config_IntersectArray =
 	["spine3","Access USCG Car Shop",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == NPC_uscg_vehicles}],
 	["spine3","Access USCG Boat Shop",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == NPC_uscg_boats}],
 	["spine3","Access USCG Aircraft Shop",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == NPC_uscg_aircraft}],
+
+	["spine3","Rob the port",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect IN [portrobbery_IE,portrobbery_Steel,portrobbery_Wep]}],
 	
 	//DMV
 	["spine3","Purchase Drivers License($500)",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == NPC_DMV && !("driver" IN (player getVariable ["licenses",[]]))}],
@@ -2664,7 +2666,8 @@ Config_GenArray =
 	"Rent locker",
 	"SFP Shop",
 	
-	"Purchase Drivers License($500)"
+	"Purchase Drivers License($500)",
+	"Rob the port"
 ];
 publicVariable "Config_GenArray";
 

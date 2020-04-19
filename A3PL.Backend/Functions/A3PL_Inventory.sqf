@@ -466,7 +466,7 @@
 	};
 
 	//check inventory space
-	if (([[_classname,1]] call A3PL_Inventory_TotalWeight) > Player_MaxWeight) exitwith {[format ["System: You can't pick this item up because it would exceed the %1 lbs limit you can carry on you!",Player_MaxWeight],Color_Red] call A3PL_Player_Notification;};
+	if (([[_classname,1]] call A3PL_Inventory_TotalWeight) > Player_MaxWeight && !(_classname IN ["ME_Bucket","ME_Jackhammer","ME_Claw"])) exitwith {[format ["System: You can't pick this item up because it would exceed the %1 lbs limit you can carry on you!",Player_MaxWeight],Color_Red] call A3PL_Player_Notification;};
 
 	//FD adapter check
 	if (typeOf _obj == "A3PL_FD_HoseEnd1_Float") then

@@ -20,7 +20,7 @@
 	_control ctrlAddeventhandler ["ButtonDown",{[false, player getVariable ["objInUse", objNull]] call A3RL_Trunk_VirtualChange;}];
 
 	//allow box to be used again
-	_display displayAddEventHandler ["unload",{_obj setVariable ["inuse",nil,true]; player setVariable ["objInUse", nil];}];
+	_display displayAddEventHandler ["unload",{(player getVariable ["objInUse", objNull]) setVariable ["inuse",nil,true]; player setVariable ["objInUse", nil];}];
 
 	[_display, _obj] call A3RL_Trunk_VirtualFill;
 }] call Server_Setup_Compile;

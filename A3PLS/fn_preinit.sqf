@@ -533,6 +533,8 @@ Server_Setup_Compile = {
 	//Evidence Locker Save
 	["itemAdd", ["Server_Loop_Server_EvidenceLockerSave", {[] spawn Server_EvidenceLocker_Save;}, 1800]] call BIS_fnc_loop; // 30 mintues
 
+	["itemAdd", ["Server_Loop_Server_SaveTrunks", {[] spawn Server_Trunk_Save;}, 1500]] call BIS_fnc_loop; //Very database intensive, don't want it to run every 30 mins with the other loops. 
+
 	//loop for animals
 	["itemAdd", ["Server_Loop_Goats",
 	{
@@ -1354,4 +1356,5 @@ Server_Setup_Compile = {
 	[] spawn Server_EvidenceLocker_Save;
 	[] spawn Server_ShopStock_Save;
 	[] spawn Server_Locker_Save;
+	[] spawn Server_Trunk_Save;
 }] call Server_Setup_Compile;

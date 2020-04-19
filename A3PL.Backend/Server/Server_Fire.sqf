@@ -1,6 +1,5 @@
 ["Server_Fire_PauseCheck", {
-
-	_sendTo = params [0,[]];
+	//_sendTo = params [0,[]];
 
 	[Server_FireLooping] remoteExec ["A3PL_Admin_PauseCheckReturn"];
 },true] call Server_Setup_Compile;

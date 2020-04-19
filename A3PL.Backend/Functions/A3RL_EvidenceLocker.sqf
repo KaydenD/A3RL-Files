@@ -4,7 +4,7 @@
 
 	if(!([] call A3PL_Player_AntiSpam)) exitWith {};
 	if(!(_locker getVariable["locked", true])) exitWith {["The evidence locker is not locked!", Color_Red] call A3PL_Player_Notification;};
-	//if ((count (["usms"] call A3PL_Lib_FactionPlayers)) < 3) exitWith {["There must be 3 Marshals on-duty to rob the evidence locker ", Color_Red] call A3PL_Player_Notification;};
+	if ((count (["usms"] call A3PL_Lib_FactionPlayers)) < 3) exitWith {["There must be 3 Marshals on-duty to rob the evidence locker ", Color_Red] call A3PL_Player_Notification;};
 	if (!(["v_lockpick",1] call A3PL_Inventory_Has)) exitwith {["You must have a lockpick the break into the evidence locker", Color_Red] call A3PL_Player_Notification;};
 	if(_locker getVariable["robbing", false]) exitWith {["The evidence locker is already being robbed!", Color_Red] call A3PL_Player_Notification;};
 	

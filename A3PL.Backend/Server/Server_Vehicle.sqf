@@ -221,7 +221,7 @@
 {
 	private ["_veh"];
 	_veh = param [0,objNull];
-
+	Server_Storage_ListVehicles = Server_Storage_ListVehicles - [_veh];
 	{
 		deleteVehicle _x;
 	} foreach (attachedObjects _veh);

@@ -163,7 +163,6 @@
 					[[3],"A3PL_Storage_CarRetrieveResponse",_player,false] call BIS_FNC_MP;
 					_query = format ["UPDATE objects SET plystorage = '1' WHERE id = '%1'",_id];
 					[_query,1] spawn Server_Database_Async;
-					Server_Storage_ListVehicles - [_veh];
 					[_veh] call Server_Vehicle_Despawn;
 				};
 			};
@@ -286,7 +285,6 @@
 				[[3],"A3PL_Storage_CarRetrieveResponse",_player,false] call BIS_FNC_MP;
 				_query = format ["UPDATE objects SET plystorage = '1' WHERE id = '%1'",_id];
 				[_query,1] spawn Server_Database_Async;
-				Server_Storage_ListVehicles - [_veh];
 				[_veh] call Server_Vehicle_Despawn;
 			};
 		};
@@ -400,8 +398,6 @@
 			_materialLocation = [_materialFormat, "\", "\\"] call CBA_fnc_replace;
 			_query = format ["UPDATE objects SET plystorage = '1',fuel='%2',color='%3',material='%4' WHERE id = '%1'",_id,(fuel _playerCar),_Texture,_materialLocation];
 			[_query,1] spawn Server_Database_Async;
-			Server_Storage_ListVehicles - [_playerCar];
-
 			[_playercar] call Server_Vehicle_Despawn;
 		};
 	};

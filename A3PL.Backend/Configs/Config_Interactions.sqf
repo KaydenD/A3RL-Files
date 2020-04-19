@@ -434,7 +434,7 @@ A3PL_Interaction_Options =
 		{
 			[vehicle player] call A3RL_VITrunk_Open;
 		},
-		{(vehicle player != player)}
+		{(vehicle player != player) {!((vehicle player) getVariable ["locked", true])}}
 	],
 
 	[

@@ -403,7 +403,7 @@ Config_IntersectArray =
 	["deposit_20",localize"STR_INTSECT_OPDEPBOX",_dir+"IGUI\Cfg\Actions\take_ca.paa",{true}], //Open Deposit Box
 
 	//ATM
-	["ATM",localize"STR_INTSECT_USEATM",_dir+"IGUI\Cfg\Actions\take_ca.paa",{true}], //Use ATM
+	["start",localize"STR_INTSECT_USEATM",_dir+"IGUI\Cfg\Actions\take_ca.paa",{true}], //Use ATM
 
 	//Dog cage
 	["dogcage",localize"STR_INTSECT_OPK9MEN",_dir+"IGUI\Cfg\Actions\take_ca.paa",{player getVariable ["job","unemployed"] IN ["police","uscg","usms"]}], //Open K-9 Menu

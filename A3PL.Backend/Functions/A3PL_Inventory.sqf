@@ -626,3 +626,16 @@
 	//close inventory dialog
 	[0] call A3PL_Lib_CloseDialog;
 }] call Server_Setup_Compile;
+
+["A3RL_Inventory_ItemName", {
+	_item = _this select 0;
+	_return = "";
+
+	{
+		if((_x select 0) == _item) exitWith {
+			_return = _x select 1;
+		};
+	} forEach Config_Items;
+
+	_return;
+}] call Server_Setup_Compile;

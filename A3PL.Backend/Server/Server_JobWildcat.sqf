@@ -113,7 +113,7 @@
 		if ((_dmg >= (_oldDmg + (OREDMGDISS / _giveEach))) && (_sel == "hitpickaxe") && (_wep IN ["A3PL_Machinery_Pickaxe","A3PL_Pickaxe"])) then
 		{
 			_random = random 100;//random chance for treasure
-			if (_random < 5) then
+			if (_random < 10) then
 			{
 				_random = random 100;
 				switch (true) do

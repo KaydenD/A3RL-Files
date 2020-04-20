@@ -1,5 +1,5 @@
 //dmg value from which ore will get removed
-#define OREDMGDISS 0.55
+#define OREDMGDISS 0.825
 
 //Randomizes the oil around the island and publicvariables the resulting variable
 ["Server_JobWildcat_RandomizeOil", 
@@ -113,7 +113,7 @@
 		if ((_dmg >= (_oldDmg + (OREDMGDISS / _giveEach))) && (_sel == "hitpickaxe") && (_wep IN ["A3PL_Machinery_Pickaxe","A3PL_Pickaxe"])) then
 		{
 			_random = random 100;//random chance for treasure
-			if (_random < 5) then
+			if (_random < 10) then
 			{
 				_random = random 100;
 				switch (true) do

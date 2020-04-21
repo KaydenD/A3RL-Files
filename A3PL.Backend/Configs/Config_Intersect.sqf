@@ -2675,6 +2675,7 @@ Config_GenArray =
 	"Purchase Drivers License($500)",
 	"Rob the port",
 	"Play Slots",
+	"Set Bet",
 	"Rob Gas Station"
 ];
 publicVariable "Config_GenArray";

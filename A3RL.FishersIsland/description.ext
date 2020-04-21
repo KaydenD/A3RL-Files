@@ -100,6 +100,7 @@ corpseRemovalMaxTime = 60;
 #include "Dialogs\dialog_iPhone_X.hpp"
 #include "Dialogs\dialog_AddRoommate.hpp"
 #include "Dialogs\dialog_slotmachine.hpp"
+#include "Dialogs\dialog_setbet.hpp"
 
 class RscTitles
 {

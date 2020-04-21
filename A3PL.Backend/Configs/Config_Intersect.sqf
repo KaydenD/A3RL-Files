@@ -937,6 +937,8 @@ Config_IntersectArray =
 	["score6",localize"STR_INTSECT_SHOWSCORE","",{true}], //Show Scoring
 	["bowlingBall",localize"STR_INTSECT_PICKBALL","",{true}], //Pickup Ball
 
+	["pullHandle","Play Slots","",{true}],
+
 	//computers
 	["sd_computer",localize"STR_INTSECT_ACCTVSYS",_dir+"map\MapControl\bunker_ca.paa",{(player getVariable ["job","unemployed"]) == "police"}], //Access CCTV System
 	["PC_youtube",localize"STR_INTSECT_ACCYTCOMP",_dir+"map\MapControl\bunker_ca.paa",{true}], //Access Youtube Computer
@@ -2667,7 +2669,8 @@ Config_GenArray =
 	"SFP Shop",
 	
 	"Purchase Drivers License($500)",
-	"Rob the port"
+	"Rob the port",
+	"Play Slots"
 ];
 publicVariable "Config_GenArray";
 

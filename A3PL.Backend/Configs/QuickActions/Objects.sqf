@@ -902,4 +902,12 @@
 	{
 		[player_objintersect] call A3PL_Hydrogen_LoadPetrolStation;
 	}
+],
+
+[
+	"",
+	"Play Slots",
+	{
+		[] spawn A3RL_Slots_Roll;
+	}
 ]

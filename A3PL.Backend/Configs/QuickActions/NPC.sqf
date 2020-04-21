@@ -1066,4 +1066,12 @@
 	{
 		[player_objintersect] call A3RL_PortRobbery_Rob;
 	}
+],
+
+[
+	"",
+	"Rob Gas Station",
+	{
+		[player_objintersect] call A3RL_GasRobbery_Start;
+	}
 ]

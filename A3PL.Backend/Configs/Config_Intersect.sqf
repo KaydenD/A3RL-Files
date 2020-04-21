@@ -2072,7 +2072,9 @@ Config_IntersectArray =
 	["Door_LF","Unflip vehicle",_dir+"IGUI\Cfg\VehicleToggles\lightsiconon_ca.paa",{((vehicle player) == player) && (simulationEnabled player_objIntersect) && !(player_objIntersect getVariable ["locked",true])}],
 	["Door_RF","Unflip vehicle",_dir+"IGUI\Cfg\VehicleToggles\lightsiconon_ca.paa",{((vehicle player) == player) && (simulationEnabled player_objIntersect) && !(player_objIntersect getVariable ["locked",true])}],
 
-	["furniture","Load into fuelstation tank",_dir+"IGUI\Cfg\Actions\take_ca.paa",{(player_objintersect getVariable ["class",""]) == "Petrol" && ((count (nearestObjects [player_objintersect, ["Land_A3PL_Gas_Station"], 7])) > 0)}]
+	["furniture","Load into fuelstation tank",_dir+"IGUI\Cfg\Actions\take_ca.paa",{(player_objintersect getVariable ["class",""]) == "Petrol" && ((count (nearestObjects [player_objintersect, ["Land_A3PL_Gas_Station"], 7])) > 0)}],
+
+	["spine3", "Rob Gas Station", _dir+"IGUI\Cfg\Actions\take_ca.paa", {player_objintersect IN [npc_gasstation_1, npc_gasstation_2, npc_gasstation_3, npc_gasstation_4, npc_gasstation_5, npc_gasstation_6, npc_gasstation_7, npc_gasstation_8]}]
 ];
 publicVariable "Config_IntersectArray";
 
@@ -2670,7 +2672,8 @@ Config_GenArray =
 	
 	"Purchase Drivers License($500)",
 	"Rob the port",
-	"Play Slots"
+	"Play Slots",
+	"Rob Gas Station"
 ];
 publicVariable "Config_GenArray";
 

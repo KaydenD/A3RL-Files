@@ -85,6 +85,7 @@ Server_Setup_Files = [
 	['Functions', 'A3RL_PortRobbery'],
 	['Functions', 'A3RL_VehicleTrunks'],
 	['Functions', 'A3RL_SlotMachine'],
+	['Functions', 'A3RL_GasRobbery'],
 	['Backend', 'Server_Setup'],
 	['Server', 'Server_JobVDelivery'],
 	['Server', 'Server_JobMDelivery'],

@@ -1,5 +1,5 @@
 //dmg value from which ore will get removed
-#define OREDMGDISS 0.825
+#define OREDMGDISS 0.55
 
 //Randomizes the oil around the island and publicvariables the resulting variable
 ["Server_JobWildcat_RandomizeOil", 

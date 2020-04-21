@@ -33,6 +33,7 @@
 
 	_multi = 0;
 	switch(true) do {
+		case(_box1Roll == "watermelon" && _box2Roll == "watermelon" && _box3Roll == "watermelon"): {_multi = 2;};
 		case(_box1Roll == "horseshoe" && _box2Roll == "horseshoe" && _box3Roll == "horseshoe"): {_multi = 5;};
 		case(_box1Roll == "cherry" && _box2Roll == "cherry" && _box3Roll == "cherry"): {_multi = 10;};
 		case(_box1Roll == "bell" && _box2Roll == "bell" && _box3Roll == "bell"): {_multi = 20;};

@@ -20,7 +20,7 @@ class Dialog_SlotMachine
 	onLoad = "";
 	onUnload = "";
 	class controls
-	{
+	{ 
 		class RscPicture_1200: RscPicture
 		{
 			idc = 1200;
@@ -57,7 +57,7 @@ class Dialog_SlotMachine
 			w = 0.149531 * safezoneW;
 			h = 0.253 * safezoneH;
 		};
-		class RscButton_1600: RscButton
+		class RscButton_1600: RscButtonEmpty
 		{
 			idc = 1600;
 			x = 0.771734 * safezoneW + safezoneX;

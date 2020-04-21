@@ -1,6 +1,6 @@
 ["A3RL_Slots_Roll", 
 {
-	_dir = "\A3PL_Common\gui\slots\"
+	_dir = "\A3PL_Common\gui\slots\";
 	_icons = ["bell.paa", "cherry.paa", "clover.paa", "crown.paa", "diamond.paa", "horseshoe.paa", "seven.paa", "star.paa", "strawberry.paa", "watermelon.paa"];
 
 	createDialog "Dialog_SlotMachine";
@@ -20,6 +20,10 @@
 		_delayLeft = _delayLeft - _sleep;
 		uiSleep _sleep;
 	};
+
+	_structText = _display displayCtrl 1100;
+
+	_structText ctrlSetStructuredText parseText "<t align='center' size='2.0'>YOU WIN</t>";
 
 	playSound "A3RL_Slot_Sound_Win";
 

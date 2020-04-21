@@ -938,6 +938,8 @@ Config_IntersectArray =
 	["bowlingBall",localize"STR_INTSECT_PICKBALL","",{true}], //Pickup Ball
 
 	["pullHandle","Play Slots","",{true}],
+	["setBet","Set Bet","",{true}],
+
 
 	//computers
 	["sd_computer",localize"STR_INTSECT_ACCTVSYS",_dir+"map\MapControl\bunker_ca.paa",{(player getVariable ["job","unemployed"]) == "police"}], //Access CCTV System

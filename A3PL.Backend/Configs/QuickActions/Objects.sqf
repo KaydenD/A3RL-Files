@@ -910,4 +910,13 @@
 	{
 		[] spawn A3RL_Slots_Roll;
 	}
+],
+
+[
+	"",
+	"Set Bet",
+	{
+		[] spawn A3RL_Slots_OpenSetBet;
+	}
 ]
+

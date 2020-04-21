@@ -57,3 +57,25 @@
 
 
 }] call Server_Setup_Compile;
+
+["A3RL_Slots_OpenSetBet", 
+{
+	createDialog "Dialog_SetBet";
+	_display = findDisplay 64;
+	_ctrl = _display displayCtrl 1400;
+	_ctrl ctrlSetText (format ["%1",player_objIntersect getVariable ["bet", 500]]);
+}] call Server_Setup_Compile;
+
+["A3RL_Slots_SetBet", 
+{
+	createDialog "Dialog_SetBet";
+	_display = findDisplay 64;
+	_ctrl = _display displayCtrl 1400;
+	_bet = player_objIntersect getVariable ["bet", 500];
+	_newBetStr =  ctrlText _ctrl;
+	_newBet = parseNumber _newBetStr;
+	if(_newBet < 1) exitWith {["Invaild bet amount", Color_Red] call A3PL_Player_Notification;};
+	if(_bet != _newBet) then {
+		player_objIntersect setVariable ["bet", _newBet, true];
+	};
+}] call Server_Setup_Compile;

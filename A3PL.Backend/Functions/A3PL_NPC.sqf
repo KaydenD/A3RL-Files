@@ -68,8 +68,8 @@
 	if ((missionnamespace getvariable ["JobUniformTimer",time]) > time) exitwith {[format ["Don't spam, try again in %1 seconds",round (JobUniformTimer - time)], Color_Yellow] call A3PL_Player_Notification;};
 	if ((_this select 0) == _job) then {
 		switch (_job) do {
-			case "mcfisher": { player adduniform "A3PL_mcFishers_Uniform_uniform"; player addheadgear "A3PL_mcFishers_cap"; };
-			case "tacohell": { player adduniform "A3PL_TacoHell_Uniform_Uniform"; player addheadgear "A3PL_TacoHell_cap"; };
+			case "mcfisher": { ["A3PL_mcFishers_Uniform_uniform"] call A3PL_Lib_ChangeUniformSafe; ["A3PL_mcFishers_cap"] call A3PL_Lib_ChangeHeadgear;};
+			case "tacohell": { ["A3PL_TacoHell_Uniform_Uniform"] call A3PL_Lib_ChangeUniformSafe; ["A3PL_TacoHell_cap"] call A3PL_Lib_ChangeHeadgear;};
 			default { };
 		};
 		JobUniformTimer = time + 300;

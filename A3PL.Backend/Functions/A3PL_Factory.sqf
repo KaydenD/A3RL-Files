@@ -761,11 +761,11 @@
 				case ("weapon"): {player addWeapon _id;};
 				case ("magazine"): {for "_i" from 1 to (_amount) do {player addMagazine _id;};};
 				case ("mag"): {for "_i" from 1 to (_amount) do {player addMagazine _id;};};
-				case ("uniform"): {player addUniform _id; };
-				case ("vest"): {player addVest _id;};
-				case ("headgear"): {player addHeadGear _id;};
-				case ("backpack"): {player addBackPack _id;};
-				case ("goggles"): {player addGoggles _id;};
+				case ("uniform"): {[_id] call A3PL_Lib_ChangeUniformSafe;};
+				case ("vest"): {[_id] call A3PL_Lib_ChangeVestSafe;};
+				case ("headgear"): {[_id] call A3PL_Lib_ChangeHeadgear;};
+				case ("backpack"): {[_id] call A3PL_Lib_ChangeBackpackSafe;};
+				case ("goggles"): {[_id] call A3PL_Lib_ChangeGoggles;};
 				case ("aitem"): {player addItem _id; player assignItem _id;};
 				default {_fail = true;};
 			};

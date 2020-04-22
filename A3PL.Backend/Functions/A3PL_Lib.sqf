@@ -831,3 +831,84 @@
 	};
 	_hasPerk;
 }] call Server_Setup_Compile;
+
+
+["A3PL_Lib_ChangeUniformSafe",
+{
+	_newUniform = param [0, ""];
+	_curUni = uniform player;
+	if(_curUni == "") exitWith {player addUniform _newUniform;};
+	_items = [weaponCargo (uniformContainer player),magazineCargo (uniformContainer player),itemCargo (uniformContainer player),backpackCargo (uniformContainer player)];
+	_veh = createVehicle ["GroundWeaponHolder", (getPosATL  player), [], 0, "CAN_COLLIDE"]; 
+	_veh addItemCargoGlobal[_curUni, 1];
+	player addUniform _newUniform;
+	clearItemCargoGlobal (uniformContainer player); 
+	clearWeaponCargoGlobal (uniformContainer player);
+	clearMagazineCargoGlobal (uniformContainer player);
+	clearBackpackCargoGlobal (uniformContainer player);
+	{(uniformContainer player) addWeaponCargoGlobal [_x,1]} foreach (_items select 0);
+	{(uniformContainer player) addMagazineCargoGlobal [_x,1]} foreach (_items select 1);
+	{(uniformContainer player) addItemCargoGlobal [_x,1]} foreach (_items select 2);
+	{(uniformContainer player) addBackpackCargoGlobal [_x,1]} foreach (_items select 3);
+
+}] call Server_Setup_Compile;
+
+["A3PL_Lib_ChangeVestSafe",
+{
+	_newVest = param [0, ""];
+	_curVest = vest player;
+	if(_curVest == "") exitWith {player addVest _newVest;};
+	_items = [weaponCargo (vestContainer player),magazineCargo (vestContainer player),itemCargo (vestContainer player),backpackCargo (vestContainer player)];
+	_veh = createVehicle ["GroundWeaponHolder", (getPosATL  player), [], 0, "CAN_COLLIDE"]; 
+	_veh addItemCargoGlobal[_curVest, 1];
+	player addVest _newVest;
+	clearItemCargoGlobal (vestContainer player); 
+	clearWeaponCargoGlobal (vestContainer player);
+	clearMagazineCargoGlobal (vestContainer player);
+	clearBackpackCargoGlobal (vestContainer player);
+	{(vestContainer player) addWeaponCargoGlobal [_x,1]} foreach (_items select 0);
+	{(vestContainer player) addMagazineCargoGlobal [_x,1]} foreach (_items select 1);
+	{(vestContainer player) addItemCargoGlobal [_x,1]} foreach (_items select 2);
+	{(vestContainer player) addBackpackCargoGlobal [_x,1]} foreach (_items select 3);
+
+}] call Server_Setup_Compile;
+
+["A3PL_Lib_ChangeBackpackSafe",
+{
+	_newBackpack = param [0, ""];
+	_curBackpack = backpack player;
+	if(_curBackpack == "") exitWith {player addBackpack _newBackpack;};
+	_items = [weaponCargo (backpackContainer player),magazineCargo (backpackContainer player),itemCargo (backpackContainer player),backpackCargo (backpackContainer player)];
+	_veh = createVehicle ["GroundWeaponHolder", (getPosATL  player), [], 0, "CAN_COLLIDE"]; 
+	_veh addItemCargoGlobal[_curBackpack, 1];
+	player addBackpack _newBackpack;
+	clearItemCargoGlobal (backpackContainer player); 
+	clearWeaponCargoGlobal (backpackContainer player);
+	clearMagazineCargoGlobal (backpackContainer player);
+	clearBackpackCargoGlobal (backpackContainer player);
+	{(backpackContainer player) addWeaponCargoGlobal [_x,1]} foreach (_items select 0);
+	{(backpackContainer player) addMagazineCargoGlobal [_x,1]} foreach (_items select 1);
+	{(backpackContainer player) addItemCargoGlobal [_x,1]} foreach (_items select 2);
+	{(backpackContainer player) addBackpackCargoGlobal [_x,1]} foreach (_items select 3);
+
+}] call Server_Setup_Compile;
+
+["A3PL_Lib_ChangeGoggles",
+{
+	_newGoggles = param [0, ""];
+	_curGoggles = goggles player;
+	if(_curGoggles == "") exitWith {player addGoggles _newGoggles;};
+	_veh = createVehicle ["GroundWeaponHolder", (getPosATL  player), [], 0, "CAN_COLLIDE"]; 
+	_veh addItemCargoGlobal[_curGoggles, 1];
+	player addGoggles _newGoggles;
+}] call Server_Setup_Compile;
+
+["A3PL_Lib_ChangeHeadgear",
+{
+	_newHeadgear = param [0, ""];
+	_curHeadgear = headgear player;
+	if(_curHeadgear == "") exitWith {player addHeadgear _newHeadgear;};
+	_veh = createVehicle ["GroundWeaponHolder", (getPosATL  player), [], 0, "CAN_COLLIDE"]; 
+	_veh addItemCargoGlobal[_curHeadgear, 1];
+	player addHeadgear _newHeadgear;
+}] call Server_Setup_Compile;

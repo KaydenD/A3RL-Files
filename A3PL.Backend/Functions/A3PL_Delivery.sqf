@@ -7,8 +7,10 @@
 	player setVariable ["job","deliver"];
 	["System: Welcome to Fishers Island Postal Service!",Color_Green] call A3PL_Player_Notification;
 	["System: Go take your truck and deliver the packages, check the label on the package for the address!",Color_Green] call A3PL_Player_Notification;
-	player adduniform "A3PL_Mailman_Uniform";
-	player addHeadGear "A3PL_Mailman_Cap";
+	//player adduniform "A3PL_Mailman_Uniform";
+	["A3PL_Mailman_Uniform"] call A3PL_Lib_ChangeUniformSafe;
+	//player addHeadGear "A3PL_Mailman_Cap";
+	["A3PL_Mailman_Cap"] call A3PL_Lib_ChangeHeadgear;
 
 	sleep (random 2 + 2);
 	switch(_building) do 

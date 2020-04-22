@@ -797,7 +797,7 @@
 	{
 		if (isNull _veh) exitwith {["System: Your job vehicle has been destroyed!",Color_Red] call A3PL_Player_Notification; true;};
 		if (getDammage _veh >= 1) exitwith {["System: Your job vehicle has been destroyed!",Color_Red] call A3PL_Player_Notification; true;};
-		if ((player distance2D _veh) > 100) exitwith {["System: You walked too far away from your job vehicle, it has been returned.",Color_Red] call A3PL_Player_Notification; true;};
+		if ((player distance2D _veh) > 200) exitwith {["System: You walked too far away from your job vehicle, it has been returned.",Color_Red] call A3PL_Player_Notification; true;};
 		/* if ((player getVariable ["jobVehicleTimer",diag_tickTime]) <= diag_tickTime) exitwith {["System: You reached the maximum time to use this job vehicle, it has been returned!",Color_Red] call A3PL_Player_Notification; true;}; */
 		//if ((_inArea != "") && (!(player inArea _inArea))) exitwith {["System: Your job vehicle exited the area it needs to stay in! (e.g. go karts only in Sally Speedway!)",Color_Red] call A3PL_Player_Notification; true;};
 		sleep 10;

@@ -199,6 +199,7 @@
 	_items = (items _target) + (assignedItems _target);
 	_weps = weapons _target;
 	_mags = magazines _target;
+	_virtual = _target getVariable ["player_inventory",[]];
 	if (currentMagazine _target != "") then
 	{
 		_mags pushback (currentMagazine _target);
@@ -228,6 +229,12 @@
 		_control lbSetData [_index,_x];
 	} foreach _mags;
 
+	_control = _display displayCtrl 1503;
+	{
+		_index = _control lbAdd format["%1 (x%2)",[_x select 0, "name"] call A3PL_Config_GetItem,_x select 1];
+		_control lbSetData [_index,_x select 0];
+	} foreach _virtual;
+
 	//EventHandlers
 	_control = _display displayCtrl 1600;
 	_control ctrlAddEventHandler ["buttonDown",{["item"] call A3PL_Police_PatDownTake}];
@@ -235,6 +242,8 @@
 	_control ctrlAddEventHandler ["buttonDown",{["wep"] call A3PL_Police_PatDownTake}];
 	_control = _display displayCtrl 1602;
 	_control ctrlAddEventHandler ["buttonDown",{["mag"] call A3PL_Police_PatDownTake}];
+	_control = _display displayCtrl 1603;
+	_control ctrlAddEventHandler ["buttonDown",{["virtual"] call A3PL_Police_PatDownTake}];
 
 	A3PL_Police_Target = _target;
 	_display displayAddEventHandler ["unload",{A3PL_Police_Target setVariable ["patdown",nil,true]; A3PL_Police_Target = nil; A3PL_Police_WeaponHolder = nil;}];
@@ -261,6 +270,7 @@
 	};
 	_weaponHolder = A3PL_Police_WeaponHolder;
 
+	_amount = 1;
 	//remove from target
 	switch (_type) do
 	{
@@ -292,14 +302,24 @@
 			_target removeMagazineGlobal _class;
 			_weaponHolder addMagazineCargoGlobal [_class,1];
 		};
+		case ("virtual"):
+		{
+			_control = _display displayCtrl 1503;
+			_class = _control lbData (lbCurSel _control);
+			_itemName = [_class, "name"] call A3PL_Config_GetItem;
+			
+			_amount = [(_target getVariable ["Player_Inventory",[]]), _class, 0] call BIS_fnc_getFromPairs;
+
+			[_class, true] remoteExec ["A3PL_Inventory_Use", _target];
+		};
 	};
 
 	//remove from dialog
 	_control lbDelete (lbCurSel _control);
 
 	//send message to target
-	[format ["System: You took 1x %1 from %2",_itemName,_target getVariable ["name",(name _target)]],Color_Green] call A3PL_Player_Notification;
-	[format ["System: %2 took 1x %1 from you during his pat down",_itemName,player getVariable ["name",(name player)]],Color_Green] call A3PL_Player_Notification;
+	[format ["System: You took %3x %1 from %2",_itemName,_target getVariable ["name",(name _target)], _amount],Color_Green] call A3PL_Player_Notification;
+	[format ["System: %2 took %3x %1 from you during his pat down",_itemName,player getVariable ["name",(name player)], _amount],Color_Green] remoteExec ["A3PL_Player_Notification", _target];  
 }] call Server_Setup_Compile;
 
 ['A3PL_Police_Cuff', {
@@ -1626,35 +1646,6 @@
 	Player_TicketAmount = Nil;
 	Player_TicketCop = Nil;
 }] call Server_Setup_Compile;
-
-["A3PL_Police_SearchPlayer",
-{
-
-	params[["_target",objNull,[objNull]]];
-
-	_items = _target getVariable ["player_inventory",[]];
-
-	{
-		_class = _x select 0;
-		_amount = _x select 1;
-
-		if(_class in Player_illegalItems) then {
-
-			//Reverse the amount
-			_amount = 0 - _amount;
-
-			//Remove this item
-			[_target,_class,_amount] remoteExec ["Server_Inventory_Add",2];
-
-			//tell the cop
-			_name = [_class, 'name'] call A3PL_Config_GetItem;
-			[format["System: You found %1 %2(s)",_amount,_name],Color_Red] call A3PL_Player_Notification;
-		};
-	} forEach _items;
-}] call Server_Setup_Compile;
-
-
-
 
 ["A3PL_Police_StartJailPlayer",
 {

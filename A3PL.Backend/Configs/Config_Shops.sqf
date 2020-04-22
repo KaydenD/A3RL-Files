@@ -556,6 +556,8 @@ Config_Shops_Items =
             ["vehicle","A3PL_Tahoe_FD",25000,0],
 			["vehicle","A3PL_Tahoe_PD",25000,0],
 			["vehicle","A3PL_Charger_PD",25000,0],
+			["vehicle","A3PL_Silverado_PD",25000,0],
+			["vehicle","A3PL_Mustang_PD",35000,0],
             ["vehicle","A3PL_Pierce_Ladder",35000,0],
             ["vehicle","A3PL_Pierce_Heavy_Ladder",35000,0],
             ["vehicle","A3PL_Pierce_Pumper",35000,0]

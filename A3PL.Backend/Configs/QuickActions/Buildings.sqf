@@ -781,4 +781,12 @@
 	{
 		[player_objintersect] spawn A3PL_FD_RepairFireAlarm;
 	}
+],
+
+[
+	"",
+	"Lockpick Door", 
+	{
+		[player_objintersect] spawn A3RL_HouseRobbery_Rob;
+	}
 ]

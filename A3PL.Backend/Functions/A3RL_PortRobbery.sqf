@@ -61,9 +61,9 @@
 					_amount = round(random[_amountMin,_amountMin + ((_amountMax - _amountMin)/2),_amountMax]);
 					_veh = createVehicle ["GroundWeaponHolder", (getPosATL  player), [], 0, "CAN_COLLIDE"]; 
 					_veh addItemCargoGlobal[_class,_amount];
-				}
-			}
-		}
+				};
+			};
+		};
 	} forEach Config_PortRobbery;
 
 }] call Server_Setup_Compile;

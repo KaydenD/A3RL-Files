@@ -43,6 +43,7 @@
 		case portrobbery_Wep: {_portNumber = 5};
 	};
 
+	_veh = createVehicle ["GroundWeaponHolder", (getPosATL  player), [], 0, "CAN_COLLIDE"]; 
 	{
 		if(_x select _portNumber) then {
 			_chance = random 100;
@@ -59,7 +60,6 @@
 					_amountMin = _x select 1;
 					_amountMax = _x select 2;
 					_amount = round(random[_amountMin,_amountMin + ((_amountMax - _amountMin)/2),_amountMax]);
-					_veh = createVehicle ["GroundWeaponHolder", (getPosATL  player), [], 0, "CAN_COLLIDE"]; 
 					_veh addItemCargoGlobal[_class,_amount];
 				};
 			};

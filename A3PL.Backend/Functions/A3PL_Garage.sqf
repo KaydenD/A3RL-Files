@@ -433,7 +433,7 @@
 	_gSlider = sliderPosition _control;
 	_control = _display displayCtrl 1902;
 	_bSlider = sliderPosition _control;
-	systemchat format ["RGB: %1 %2 %3",round(255 * _rSlider),round (255 * _gSlider),round (255 * _bSlider)];
+	//systemchat format ["RGB: %1 %2 %3",round(255 * _rSlider),round (255 * _gSlider),round (255 * _bSlider)];
 	_text = format ["#(argb,8,8,3)color(%1,%2,%3,1.0,CO)",_rSlider,_gSlider,_bSlider];
 	_veh setObjectTextureGlobal [0,_text];
 }] call Server_Setup_Compile;
@@ -551,7 +551,7 @@
 
 	//determine if upgrade is already installed
 	_isInstalled = [_veh,_id] call A3PL_Garage_isInstalled;
-	systemChat format ["%1",_forceInstall];
+	//systemChat format ["%1",_forceInstall];
 	switch (_upgradeType) do
 	{
 		case ("addon"):
@@ -801,10 +801,38 @@
 				{_vehicle lockCargo [_x, _blockCargo];} forEach _lockCargo;
 
 				[_vehicle, _phase] call compile (getText(configfile >> "CfgVehicles" >> _vehicleType >> "AnimationSources" >> _source >> "onPhaseChanged"));
-				
-				//Update in DB
-				[_vehicle,_addons] remoteExec ["Server_Garage_UpdateAddons",2];
 			};
+
+			if((_vehicle getVariable ["installedAddons", []]) isEqualTo []) then {
+				_vehicle setVariable ["installedAddons", _addons, true];
+			} else {
+				_newArr = _vehicle getVariable ["installedAddons", []];
+				_keys = [];
+				_values = [];
+				{
+					_keys pushBack (_x select 0);
+					_values pushBack (_x select 1);
+				} forEach _newArr;
+				_toPushback = [];
+				{
+					private["_x"];
+					_find = _keys find (_x select 0);
+					if(_find > -1) then {
+						//systemChat (format ["%1",_x]);
+						_newArr set [_find, [_x select 0, _x select 1]];
+					} else {
+						_toPushback pushBack _x;
+					};
+				} forEach _addons;
+
+				{
+					_newArr pushBack _x;
+				} forEach _toPushback;
+
+				_vehicle setVariable ["installedAddons", _newArr, true];
+			};
+			//Update in DB
+			[_vehicle,_vehicle getVariable ["installedAddons", []]] remoteExec ["Server_Garage_UpdateAddons",2];
 		};
 	};
 

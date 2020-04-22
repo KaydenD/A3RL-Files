@@ -188,6 +188,7 @@
 				_animPhase = _x select 1;
 				_veh animatesource [_animName, _animPhase, true];
 			} foreach _addons;
+			_veh setVariable["installedAddons", _addons, true];
 		};		
 		_cargo = call compile (_db select 6);
 		if((count _cargo) != 5) exitWith {};
@@ -248,6 +249,7 @@
 				_animPhase = _x select 1;
 				_veh animatesource [_animName, _animPhase, true];
 			} foreach _addons;
+			_veh setVariable["installedAddons", _addons, true];
 		};		
 
 		_cargo = call compile (_db select 6);

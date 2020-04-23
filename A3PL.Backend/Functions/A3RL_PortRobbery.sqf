@@ -47,7 +47,7 @@
 	{
 		if(_x select _portNumber) then {
 			_chance = random 100;
-			if((_x select 6) < _chance) then {
+			if((_x select 6) > _chance) then {
 				if(_x select 7 == "virtual") then {
 					_class = _x select 0;
 					_amountMin = _x select 1;

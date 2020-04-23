@@ -287,7 +287,7 @@ class iPhone_X
 			y = safeZoneY + safeZoneH * 0.42;
 			w = safeZoneW * 0.09532032;
 			h = safeZoneH * 0.04541667;
-			text = "Aucune SIM";
+			text = "No SIM";
 			sizeEx = 0.02 * safezoneW;
 			colorBackground[] = {0,0,0,0};
 			shadow = 0;
@@ -2769,7 +2769,7 @@ class iPhone_X
 					y = safeZoneY + safeZoneH * 0.52641667;
 					w = safeZoneW * 0.025;
 					h = safeZoneH * 0.045;
-					//action = "if (TF_tangent_iPhone_X_pressed) then {_info = ""Mute""; [_info] call TFAR_fnc_oniPhoneXTangentReleased; ctrlSetText [97673,""A3PL_Common\GUI\phone\iPhone_X_icon_muteON.paa""];} else {_info = ""Appel en cours...""; [_info] call TFAR_fnc_oniPhoneXTangentPressed; ctrlSetText [97673,""A3PL_Common\GUI\phone\iPhone_X_icon_muteOFF.paa""];};";
+					action = "if !(player getVariable [""tf_unable_to_use_radio"", false]) then {player setVariable [""tf_unable_to_use_radio"", true]; ctrlSetText [97673,""A3PL_Common\GUI\phone\iPhone_X_icon_muteON.paa""];} else {player setVariable [""tf_unable_to_use_radio"", false]; ctrlSetText [97673,""A3PL_Common\GUI\phone\iPhone_X_icon_muteOFF.paa""];};";
 					colorBackground[] = {0,0,0,0};
 					colorBackground2[] = {0,0,0,0};
 					colorBackgroundFocused[] = {0,0,0,0};

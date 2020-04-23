@@ -106,3 +106,70 @@ Config_PortRobbery = [
     ["diamond_sapphire_ill",1,3,true,true,false, 10,"virtual"]
 ];
 publicVariable "Config_PortRobbery";
+
+Config_HouseRobbery = [
+    //Class, Min Amount, Max Amount, Chance, type ["virtual", "real"]
+ 
+    ["weed_5g",1,5,20,"virtual"],
+    ["weed_10g",1,5,7,"virtual"],
+    ["weed_15g",1,5,10,"virtual"],
+    ["weed_20g",1,5,80,"virtual"],
+    ["weed_25g",1,5,5,"virtual"],
+    ["weed_30g",1,5,3,"virtual"],
+    ["weed_35g",1,5,13,"virtual"],
+    ["weed_40g",1,5,15,"virtual"],
+    ["weed_45g",1,5,17,"virtual"],
+    ["jug_moonshine",1,5,15,"virtual"],
+    ["jug_green_moonshine",1,5,10,"virtual"],
+    ["turtle",1,10,20,"virtual"],
+    ["shark_5lb",1,5,20,"virtual"],
+
+    ["handcuffs",1,1,10,"virtual"],
+    ["zipties",1,1,20,"virtual"],
+ 
+    ["rocket_blue",1,3,10,"virtual"],
+    ["rocket_red",1,3,10,"virtual"],
+    ["rocket_green",1,3,10,"virtual"],
+    ["rocket_yellow",1,3,10,"virtual"],
+    ["Blueprint_Pistol_Legal",1,4,80,"virtual"],
+    ["Blueprint_Pistol_Legal_Ammo",1,8,100,"virtual"],
+    ["Blueprint_Pistol_Illegal",1,4,40,"virtual"],
+    ["Blueprint_Pistol_Ammo_Illegal",1,8,50,"virtual"],
+ 
+     ["hgun_Rook40_F",1,1,10,"real"],
+    ["16Rnd_9x21_Mag",1,4,30,"real"],
+    ["RH_kimber",1,1,5,"real"],
+    ["11Rnd_45ACP_Mag",1,4,30,"real"],
+    ["RH_kimber_nw",1,1,5,"real"],
+    ["RH_deagles",1,1,3,"real"],
+    ["RH_deaglem",1,1,3,"real"],
+    ["RH_7Rnd_50_AE",1,4,30,"real"],
+    ["RH_python",1,1,10,"real"],
+    ["RH_6Rnd_357_Mag",1,4,30,"real"],
+    ["RH_m9",1,1,10,"real"],
+    ["RH_15Rnd_9x19_M9",1,4,30,"real"],
+ 
+ 
+    ["Iron_Ingot",4,20,20,"virtual"],
+    ["Coal_Ingot",5,30,20,"virtual"],
+    ["Steel",3,18,20,"virtual"],
+    ["Titanium",2,12,20,"virtual"],
+    ["Kevlar",5,20,20,"virtual"],
+    ["Gunpowder",5,19,20,"virtual"],
+    ["Titanium_Ore",3,25,20,"virtual"],
+    ["Aluminium_Ore",3,35,20,"virtual"],
+    ["Sulphur_Ore",3,35,20,"virtual"],
+    ["Iron_Ore",3,25,20,"virtual"],
+    ["Coal_Ore",3,40,20,"virtual"],
+ 
+    ["diamond",1,2,10,"virtual"],
+    ["diamond_alex",1,5,50,"virtual"],
+    ["diamond_emerald",1,5,50,"virtual"],
+    ["diamond_ruby",1,5,50,"virtual"],
+    ["diamond_sapphire",1,5,50,"virtual"],
+    ["diamond_tourmaline",1,5,50,"virtual"],
+    ["diamond_tourmaline",1,5,50,"virtual"],
+    ["diamond_ill",1,3,10,"virtual"],
+    ["diamond_sapphire_ill",1,3,10,"virtual"]
+];
+publicVariable "Config_HouseRobbery";

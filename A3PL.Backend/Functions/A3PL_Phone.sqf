@@ -1,4 +1,3 @@
-/*
 ["A3PL_CellP_CreateConfig",
 {
 	A3PL_CellP_applications = [
@@ -969,4 +968,3 @@ Name set in phone contacts IF set, if not, show number
 	[player,_target,_amount] remoteExec ["Server_Player_TransferBank",2];
 	
 }] call Server_Setup_Compile;
-*/

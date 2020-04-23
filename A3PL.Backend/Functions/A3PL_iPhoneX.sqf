@@ -460,21 +460,19 @@
 
 				_iPhone_X_informations ctrlSetText (_callSettings select 2);
 
-				_hour = _callSettings select 3;
-				_minute = _callSettings select 4;
-				_second = _callSettings select 5;
-				[] spawn {
-					while {A3PL_phoneInCall} do
-					{
-						_time = format["%1:%2:%3", if (_hour < 10) then {"0" + (str _hour)} else {_hour}, if (_minute < 10) then {"0" + (str _minute)} else {_minute}, if (_second < 10) then {"0" + (str _second)} else {_second}];
-						_second = _second + 1;
-						if (_second >= 60) then {_second = 0; _minute = _minute + 1};
-						if (_minute >= 60) then {_minute = 0; _hour = _hour + 1};
-						_iPhone_X_informations ctrlSetText _time;
-						player setVariable ["A3PL_iPhoneX_CallSettings", ["3", _phoneNumberContact, _time, _hour, _minute, _second]];
-						uiSleep 1;
-					};
-				}
+				_hour = _callSettings param[3,0];
+				_minute = _callSettings param[4,0];
+				_second = _callSettings param[5,0];
+				while {A3PL_phoneInCall} do
+				{
+					_time = format["%1:%2:%3", if (_hour < 10) then {"0" + (str _hour)} else {_hour}, if (_minute < 10) then {"0" + (str _minute)} else {_minute}, if (_second < 10) then {"0" + (str _second)} else {_second}];
+					_second = _second + 1;
+					if (_second >= 60) then {_second = 0; _minute = _minute + 1};
+					if (_minute >= 60) then {_minute = 0; _hour = _hour + 1};
+					_iPhone_X_informations ctrlSetText _time;
+					player setVariable ["A3PL_iPhoneX_CallSettings", ["3", _phoneNumberContact, _time, _hour, _minute, _second]];
+					uiSleep 1;
+				};
 			};
 		};
 	};
@@ -1867,7 +1865,7 @@
 		_sound = "Land_HelipadEmpty_F" createVehicle position player; _sound attachTo [player, [0, 0, 0]]; _sound say3D [_soundReceive,10,1]; player setVariable ["A3PL_iPhoneX_SoundCall",_sound];
 	};
 
-	if (!isNull (findDisplay 97000)) then {[] call A3PL_iPhoneX_AppCall};
+	if (!isNull (findDisplay 97000)) then {[] spawn A3PL_iPhoneX_AppCall};
 
 	["Un individu essai de vous joindre sur votre téléphone",Color_Yellow] call A3PL_Player_Notification;
 }] call Server_Setup_Compile;
@@ -1907,7 +1905,7 @@
 	player setVariable ["A3PL_iPhoneX_PhoneNumberReceiveCall", A3PL_phoneNumberActive];
 	player setVariable ["A3PL_iPhoneX_CallSettings", ["2", _fromNum]];
 
-	if (!isNull (findDisplay 97000)) then {[] call A3PL_iPhoneX_appCall};
+	if (!isNull (findDisplay 97000)) then {[] spawn A3PL_iPhoneX_appCall};
 
 	if (!(_exists isEqualTo [])) then {
 		A3PL_switchboard = ([A3PL_switchboard, (_exists select 0)] call BIS_fnc_removeIndex);
@@ -2041,11 +2039,6 @@
 
 	_phoneNumberContact = _this select 0;
 
-	_display = findDisplay 97000;
-
-	_iPhone_X_phoneNumber = _display displayCtrl 97661;
-	_iPhone_X_informations = _display displayCtrl 97670;
-
 	_error = false;
 
 	if (_phoneNumberContact in ["Number", ""]) exitWith {hint "Number invalid.";};
@@ -2056,13 +2049,6 @@
 
 	if (_error) exitWith {["You can not call this number",Color_Red] call A3PL_Player_Notification; _error = false;};
 
-	systemChat "here1";
-	player setVariable ["A3PL_iPhoneX_CallSettings", ["1", _phoneNumberContact]];
-	systemChat (format["%1", player getVariable ["A3PL_iPhoneX_CallSettings", []]]);
-	[] call A3PL_iPhoneX_AppCall;
-
-	_iPhone_X_phoneNumber ctrlSetText _phoneNumberContact;
-	_iPhone_X_informations ctrlSetText "Call in progress...";
 
 	player setVariable ["A3PL_iPhoneX_PhoneNumberSendCall", []];
 	player setVariable ["A3PL_iPhoneX_PhoneNumberReceiveCall", []];
@@ -2071,7 +2057,15 @@
 	A3PL_phoneCallOn = false;
 	A3PL_phoneInCall = false;
 
-	_error = false;
+	player setVariable ["A3PL_iPhoneX_CallSettings", ["1", _phoneNumberContact]];
+	systemChat (format["%1", player getVariable ["A3PL_iPhoneX_CallSettings", []]]);
+	[] spawn A3PL_iPhoneX_AppCall;
+	
+	_display = findDisplay 97000;
+	_iPhone_X_phoneNumber = _display displayCtrl 97661;
+	_iPhone_X_informations = _display displayCtrl 97670;
+	_iPhone_X_phoneNumber ctrlSetText _phoneNumberContact;
+	_iPhone_X_informations ctrlSetText "Call in progress...";
 
 	if ((_phoneNumberContact isEqualTo "911")) then
 	{
@@ -2182,7 +2176,7 @@
 	_background_iPhone_X_base ctrlSetText "A3PL_Common\GUI\phone\iPhone_X_base.paa";
 	_background_iPhone_X_bottom ctrlSetText "A3PL_Common\GUI\phone\iPhone_X_bottom.paa";
 
-	if (A3PL_phoneOn && A3PL_phoneCallOn) exitWith {[] call A3PL_iPhoneX_AppCall; [] call A3PL_iPhoneX_Clock;};
+	if (A3PL_phoneOn && A3PL_phoneCallOn) exitWith {[] spawn A3PL_iPhoneX_AppCall; [] call A3PL_iPhoneX_Clock;};
 
 	if !(A3PL_phoneOn) then {
 		_background_iPhone_X_background ctrlSetText "A3PL_Common\GUI\phone\iPhone_X_background_OFF.paa";

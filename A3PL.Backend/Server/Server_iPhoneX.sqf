@@ -184,7 +184,7 @@
 	_playerUID = getPlayerUID _unit;
 	if (_playerUID == "") exitWith {};
 
-	[A3PL_iPhoneX_ListNumber] remoteExec ["A3PL_iPhoneX_listNumber", _ownerID];
+	[A3PL_iPhoneX_ListNumber] remoteExec ["A3PL_iPhoneX_ListNumberReceive", _ownerID];
 }] call Server_Setup_Compile;
 
 ['Server_iPhoneX_GetPhoneNumber', 

@@ -1567,11 +1567,11 @@
 	player setVariable ["iPhone_X_lastSMS", []];
 }] call Server_Setup_Compile;
 
-["A3PL_iPhoneX_ListNumber",
+["A3PL_iPhoneX_ListNumberReceive",
 {
 	private ["_listNumberClient"];
 	_listNumberClient = [_this,0,[],[[]]] call BIS_fnc_param;
-
+	systemChat (format["%1", _this]);
 	if (_listNumberClient isEqualTo [[]]) then {_listNumberClient = [];};
 
 	A3PL_iPhoneX_ListNumberClient = _listNumberClient;
@@ -2082,9 +2082,10 @@
 		buttonSetAction [97663, "_sound = player getVariable [""A3PL_iPhoneX_SoundCall"",[]];if !(_sound isEqualTo []) then {deleteVehicle _sound;}; playSound3D [""A3PL_Common\GUI\phone\sounds\endcall_sound.ogg"", player, false, getPosASL player, 20, 1, 5];[] spawn A3PL_iPhoneX_EndCall;_fd = [""fifr""] call A3PL_Lib_FactionPlayers;_cops = [""dispatch""] call A3PL_Lib_FactionPlayers;{[A3PL_phoneNumberActive] remoteExec [""A3PL_iPhoneX_EndCallSwitchboard"", _x];} foreach _cops;{[A3PL_phoneNumberActive] remoteExec [""A3PL_iPhoneX_EndCallSwitchboard"", _x];} foreach _fd;"];
 	} else {
 		[player] remoteExec ["Server_iPhoneX_GetListNumber",2];
-
+		systemChat "here2";
 		waitUntil {!(isNil "A3PL_iPhoneX_ListNumberClient")};
 		waitUntil {!(A3PL_iPhoneX_ListNumberClient isEqualTo [])};
+		systemChat "here3";
 
 		_exists = [A3PL_iPhoneX_ListNumberClient, _phoneNumberContact] call BIS_fnc_findNestedElement;
 
@@ -2093,6 +2094,7 @@
 			player setVariable ["A3PL_iPhoneX_PhoneNumberSendCall", A3PL_phoneNumberActive];
 			player setVariable ["A3PL_iPhoneX_PhoneNumberReceiveCall", _phoneNumberContact];
 			player setVariable ["A3PL_iPhoneX_CallSettings", ["1", _phoneNumberContact, "Call in progress..."]];
+			systemChat "here3";
 			[player, A3PL_phoneNumberActive, _phoneNumberContact] remoteExec ["A3PL_iPhoneX_ReceiveCall", ((A3PL_iPhoneX_ListNumberClient select (_exists select 0)) select 1)];
 			_sound = "Land_HelipadEmpty_F" createVehicle position player; _sound attachTo [player, [0, 0, 0]]; _sound say3D ["sendcall_sound",10,1]; player setVariable ["A3PL_iPhoneX_SoundCall",_sound];
 			ctrlShow [97667,true];

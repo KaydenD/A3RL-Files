@@ -918,5 +918,12 @@
 	{
 		[] spawn A3RL_Slots_OpenSetBet;
 	}
-]
+],
 
+[
+	"",
+	"Access Robbery Storage",
+	{
+		[] spawn A3RL_HouseRob_Open;
+	}
+]

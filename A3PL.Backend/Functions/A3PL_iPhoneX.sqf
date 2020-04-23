@@ -394,7 +394,7 @@
 			_iPhone_X_phoneNumber ctrlSetText _phoneNumberContact;
 
 			_phoneNumberSendCall = player getVariable ["A3PL_iPhoneX_PhoneNumberSendCall",""];
-
+			//Send call
 			if ((_callSettings select 0) isEqualTo "1") then {
 				ctrlShow [97667,true]; 
 				ctrlShow [97663,true]; 
@@ -418,6 +418,7 @@
 				ctrlShow [97676,true]; 
 				ctrlShow [97677,true]; 
 				ctrlShow [97678,true]; 
+				//Accept call?
 				buttonSetAction [97676, "
 					[] spawn A3PL_iPhoneX_StartCall; 
 					_phoneNumberSendCall = player getVariable [""A3PL_iPhoneX_PhoneNumberSendCall"",""""]; 
@@ -426,6 +427,7 @@
 						[] remoteExec [""A3PL_iPhoneX_StartCall"", ((A3PL_iPhoneX_ListNumberClient select (_exists select 0)) select 1)]
 					};
 				"];
+				//Decline call?
 				buttonSetAction [97678, "
 					_sound = player getVariable [""A3PL_iPhoneX_SoundCall"",""""]; 
 					if !(_sound isEqualTo []) then {deleteVehicle _sound;}; 
@@ -438,6 +440,7 @@
 					};"
 				];
 			};
+			//Active call
 			if ((_callSettings select 0) isEqualTo "3") then {
 				ctrlShow [97667,true]; 
 				ctrlShow [97663,true]; 
@@ -2094,13 +2097,14 @@
 			player setVariable ["A3PL_iPhoneX_PhoneNumberSendCall", A3PL_phoneNumberActive];
 			player setVariable ["A3PL_iPhoneX_PhoneNumberReceiveCall", _phoneNumberContact];
 			player setVariable ["A3PL_iPhoneX_CallSettings", ["1", _phoneNumberContact, "Call in progress..."]];
-			systemChat "here3";
+			systemChat "here4";
 			[player, A3PL_phoneNumberActive, _phoneNumberContact] remoteExec ["A3PL_iPhoneX_ReceiveCall", ((A3PL_iPhoneX_ListNumberClient select (_exists select 0)) select 1)];
 			_sound = "Land_HelipadEmpty_F" createVehicle position player; _sound attachTo [player, [0, 0, 0]]; _sound say3D ["sendcall_sound",10,1]; player setVariable ["A3PL_iPhoneX_SoundCall",_sound];
 			ctrlShow [97667,true];
 			ctrlShow [97663,true];
 			buttonSetAction [97663, "_sound = player getVariable [""A3PL_iPhoneX_SoundCall"",""""]; if !(_sound isEqualTo []) then {deleteVehicle _sound;}; playSound3D [""A3PL_Common\GUI\phone\sounds\endcall_sound.ogg"", player, false, getPosASL player, 20, 1, 5]; [] spawn A3PL_iPhoneX_EndCall; _phoneNumberContact = player getVariable [""A3PL_iPhoneX_PhoneNumberReceiveCall"",""""]; _exists = [A3PL_iPhoneX_ListNumberClient, _phoneNumberContact] call BIS_fnc_findNestedElement; if (!(_exists isEqualTo [])) then {[] remoteExec [""A3PL_iPhoneX_EndCall"", ((A3PL_iPhoneX_ListNumberClient select (_exists select 0)) select 1)]};"];
 		} else {
+			systemChat "not online";
 			uiSleep 1; if (!isNull (findDisplay 97000)) then {[] spawn A3PL_iPhoneX_Home;}; player say3D ["endcall_sound",10,1]; A3PL_iPhoneX_ListNumberClient = []; _iPhone_X_phoneNumber ctrlSetText ""; _iPhone_X_informations ctrlSetText "";
 		};
 	};
@@ -2613,4 +2617,14 @@
 
 	if (_result isEqualTo [[]]) then {_result = [];};
 	A3PL_switchboard = _result;
+}] call Server_Setup_Compile;
+
+["A3PL_iPhoneX_DeleteContact",
+{
+	private _number = ctrlText 97610;
+	[player,_number] remoteExec ["Server_iPhoneX_DeleteContact",2];
+	[] spawn {
+		uiSleep 0.5;
+		[] call A3PL_iPhoneX_AppContactsList;
+	};
 }] call Server_Setup_Compile;

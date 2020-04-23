@@ -37,7 +37,7 @@
 			_marker = createMarkerLocal [format["%1_marker",floor (random 5000)],_pos];
 			_marker setMarkerShapeLocal "ICON";
 			_marker setMarkerColorLocal "ColorBlue";
-			_marker setMarkerTypeLocal "Mil_dot";
+			_marker setMarkerTypeLocal "Mil_dot"; 
 			_marker setMarkerTextLocal format ["OIL IN THIS VICINITY"];
 			_markers pushback _marker;			
 		};
@@ -55,11 +55,11 @@
 			} foreach _resArray;
 			
 			_exactLocation = (_newResArray select (round (random ((count _newResArray) - 1)))) select 1;
-			_pos = [((_exactLocation select 0) + (-100 + random 200)),((_exactLocation select 1) + (-100 + random 200))];
+			_pos = [((_exactLocation select 0) + (-50 + random 100)),((_exactLocation select 1) + (-50 + random 100))];
 
 			_marker = createMarkerLocal [format["%1_marker",floor (random 5000)],_pos];
 			_marker setMarkerShapeLocal "ELLIPSE";
-			_marker setMarkerSizeLocal [142,142]; //same as oildistance defined in A3PL_JobWildCat + max of 300
+			_marker setMarkerSizeLocal [120,120];
 			_marker setMarkerColorLocal "ColorGreen";
 			_marker setMarkerTypeLocal "Mil_dot";
 			_marker setMarkerAlphaLocal 0.7;

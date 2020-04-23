@@ -1027,6 +1027,7 @@ Server_Setup_Compile = {
 	_camera camCommit 0;
 },false,true] call Server_Setup_Compile;
 
+/*
 ["A3PL_Phone_Open",
 {
 	// make sure that TFR has our cellphone
@@ -1110,6 +1111,8 @@ Server_Setup_Compile = {
 
 
 }] call Server_Setup_Compile;
+
+*/
 
 ["A3PL_Garage_InstallUpgrades",
 {

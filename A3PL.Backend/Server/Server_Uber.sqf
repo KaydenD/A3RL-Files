@@ -17,11 +17,11 @@
 	_user = getPlayerUID _u;
 
 	//add a driver
-	if(!(_user in A3PL_Uber_Drivers)) then {
-		A3PL_Uber_Drivers pushBack _user;
+	if(!(_u in A3PL_Uber_Drivers)) then {
+		A3PL_Uber_Drivers pushBack _u;
 	};
 
-	_user setVariable ["job","uber",true];
+	_u setVariable ["job","uber",true];
 
 }, true] call Server_Setup_Compile;
 

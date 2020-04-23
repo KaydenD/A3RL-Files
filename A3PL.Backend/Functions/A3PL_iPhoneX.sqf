@@ -433,7 +433,7 @@
 					_exists = [A3PL_iPhoneX_ListNumberClient, _phoneNumberSendCall] call BIS_fnc_findNestedElement; 
 					if (!(_exists isEqualTo [])) then {
 						 [] remoteExec [""A3PL_iPhoneX_StartCall"", ((A3PL_iPhoneX_ListNumberClient select (_exists select 0)) select 1)]
-					;"
+					};"
 				];
 			};
 			if ((_callSettings select 0) isEqualTo "3") then {

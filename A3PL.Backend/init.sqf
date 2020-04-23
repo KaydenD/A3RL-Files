@@ -152,7 +152,8 @@ Server_Setup_Files = [
 	['Configs', 'Config_Government'],
 	['Configs', 'Config_Licenses'],
 	['Configs', 'Config_CombineItems'],
-	['Configs', 'Config_TrunkSpace']
+	['Configs', 'Config_TrunkSpace'],
+	['Configs', 'Config_Robberies']
 ];
 
 Server_Setup_Compile = {

@@ -789,4 +789,12 @@
 	{
 		[player_objintersect] spawn A3RL_HouseRobbery_Rob;
 	}
+],
+
+[
+	"",
+	"Secure Door",
+	{
+		[player_objintersect] spawn A3RL_HouseRobbery_Secure;
+	}
 ]

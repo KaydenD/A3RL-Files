@@ -1981,6 +1981,7 @@
 			} count (player getVariable ["iPhoneX_PhoneConversations", []]);
 		} else {
 			[player, _from, _message] remoteExec ["Server_iPhoneX_SaveLastSMS", 2];
+			A3PL_conversations set [_exists select 0, [_nameContact, _from, _message]];
 		};
 
 		if (_to isEqualTo A3PL_phoneNumberActive) then

@@ -393,14 +393,65 @@
 
 			_phoneNumberSendCall = player getVariable ["A3PL_iPhoneX_PhoneNumberSendCall",""];
 
-			if ((_callSettings select 0) isEqualTo "1") then {ctrlShow [97667,true]; ctrlShow [97663,true]; buttonSetAction [97663, "_sound = player getVariable [""A3PL_iPhoneX_SoundCall"",""""]; if !(_sound isEqualTo []) then {deleteVehicle _sound;}; playSound3D [""A3PL_Common\GUI\phone\sounds\endcall_sound.ogg"", player, false, getPosASL player, 20, 1, 5]; [] spawn A3PL_iPhoneX_EndCall; _phoneNumberContact = player getVariable [""A3PL_iPhoneX_PhoneNumberReceiveCall"",""""]; _exists = [A3PL_iPhoneX_ListNumberClient, _phoneNumberContact] call BIS_fnc_findNestedElement; if (!(_exists isEqualTo [])) then {[] remoteExec [""A3PL_iPhoneX_EndCall"", ((A3PL_iPhoneX_ListNumberClient select (_exists select 0)) select 1)]};"]; _iPhone_X_informations ctrlSetText (_callSettings select 2)};
-			if ((_callSettings select 0) isEqualTo "2") then {ctrlShow [97675,true]; ctrlShow [97676,true]; ctrlShow [97677,true]; ctrlShow [97678,true]; buttonSetAction [97676, "[] spawn A3PL_iPhoneX_StartCall; _phoneNumberSendCall = player getVariable [""A3PL_iPhoneX_PhoneNumberSendCall"",""""]; _exists = [A3PL_iPhoneX_ListNumberClient, _phoneNumberSendCall] call BIS_fnc_findNestedElement; if (!(_exists isEqualTo [])) then {[] remoteExec [""A3PL_iPhoneX_StartCall"", ((A3PL_iPhoneX_ListNumberClient select (_exists select 0)) select 1)]};"]; buttonSetAction [97678, "_sound = player getVariable [""A3PL_iPhoneX_SoundCall"",""""]; if !(_sound isEqualTo []) then {deleteVehicle _sound;}; playSound3D [""A3PL_Common\GUI\phone\sounds\endcall_sound.ogg"", player, false, getPosASL player, 20, 1, 5]; [] spawn A3PL_iPhoneX_EndCall; _phoneNumberSendCall = player getVariable [""A3PL_iPhoneX_PhoneNumberSendCall"",""""]; _exists = [A3PL_iPhoneX_ListNumberClient, _phoneNumberSendCall] call BIS_fnc_findNestedElement; if (!(_exists isEqualTo [])) then {[] remoteExec [""A3PL_iPhoneX_StartCall"", ((A3PL_iPhoneX_ListNumberClient select (_exists select 0)) select 1)]};"];};
-			if ((_callSettings select 0) isEqualTo "3") then {ctrlShow [97667,true]; ctrlShow [97663,true]; ctrlShow [97668,true]; ctrlShow [97664,true]; ctrlShow [97669,true]; ctrlShow [97665,true]; ctrlShow [97671,true]; ctrlShow [97672,true]; ctrlShow [97673,true]; ctrlShow [97674,true];
-			if (A3PL_phoneNumberActive isEqualTo _phoneNumberSendCall) then {
-				buttonSetAction [97663, "[] spawn A3PL_iPhoneX_EndCall; _phoneNumberContact = player getVariable [""A3PL_iPhoneX_PhoneNumberReceiveCall"",""""]; _exists = [A3PL_iPhoneX_ListNumberClient, _phoneNumberContact] call BIS_fnc_findNestedElement; if (!(_exists isEqualTo [])) then {[] remoteExec [""A3PL_iPhoneX_EndCall"", ((A3PL_iPhoneX_ListNumberClient select (_exists select 0)) select 1)]};"];
-			} else {
-				buttonSetAction [97663, "[] spawn A3PL_iPhoneX_EndCall; _phoneNumberSendCall = player getVariable [""A3PL_iPhoneX_PhoneNumberSendCall"",""""]; _exists = [A3PL_iPhoneX_ListNumberClient, _phoneNumberSendCall] call BIS_fnc_findNestedElement; if (!(_exists isEqualTo [])) then {[] remoteExec [""A3PL_iPhoneX_EndCall"", ((A3PL_iPhoneX_ListNumberClient select (_exists select 0)) select 1)]};"];
+			if ((_callSettings select 0) isEqualTo "1") then {
+				ctrlShow [97667,true]; 
+				ctrlShow [97663,true]; 
+				buttonSetAction [97663, "
+					_sound = player getVariable [""A3PL_iPhoneX_SoundCall"",""""]; 
+					if !(_sound isEqualTo []) then {
+						deleteVehicle _sound;
+					};
+					playSound3D [""A3PL_Common\GUI\phone\sounds\endcall_sound.ogg"", player, false, getPosASL player, 20, 1, 5]; 
+					[] spawn A3PL_iPhoneX_EndCall; 
+					_phoneNumberContact = player getVariable [""A3PL_iPhoneX_PhoneNumberReceiveCall"",""""]; 
+					_exists = [A3PL_iPhoneX_ListNumberClient, _phoneNumberContact] call BIS_fnc_findNestedElement; 
+					if (!(_exists isEqualTo [])) then {
+						[] remoteExec [""A3PL_iPhoneX_EndCall"", ((A3PL_iPhoneX_ListNumberClient select (_exists select 0)) select 1)]
+					};
+				"]; 
+				_iPhone_X_informations ctrlSetText (_callSettings select 2)
 			};
+			if ((_callSettings select 0) isEqualTo "2") then {
+				ctrlShow [97675,true]; 
+				ctrlShow [97676,true]; 
+				ctrlShow [97677,true]; 
+				ctrlShow [97678,true]; 
+				buttonSetAction [97676, "
+					[] spawn A3PL_iPhoneX_StartCall; 
+					_phoneNumberSendCall = player getVariable [""A3PL_iPhoneX_PhoneNumberSendCall"",""""]; 
+					_exists = [A3PL_iPhoneX_ListNumberClient, _phoneNumberSendCall] call BIS_fnc_findNestedElement; 
+					if (!(_exists isEqualTo [])) then {
+						[] remoteExec [""A3PL_iPhoneX_StartCall"", ((A3PL_iPhoneX_ListNumberClient select (_exists select 0)) select 1)]
+					};
+				"];
+				buttonSetAction [97678, "
+					_sound = player getVariable [""A3PL_iPhoneX_SoundCall"",""""]; 
+					if !(_sound isEqualTo []) then {deleteVehicle _sound;}; 
+					playSound3D [""A3PL_Common\GUI\phone\sounds\endcall_sound.ogg"", player, false, getPosASL player, 20, 1, 5]; 
+					[] spawn A3PL_iPhoneX_EndCall; 
+					_phoneNumberSendCall = player getVariable [""A3PL_iPhoneX_PhoneNumberSendCall"",""""]; 
+					_exists = [A3PL_iPhoneX_ListNumberClient, _phoneNumberSendCall] call BIS_fnc_findNestedElement; 
+					if (!(_exists isEqualTo [])) then {
+						 [] remoteExec [""A3PL_iPhoneX_StartCall"", ((A3PL_iPhoneX_ListNumberClient select (_exists select 0)) select 1)]
+					};"
+				];
+			};
+			if ((_callSettings select 0) isEqualTo "3") then {
+				ctrlShow [97667,true]; 
+				ctrlShow [97663,true]; 
+				ctrlShow [97668,true]; 
+				ctrlShow [97664,true]; 
+				ctrlShow [97669,true]; 
+				ctrlShow [97665,true]; 
+				ctrlShow [97671,true]; 
+				ctrlShow [97672,true]; 
+				ctrlShow [97673,true]; 
+				ctrlShow [97674,true];
+				if (A3PL_phoneNumberActive isEqualTo _phoneNumberSendCall) then {
+					buttonSetAction [97663, "[] spawn A3PL_iPhoneX_EndCall; _phoneNumberContact = player getVariable [""A3PL_iPhoneX_PhoneNumberReceiveCall"",""""]; _exists = [A3PL_iPhoneX_ListNumberClient, _phoneNumberContact] call BIS_fnc_findNestedElement; if (!(_exists isEqualTo [])) then {[] remoteExec [""A3PL_iPhoneX_EndCall"", ((A3PL_iPhoneX_ListNumberClient select (_exists select 0)) select 1)]};"];
+				} else {
+					buttonSetAction [97663, "[] spawn A3PL_iPhoneX_EndCall; _phoneNumberSendCall = player getVariable [""A3PL_iPhoneX_PhoneNumberSendCall"",""""]; _exists = [A3PL_iPhoneX_ListNumberClient, _phoneNumberSendCall] call BIS_fnc_findNestedElement; if (!(_exists isEqualTo [])) then {[] remoteExec [""A3PL_iPhoneX_EndCall"", ((A3PL_iPhoneX_ListNumberClient select (_exists select 0)) select 1)]};"];
+				};
 
 				_iPhone_X_informations ctrlSetText (_callSettings select 2);
 

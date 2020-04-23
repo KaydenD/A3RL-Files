@@ -41,7 +41,7 @@ Server_Setup_Files = [
 	['Functions', 'A3PL_JobVDelivery'],
 	['Functions', 'A3PL_JobMDelivery'],
 	['Functions', 'A3PL_JobPicking'],
-	['Functions', 'A3PL_Phone'],
+	//['Functions', 'A3PL_Phone'],
 	['Functions', 'A3PL_Uber'],
 	['Functions', 'A3PL_Goose'],
 	['Functions', 'A3PL_Dogs'],

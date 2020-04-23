@@ -1054,7 +1054,7 @@ Server_Setup_Compile = {
 			sleep 0.5;
 		};
 	};
-	*/
+	//There want a star slash here
 	//1 == currently calling someone, 2 == currently being called, 3 == currenlty in an active call
 	//Currently calling someone...
 	if((player getvariable "A3PL_Call_Status" select 1) == 1) exitWith {

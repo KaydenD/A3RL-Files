@@ -48,7 +48,7 @@
 			if ((player getVariable ["player_cash",0]) < 500) exitwith {["System: You don't have enough money to buy this map",Color_Red] call A3PL_Player_Notification;};
 			player setVariable ["player_cash",(player getVariable ["player_cash",0]) - 500,true];			
 			
-			_resArray = missionNameSpace getVariable ["Server_JobWildCat_Res",[]];
+			_resArray = Server_JobWildCat_Res;
 			_newResArray = [];
 			{
 				if ((_x select 0) == _mapType) then {_newResArray pushback _x};

@@ -287,7 +287,7 @@ class iPhone_X
 			y = safeZoneY + safeZoneH * 0.42;
 			w = safeZoneW * 0.09532032;
 			h = safeZoneH * 0.04541667;
-			text = "Aucune SIM";
+			text = "No SIM";
 			sizeEx = 0.02 * safezoneW;
 			colorBackground[] = {0,0,0,0};
 			shadow = 0;

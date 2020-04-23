@@ -1867,7 +1867,7 @@
 
 	if (!isNull (findDisplay 97000)) then {[] spawn A3PL_iPhoneX_AppCall};
 
-	["Un individu essai de vous joindre sur votre téléphone",Color_Yellow] call A3PL_Player_Notification;
+	["Your getting a phone call",Color_Yellow] call A3PL_Player_Notification;
 }] call Server_Setup_Compile;
 
 ["A3PL_iPhoneX_ReceiveCallSwitchboard",
@@ -2027,7 +2027,7 @@
 
 			if ((A3PL_settings select 2) isEqualTo 0) then {playSound3D ["A3PL_Common\GUI\phone\sounds\notification_sound.ogg", player, false, getPosASL player, 20, 1, 5];};
 
-			["You receive a SMS",Color_Yellow] call A3PL_Player_Notification;
+			["You received a SMS",Color_Yellow] call A3PL_Player_Notification;
 			playSound3D ["A3PL_Common\GUI\phone\sounds\notification_sound.ogg", player, false, getPosASL player, 20, 1, 5];
 		};
 	};

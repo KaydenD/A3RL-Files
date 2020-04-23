@@ -1223,6 +1223,7 @@ Config_Factories =
         ["f_optic_Holosight_smg_blk_F","","inh","inh","optic_Holosight_smg_blk_F","aitem",true,0,[["cash",1]],1,""],
         ["f_Zipties","","inh","inh","zipties","item",true,0,[["cash",1]],1,""],
         ["f_v_grinder","","inh","inh","v_lockpick","item",true,0,[["cash",1]],1,""],
+        ["f_A3RL_Lockpick","","inh","inh","keycard","item",true,0,[["cash",1]],1,""],
         ["f_candy","","inh","inh","candy","item",true,0,[["cash",1]],1,""],
         ["f_gashose","","inh","inh","gas_hose","item",true,0,[["cash",1]],1,""],
 		["f_A3PL_Taser","","inh","inh","A3PL_Taser","weapon",true,60,[["Steel",200],["Blueprint_Pistol_Legal",1]],1,""],

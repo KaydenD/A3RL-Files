@@ -136,7 +136,7 @@
 	_timeOut = 0;
 	_timeOutLimit = SHIPARRIVETIMEOUT; //10mins
 	//send message
-	["Server: The container ship has entered the waters of Fishers Island, it will arrive into the Stoney Creek port soon", Color_Green] remoteExec ["A3PL_Player_Notification",-2]; //change to -2
+	["Server: The container ship has entered the waters of Fishers Island, it will arrive into the Stoney Creek port soon", '#17ED00'] remoteExec ["A3PL_Player_Notification",-2]; //change to -2
 	//set vars
 	Server_IE_ShipImbound = true;
 	publicVariable "Server_IE_ShipImbound";

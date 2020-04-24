@@ -876,6 +876,8 @@ Config_IntersectArray =
 	["Spine1","Grab","\a3\ui_f\data\IGUI\RscIngameUI\RscUnitInfoAirRTDFull\ico_insp_hand_1_ca.paa",{(isPlayer player_objintersect) && ((player getVariable "job") IN ["police","uscg","usms"]) && ((surfaceIsWater position player) || player_objintersect getVariable ["dragged",false])}], //Drag
 	["spine3",localize"STR_INTSECT_KICKDOWN","\a3\ui_f\data\IGUI\RscIngameUI\RscUnitInfo\si_prone_down_ca.paa",{animationState player_objintersect == "a3pl_handsupkneelcuffed"}], //Kick Down
 	["Spine3",localize"STR_INTSECT_PATDOWN","\a3\ui_f\data\IGUI\RscIngameUI\RscUnitInfoAirRTDFull\ico_insp_hand_1_ca.paa",{((player getVariable "job") IN ["police","uscg","faa","usms"]) && (isPlayer player_objintersect)&& (animationState player_objintersect IN ["a3pl_idletohandsup","a3pl_handsuptokneel"])or ((player getVariable "job") IN ["police","uscg","faa","usms"]) && player_objintersect getVariable ["Cuffed",true]}], //Pat down
+	["Spine3","Lockpick Handcuffs","\a3\ui_f\data\IGUI\RscIngameUI\RscUnitInfoAirRTDFull\ico_insp_hand_1_ca.paa",{(isPlayer player_objintersect)&& ((animationState player_objintersect IN ["a3pl_idletohandsup","a3pl_handsuptokneel"])or player_objintersect getVariable ["Cuffed",true]) && ["v_lockpick", 1] call A3PL_Inventory_Has}], //Lockpick Handcuffs
+
 
 	//crim stuff
 	["Spine1","Restrain/Unrestrain","\a3\ui_f\data\IGUI\RscIngameUI\RscUnitInfoAirRTDFull\ico_insp_hand_1_ca.paa",{((player_Itemclass == "zipties") && (isPlayer player_objintersect)) || ((player_objintersect getVariable ["Zipped",true])&& (isPlayer player_objintersect))}], //zip/unzip
@@ -2712,7 +2714,8 @@ Config_GenArray =
 	"Rob Gas Station",
 	"Lockpick Door",
 	"Secure Door",
-	"Lockpick Cell Door"
+	"Lockpick Cell Door",
+	"Lockpick Handcuffs"
 ];
 publicVariable "Config_GenArray";
 

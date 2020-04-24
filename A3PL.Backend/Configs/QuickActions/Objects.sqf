@@ -926,4 +926,12 @@
 	{
 		[] spawn A3RL_HouseRob_Open;
 	}
+], 
+
+[
+	"",
+	"Lockpick Handcuffs",
+	{
+		[player_objintersect] spawn A3RL_PrisonBreak_Handcuffs;
+	}
 ]

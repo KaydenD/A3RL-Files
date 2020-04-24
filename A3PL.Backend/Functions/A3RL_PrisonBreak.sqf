@@ -63,3 +63,38 @@
 
 	["You have found nothing in the trash", Color_Red] call A3PL_Player_Notification;
 }] call Server_Setup_Compile;
+
+
+["A3RL_PrisonBreak_Handcuffs", {
+	_target = param[0, objNull];
+
+	if(!([] call A3PL_Player_AntiSpam)) exitWith {};
+	if (!(["v_lockpick",1] call A3PL_Inventory_Has)) exitwith {["You must have a lockpick to preform this action", Color_Red] call A3PL_Player_Notification;};
+
+	Player_ActionCompleted = false;
+	["Attempting to lockpick cuffs...",15] spawn A3PL_Lib_LoadAction;
+	player playMoveNow "Acts_carFixingWheel";  
+	[player, "Acts_carFixingWheel"] remoteExec ["playMoveNow", clientOwner*-1];  
+	uiSleep 2.0;
+	while{!Player_ActionCompleted} do
+	{
+		waitUntil{(animationstate player) != "acts_carfixingwheel" || Player_ActionCompleted || player getVariable ["Incapacitated",false] || !alive player};
+		player switchMove "";
+		player playMoveNow "Acts_carFixingWheel";
+		[player, ""] remoteExec ["switchMove", clientOwner*-1];  
+		[player, "Acts_carFixingWheel"] remoteExec ["playMoveNow", clientOwner*-1];  
+		if (player getVariable ["Incapacitated",false]) exitwith {};
+		if (!alive player) exitWith {};
+		uiSleep 2.0;
+	};
+	player switchMove ""; 
+	[player, ""] remoteExec ["switchMove", clientOwner*-1];  
+	if (player getVariable ["Incapacitated",false]) exitwith {};
+	if(!alive player) exitWith {};
+
+	_target setVariable ["Cuffed",false,true];
+	[player, _target, 7] remoteExec ["A3PL_Police_HandleAnim", 0];
+	["v_lockpick",1] call A3PL_Inventory_Remove;
+
+	["You successfully lockpicked the handcuffs", Color_Green] call A3PL_Player_Notification;
+}] call Server_Setup_Compile;

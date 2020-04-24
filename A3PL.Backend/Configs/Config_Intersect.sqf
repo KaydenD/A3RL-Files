@@ -534,46 +534,66 @@ Config_IntersectArray =
 	["jailDoor_2",localize"STR_INTSECT_OPCLJAILD",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" == "police"}], //Open/Close Jail Door
 	["jailDoor_3",localize"STR_INTSECT_OPCLJAILD",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" == "police"}], //Open/Close Jail Door
 
+
+	//Lockpick prison doors
+	["cell_door_1","Lockpick Cell Door",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{["v_lockpick", 1] call A3PL_Inventory_Has}], 
+	["cell_door_2","Lockpick Cell Door",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{["v_lockpick", 1] call A3PL_Inventory_Has}], 
+	["cell_door_3","Lockpick Cell Door",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{["v_lockpick", 1] call A3PL_Inventory_Has}], 
+	["cell_door_4","Lockpick Cell Door",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{["v_lockpick", 1] call A3PL_Inventory_Has}], 
+	["cell_door_5","Lockpick Cell Door",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{["v_lockpick", 1] call A3PL_Inventory_Has}], 
+	["cell_door_6","Lockpick Cell Door",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{["v_lockpick", 1] call A3PL_Inventory_Has}], 
+	["cell_door_7","Lockpick Cell Door",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{["v_lockpick", 1] call A3PL_Inventory_Has}], 
+	["cell_door_8","Lockpick Cell Door",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{["v_lockpick", 1] call A3PL_Inventory_Has}], 
+	["cell_door_9","Lockpick Cell Door",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{["v_lockpick", 1] call A3PL_Inventory_Has}], 
+	["cell_door_10","Lockpick Cell Door",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{["v_lockpick", 1] call A3PL_Inventory_Has}], 
+	["cell_door_11","Lockpick Cell Door",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{["v_lockpick", 1] call A3PL_Inventory_Has}],
+	["cell_door_12","Lockpick Cell Door",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{["v_lockpick", 1] call A3PL_Inventory_Has}], 
+	["cell_door_13","Lockpick Cell Door",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{["v_lockpick", 1] call A3PL_Inventory_Has}], 
+	["cell_door_14","Lockpick Cell Door",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{["v_lockpick", 1] call A3PL_Inventory_Has}], 
+	["door_17","Lockpick Cell Door",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{["v_lockpick", 1] call A3PL_Inventory_Has && (typeof player_objIntersect) == "Land_A3PL_Prison"}], 
+	["door_18","Lockpick Cell Door",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{["v_lockpick", 1] call A3PL_Inventory_Has && (typeof player_objIntersect) == "Land_A3PL_Prison"}], 
+	["door_19","Lockpick Cell Door",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{["v_lockpick", 1] call A3PL_Inventory_Has && (typeof player_objIntersect) == "Land_A3PL_Prison"}], 
+
 	//prison/PD
-	["Door_1_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_1_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_2_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_2_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_3_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_3_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_4_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_4_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_5_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_5_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_6_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_6_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_7_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_7_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_8_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_8_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_9_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_9_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_10_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_10_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_11_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_11_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_12_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_12_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_13_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_13_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_14_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_14_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_15_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_15_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_16_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_16_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_22_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_22_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}],	 //Use Door Button
-	["Door_23_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_23_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_24_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_25_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_26_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
+	["Door_1_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_1_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_2_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_2_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_3_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_3_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_4_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_4_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_5_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_5_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_6_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_6_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_7_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_7_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_8_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_8_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_9_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_9_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_10_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_10_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_11_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_11_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_12_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_12_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_13_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_13_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_14_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_14_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_15_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_15_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_16_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(player getVariable "job" in ["police","uscg","usms","dispatch"]) || (["keycard", 1] call A3PL_Inventory_Has)}], //Use Door Button
+	["Door_16_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_22_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_22_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}],	 //Use Door Button
+	["Door_23_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_23_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_24_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_25_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_26_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
 	["garageDoor_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{!(player_objIntersect getVariable ["locked",false])}], //Use Door Button
 	["garageDoor_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{!(player_objIntersect getVariable ["locked",false])}], //Use Door Button
 	["garageDoor_1_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{!(player_objIntersect getVariable ["locked",false])}], //Use Door Button
@@ -2691,7 +2711,8 @@ Config_GenArray =
 	"Set Bet",
 	"Rob Gas Station",
 	"Lockpick Door",
-	"Secure Door"
+	"Secure Door",
+	"Lockpick Cell Door"
 ];
 publicVariable "Config_GenArray";
 

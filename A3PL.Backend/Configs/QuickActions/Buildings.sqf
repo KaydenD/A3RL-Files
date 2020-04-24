@@ -797,4 +797,12 @@
 	{
 		[player_objintersect] spawn A3RL_HouseRobbery_Secure;
 	}
+],
+
+[
+	"",
+	"Lockpick Cell Door",
+	{
+		[player_objintersect, Player_NameIntersect] spawn A3RL_PrisonBreak_Lockpick;
+	}
 ]

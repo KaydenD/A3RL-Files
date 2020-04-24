@@ -87,6 +87,7 @@ Server_Setup_Files = [
 	['Functions', 'A3RL_SlotMachine'],
 	['Functions', 'A3RL_GasRobbery'],
 	['Functions', 'A3RL_HouseRobbery'],
+	['Functions', 'A3RL_PrisonBreak'],
 	['Backend', 'Server_Setup'],
 	['Server', 'Server_JobVDelivery'],
 	['Server', 'Server_JobMDelivery'],

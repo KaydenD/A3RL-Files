@@ -595,10 +595,13 @@
 		["System: Please raise the ramp before hitching the trailer", Color_Red] call A3PL_Player_Notification;
 	};
 
-	_TruckArray = nearestObjects [(_trailer modelToWorld [0,_offset,0]), A3PL_HitchingVehicles, 16.5];
+	_TruckArray = nearestObjects [(_trailer modelToWorld [0,_offset,0]), A3PL_HitchingVehicles, 30];
 	if (count _TruckArray == 0) exitwith {hintSilent "No vehicle nearby";};
 	_truck = _truckArray select 0;
 	_truck allowDamage false;
+
+	[_trailer] remoteExec ["Server_Vehicle_EnableSimulation", 2];
+	[_truck] remoteExec ["Server_Vehicle_EnableSimulation", 2];
 
 	switch(true) do {
 		case (typeOf _trailer isEqualTo "A3PL_Lowloader"): {
@@ -715,8 +718,7 @@
 	{
 		[[_truck,_trailer],"Server_Vehicle_Trailer_Hitch",false,false] call bis_fnc_mp;
 	};
-	[_trailer] remoteExec ["Server_Vehicle_EnableSimulation", 2];
-	[_truck] remoteExec ["Server_Vehicle_EnableSimulation", 2];
+	
 
 	_trailer animateSource ["Hitched",20];
 	_truck animateSource ["Hitched",20];

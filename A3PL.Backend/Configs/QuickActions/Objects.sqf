@@ -934,4 +934,12 @@
 	{
 		[player_objintersect] spawn A3RL_PrisonBreak_Handcuffs;
 	}
+],
+
+[
+	"",
+	"Search Trash Can",
+	{
+		[] spawn A3RL_PrisonBreak_Search;
+	}
 ]

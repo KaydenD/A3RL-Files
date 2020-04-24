@@ -9,7 +9,8 @@ Config_Intersect_NoName =
 [
 	["RoadCone_F","Cone","\a3\ui_f\data\gui\Rsc\RscDisplayArcadeMap\icon_toolbox_triggers_ca.paa"],
 	["Box_GEN_Equip_F",localize"STR_INTSECT_ACCVIRSTOR",_dir+"IGUI\Cfg\Actions\Obsolete\ui_action_open_ca.paa"], //temp || Access virtual storage
-	["Land_MetalCase_01_large_F","Access Robbery Storage",_dir+"IGUI\Cfg\Actions\Obsolete\ui_action_open_ca.paa"] //temp || Access virtual storage
+	["Land_MetalCase_01_large_F","Access Robbery Storage",_dir+"IGUI\Cfg\Actions\Obsolete\ui_action_open_ca.paa"], //temp || Access virtual storage
+	["Land_GarbageBarrel_01_F","Search Trash Can",_dir+"IGUI\Cfg\Actions\take_ca.paa"] //temp || Access virtual storage
 ];
 publicVariable "Config_Intersect_NoName";
 
@@ -222,6 +223,7 @@ Config_IntersectArray =
 
 	["Virtual_Storage",localize"STR_INTSECT_ACCVIRSTOR",_dir+"IGUI\Cfg\Actions\take_ca.paa",{true}], //Access virtual storage
 	["Virtual_Storage_Rob","Access Robbery Storage",_dir+"IGUI\Cfg\Actions\take_ca.paa",{true}], //Access virtual storage
+	["Search_Trash","Search Trash Can",_dir+"IGUI\Cfg\Actions\take_ca.paa",{true}], //Search Trash Can
 
 	// Common
 	["Body",localize"STR_INTSECT_REPVEH",_dir+"IGUI\Cfg\VehicleToggles\lightsiconon_ca.paa",{player_ItemClass == "repairwrench"}], //Repair Vehicle

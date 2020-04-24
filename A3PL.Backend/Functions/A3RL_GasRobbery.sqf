@@ -7,8 +7,6 @@
 	if(!(currentWeapon player != "")) exitWith {["You must have a weapon to rob the gas station", Color_Red] call A3PL_Player_Notification;};
 	if ((currentWeapon player) IN ["hgun_Pistol_Signal_F","A3PL_FireAxe","A3PL_Shovel","A3PL_Pickaxe","A3PL_Golf_Club","A3PL_Jaws","A3PL_High_Pressure","A3PL_Medium_Pressure","A3PL_Low_Pressure","A3PL_Taser","A3PL_FireExtinguisher","A3PL_Paintball_Marker","A3PL_Paintball_Marker_Camo","A3PL_Paintball_Marker_PinkCamo","A3PL_Paintball_Marker_DigitalBlue","A3PL_Paintball_Marker_Green","A3PL_Paintball_Marker_Purple","A3PL_Paintball_Marker_Red","A3PL_Paintball_Marker_Yellow","A3PL_Predator"]) exitwith {["You cannot rob the gas station with this!",Color_Red] call A3PL_Player_Notification;};
 
-	missionNamespace setVariable ["GasRobbery", true];
-
 	_name = "";
 	switch(_station) do 
 	{
@@ -37,6 +35,7 @@
 	[format["You successfully stole %1 from the gas station", _money], Color_Green] call A3PL_Player_Notification;
 	[[player, 'Player_Cash', ((player getVariable 'Player_Cash') + _money)], 'Server_Core_ChangeVar', false] call BIS_fnc_MP;
 
+	missionNamespace setVariable ["GasRobbery", true];
 	uiSleep 600;
 	missionNamespace setVariable ["GasRobbery", false];
 }] call Server_Setup_Compile;

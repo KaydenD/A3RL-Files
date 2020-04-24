@@ -937,8 +937,8 @@
 ],
 
 [
+	"Land_GarbageBarrel_01_F",
 	"",
-	"Search Trash Can",
 	{
 		[] spawn A3RL_PrisonBreak_Search;
 	}

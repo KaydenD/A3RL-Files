@@ -242,6 +242,8 @@
 	[_unit] remoteExec ["Server_iPhoneX_GetContacts",2];
 	[_unit] remoteExec ["Server_iPhoneX_GetConversations",2];
 
+	if(!isNil"A3PL_iPhoneX_ListNumber") then {A3PL_iPhoneX_ListNumber = []};
+
 	if !(_resultPrimary isEqualTo []) then
 	{
 		_inList = ([A3PL_iPhoneX_ListNumber, _resultPrimary] call BIS_fnc_findNestedElement);

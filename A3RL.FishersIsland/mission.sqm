@@ -8,7 +8,7 @@ class EditorData
 	toggles=10;
 	class ItemIDProvider
 	{
-		nextID=2565;
+		nextID=2569;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={2958.6577,57.920303,6900.3398};
-		dir[]={-0.13482952,-0.69532287,-0.70596141};
-		up[]={-0.1304395,0.71869987,-0.68297678};
-		aside[]={-0.98226583,-8.1483449e-007,0.18759879};
+		pos[]={10068.787,17.376251,8741.7627};
+		dir[]={-0.75062186,-0.44354492,-0.48997483};
+		up[]={-0.37155107,0.89616817,-0.24253015};
+		aside[]={-0.54667306,-8.0199243e-007,0.83748376};
 	};
 };
 binarizationWanted=0;
@@ -60,14 +60,13 @@ addons[]=
 	"A3PL_Objects_BusStop",
 	"A3_Weapons_F_Ammoboxes",
 	"A3_Modules_F_Curator_Curator",
-	"DED_Simple_01",
 	"A3RL_Slot_Machine"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=27;
+		items=26;
 		class Item0
 		{
 			className="A3_Structures_F_Mil";
@@ -224,11 +223,6 @@ class AddonsMetaData
 			name="A3PL_Objects_BusStop";
 		};
 		class Item25
-		{
-			className="DED_Simple_01";
-			name="DED_Simple_01";
-		};
-		class Item26
 		{
 			className="A3RL_Slot_Machine";
 			name="A3RL_Slot_Machine";
@@ -534,7 +528,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=745;
+		items=747;
 		class Item0
 		{
 			dataType="Object";
@@ -4107,7 +4101,7 @@ class Mission
 					};
 					id=491;
 					type="C_man_1";
-					atlOffset=69.843414;
+					atlOffset=69.843422;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -4137,7 +4131,7 @@ class Mission
 			{
 			};
 			id=490;
-			atlOffset=69.843414;
+			atlOffset=69.843422;
 		};
 		class Item81
 		{
@@ -10772,7 +10766,7 @@ class Mission
 					};
 					id=1283;
 					type="C_man_w_worker_F";
-					atlOffset=0.057426929;
+					atlOffset=0.057427883;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -12386,7 +12380,7 @@ class Mission
 					};
 					id=1494;
 					type="C_man_w_worker_F";
-					atlOffset=0.0012636185;
+					atlOffset=0.0012631416;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -14197,7 +14191,7 @@ class Mission
 					};
 					id=1613;
 					type="C_man_w_worker_F";
-					atlOffset=0.1487236;
+					atlOffset=0.14872384;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -15313,7 +15307,7 @@ class Mission
 					};
 					id=2023;
 					type="C_man_w_worker_F";
-					atlOffset=2.974196;
+					atlOffset=2.9741962;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -15754,7 +15748,7 @@ class Mission
 			};
 			id=1252;
 			type="A3PL_Mcfisher_Grill";
-			atlOffset=0.008194685;
+			atlOffset=0.0081949234;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -20947,6 +20941,7 @@ class Mission
 				angles[]={0,4.208652,0};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 				init="call{this setVariable [""positionSpawn"",[5806.51,4933,3,262],false]; this setVariable [""type"",""vehicle""];}";
@@ -20954,7 +20949,7 @@ class Mission
 			};
 			id=2003;
 			type="A3PL_CarInfo";
-			atlOffset=7.006;
+			atlOffset=0.14829445;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -27863,7 +27858,7 @@ class Mission
 			};
 			id=2267;
 			type="A3PL_EMS_Locker";
-			atlOffset=1.1920929e-005;
+			atlOffset=1.1444092e-005;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -27905,7 +27900,7 @@ class Mission
 			};
 			id=2268;
 			type="A3PL_EMS_Locker";
-			atlOffset=1.1444092e-005;
+			atlOffset=1.0967255e-005;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -27947,7 +27942,7 @@ class Mission
 			};
 			id=2269;
 			type="A3PL_EMS_Locker";
-			atlOffset=1.2397766e-005;
+			atlOffset=1.1920929e-005;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -27989,7 +27984,7 @@ class Mission
 			};
 			id=2270;
 			type="A3PL_EMS_Locker";
-			atlOffset=1.1444092e-005;
+			atlOffset=1.0967255e-005;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -28031,7 +28026,7 @@ class Mission
 			};
 			id=2271;
 			type="A3PL_EMS_Locker";
-			atlOffset=1.1444092e-005;
+			atlOffset=1.0967255e-005;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -28073,7 +28068,7 @@ class Mission
 			};
 			id=2272;
 			type="A3PL_EMS_Locker";
-			atlOffset=1.1920929e-005;
+			atlOffset=1.1444092e-005;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -28115,7 +28110,7 @@ class Mission
 			};
 			id=2273;
 			type="A3PL_EMS_Locker";
-			atlOffset=1.0967255e-005;
+			atlOffset=1.0490417e-005;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -28157,7 +28152,7 @@ class Mission
 			};
 			id=2274;
 			type="A3PL_EMS_Locker";
-			atlOffset=1.1444092e-005;
+			atlOffset=1.0967255e-005;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -28199,7 +28194,7 @@ class Mission
 			};
 			id=2275;
 			type="A3PL_EMS_Locker";
-			atlOffset=1.0967255e-005;
+			atlOffset=1.0490417e-005;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -28241,7 +28236,7 @@ class Mission
 			};
 			id=2276;
 			type="A3PL_EMS_Locker";
-			atlOffset=1.0967255e-005;
+			atlOffset=1.0490417e-005;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -30155,7 +30150,7 @@ class Mission
 			};
 			id=2384;
 			type="B_supplyCrate_F";
-			atlOffset=0.010196447;
+			atlOffset=0.010196209;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -33057,6 +33052,78 @@ class Mission
 			};
 			id=2563;
 			atlOffset=0.042654991;
+		};
+		class Item745
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={2474.7649,11.373665,5591.9751};
+				angles[]={0,5.3319807,0};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+			};
+			id=2567;
+			type="Land_Market_DED_Market_03_F";
+			atlOffset=0.0072045326;
+		};
+		class Item746
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={2476.6082,7.374815,5592.7681};
+			};
+			areaSize[]={5,-1,5};
+			flags=1;
+			id=2568;
+			type="ModuleHideTerrainObjects_F";
+			atlOffset=0.007994175;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="#filter";
+					expression="_this setVariable [""#filter"",_value]";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=15;
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="#hideLocally";
+					expression="_this setVariable [""#hideLocally"",_value]";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=2;
+			};
 		};
 	};
 };

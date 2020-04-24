@@ -45,22 +45,14 @@
 	};
 
 	_random = random 100;
-
-	if(_random < 10) exitWith {
-		["You have found a lockpick in the trash", Color_Green] call A3PL_Player_Notification;
-		["v_lockpick", 1] call A3PL_Inventory_Add;
+	_foundSomething = false;
+	switch (true) do {
+		case (_random <= 5): {_foundSomething = true; ["You have found a lockpick in the trash", Color_Green] call A3PL_Player_Notification; ["v_lockpick", 1] call A3PL_Inventory_Add;};
+		case (_random > 5 && _random <= 10): {_foundSomething = true; ["You have found a ziptie in the trash", Color_Green] call A3PL_Player_Notification; ["zipties", 1] call A3PL_Inventory_Add;};
+		case (_random > 10 && _random <= 15): {_foundSomething = true; ["You have found keycard in the trash", Color_Green] call A3PL_Player_Notification; ["keycard", 1] call A3PL_Inventory_Add;};
 	};
-
-	if(_random < 20) exitWith {
-		["You have found a ziptie in the trash", Color_Green] call A3PL_Player_Notification;
-		["zipties", 1] call A3PL_Inventory_Add;
-	};
-
-	if(_random < 30) exitWith {
-		["You have found keycard in the trash", Color_Green] call A3PL_Player_Notification;
-		["keycard", 1] call A3PL_Inventory_Add;
-	};
-
+	
+	if(!_foundSomething) exitWith {};
 	["You have found nothing in the trash", Color_Red] call A3PL_Player_Notification;
 }] call Server_Setup_Compile;
 

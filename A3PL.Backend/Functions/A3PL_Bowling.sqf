@@ -723,7 +723,7 @@
 			_bowlingalley =  nearestObject [player, "Land_KarmaLanes"];
 			if (isNull _bowlingalley) exitwith
 			{
-				["Vous devez lancer la balle sur une piste!", Color_Red] call A3PL_Player_Notification;
+				["You can only roll a bowling ball on a lane!", Color_Red] call A3PL_Player_Notification;
 				deleteVehicle _ball;
 				(_ball getVariable "lane") call A3PL_Bowling_ResetBall;
 			};

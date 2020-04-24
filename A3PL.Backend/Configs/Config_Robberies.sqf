@@ -136,7 +136,7 @@ Config_HouseRobbery = [
     ["Blueprint_Pistol_Illegal",1,4,40,"virtual"],
     ["Blueprint_Pistol_Ammo_Illegal",1,8,50,"virtual"],
  
-     ["hgun_Rook40_F",1,1,10,"real"],
+    ["hgun_Rook40_F",1,1,10,"real"],
     ["16Rnd_9x21_Mag",1,4,30,"real"],
     ["RH_kimber",1,1,5,"real"],
     ["11Rnd_45ACP_Mag",1,4,30,"real"],

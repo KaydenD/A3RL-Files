@@ -19,8 +19,8 @@ Config_Items =
 	["dirty_cash", "Dirty Cash", 0.01, "A3PL_Money", 0, true, true, true, true, true, "", [0,0,0], ""],
     ["gas_hose","Gas Hose",3,"A3PL_GasHose",0,true,true,true,true,true,"", [0,0,0], ""],
 
-	["v_lockpick","Lockpick",0.1,"A3RL_Lockpick",0,true,true,true,true,true,"", [0,0,0], ""],
-	["keycard","Key Card",0.1,"A3RL_Keycard",0,true,true,true,true,true,"", [0,0,0], ""],
+	["v_lockpick","Lockpick",0.1,"A3RL_Lockpick",0,true,true,true,true,true,"", [0,0,0.05], ""],
+	["keycard","Keycard",0.1,"A3RL_Keycard",0,true,true,true,true,true,"", [0,0,0], ""],
 
 	//some new food items
 	["pizzabites","Pizza Bites", 0.1, "A3PL_PartyPack",0,true,true,true, true, true,"A3PL_Items_Food", [0,0,0], ""],

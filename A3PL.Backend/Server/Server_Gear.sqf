@@ -328,8 +328,6 @@
 		[_jail, _unit] call Server_Police_JailPlayer;
 	};
 
-	[_unit] call Server_IE_LoadPlayerIE;
-
 	// Once all done send message to Client to tell him everything is assigned!
 	// publicVariableClient is a priority message, cuts down on network traffic
 	(owner _unit) publicVariableClient "A3PL_RetrievedInventory";

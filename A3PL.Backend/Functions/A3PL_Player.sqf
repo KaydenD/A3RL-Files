@@ -873,7 +873,7 @@
 
 ['A3RL_HUD_GPS', {
 	73673 cutRsc ["Dialog_HUD_GPS", "PLAIN"];
-	A3RL_GPS_Active = true;
+	A3RL_GPS_Active = false;
 	A3RL_GPS_OldPos = [0,0,0];
 	createMarkerLocal["myGPS", (getPos player)];
 	"myGPS" setMarkerShapeLocal "ICON";
@@ -888,7 +888,7 @@
 	            "myGPS" setMarkerPosLocal(getPos(vehicle player));
 	            A3RL_GPS_OldPos = getPos(vehicle player);
 	        };
-			_dir = (vehicle player);
+			_dir = getDir(vehicle player);
 	        "myGPS" setMarkerDirLocal floor(_dir - 40);
 	        _heading = switch (true) do { 
 				default { "N" }; 

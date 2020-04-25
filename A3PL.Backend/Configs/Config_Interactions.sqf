@@ -410,7 +410,7 @@ A3PL_Interaction_Options =
 					private["_x"];
 					if(_item getVariable ["Class", ""] == (_x select 0)) exitWith {
 						_handled = true;
-						_curArr set [_forEachIndex, [_x select 0, _x select 1 + (_item getVariable ["amount",1])]]
+						_curArr set [_forEachIndex, [_x select 0, (_x select 1) + (_item getVariable ["amount",1])]]
 					};
 				} forEach _curArr;
 				if(!_handled) then {_curArr pushBack [_item getVariable ["Class", ""], (_item getVariable ["amount",1])];};

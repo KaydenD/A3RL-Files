@@ -53,7 +53,7 @@
 			while {_overWater} do
 			{
 				_randPos = ["OilSpawnArea"] call CBA_fnc_randPosArea;
-				_overWater = !(_randPos isFlatEmpty  [-1, -1, -1, -1, 2, false] isEqualTo []);
+				_overWater = !(_randPos isFlatEmpty  [-1, -1, -1, -1, 2, true] isEqualTo []);
 			};
 			
 			//ore amounts

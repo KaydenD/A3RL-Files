@@ -8,18 +8,18 @@ class EditorData
 	toggles=10;
 	class ItemIDProvider
 	{
-		nextID=2578;
+		nextID=2607;
 	};
 	class MarkerIDProvider
 	{
-		nextID=135;
+		nextID=136;
 	};
 	class Camera
 	{
-		pos[]={2445.429,19.703165,5595.4863};
-		dir[]={0.61831051,-0.54776013,0.5638352};
-		up[]={0.40495807,0.83643711,0.36928275};
-		aside[]={0.67388529,1.6600825e-006,-0.73899633};
+		pos[]={2775.936,508.86356,4987.7729};
+		dir[]={0.010002286,-0.99917215,0.039445885};
+		up[]={0.24558842,0.040625408,0.96852285};
+		aside[]={0.96932375,-2.1536835e-009,-0.24579135};
 	};
 };
 binarizationWanted=0;
@@ -529,7 +529,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=751;
+		items=779;
 		class Item0
 		{
 			dataType="Object";
@@ -8495,16 +8495,16 @@ class Mission
 		class Item172
 		{
 			dataType="Marker";
-			position[]={6540.064,-2.6118975e-037,7524.1621};
+			position[]={7791.186,0,7480.1089};
 			name="OilSpawnArea";
 			markerType="RECTANGLE";
 			type="rectangle";
 			alpha=0;
-			a=1500;
+			a=2000;
 			b=5300;
-			angle=245.11292;
+			angle=245.11299;
 			id=986;
-			atlOffset=-30.36647;
+			atlOffset=-1.8471389;
 		};
 		class Item173
 		{
@@ -10767,7 +10767,7 @@ class Mission
 					};
 					id=1283;
 					type="C_man_w_worker_F";
-					atlOffset=0.057427883;
+					atlOffset=0.057426929;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -12381,7 +12381,7 @@ class Mission
 					};
 					id=1494;
 					type="C_man_w_worker_F";
-					atlOffset=0.0012631416;
+					atlOffset=0.0012636185;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -20901,7 +20901,6 @@ class Mission
 				angles[]={0,4.7191958,0};
 			};
 			side="Empty";
-			flags=4;
 			class Attributes
 			{
 				init="call{this setVariable [""positionSpawn"",[6937.97,3685.8,3,262],false]; this setVariable [""type"",""vehicle""];}";
@@ -20909,7 +20908,7 @@ class Mission
 			};
 			id=1999;
 			type="A3PL_CarInfo";
-			atlOffset=0.15173531;
+			atlOffset=11.776001;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -33069,7 +33068,7 @@ class Mission
 			};
 			id=2567;
 			type="Land_Market_DED_Market_03_F";
-			atlOffset=0.0072045326;
+			atlOffset=0.0072040558;
 		};
 		class Item746
 		{
@@ -33193,6 +33192,394 @@ class Mission
 			id=2577;
 			type="Land_ClutterCutter_small_F";
 			atlOffset=-4.7683716e-007;
+		};
+		class Item751
+		{
+			dataType="Marker";
+			position[]={2978.4099,-0.148,5628.9482};
+			name="miningExclude_1";
+			markerType="RECTANGLE";
+			type="rectangle";
+			alpha=0;
+			a=200;
+			b=400;
+			id=2578;
+			atlOffset=-9.1131792;
+		};
+		class Item752
+		{
+			dataType="Marker";
+			position[]={3464.863,-0.107,5055.8428};
+			name="miningExclude_2";
+			markerType="RECTANGLE";
+			type="rectangle";
+			alpha=0;
+			a=300;
+			b=300;
+			id=2579;
+			atlOffset=-7.6526318;
+		};
+		class Item753
+		{
+			dataType="Marker";
+			position[]={3410.092,3.27,6676.0391};
+			name="miningExclude_3";
+			markerType="RECTANGLE";
+			type="rectangle";
+			alpha=0;
+			a=300;
+			b=300;
+			id=2580;
+			atlOffset=5.7224369;
+		};
+		class Item754
+		{
+			dataType="Marker";
+			position[]={4698.9819,0.017000001,6188.208};
+			name="miningExclude_4";
+			markerType="RECTANGLE";
+			type="rectangle";
+			alpha=0;
+			a=200;
+			b=400;
+			id=2581;
+			atlOffset=1.1838399;
+		};
+		class Item755
+		{
+			dataType="Marker";
+			position[]={4627.0508,4.928,7176.9731};
+			name="miningExclude_5";
+			markerType="RECTANGLE";
+			type="rectangle";
+			alpha=0;
+			a=300;
+			b=300;
+			angle=48.446999;
+			id=2582;
+			atlOffset=0.01984787;
+		};
+		class Item756
+		{
+			dataType="Marker";
+			position[]={3518.478,0.0020000001,7600.6299};
+			name="miningExclude_6";
+			markerType="RECTANGLE";
+			type="rectangle";
+			alpha=0;
+			a=300;
+			b=300;
+			angle=309.25601;
+			id=2583;
+			atlOffset=-3.0843561;
+		};
+		class Item757
+		{
+			dataType="Marker";
+			position[]={4622.5718,0,4979.731};
+			name="miningExclude_7";
+			markerType="RECTANGLE";
+			type="rectangle";
+			alpha=0;
+			a=150;
+			b=150;
+			angle=90;
+			id=2584;
+			atlOffset=-1.9090937;
+		};
+		class Item758
+		{
+			dataType="Marker";
+			position[]={5939.0732,0.048,4940.8262};
+			name="miningExclude_8";
+			markerType="RECTANGLE";
+			type="rectangle";
+			alpha=0;
+			a=150;
+			b=150;
+			angle=90;
+			id=2585;
+			atlOffset=-2.7717514;
+		};
+		class Item759
+		{
+			dataType="Marker";
+			position[]={4087.0391,-0.29499999,5768.3599};
+			name="miningExclude_9";
+			markerType="RECTANGLE";
+			type="rectangle";
+			alpha=0;
+			a=150;
+			b=150;
+			angle=90;
+			id=2586;
+			atlOffset=-8.7085438;
+		};
+		class Item760
+		{
+			dataType="Marker";
+			position[]={4126.0171,6.1339998,6306.2339};
+			name="miningExclude_10";
+			markerType="RECTANGLE";
+			type="rectangle";
+			alpha=0;
+			a=150;
+			b=150;
+			angle=90;
+			id=2587;
+			atlOffset=7.5340271e-005;
+		};
+		class Item761
+		{
+			dataType="Marker";
+			position[]={3148.8491,-0.07,6187.686};
+			name="miningExclude_11";
+			markerType="RECTANGLE";
+			type="rectangle";
+			alpha=0;
+			a=150;
+			b=150;
+			angle=90;
+			id=2588;
+			atlOffset=-2.2908463;
+		};
+		class Item762
+		{
+			dataType="Marker";
+			position[]={5610.2178,14.289,5993.187};
+			name="miningExclude_12";
+			markerType="RECTANGLE";
+			type="rectangle";
+			alpha=0;
+			a=150;
+			b=260;
+			angle=16.750999;
+			id=2589;
+			atlOffset=1.8514576;
+		};
+		class Item763
+		{
+			dataType="Marker";
+			position[]={7588.873,2.8199999,6647.6738};
+			name="miningExclude_13";
+			markerType="RECTANGLE";
+			type="rectangle";
+			alpha=0;
+			a=150;
+			b=150;
+			angle=344.82898;
+			id=2590;
+			atlOffset=-4.4522333;
+		};
+		class Item764
+		{
+			dataType="Marker";
+			position[]={6074.8799,-0.14399999,7360.0581};
+			name="miningExclude_14";
+			markerType="RECTANGLE";
+			type="rectangle";
+			alpha=0;
+			a=200;
+			b=200;
+			angle=28.712997;
+			id=2591;
+			atlOffset=-5.9717636;
+		};
+		class Item765
+		{
+			dataType="Marker";
+			position[]={6736.8062,17.979,8024.6138};
+			name="miningExclude_15";
+			markerType="RECTANGLE";
+			type="rectangle";
+			alpha=0;
+			a=150;
+			b=200;
+			angle=68.903999;
+			id=2592;
+			atlOffset=-0.00047302246;
+		};
+		class Item766
+		{
+			dataType="Marker";
+			position[]={6232.249,9.5950003,7802.6782};
+			name="miningExclude_16";
+			markerType="RECTANGLE";
+			type="rectangle";
+			alpha=0;
+			a=120;
+			b=200;
+			angle=90.145996;
+			id=2593;
+			atlOffset=-0.00020599365;
+		};
+		class Item767
+		{
+			dataType="Marker";
+			position[]={7013.5239,0.083999999,7152.2358};
+			name="miningExclude_17";
+			markerType="RECTANGLE";
+			type="rectangle";
+			alpha=0;
+			a=150;
+			b=250;
+			angle=65.613998;
+			id=2594;
+			atlOffset=-6.4900804;
+		};
+		class Item768
+		{
+			dataType="Marker";
+			position[]={8903.793,6.1129999,8522.5674};
+			name="miningExclude_18";
+			markerType="RECTANGLE";
+			type="rectangle";
+			alpha=0;
+			a=75;
+			b=150;
+			angle=50.492996;
+			id=2595;
+			atlOffset=-0.049942493;
+		};
+		class Item769
+		{
+			dataType="Marker";
+			position[]={9131.4004,5.6820002,8602.8389};
+			name="miningExclude_19";
+			markerType="RECTANGLE";
+			type="rectangle";
+			alpha=0;
+			a=75;
+			b=150;
+			angle=90.320999;
+			id=2596;
+			atlOffset=0.15649986;
+		};
+		class Item770
+		{
+			dataType="Marker";
+			position[]={9316.3281,4.9530001,8461.5996};
+			name="miningExclude_20";
+			markerType="RECTANGLE";
+			type="rectangle";
+			alpha=0;
+			a=75;
+			b=150;
+			angle=142.87801;
+			id=2597;
+			atlOffset=-0.4841938;
+		};
+		class Item771
+		{
+			dataType="Marker";
+			position[]={9505.3242,5.1030002,8331.542};
+			name="miningExclude_21";
+			markerType="RECTANGLE";
+			type="rectangle";
+			alpha=0;
+			a=75;
+			b=150;
+			angle=107.272;
+			id=2598;
+			atlOffset=-0.10191822;
+		};
+		class Item772
+		{
+			dataType="Marker";
+			position[]={9723.7842,0,8362.0234};
+			name="miningExclude_22";
+			markerType="RECTANGLE";
+			type="rectangle";
+			alpha=0;
+			a=75;
+			b=150;
+			angle=50.492992;
+			id=2599;
+			atlOffset=-4.2762136;
+		};
+		class Item773
+		{
+			dataType="Marker";
+			position[]={9571.6475,4.4489999,7900.7349};
+			name="miningExclude_23";
+			markerType="RECTANGLE";
+			type="rectangle";
+			alpha=0;
+			a=75;
+			b=100;
+			angle=110.70099;
+			id=2600;
+			atlOffset=-0.058908463;
+		};
+		class Item774
+		{
+			dataType="Marker";
+			position[]={8959.3965,0.126,7624.6519};
+			name="miningExclude_24";
+			markerType="RECTANGLE";
+			type="rectangle";
+			alpha=0;
+			a=75;
+			b=150;
+			angle=88.726997;
+			id=2601;
+			atlOffset=-20.204306;
+		};
+		class Item775
+		{
+			dataType="Marker";
+			position[]={9224.248,6.1339998,6800.9351};
+			name="miningExclude_25";
+			markerType="RECTANGLE";
+			type="rectangle";
+			alpha=0;
+			a=75;
+			b=150;
+			angle=6.198;
+			id=2602;
+			atlOffset=0.010218143;
+		};
+		class Item776
+		{
+			dataType="Marker";
+			position[]={10210.007,4.5970001,8594.7373};
+			name="miningExclude_26";
+			markerType="RECTANGLE";
+			type="rectangle";
+			alpha=0;
+			a=200;
+			b=260;
+			angle=89.575996;
+			id=2603;
+			atlOffset=0.12238741;
+		};
+		class Item777
+		{
+			dataType="Marker";
+			position[]={12415.116,5.0430002,8939.8799};
+			name="miningExclude_27";
+			markerType="RECTANGLE";
+			type="rectangle";
+			alpha=0;
+			a=300;
+			b=500;
+			angle=79.084;
+			id=2604;
+			atlOffset=-0.00014400482;
+		};
+		class Item778
+		{
+			dataType="Marker";
+			position[]={12561.161,1.3150001,8267.5342};
+			name="miningExclude_28";
+			markerType="RECTANGLE";
+			type="rectangle";
+			alpha=0;
+			a=100;
+			b=100;
+			angle=100.49199;
+			id=2606;
+			atlOffset=-0.0077371597;
 		};
 	};
 };

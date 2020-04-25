@@ -440,7 +440,7 @@ Server_Setup_Compile = {
 		[] spawn Server_Locker_Load;
 
 		/*iPhoneX*/
-		A3PL_iPhoneX_ListNumber = [];
+		//A3PL_iPhoneX_ListNumber = [];
 		A3PL_iPhoneX_switchboardSD = [];
 		A3PL_iPhoneX_switchboardFD = [];
 		//[] call Server_iPhoneX_GetPhoneNumber;

@@ -82,7 +82,7 @@
 	_ctrl ctrlCommit 0;
 
 	A3PL_HUD_Text = "";
-
+	[] call A3RL_HUD_GPS;
 	["System: A3RL message system initialized"] call A3PL_HUD_Message;
 }] call Server_Setup_Compile;
 

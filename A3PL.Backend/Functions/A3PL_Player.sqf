@@ -870,3 +870,33 @@
 		"crime_marker" setMarkerAlpha 1;
 	};
 }] call Server_Setup_Compile;
+
+['A3RL_HUD_GPS', {
+	73673 cutRsc ["Dialog_HUD_GPS", "PLAIN"];
+	["A3RL_HUD_GPS", "onEachFrame", { 
+		private _display = uiNamespace getVariable ["Dialog_HUD_GPS",displayNull];
+		private _control = _display displayCtrl 23542; 
+		private _dir = (getDir player); 
+		private _altitude = (getPosASL player) select 2; 
+		private _gridRef = mapGridPosition player;         
+		private _bearing = switch (true) do { 
+			default { "N" }; 
+			case (_dir >= 25 && _dir < 65) : {"N.E"}; 
+			case (_dir >= 65 && _dir < 115) : {"E"}; 
+			case (_dir >= 115 && _dir < 155) : {"S.E"}; 
+			case (_dir >= 155 && _dir < 205) : {"S"}; 
+			case (_dir >= 205 && _dir < 245) : {"S.W"}; 
+			case (_dir >= 245 && _dir < 295) : {"W"}; 
+			case (_dir >= 295 && _dir < 335) : {"N.W"};
+		}; 
+		_control = _display displayCtrl 23542; 
+		_control ctrlSetStructuredText parseText format ["<t font='TahomaB' size='0.7' >%1</t>",_bearing]; 
+		_control = _display displayCtrl 23543; 
+		_control ctrlSetStructuredText parseText format ["<t font='TahomaB' size='0.7' >%1 m</t>",round _altitude]; 
+		_control = _display displayCtrl 23544; 
+		_control ctrlSetStructuredText parseText format ["<t font='TahomaB' size='0.7' >%1</t>",_gridRef]; 
+		_control = _display displayCtrl 23539;
+		_control ctrlMapAnimAdd[0,0.07,getPos player];
+		ctrlMapAnimCommit _control; 
+	}] call BIS_fnc_addStackedEventHandler;
+}] call Server_Setup_Compile;

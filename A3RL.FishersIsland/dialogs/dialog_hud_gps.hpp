@@ -30,8 +30,8 @@ class Dialog_HUD_GPS {
 		};
 		class GPS_AZIMUT_INFO: RscStructuredText {
 			idc = 23542;
-			x = 0.0377603 * safezoneW + safezoneX;
-			y = 0.826667 * safezoneH + safezoneY;
+			x = 0.0397603 * safezoneW + safezoneX;
+			y = 0.83 * safezoneH + safezoneY;
 			w = 0.0360937 * safezoneW;
 			h = 0.022 * safezoneH;
 			style = ST_CENTER;
@@ -39,7 +39,7 @@ class Dialog_HUD_GPS {
 		class GPS_ALTITUDE_INFO: RscStructuredText {
 			idc = 23543;
 			x = 0.0389584 * safezoneW + safezoneX;
-			y = 0.856815 * safezoneH + safezoneY;
+			y = 0.859815 * safezoneH + safezoneY;
 			w = 0.0360937 * safezoneW;
 			h = 0.022 * safezoneH;
 			style = ST_CENTER;
@@ -47,17 +47,17 @@ class Dialog_HUD_GPS {
 		class GPS_POSITION_INFO: RscStructuredText {
 			idc = 23544;
 			x = 0.038802 * safezoneW + safezoneX;
-			y = 0.886667 * safezoneH + safezoneY;
+			y = 0.888 * safezoneH + safezoneY;
 			w = 0.0360937 * safezoneW;
 			h = 0.022 * safezoneH;
 			style = ST_CENTER;
 		};
 		class GPS_MAP: RscMapControl {
 			idc = 23539;
-			x = 0.0840619 * safezoneW + safezoneX;
+			x = 0.0810619 * safezoneW + safezoneX;
 			y = 0.828481 * safezoneH + safezoneY;
-			w = 0.107813 * safezoneW;
-			h = 0.136111 * safezoneH;
+			w = 0.109 * safezoneW;
+			h = 0.138 * safezoneH;
 		};
 	};
 	class controls {};

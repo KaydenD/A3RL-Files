@@ -13,6 +13,7 @@ class Dialog_HUD_GPS {
 			y = 0.709 * safezoneH + safezoneY;
 			w = 0.252656 * safezoneW;
 			h = 0.396 * safezoneH;
+			text = "A3PL_Common\GUI\player_hud\gps_day.paa";
 		};
 		class GPS_AZIMUT_INFO: RscStructuredText {
 			idc = 23542;

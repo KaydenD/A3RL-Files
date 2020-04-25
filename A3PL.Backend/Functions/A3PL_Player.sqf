@@ -873,30 +873,63 @@
 
 ['A3RL_HUD_GPS', {
 	73673 cutRsc ["Dialog_HUD_GPS", "PLAIN"];
+	A3RL_GPS_Active = true;
+	A3RL_GPS_OldPos = [0,0,0];
+	createMarkerLocal["myGPS", (getPos player)];
+	"myGPS" setMarkerShapeLocal "ICON";
+	"myGPS" setMarkerTypeLocal "A3PL_GPS";
+	"myGPS" setMarkerColorLocal "ColorOrange";
+	"myGPS" setMarkerSizeLocal[0.7, 0.7];
 	["A3RL_HUD_GPS", "onEachFrame", { 
-		private _display = uiNamespace getVariable ["Dialog_HUD_GPS",displayNull];
-		private _control = _display displayCtrl 23542; 
-		private _dir = (getDir player); 
-		private _altitude = (getPosASL player) select 2; 
-		private _gridRef = mapGridPosition player;         
-		private _bearing = switch (true) do { 
-			default { "N" }; 
-			case (_dir >= 25 && _dir < 65) : {"N.E"}; 
-			case (_dir >= 65 && _dir < 115) : {"E"}; 
-			case (_dir >= 115 && _dir < 155) : {"S.E"}; 
-			case (_dir >= 155 && _dir < 205) : {"S"}; 
-			case (_dir >= 205 && _dir < 245) : {"S.W"}; 
-			case (_dir >= 245 && _dir < 295) : {"W"}; 
-			case (_dir >= 295 && _dir < 335) : {"N.W"};
-		}; 
-		_control = _display displayCtrl 23542; 
-		_control ctrlSetStructuredText parseText format ["<t font='TahomaB' size='0.7' >%1</t>",_bearing]; 
-		_control = _display displayCtrl 23543; 
-		_control ctrlSetStructuredText parseText format ["<t font='TahomaB' size='0.7' >%1 m</t>",round _altitude]; 
-		_control = _display displayCtrl 23544; 
-		_control ctrlSetStructuredText parseText format ["<t font='TahomaB' size='0.7' >%1</t>",_gridRef]; 
-		_control = _display displayCtrl 23539;
-		_control ctrlMapAnimAdd[0,0.07,getPos player];
-		ctrlMapAnimCommit _control; 
+		disableSerialization;
+	    if (("ItemGPS" in (assignedItems player)) && {(profilenamespace getVariable["A3PL_HUD_Enabled", true])}) then {
+			_hud = uiNameSpace getVariable["Dialog_Hud_GPS", displayNull];
+	        if (((vehicle player) distance A3RL_GPS_OldPos) > 2) then {
+	            "myGPS" setMarkerPosLocal(getPos(vehicle player));
+	            A3RL_GPS_OldPos = getPos(vehicle player);
+	        };
+			_dir = (vehicle player);
+	        "myGPS" setMarkerDirLocal floor(_dir - 40);
+	        _heading = switch (true) do { 
+				default { "N" }; 
+				case (_dir >= 25 && _dir < 65) : {"NE"}; 
+				case (_dir >= 65 && _dir < 115) : {"E"}; 
+				case (_dir >= 115 && _dir < 155) : {"SE"}; 
+				case (_dir >= 155 && _dir < 205) : {"S"}; 
+				case (_dir >= 205 && _dir < 245) : {"SW"}; 
+				case (_dir >= 245 && _dir < 295) : {"W"}; 
+				case (_dir >= 295 && _dir < 335) : {"NW"};
+			};
+	        (_hud displayCtrl 23542) ctrlSetStructuredText parseText format["<t size='0.7' font='PuristaLight' color='#ffffff' align='center'>%1</t>",_heading];
+	        (_hud displayCtrl 23543) ctrlSetStructuredText parseText format["<t size='0.7' font='PuristaLight' color='#ffffff' align='center'>%1</t>",round((getPosASL(vehicle player)) select 2)];
+	        (_hud displayCtrl 23544) ctrlSetStructuredText parseText format["<t size='0.7' font='PuristaLight' color='#ffffff' align='center'>%1</t>",(mapGridPosition player)];
+			_ctrl_gps_map = _hud displayCtrl 23539;
+	        if ((vehicle player) isEqualTo player) then {
+	            _ctrl_gps_map ctrlMapAnimAdd[0, 0.05, player];
+	        } else {
+	            _ctrl_gps_map ctrlMapAnimAdd[0, 0.15, (vehicle player)];
+	        };
+	        ctrlMapAnimCommit _ctrl_gps_map;
+	        if (!A3RL_GPS_Active) then {
+	            "myGPS" setMarkerAlphaLocal 1;
+	            (_hud displayCtrl 23542) ctrlShow true;
+	            (_hud displayCtrl 23544) ctrlShow true;
+	            (_hud displayCtrl 23543) ctrlShow true;
+	            _ctrl_gps_map 			 ctrlShow true;
+	            (_hud displayCtrl 23540) ctrlShow true;
+	            A3RL_GPS_Active = true;
+	        };
+	    } else {
+	        if (A3RL_GPS_Active) then {
+				_hud = uiNameSpace getVariable["Dialog_Hud_GPS", displayNull];
+	            "myGPS" setMarkerAlphaLocal 0;
+	            (_hud displayCtrl 23542) ctrlShow false;
+	            (_hud displayCtrl 23544) ctrlShow false;
+	            (_hud displayCtrl 23543) ctrlShow false;
+	            (_hud displayCtrl 23539) ctrlShow false;
+	            (_hud displayCtrl 23540) ctrlShow false;
+	            A3RL_GPS_Active = false;
+	        };
+	    };
 	}] call BIS_fnc_addStackedEventHandler;
 }] call Server_Setup_Compile;

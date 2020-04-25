@@ -327,7 +327,6 @@
 		};
 	} foreach _importing;
 	player setVariable ["player_importing",_importing,true];
-	[player] remoteExec ["Server_IE_RecieveImports", 2];
 }] call Server_Setup_Compile;
 
 ["A3PL_IE_ShipLeft",
@@ -357,7 +356,6 @@
 	player setVariable ["player_exporting",nil,true];
 	player setVariable ["player_bank",(player getVariable ["player_bank",0]) + _addMoney,true];
 	[format ["Server: The total of $%1 has been transferred to your bank account",_addMoney],Color_Green] call A3PL_Player_notification;
-	[player] remoteExec ["Server_IE_ExportExports", 2];
 }] call Server_Setup_Compile;
  
 //BELOW DOES NOT WORK UNTIL JONZIE FIXES THE GAME CRASHING WHEN CREATING THE ROPES

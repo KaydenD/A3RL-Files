@@ -296,20 +296,18 @@
 ["Server_IE_RecieveImports",
 {
 	_player = param [0, objNull];
-	_id = param [1,""];
 	_uid = getPlayerUID _player;
 
-	_query = format ["UPDATE import_export_items SET received=1 WHERE type='import' AND uid='%1' AND id = '%2'",_uid,_id];
+	_query = format ["UPDATE import_export_items SET received=1 WHERE type='import' AND uid='%1'",_uid,_id];
 	[_query,1] spawn Server_Database_Async;
 },true] call Server_Setup_Compile;
 
 ["Server_IE_ExportExports",
 {
 	_player = param [0, objNull];
-	_id = param [1,""];
 	_uid = getPlayerUID _player;
-
-	_query = format ["DELETE FROM import_export_items WHERE type='export' AND uid='%1' AND id = '%2'",_uid,_id];
+	
+	_query = format ["DELETE FROM import_export_items WHERE type='export' AND uid='%1'",_uid,_id];
 	[_query,1] spawn Server_Database_Async;
 },true] call Server_Setup_Compile;
 

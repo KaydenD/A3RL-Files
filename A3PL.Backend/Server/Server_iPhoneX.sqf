@@ -245,7 +245,7 @@
 
 	if !(_resultPrimary isEqualTo []) then
 	{
-		if(!isNil"A3PL_iPhoneX_ListNumber") then {A3PL_iPhoneX_ListNumber = []};
+		if(isNil"A3PL_iPhoneX_ListNumber") then {A3PL_iPhoneX_ListNumber = []};
 		_inList = ([A3PL_iPhoneX_ListNumber, _resultPrimary] call BIS_fnc_findNestedElement);
 		if (_inList isEqualTo []) then {
 			A3PL_iPhoneX_ListNumber pushBack [_resultPrimary, _ownerID];
@@ -256,7 +256,7 @@
 
 	if !(_resultSecondary isEqualTo []) then
 	{
-		if(!isNil"A3PL_iPhoneX_ListNumber") then {A3PL_iPhoneX_ListNumber = []};
+		if(isNil"A3PL_iPhoneX_ListNumber") then {A3PL_iPhoneX_ListNumber = []};
 		_inList = ([A3PL_iPhoneX_ListNumber, _resultSecondary] call BIS_fnc_findNestedElement);
 		if (_inList isEqualTo []) then {
 			A3PL_iPhoneX_ListNumber pushBack [_resultSecondary, _ownerID];

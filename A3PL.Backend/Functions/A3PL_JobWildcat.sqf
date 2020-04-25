@@ -99,12 +99,14 @@
 		_control lbAdd (_x select 0);
 	} foreach Config_Resources_Ores;
 	_control lbAdd "Oil"; //add oil, cause its not in the ores array
-	_control lbSetCurSel 0;
+	if(isNil"A3RL_Last_Prospect_Index") then {A3RL_Last_Prospect_Index = 0;};
+	_control lbSetCurSel A3RL_Last_Prospect_Index;
 	//set buttonaction
 	_control = _display displayCtrl 1601;
 	_control buttonSetAction 
 	"
 			[(lbText [2100,(lbCurSel 2100)])] call A3PL_JobWildcat_ProspectInit;
+			A3RL_Last_Prospect_Index = (lbCurSel 2100);
 			closeDialog 0;
 	";
 }] call Server_Setup_Compile;

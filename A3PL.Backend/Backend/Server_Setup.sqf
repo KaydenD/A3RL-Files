@@ -81,7 +81,7 @@
 		A3PL_iPhoneX_ListNumber = [];
 		A3PL_iPhoneX_switchboardSD = [];
 		A3PL_iPhoneX_switchboardFD = [];
-		[] call Server_iPhoneX_GetPhoneNumber;
+		//[] call Server_iPhoneX_GetPhoneNumber;
 
 		//Load fuel
 		//Get All FuelStations

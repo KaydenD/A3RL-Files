@@ -16,7 +16,7 @@
 ["Server_Setup_ResetPlayerDB",
 {
 	private ["_query","_query2"];
-	_query = "UPDATE players SET position = '[0,0,0]',job = 'unemployed',ship = '[[],[]]'";
+	_query = "UPDATE players SET position = '[0,0,0]',job = 'unemployed'";
 	_query2 = "UPDATE objects SET impounded = '2' WHERE impounded = '3'";
 	_query3 = "UPDATE objects SET stolen = '0' WHERE stolen = '1'";
 	_query4 = "UPDATE objects SET numpchange = '0' WHERE numpchange = '1'";

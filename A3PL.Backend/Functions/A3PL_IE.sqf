@@ -88,15 +88,16 @@
 		_itemName = [(_x select 0),"name"] call A3PL_Config_GetItem;
 		_amount = _x select 1;
 		_status = _x select 2;
-		
+		_id = _x select 3;
+
 		if (_status) then
 		{
 			_index = _control lbAdd format ["%1x %2 (Arrived)",_amount,_itemName];
-			_control lbSetData [_index,"import"];
+			_control lbSetData [_index,format["import|%1",_id]];
 		} else
 		{
 			_index = _control lbAdd format ["%1x %2 (Arriving on next ship)",_amount,_itemName];
-			_control lbSetData [_index,"import"];
+			_control lbSetData [_index,format["import|%1",_id]];
 		};
 	} foreach (player getVariable ["player_importing",[]]);
 	
@@ -104,15 +105,16 @@
 		_itemName = [(_x select 0),"name"] call A3PL_Config_GetItem ;
 		_amount = _x select 1;
 		_status = _x select 2;
-		
+		_id = _x select 3;
+
 		if (isNil "Server_IE_ShipOutbound") then
 		{
 			_index = _control lbAdd format ["%1x %2 (Exporting on next ship)",_amount,_itemName];
-			_control lbSetData [_index,"export"];
+			_control lbSetData [_index,format["export|%1",_id]];
 		} else
 		{
 			_index = _control lbAdd format ["%1x %2 (Exporting)",_amount,_itemName];
-			_control lbSetData [_index,"export"];
+			_control lbSetData [_index,format["export|%1",_id]];
 		};
 	} foreach (player getVariable ["player_exporting",[]]);	
 	
@@ -165,6 +167,7 @@
 	_importPrice = A3PL_IE_PriceArray select 1;
 	_exportPrice = A3PL_IE_PriceArray select 2;
 	_amount = parseNumber (ctrlText (_display displayCtrl 1402));
+	_id = format["%1", random 100000000];
 	if (_amount <= 0) exitwith {["System: Please enter a valid number",Color_Red] call A3PL_Player_notification;};
 	
 	if (_import) then //if importing
@@ -177,9 +180,10 @@
 		//take cash
 		player setVariable ["player_cash",(player getVariable ["player_cash",0]) - _totalPrice,true];
 		//add to a variable
-		player setVariable ["player_importing",(player getVariable ["player_importing",[]]) + [[_item,_amount,false]],true];
+		player setVariable ["player_importing",(player getVariable ["player_importing",[]]) + [[_item,_amount,false,_id]],true];
 		//give message
 		[format ["System: You added an import shipment, you paid: $%3 for %1 %2",_amount,_itemName,_totalPrice],Color_Green] call A3PL_Player_notification;
+		[_item, _amount, player, ] remoteExec ["Server_IE_ImportItem", 2];
 	} else //if exporting
 	{
 		//check if ship is exiting already
@@ -211,7 +215,8 @@
 			deleteVehicle _objectItem;
 		};
 		//add to a variable
-		player setVariable ["player_exporting",(player getVariable ["player_exporting",[]]) + [[_item,_amount,false,(_exportPrice * _amount)]],true];
+		player setVariable ["player_exporting",(player getVariable ["player_exporting",[]]) + [[_item,_amount,false,(_exportPrice * _amount),_id]],true];
+		[_item, _amount, _exportPrice * _amount, player,_id] remoteExec ["Server_IE_ExportItem", 2];
 		//give message
 		[format ["System: You added an export shipment (%2x %3), you will get paid $%1 when the ship has left the waters of Fishers Island",(_exportPrice * _amount),_amount,[_item,"name"] call A3PL_Config_GetItem],Color_Green] call A3PL_Player_notification;		
 	};
@@ -236,7 +241,7 @@
 	
 	_lbIndex = lbCurSel _control;
 	if (_lbIndex < 0) exitwith {["System: You don't have a shipment selected"] call A3PL_Player_notification;};
-	if ((_control lbData _lbIndex) == "import") then
+	if ((((_control lbData _lbIndex) splitString "|") select 0)  == "import") then
 	{
 		private ["_importArray","_currentItemArray","_item","_arrived","_amount"];
 		_importArray = player getVariable ["player_importing",[]];
@@ -244,6 +249,7 @@
 		_item = _currentItemArray select 0;
 		_amount = _currentItemArray select 1;
 		_arrived = _currentItemArray select 2;
+		_id = _currentItemArray select 3;
 		
 		//check if item arrived
 		if (!_arrived) exitwith {["System: This shipment has not arrived yet",Color_Red] call A3PL_Player_Notification;};
@@ -257,6 +263,7 @@
 			[_item,_amount] call A3PL_Inventory_Add;
 			
 			_importArray deleteAt _lbIndex;
+			[player, _id] remoteExec ["Server_IE_CollectImport", 2];
 		} else
 		{
 			_class = [_item,"class"] call A3PL_Config_GetItem;
@@ -271,9 +278,12 @@
 				_importItem set [1,(_currentImportAmount - 1)];
 				_importArray set [_lbIndex,_importItem];
 				_amount = 1;
+				[player, _id, (_currentImportAmount - 1)] remoteExec ["Server_IE_CollectImport", 2];
+
 			} else
 			{
 				_importArray deleteAt _lbIndex;
+				[player, _id] remoteExec ["Server_IE_CollectImport", 2];
 			};
 			
 		};

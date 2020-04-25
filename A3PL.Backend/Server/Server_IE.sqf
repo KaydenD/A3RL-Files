@@ -250,3 +250,92 @@
 	publicVariable "Server_IE_ShipOutbound";
 	Server_IE_Running = nil; //not running anymore
 },true] call Server_Setup_Compile;
+
+["Server_IE_ImportItem",
+{
+	_item = param [0,""];
+	_amount = param [1,1];
+	_player = param [2, objNull];
+	_id = param [3,0];
+	_uid = getPlayerUID _player;
+	
+	_query = format ["INSERT INTO import_export_items (id, uid, type, item, amount, received) VALUES ('%4', '%1', 'import', '%2', %3, 0)",_uid,_item,_amount,_id];
+	[_query,1] spawn Server_Database_Async;
+
+},true] call Server_Setup_Compile;
+
+["Server_IE_ExportItem",
+{
+	_item = param [0,""];
+	_amount = param [1,1];
+	_price = param [2,0];
+	_player = param [3, objNull];
+	_id = param [4,0];
+	_uid = getPlayerUID _player;
+	
+	_query = format ["INSERT INTO import_export_items (id, uid, type, item, amount, price) VALUES ('%5', '%1', 'export', '%2', %3, %4)",_uid,_item,_amount,_price,_id];
+	[_query,1] spawn Server_Database_Async;
+},true] call Server_Setup_Compile;
+
+["Server_IE_CollectImport",
+{
+	_player = param [0, objNull];
+	_id = param [1,""];
+	_qty = param [2, -1];
+	_uid = getPlayerUID _player;
+	
+	if(_qty == -1) then {
+		_query = format ["DELETE FROM import_export_items WHERE type='import' AND uid='%1' AND id = '%2'",_uid,_id];
+		[_query,1] spawn Server_Database_Async;
+	} else {
+		_query = format ["UPDATE import_export_items SET amount=%3 WHERE type='import' AND uid='%1' AND id = '%2'",_uid,_id,_qty];
+		[_query,1] spawn Server_Database_Async;
+	};
+},true] call Server_Setup_Compile;
+
+["Server_IE_RecieveImports",
+{
+	_player = param [0, objNull];
+	_id = param [1,""];
+	_uid = getPlayerUID _player;
+
+	_query = format ["UPDATE import_export_items SET received=1 WHERE type='import' AND uid='%1' AND id = '%2'",_uid,_id];
+	[_query,1] spawn Server_Database_Async;
+},true] call Server_Setup_Compile;
+
+["Server_IE_ExportExports",
+{
+	_player = param [0, objNull];
+	_id = param [1,""];
+	_uid = getPlayerUID _player;
+
+	_query = format ["DELETE FROM import_export_items WHERE type='export' AND uid='%1' AND id = '%2'",_uid,_id];
+	[_query,1] spawn Server_Database_Async;
+},true] call Server_Setup_Compile;
+
+["Server_IE_LoadPlayerIE",
+{
+	_player = param [0, objNull];
+	_uid = getPlayerUID _player;
+
+	_query = format ["SELECT id,uid,type,amount,price,received,item FROM import_export_items WHERE uid='%1'",_uid];
+	_result = [_query,2] spawn Server_Database_Async;
+
+	_imports = [];
+	_exports = [];
+	{
+		_id = _x select 0;
+		_type = _x select 2;
+		_amount = parseNumber (_x select 3);
+		_price = parseNumber (_x select 4);
+		_received = if((parseNumber (_x select 5)) == 1) then {true} else {false};
+		_item = _x select 6;
+		if(_type == "import") then {
+			_imports pushBack [_item, _amount, _received, _id];
+		} else {
+			_exports pushBack [_item, _amount, false, _price, _id];
+		};
+	} forEach _result; 
+	player setVariable ["player_importing", _imports, true];
+	player setVariable ["player_exporting", _exports, true];
+},true] call Server_Setup_Compile;

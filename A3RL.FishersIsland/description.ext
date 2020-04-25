@@ -113,6 +113,7 @@ class RscTitles
 	#include "Dialogs\Dialog_HUD_LoadAction.hpp"
 	#include "Dialogs\Dialog_HUD_Cellphone.hpp"
 	#include "Dialogs\Dialog_HUD_Golf.hpp"
+	#include "Dialogs\dialog_hud_gps.hpp"
 
 	//map filters
 	#include "Dialogs\Dialog_mapfilter.hpp"

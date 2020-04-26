@@ -86,7 +86,6 @@
 
 ["A3RL_Find_Safe_Pos",
 {
-	_type = params[0,""];
 	_found = false;
 	_foundPos = [];
 	while {!_found} do {

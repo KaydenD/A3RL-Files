@@ -86,6 +86,29 @@
 	[format ["System: You bought an %1 map, the location will be marked on your map for 10 minutes",_maptype],Color_Green] call A3PL_Player_Notification;
 }] call Server_Setup_Compile;
 
+["A3RL_Find_Safe_Pos",
+{
+	_found = false;
+	_foundPos = [];
+	_count = 0;
+	while {!found && {_count < 50}} do {
+		_randPos = ["OilSpawnArea"] call CBA_fnc_randPosArea;
+		_isOverLand = !(_randPos isFlatEmpty  [-1, -1, -1, -1, 0, false] isEqualTo []);
+		_isOverShore = !(_randPos isFlatEmpty  [-1, -1, -1, -1, 0, true] isEqualTo []);
+		if(_isOverLand && !_isOverShore) then {
+			_isBlacklisted = false;
+			for "_i" from 1 to 28 do {
+				if(_randPos inArea (format["miningExclude_%1",_i])) exitWith {_isBlacklisted = true;};
+			};
+			if(_isBlacklisted) exitWith {
+				_found = true;
+				_foundPos = _randPos;
+			};
+		};
+	};
+	_foundPos;
+}] call Server_Setup_Compile;
+
 //opens prospect menu
 ["A3PL_JobWildCat_ProspectOpen",
 {

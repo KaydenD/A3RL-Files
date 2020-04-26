@@ -45,8 +45,8 @@
 
 ["Server_JobWildcat_CreateResFromMap", 
 {
-	_type = params[0,""];
-	_pos = params[1,[0,0,0]];
+	_type = param[0,""];
+	_pos = param[1,[0,0,0]];
 	Server_JobWildCat_Res pushback [_type, _pos, 9999, diag_tickTime + 1800];
 	publicVariable "Server_JobWildCat_Res";
 },true] call Server_Setup_Compile;

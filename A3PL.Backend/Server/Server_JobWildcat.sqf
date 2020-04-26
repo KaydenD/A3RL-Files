@@ -40,6 +40,7 @@
 			Server_JobWildCat_Res deleteAt _forEachIndex;
 		};
 	} forEach Server_JobWildCat_Res;
+	publicVariable "Server_JobWildCat_Res";
 },true] call Server_Setup_Compile;
 
 ["Server_JobWildcat_CreateResFromMap", 

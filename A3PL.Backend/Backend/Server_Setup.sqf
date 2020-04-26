@@ -82,6 +82,8 @@
 		A3PL_iPhoneX_switchboardFD = [];
 		//[] call Server_iPhoneX_GetPhoneNumber;
 
+		Server_JobWildCat_Res = [];
+		publicVariable "Server_JobWildCat_Res";
 		//Load fuel
 		//Get All FuelStations
 		private _FuelPositions = [

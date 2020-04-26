@@ -428,7 +428,6 @@ Server_Setup_Compile = {
 		[] call Server_Shop_BlackMarketPos;
 		[] call Server_JobFarming_DrugDealerPos;
 		[] spawn Server_JobWildcat_RandomizeOil; //create the oil positions
-		[] spawn Server_JobWildcat_RandomizeRes;
 		[] call Server_Core_GetDefVehicles; //create the defaulte vehicles array (for use in cleanup script)
 		[] call Server_JobPicking_Init; //get the marker locations for picking locations
 		[] spawn Server_Lumber_TreeRespawn;
@@ -510,7 +509,7 @@ Server_Setup_Compile = {
 
 	//oil randomization, 60 min
 	["itemAdd", ["Server_Loop_OilRandomization", {[] spawn Server_JobWildcat_RandomizeOil;}, 3600]] call BIS_fnc_loop;
-	["itemAdd", ["Server_Loop_ResRandomization", {[] spawn Server_JobWildcat_RandomizeRes;}, 3600]] call BIS_fnc_loop;
+	["itemAdd", ["Server_Loop_ResTimeCheck", {[] spawn Server_JobWildcat_CheckResTimers;}, 60]] call BIS_fnc_loop;
 
 	//Fire
 	["itemAdd", ["Server_Fire_FireLoop", {[] spawn Server_Fire_FireLoop;}, 10]] call BIS_fnc_loop; //Spread fire every 10sec, edit the number to increase spread time

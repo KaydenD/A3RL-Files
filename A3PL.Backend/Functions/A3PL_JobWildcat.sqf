@@ -48,24 +48,22 @@
 			if ((player getVariable ["player_cash",0]) < 500) exitwith {["System: You don't have enough money to buy this map",Color_Red] call A3PL_Player_Notification;};
 			player setVariable ["player_cash",(player getVariable ["player_cash",0]) - 500,true];			
 			
-			_resArray = Server_JobWildCat_Res;
-			_newResArray = [];
-			{
-				if ((_x select 0) == _mapType) then {_newResArray pushback _x};
-			} foreach _resArray;
+			_exactLocation = [] call A3RL_Find_Safe_Pos;
+			while{_exactLocation isEqualTo []} do {
+				_exactLocation = [] call A3RL_Find_Safe_Pos;
+			};
 			
-			_exactLocation = (_newResArray select (round (random ((count _newResArray) - 1)))) select 1;
-			_pos = [((_exactLocation select 0) + (-50 + random 100)),((_exactLocation select 1) + (-50 + random 100))];
+			[_mapType, _exactLocation] remoteExec ["Server_JobWildcat_CreateResFromMap", 2];
 
-			_marker = createMarkerLocal [format["%1_marker",floor (random 5000)],_pos];
+			_marker = createMarkerLocal [format["%1_marker",floor (random 5000)],_exactLocation];
 			_marker setMarkerShapeLocal "ELLIPSE";
-			_marker setMarkerSizeLocal [120,120];
+			_marker setMarkerSizeLocal [100,100];
 			_marker setMarkerColorLocal "ColorGreen";
 			_marker setMarkerTypeLocal "Mil_dot";
 			_marker setMarkerAlphaLocal 0.7;
 			_markers pushback _marker;
 
-			_marker = createMarkerLocal [format["%1_marker",floor (random 5000)],_pos];
+			_marker = createMarkerLocal [format["%1_marker",floor (random 5000)],_exactLocation];
 			_marker setMarkerShapeLocal "ICON";
 			_marker setMarkerColorLocal "ColorYellow";
 			_marker setMarkerTypeLocal "Mil_dot";
@@ -88,10 +86,10 @@
 
 ["A3RL_Find_Safe_Pos",
 {
+	_type = params[0,""];
 	_found = false;
 	_foundPos = [];
-	_count = 0;
-	while {!found && {_count < 50}} do {
+	while {!_found} do {
 		_randPos = ["OilSpawnArea"] call CBA_fnc_randPosArea;
 		_isOverLand = !(_randPos isFlatEmpty  [-1, -1, -1, -1, 0, false] isEqualTo []);
 		_isOverShore = !(_randPos isFlatEmpty  [-1, -1, -1, -1, 0, true] isEqualTo []);
@@ -100,7 +98,7 @@
 			for "_i" from 1 to 28 do {
 				if(_randPos inArea (format["miningExclude_%1",_i])) exitWith {_isBlacklisted = true;};
 			};
-			if(_isBlacklisted) exitWith {
+			if(!_isBlacklisted) exitWith {
 				_found = true;
 				_foundPos = _randPos;
 			};

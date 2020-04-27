@@ -2614,6 +2614,7 @@
 }] call Server_Setup_Compile;
 
 ["A3RL_iPhoneX_appBank",{
+	disableSerialization;
 	_display = findDisplay 97000;
 	_ctrl = [97004,97006,97007,97008,97009,97010,97011,97012,97013,97014,97015,97016,97106,97107,97108,97109,97110,97111,97112,97113,97117,97503,97504,99714,99715,99716,99719,99718,99721,97720];
 	{
@@ -2626,7 +2627,6 @@
 	_background_iPhone_X_background ctrlSetText "A3PL_Common\GUI\phone\iPhone_X_appBank.paa";
 	_iPhone_X_clock_home ctrlSetTextColor [0,0,0,1];
 
-	_display = findDisplay 99400;
 	_pBank = player getVariable["Player_Bank",0];
 	_control = _display displayCtrl 99400;
 	_control ctrlSetStructuredText parseText format ["<t align='center' size='1.3'>$%1</t>",[_pBank, 1, 0, true] call CBA_fnc_formatNumber];
@@ -2639,14 +2639,14 @@
 
 ["A3RL_iPhoneX_bankSend",{
 	disableSerialization;
-	_display = findDisplay 99400;
+	_display = findDisplay 97000;
 	_pBank = player getVariable["Player_Bank",0];
 	_cooldown = player getVariable["transferCooldown",nil];
 	if(!isNil '_cooldown') exitWith {["You can only transfer money every 10 minutes!", Color_Red] call A3PL_Player_Notification;};
 
 	_control = _display displayCtrl 99401;
 	_amount = round(parseNumber(ctrlText _control));
-	if(_amount < 1) then {["Please enter a valid number", Color_Red] call A3PL_Player_Notification;};
+	if(_amount < 1) exitWith {["Please enter a valid number", Color_Red] call A3PL_Player_Notification;};
 	if(_amount > _pBank) exitWith {["You cannot send more money than what's in your bank.", Color_Red] call A3PL_Player_Notification;};
 	if(_amount > 100000) exitWith {["You cannot send more than $100,000 per transfer", Color_Red] call A3PL_Player_Notification;};
 	_control = _display displayCtrl 99402;

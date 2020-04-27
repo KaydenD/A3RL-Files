@@ -252,7 +252,7 @@ class iPhone_X
 		class iPhone_Icon_appBank: Life_RscPicture
 		{
 			idc = 97013;
-			x = 0.805468754 * safezoneW + safezoneX;
+			x = 0.773046878 * safezoneW + safezoneX;
 			y = 0.34541667 * safezoneH + safezoneY;
 			w = 0.0224609 * safezoneW;
 			h = 0.0399306 * safezoneH;

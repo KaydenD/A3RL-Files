@@ -22,7 +22,7 @@
 	{
 		_index = lbAdd [5472, format["%1 (%2)", name _x, _x]];
 		lbSetData [5472, _index, str _x];
-	} forEach (playableUnits - [player]);
+	} forEach (allPlayers - [player]);
 }] call Server_Setup_Compile;
 
 //deposits money into bank account

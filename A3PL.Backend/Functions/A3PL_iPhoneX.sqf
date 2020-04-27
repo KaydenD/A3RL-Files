@@ -2631,10 +2631,11 @@
 	_control = _display displayCtrl 99400;
 	_control ctrlSetStructuredText parseText format ["<t align='center' size='1.3'>$%1</t>",[_pBank, 1, 0, true] call CBA_fnc_formatNumber];
 	_control = _display displayCtrl 99402;
+	lbClear 99402;
 	{
 		_index = _control lbAdd format["%1", _x getVariable ["name","unknown"]];
 		_control lbSetData [_index, str _x];
-	} forEach (playableUnits - [player]);
+	} forEach (allPlayers - [player]);
 }] call Server_Setup_Compile;
 
 ["A3RL_iPhoneX_bankSend",{

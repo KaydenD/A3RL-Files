@@ -208,7 +208,7 @@ class A3PL_mapAreas
 			"Hunting spots", {"A3PL_Marker_HuntingText","A3PL_Marker_Hunting_2Text","A3PL_Marker_Hunting_2Text_1","A3PL_Marker_Hunting_1Text"}
 		},
 		{
-			"Resources", {"PickingAppleText_1","LumberJack_Area_marker","Sand1", "mushroom_marker"}
+			"Resources", {"PickingAppleText_1","LumberJack_Area_marker","Sand1", "mushroom_marker", "mushroom_zone"}
 		},
 		{
 			"Impound lots", {"impoundlot_1","impoundlot_2","impoundlot_3","impoundretrieve"}

@@ -2630,6 +2630,8 @@
 	_pBank = player getVariable["Player_Bank",0];
 	_control = _display displayCtrl 99400;
 	_control ctrlSetStructuredText parseText format ["<t align='center' size='1.3'>$%1</t>",[_pBank, 1, 0, true] call CBA_fnc_formatNumber];
+	_control = _display displayCtrl 99401;
+	_control ctrlSetText "Amount to send";
 	_control = _display displayCtrl 99402;
 	lbClear 99402;
 	{

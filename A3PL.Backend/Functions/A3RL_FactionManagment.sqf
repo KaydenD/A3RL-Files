@@ -49,7 +49,7 @@
 	_rank = _control lbData (lbCurSel _control);
 
 	{
-		if((_x select 1) == rank) then {
+		if((_x select 1) == _rank) then {
 			_i = lbAdd [1500, (format ["%1 (%2)", _x select 0, [_x select 1] call A3RL_FactionManagment_GetRankName])];
 			lbSetData [1500,_i,format["%1", _x select 0]];
 		};

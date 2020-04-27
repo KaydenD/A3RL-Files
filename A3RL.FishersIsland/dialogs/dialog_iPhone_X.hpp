@@ -3353,6 +3353,9 @@ class iPhone_X
 					w = 0.0257812 * safezoneW;
 					h = 0.044 * safezoneH;
 					action = "[] call A3RL_iPhoneX_bankSend;";
+					colorBackground[] = {0,0,0,0};
+					colorBackground2[] = {0,0,0,0};
+					colorBackgroundFocused[] = {0,0,0,0};
 				};
 				class iPhone_BankAmount: Life_RscStructuredText
 				{

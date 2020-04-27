@@ -7,9 +7,6 @@
 	//cinema debug
 	("A3PL_Hud_Cinema" call BIS_fnc_rscLayer) cutRsc ["Dialog_Hud_Cinema","PLAIN"];
 
-	/* ID CARD - Fade it out */
-	("A3PL_Hud_IDCard" call BIS_fnc_rscLayer) cutRsc ["Dialog_HUD_IDCard","PLAIN"];
-
 	//Overlay, for setting mask images etc later on
 	("A3PL_Hud_Overlay" call BIS_fnc_rscLayer) cutRsc ["Dialog_HUD_Overlay","PLAIN"];
 
@@ -29,39 +26,6 @@
 
 	//twitter
 	[] call A3PL_Twitter_Init;
-
-	_display = uiNamespace getVariable "A3PL_HUD_IDCard";
-	(_display displayCtrl 1000) ctrlSetFade 1;
-	(_display displayCtrl 1001) ctrlSetFade 1;
-	(_display displayCtrl 1002) ctrlSetFade 1;
-	(_display displayCtrl 1003) ctrlSetFade 1;
-	(_display displayCtrl 1004) ctrlSetFade 1;
-	(_display displayCtrl 1005) ctrlSetFade 1;
-	(_display displayCtrl 1006) ctrlSetFade 1;
-	(_display displayCtrl 1007) ctrlSetFade 1;
-	(_display displayCtrl 1008) ctrlSetFade 1;
-	(_display displayCtrl 1009) ctrlSetFade 1;
-	(_display displayCtrl 1010) ctrlSetFade 1;
-	(_display displayCtrl 1011) ctrlSetFade 1;
-	(_display displayCtrl 1012) ctrlSetFade 1;
-	(_display displayCtrl 1013) ctrlSetFade 1;
-	(_display displayCtrl 1014) ctrlSetFade 1;
-	(_display displayCtrl 1000) ctrlCommit 0;
-	(_display displayCtrl 1001) ctrlCommit 0;
-	(_display displayCtrl 1002) ctrlCommit 0;
-	(_display displayCtrl 1003) ctrlCommit 0;
-	(_display displayCtrl 1004) ctrlCommit 0;
-	(_display displayCtrl 1005) ctrlCommit 0;
-	(_display displayCtrl 1006) ctrlCommit 0;
-	(_display displayCtrl 1007) ctrlCommit 0;
-	(_display displayCtrl 1008) ctrlCommit 0;
-	(_display displayCtrl 1009) ctrlCommit 0;
-	(_display displayCtrl 1010) ctrlCommit 0;
-	(_display displayCtrl 1011) ctrlCommit 0;
-	(_display displayCtrl 1012) ctrlCommit 0;
-	(_display displayCtrl 1013) ctrlCommit 0;
-	(_display displayCtrl 1014) ctrlCommit 0;
-	/* END ID CARD */
 
 	_name = name player;
 	if (!isNil {player getVariable "name"}) then
@@ -91,43 +55,26 @@
 	disableSerialization;
 	private ["_target","_display","_licenses"];
 	_target = param [0,objNull];
+	("Dialog_IDCard" call BIS_fnc_rscLayer) cutText ["Dialog_IDCard","PLAIN"];
 	_display = uiNamespace getVariable "A3PL_HUD_IDCard";
 
-	_faction = _target getVariable ["faction","::ERROR::"];
-	if(_faction == "mafia" || _faction == "cartel") then {_faction = "citizen";};
+	_name = _target getVariable ["name","::ERROR:: ::ERROR::"];
+	_firstname = (_name splitString " ") select 0;
+	_lastname = (_name splitString " ") select 1;
+	_ref = (((getPlayerUID _target) splitString "");
+	_ref deleteRange [0,8];
+	_ref = _ref joinString "";
 
-	(_display displayCtrl 1002) ctrlSetText (_target getVariable ["name","::ERROR::"]);					//Name
+
+	(_display displayCtrl 1000) ctrlSetText (_firstname);		//firstname
+	(_display displayCtrl 1001) ctrlSetText (_lastname);		//lastname
+	(_display displayCtrl 1002) ctrlSetText (_target getVariable ["gender","::ERROR::"]);		//Gender
+	(_display displayCtrl 1003) ctrlSetText (_ref);	//DB_ID
 	(_display displayCtrl 1004) ctrlSetText (_target getVariable ["dob","::ERROR::"]);					//DOB
-	(_display displayCtrl 1006) ctrlSetText format ["%1",(_target getVariable ["db_id","::ERROR::"])];	//DB_ID
-	//(_display displayCtrl 1008) ctrlSetText (_target getVariable ["gender","::ERROR::"]);				//Gender
-	(_display displayCtrl 1010) ctrlSetText (_target getVariable ["date","::ERROR::"]);					//Date Issued
-	(_display displayCtrl 1012) ctrlSetText (_faction);													//Faction
-
-	_licenses = "";
-	{
-		if (_forEachIndex == 0) then
-		{
-			_licenses = format ["%1 ",_x];
-		} else
-		{
-			_licenses = format ["%2, %1 ",_licenses,_x];
-		};
-	} foreach (_target getVariable ["licenses",[]]);
-	(_display displayCtrl 1014) ctrlSetText _licenses;		//licenses
-
-	for "_i" from 1000 to 1014 do
-	{
-		(_display displayCtrl _i) ctrlSetFade 0;
-		(_display displayCtrl _i) ctrlCommit 1.5;
-	};
+	(_display displayCtrl 1005) ctrlSetText (_target getVariable ["date","::ERROR::"]);					//Date Issued
 
 	uiSleep 30;
-
-	for "_i" from 1000 to 1014 do
-	{
-		(_display displayCtrl _i) ctrlSetFade 1;
-		(_display displayCtrl _i) ctrlCommit 1.5;
-	};
+	("Dialog_IDCard" call BIS_fnc_rscLayer) cutText ["","PLAIN"];
 
 }] call Server_Setup_Compile;
 

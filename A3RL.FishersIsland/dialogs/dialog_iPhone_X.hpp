@@ -249,7 +249,7 @@ class iPhone_X
 			show = false;
 		};
 
-		class iPhone_Icon_appBank: RscPicture
+		class iPhone_Icon_appBank: Life_RscPicture
 		{
 			idc = 97013;
 			x = 0.740625 * safezoneW + safezoneX;
@@ -257,8 +257,9 @@ class iPhone_X
 			w = 0.0224609 * safezoneW;
 			h = 0.0399306 * safezoneH;
 			text = "A3PL_Common\GUI\phone\iPhone_X_icon_bank.paa";
+			show = false;
 		};
-		class iPhone_Button_appBank: RscButtonEmpty
+		class iPhone_Button_appBank: Life_RscButtonMenu
 		{
 			idc = 97113;
 			x = 0.740625 * safezoneW + safezoneX;
@@ -266,6 +267,10 @@ class iPhone_X
 			w = 0.0224609 * safezoneW;
 			h = 0.0399306 * safezoneH;
 			action = "closeDialog 0; [] call A3RL_iPhoneX_appBank;";
+			colorBackground[] = {0,0,0,0};
+			colorBackground2[] = {0,0,0,0};
+			colorBackgroundFocused[] = {0,0,0,0};
+			show = false;
 		};
 
 		class iPhone_X_clock_home: Life_RscText
@@ -3333,6 +3338,12 @@ class iPhone_X
 					y = 0.643 * safezoneH + safezoneY;
 					w = 0.0825 * safezoneW;
 					h = 0.022 * safezoneH;
+					text = "Amount to send";
+					colorText[] = {0,0,0,1};
+					colorBackground[] = {0,0,0,0};
+					shadow = 0;
+					maxChars = 10;
+					onSetFocus = "_text = ctrlText 99401; if (_text isEqualTo ""Amount to send"") then {ctrlSetText [99401,""""]};";
 				};
 				class iPhone_Button_SendAmount: Life_RscButtonMenu
 				{

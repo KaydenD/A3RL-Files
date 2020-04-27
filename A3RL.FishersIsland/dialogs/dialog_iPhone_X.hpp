@@ -252,8 +252,8 @@ class iPhone_X
 		class iPhone_Icon_appBank: Life_RscPicture
 		{
 			idc = 97013;
-			x = 0.740625 * safezoneW + safezoneX;
-			y = 0.401 * safezoneH + safezoneY;
+			x = 0.805468754 * safezoneW + safezoneX;
+			y = 0.34541667 * safezoneH + safezoneY;
 			w = 0.0224609 * safezoneW;
 			h = 0.0399306 * safezoneH;
 			text = "A3PL_Common\GUI\phone\iPhone_X_icon_bank.paa";
@@ -262,8 +262,8 @@ class iPhone_X
 		class iPhone_Button_appBank: Life_RscButtonMenu
 		{
 			idc = 97113;
-			x = 0.740625 * safezoneW + safezoneX;
-			y = 0.401 * safezoneH + safezoneY;
+			x = 0.805468754 * safezoneW + safezoneX;
+			y = 0.34541667 * safezoneH + safezoneY;
 			w = 0.0224609 * safezoneW;
 			h = 0.0399306 * safezoneH;
 			action = "[] spawn A3RL_iPhoneX_appBank;";

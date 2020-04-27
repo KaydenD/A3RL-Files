@@ -921,8 +921,8 @@
 ],
 
 [
+	"Land_MetalCase_01_large_F",
 	"",
-	"Access Robbery Storage",
 	{
 		[] spawn A3RL_HouseRob_Open;
 	}

@@ -139,17 +139,18 @@
 		_messageto = ["reply",_person];
 	};
 
-	if (((toLower (_splitted select 0) == "/ad")) && !_doubleCommand) then {
-		_splitted deleteat 0;
-		_todatabase = true;
-		_doubleCommand = true;
-		_msg = _splitted joinString " ";
-		_name = format ["[AD] %1",_name]; //Set front to "911 Zannaza"
-		if(!isNil "A3PL_phoneNumberActive") then {_msg = _msg + format [" [%1]",A3PL_phoneNumberActive];};
-		//_msg = _msg + format [" [%1]",(player getVariable ["phone_number","0"])];
-		_namecolor = "#00bfbf"; //Set the name text to dark red.
-		_msgcolor = "#4cffff"; //Set text to whitered
-	};
+    if (((toLower(_splitted select 0) == "/ad")) && !_doubleCommand) then {
+        _splitted deleteat 0;
+        _todatabase = true;
+        _doubleCommand = true;
+        _msg = _splitted joinString " ";
+        _name = format["%1", _name];
+        if (!isNil "A3PL_phoneNumberActive") then {
+            _name = format["%1 [%2]", _name, A3PL_phoneNumberActive];
+        };
+        _namecolor = "#00bfbf";
+        _msgcolor = "#4cffff";
+    };
 
 	//darknet
 	/*if (((toLower (_splitted select 0) == "/d")) && !_doubleCommand) then { // darknet

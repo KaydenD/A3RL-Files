@@ -266,7 +266,7 @@ class iPhone_X
 			y = 0.401 * safezoneH + safezoneY;
 			w = 0.0224609 * safezoneW;
 			h = 0.0399306 * safezoneH;
-			action = "closeDialog 0; [] call A3RL_iPhoneX_appBank;";
+			action = "[] spawn A3RL_iPhoneX_appBank;";
 			colorBackground[] = {0,0,0,0};
 			colorBackground2[] = {0,0,0,0};
 			colorBackgroundFocused[] = {0,0,0,0};

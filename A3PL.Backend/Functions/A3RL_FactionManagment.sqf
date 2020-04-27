@@ -1,9 +1,9 @@
 ["A3RL_FactionManagment_Open", {
 	disableSerialization;
 	_faction = param[0, ""];
-	_display = findDisplay 111;
 
 	createDialog "dialog_factionsetup";
+	_display = findDisplay 111;
 
 	
 	buttonSetAction [1600, "[] call A3RL_FactionManagment_SetRank"];
@@ -14,7 +14,7 @@
 	[_faction, player] remoteExec ["Server_FactionManagment_Init", 2];
 
 	_control = _display displayCtrl 1502;
-	_control ctrlAddEventHandler ["LBSelChanged",{hint "Hello World";}];
+	_control ctrlAddEventHandler ["LBSelChanged", "[] call A3RL_FactionManagment_UpdateRanks;"];
 }] call Server_Setup_Compile;
 
 ["A3RL_FactionManagment_Setup", {
@@ -42,9 +42,19 @@
 
 ["A3RL_FactionManagment_UpdateRanks", {
 	_display = findDisplay 111;
-	_control = _display displayCtrl 1501;
+	_control = _display displayCtrl 1500;
 
 	lbClear _control;
+	_control = _display displayCtrl 1500;
+	_rank = _control lbData (lbCurSel _control);
+
+	{
+		if((_x select 1) == rank) then {
+			_i = lbAdd [1500, (format ["%1 (%2)", _x select 0, [_x select 1] call A3RL_FactionManagment_GetRankName])];
+			lbSetData [1500,_i,format["%1", _x select 0]];
+		};
+	} forEach FactionWhitelisted;
+
 }] call Server_Setup_Compile;
 
 ["A3RL_FactionManagment_GetRankName", {

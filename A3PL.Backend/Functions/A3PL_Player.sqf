@@ -873,7 +873,7 @@
 
 ['A3RL_HUD_GPS', {
 	73673 cutRsc ["Dialog_HUD_GPS", "PLAIN"];
-	A3RL_GPS_Active = false;
+	A3RL_GPS_Active = true;
 	A3RL_GPS_OldPos = [0,0,0];
 	createMarkerLocal["myGPS", (getPos player)];
 	"myGPS" setMarkerShapeLocal "ICON";

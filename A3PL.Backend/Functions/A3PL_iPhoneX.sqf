@@ -1558,7 +1558,7 @@
 	};
 
 	_background_iPhone_X_background ctrlSetText format[_wallpaperActive, (A3PL_settings select 0)];
-	_iPhone_X_clock_home ctrlSetTextColor [1,1,1,1];
+	_iPhone_X_clock_home ctrlSetTextColor [0,0,0,1];
 
 	player setVariable ["iPhone_X_lastSMS", []];
 }] call Server_Setup_Compile;
@@ -2620,6 +2620,11 @@
 		(_display displayCtrl _x) ctrlShow false;
 	} forEach _ctrl;
 	ctrlShow [97580,true];
+
+	_background_iPhone_X_background = _display displayCtrl 97002;
+	_iPhone_X_clock_home = _display displayCtrl 97500;
+	_background_iPhone_X_background ctrlSetText "A3PL_Common\GUI\phone\iPhone_X_appBank.paa";
+	_iPhone_X_clock_home ctrlSetTextColor [0,0,0,1];
 
 	_display = findDisplay 99400;
 	_pBank = player getVariable["Player_Bank",0];

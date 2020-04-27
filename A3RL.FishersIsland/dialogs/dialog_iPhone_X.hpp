@@ -3342,7 +3342,7 @@ class iPhone_X
 					colorText[] = {0,0,0,1};
 					colorBackground[] = {0,0,0,0};
 					shadow = 0;
-					maxChars = 10;
+					maxChars = 15;
 					onSetFocus = "_text = ctrlText 99401; if (_text isEqualTo ""Amount to send"") then {ctrlSetText [99401,""""]};";
 				};
 				class iPhone_Button_SendAmount: Life_RscButtonMenu

@@ -924,7 +924,7 @@
 	"Land_MetalCase_01_large_F",
 	"",
 	{
-		[] spawn A3RL_HouseRob_Open;
+		[player_objIntersect] spawn A3RL_HouseRob_Open;
 	}
 ], 
 

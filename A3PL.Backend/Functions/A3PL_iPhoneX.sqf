@@ -1510,7 +1510,7 @@
 
 	_display = findDisplay 97000;
 	ctrlShow [97002, true];
-	_ctrl = [97005,97501,97502,97503,97504,97505,97506,97507,97508,97509,97510,97512,97513,97515,97517,97115,97800,97801,97805,98122,98133,98144,98155,98166,98177,98188,98199,98210,98220,98230,98240,98260,98270,98280,98290,99714,99715,99716,97720,99719,99718,99721,99722,97519,10515,10616,10617,10618,10719,10720,10721];
+	_ctrl = [97005,97501,97502,97503,97504,97505,97506,97507,97508,97509,97510,97512,97513,97515,97517,97115,97800,97801,97805,98122,98133,98144,98155,98166,98177,98188,98199,98210,98220,98230,98240,98260,98270,98280,98290,99714,99715,99716,97720,99719,99718,99721,99722,97519,10515,10616,10617,10618,10719,10720,10721,97580];
 	{(_display displayCtrl _x) ctrlShow false;} forEach _ctrl;
 
 	_background_iPhone_X_base = _display displayCtrl 97001;
@@ -1546,15 +1546,13 @@
 		(findDisplay 97000) displayRemoveEventHandler ["KeyDown", noesckey];
 	};
 
-	_ctrl2 = [97004,97006,97007,97008,97009,97010,97011,97012,97016,97106,97107,97108,97109,97110,97111,97112,97117,97500];
+	_ctrl2 = [97004,97006,97007,97008,97009,97010,97011,97012,97013,97016,97106,97107,97108,97109,97110,97111,97112,97113,97117,97500];
 	{
 		(_display displayCtrl _x) ctrlShow true;
 	} forEach _ctrl2;
 
 	if ((player getVariable ["job","unemployed"]) IN ["dispatch"]) then
 	{
-		ctrlShow [97013,true];
-		ctrlShow [97113,true];
 		ctrlShow [97014,true];
 		ctrlShow [97015,true];
 	};
@@ -2612,5 +2610,55 @@
 	[] spawn {
 		uiSleep 0.5;
 		[] call A3PL_iPhoneX_AppContactsList;
+	};
+}] call Server_Setup_Compile;
+
+["A3RL_iPhoneX_appBank",{
+	_display = findDisplay 97000;
+	_ctrl = [97004,97006,97007,97008,97009,97010,97011,97012,97013,97014,97015,97016,97106,97107,97108,97109,97110,97111,97112,97113,97117,97503,97504,99714,99715,99716,99719,99718,99721,97720];
+	{
+		(_display displayCtrl _x) ctrlShow false;
+	} forEach _ctrl;
+	ctrlShow [97580,true];
+
+	_display = findDisplay 99400;
+	_pBank = player getVariable["Player_Bank",0];
+	_control = _display displayCtrl 99400;
+	_control ctrlSetStructuredText parseText format ["<t align='center' size='1.3'>$%1</t>",[_pBank, 1, 0, true] call CBA_fnc_formatNumber];
+	_control = _display displayCtrl 99402;
+	{
+		_index = _control lbAdd format["%1", _x getVariable ["name","unknown"]];
+		_control lbSetData [_index, str _x];
+	} forEach (playableUnits - [player]);
+}] call Server_Setup_Compile;
+
+["A3RL_iPhoneX_bankSend",{
+	disableSerialization;
+	_display = findDisplay 99400;
+	_pBank = player getVariable["Player_Bank",0];
+	_cooldown = player getVariable["transferCooldown",nil];
+	if(!isNil '_cooldown') exitWith {["You can only transfer money every 10 minutes!", Color_Red] call A3PL_Player_Notification;};
+
+	_control = _display displayCtrl 99401;
+	_amount = round(parseNumber(ctrlText _control));
+	if(_amount < 1) then {["Please enter a valid number", Color_Red] call A3PL_Player_Notification;};
+	if(_amount > _pBank) exitWith {["You cannot send more money than what's in your bank.", Color_Red] call A3PL_Player_Notification;};
+	if(_amount > 100000) exitWith {["You cannot send more than $100,000 per transfer", Color_Red] call A3PL_Player_Notification;};
+	_control = _display displayCtrl 99402;
+	_sendTo = _control lbData (lbCurSel _control);
+	if(_sendTo isEqualTo "") exitWith {["Please select a recipient.", Color_Red] call A3PL_Player_Notification;};
+	_sendToCompile = call compile _sendTo;
+
+	[getPlayerUID player,"bankAppTransfer",[str(_sendToCompile getVariable["name","unknown"]), str(_amount)]] remoteExec ["Server_Log_New",2];
+
+	[player, 'Player_Bank', ((player getVariable 'Player_Bank') - _amount)] remoteExec ["Server_Core_ChangeVar",2];
+	[format["You have transferred $%1 to %2's bank account", [_amount] call A3PL_Lib_FormatNumber, (_sendToCompile getVariable ["name","unknown"])], Color_Green] call A3PL_Player_Notification;
+	[_sendToCompile, 'Player_Bank', ((_sendToCompile getVariable 'Player_Bank') + _amount)] remoteExec ["Server_Core_ChangeVar",2];
+	[format["You received a bank transfer of $%1",_amount], Color_Green] remoteExec ["A3PL_Player_Notification",_sendToCompile];
+
+	player setVariable["transferCooldown",true,false];
+	[] spawn {
+		sleep 600;
+		player setVariable["transferCooldown",nil,false];
 	};
 }] call Server_Setup_Compile;

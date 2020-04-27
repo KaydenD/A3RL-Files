@@ -84,8 +84,8 @@
 	_storage = [];
 	{
 		_chance = random 100;
-		if((_x select 6) > _chance) then {
-			if(_x select 7 == "virtual") then {
+		if((_x select 3) > _chance) then {
+			if(_x select 4 == "virtual") then {
 				_class = _x select 0;
 				_amountMin = _x select 1;
 				_amountMax = _x select 2;

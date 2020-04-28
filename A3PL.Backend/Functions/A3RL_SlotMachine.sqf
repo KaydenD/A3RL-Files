@@ -1,7 +1,7 @@
 ["A3RL_Slots_Roll", 
 {
 	_obj = param[0, objNull];
-	if(inNull _obj) exitWith {["Error: Please try again", Color_Red] call A3PL_Player_Notification;};
+	if(isNull _obj) exitWith {["Error: Please try again", Color_Red] call A3PL_Player_Notification;};
 
 	_dir = "\A3PL_Common\gui\slots\";
 	_icons = ["bell", "cherry", "horseshoe", "seven", "watermelon"];

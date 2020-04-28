@@ -5,10 +5,10 @@ class EditorData
 	angleGridStep=0.2617994;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=10;
+	toggles=138;
 	class ItemIDProvider
 	{
-		nextID=2607;
+		nextID=2610;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={8325.7363,1244.2714,6987.3125};
-		dir[]={-0.0099997167,-0.99994999,-3.5673904e-005};
-		up[]={-0.99994367,0.00999978,-0.0035672905};
-		aside[]={-0.0035674688,0,0.99999368};
+		pos[]={2471.3906,9.3949795,5583.7944};
+		dir[]={-0.55718285,-0.24465932,-0.79355705};
+		up[]={-0.14059862,0.9696061,-0.20024402};
+		aside[]={-0.81843048,3.3095421e-007,0.57464981};
 	};
 };
 binarizationWanted=0;
@@ -529,7 +529,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=778;
+		items=780;
 		class Item0
 		{
 			dataType="Object";
@@ -8502,7 +8502,7 @@ class Mission
 			alpha=0;
 			a=2000;
 			b=5300;
-			angle=245.11296;
+			angle=245.11293;
 			id=986;
 			atlOffset=-1.8471389;
 		};
@@ -20901,6 +20901,7 @@ class Mission
 				angles[]={0,4.7191958,0};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 				init="call{this setVariable [""positionSpawn"",[6937.97,3685.8,3,262],false]; this setVariable [""type"",""vehicle""];}";
@@ -20908,7 +20909,7 @@ class Mission
 			};
 			id=1999;
 			type="A3PL_CarInfo";
-			atlOffset=11.776001;
+			atlOffset=0.15173531;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -22323,7 +22324,7 @@ class Mission
 					};
 					id=2133;
 					type="C_man_w_worker_F";
-					atlOffset=0.00037145615;
+					atlOffset=0.0049514771;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -22372,7 +22373,7 @@ class Mission
 			{
 			};
 			id=2132;
-			atlOffset=0.00037145615;
+			atlOffset=0.0049514771;
 		};
 		class Item486
 		{
@@ -22383,7 +22384,7 @@ class Mission
 			type="A3PL_Markers_Shop";
 			colorName="ColorBlue";
 			id=2134;
-			atlOffset=0.0003528595;
+			atlOffset=0.16471767;
 		};
 		class Item487
 		{
@@ -33422,7 +33423,7 @@ class Mission
 			alpha=0;
 			a=75;
 			b=150;
-			angle=50.492992;
+			angle=50.492989;
 			id=2595;
 			atlOffset=-0.049942493;
 		};
@@ -33492,7 +33493,7 @@ class Mission
 			alpha=0;
 			a=75;
 			b=100;
-			angle=110.70098;
+			angle=110.70097;
 			id=2600;
 			atlOffset=-0.058908463;
 		};
@@ -33562,9 +33563,107 @@ class Mission
 			alpha=0;
 			a=100;
 			b=100;
-			angle=100.49198;
+			angle=100.49197;
 			id=2606;
 			atlOffset=-0.0077371597;
+		};
+		class Item778
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={2470.4731,7.5489268,5581.9126};
+						angles[]={0,0.61271405,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						init="call{if (isServer) then { this enableSimulationGlobal false; this disableAI ""ALL""; this allowDamage false; this addUniform ""A3PL_The_Gunn_Company_Rolex_Uniform""};}";
+						name="npc_verizonstart_1";
+						class Inventory
+						{
+							class uniform
+							{
+								typeName="U_Rangemaster";
+								isBackpack=0;
+							};
+							map="ItemMap";
+							compass="ItemCompass";
+							watch="ItemWatch";
+							goggles="G_Sport_Red";
+						};
+					};
+					id=2608;
+					type="C_man_w_worker_F";
+					atlOffset=0.20320654;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male04GRE";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.02;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=2607;
+			atlOffset=0.20320654;
+		};
+		class Item779
+		{
+			dataType="Marker";
+			position[]={2470.4993,7.3379316,5581.9365};
+			name="marker_verizon_2";
+			text="Verizon";
+			type="A3PL_Markers_Shop";
+			colorName="ColorBlue";
+			id=2609;
+			atlOffset=-0.0058164597;
 		};
 	};
 };

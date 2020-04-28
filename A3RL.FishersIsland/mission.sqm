@@ -8,7 +8,7 @@ class EditorData
 	toggles=10;
 	class ItemIDProvider
 	{
-		nextID=2610;
+		nextID=2607;
 	};
 	class MarkerIDProvider
 	{
@@ -33565,104 +33565,6 @@ class Mission
 			angle=100.49198;
 			id=2606;
 			atlOffset=-0.0077371597;
-		};
-		class Item778
-		{
-			dataType="Group";
-			side="Civilian";
-			class Entities
-			{
-				items=1;
-				class Item0
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={2470.8035,7.5354304,5581.9409};
-						angles[]={0,0.58470494,0};
-					};
-					side="Civilian";
-					flags=7;
-					class Attributes
-					{
-						init="call{if (isServer) then { this enableSimulationGlobal false; this disableAI ""ALL""; this allowDamage false; this addUniform ""A3PL_The_Gunn_Company_Rolex_Uniform""};}";
-						name="npc_verizonstart_1";
-						class Inventory
-						{
-							class uniform
-							{
-								typeName="U_Rangemaster";
-								isBackpack=0;
-							};
-							map="ItemMap";
-							compass="ItemCompass";
-							watch="ItemWatch";
-							goggles="G_Sport_Red";
-						};
-					};
-					id=2608;
-					type="C_man_w_worker_F";
-					atlOffset=0.19206285;
-					class CustomAttributes
-					{
-						class Attribute0
-						{
-							property="speaker";
-							expression="_this setspeaker _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male04GRE";
-								};
-							};
-						};
-						class Attribute1
-						{
-							property="pitch";
-							expression="_this setpitch _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
-									value=1.02;
-								};
-							};
-						};
-						nAttributes=2;
-					};
-				};
-			};
-			class Attributes
-			{
-			};
-			id=2607;
-			atlOffset=0.19206285;
-		};
-		class Item779
-		{
-			dataType="Marker";
-			position[]={2470.7285,7.3056221,5581.8433};
-			name="marker_verizon_2";
-			text="Verizon";
-			type="A3PL_Markers_Shop";
-			colorName="ColorBlue";
-			id=2609;
-			atlOffset=-0.03704071;
 		};
 	};
 };

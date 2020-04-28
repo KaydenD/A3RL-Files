@@ -100,7 +100,7 @@
 	params["_ctrl", "_dikCode", "_shift", "_ctrlKey", "_alt"];
 
 	if(isNil "A3PL_Manual_KeyDown") then {A3PL_Manual_KeyDown = false};
-
+	if (player getVariable ["knockedout", false]) exitWith {};
 	/*
 	if (_dikCode == 18) exitWith {
 		if(!isNil "A3PL_MedicalVar_Unconscious") exitWith {};

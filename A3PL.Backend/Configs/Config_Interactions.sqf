@@ -1324,6 +1324,15 @@ A3PL_Interaction_Options =
 			[_veh] call A3PL_Vehicle_DisableSimulation;
 		},
 		{((typeOf cursorObject) IN ["A3PL_Cutter"]) && ((player distance cursorObject) < 30) && (!(cursorObject getVariable ["locked",true])) && ((speed cursorObject) < 4)} // visible if true
+	],
+
+	[
+		"Knockout",
+		{
+			[] remoteExec ["A3RL_KnockedOut", cursorObject];
+		},
+		{isPlayer cursorObject && alive cursorObject && {player distance cursorObject < 3} && {currentWeapon player != ""} && !{animationState cursorObject IN["incapacitated"]}} 
+
 	]
 
 ];

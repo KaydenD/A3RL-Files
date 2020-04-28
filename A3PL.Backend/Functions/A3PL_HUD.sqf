@@ -55,7 +55,7 @@
 	disableSerialization;
 	private ["_target","_display","_licenses"];
 	_target = param [0,objNull];
-	("Dialog_IDCard" call BIS_fnc_rscLayer) cutText ["Dialog_IDCard","PLAIN"];
+	("Dialog_IDCard" call BIS_fnc_rscLayer) cutRsc ["Dialog_IDCard","PLAIN"];
 	_display = uiNamespace getVariable "A3PL_HUD_IDCard";
 
 	_name = _target getVariable ["name","::ERROR:: ::ERROR::"];
@@ -74,7 +74,7 @@
 	(_display displayCtrl 1005) ctrlSetText (_target getVariable ["date","::ERROR::"]);					//Date Issued
 
 	uiSleep 30;
-	("Dialog_IDCard" call BIS_fnc_rscLayer) cutText ["","PLAIN"];
+	("Dialog_IDCard" call BIS_fnc_rscLayer) cutRsc ["","PLAIN"];
 
 }] call Server_Setup_Compile;
 

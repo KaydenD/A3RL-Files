@@ -908,7 +908,7 @@
 	"",
 	"Play Slots",
 	{
-		[] spawn A3RL_Slots_Roll;
+		[player_objintersect] spawn A3RL_Slots_Roll;
 	}
 ],
 

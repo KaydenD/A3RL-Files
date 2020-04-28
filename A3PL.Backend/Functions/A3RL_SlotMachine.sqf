@@ -1,14 +1,17 @@
 ["A3RL_Slots_Roll", 
 {
+	_obj = param[0, objNull];
+	if(inNull _obj) exitWith {["Error: Please try again", Color_Red] call A3PL_Player_Notification;};
+
 	_dir = "\A3PL_Common\gui\slots\";
 	_icons = ["bell", "cherry", "horseshoe", "seven", "watermelon"];
-	_bet = player_objIntersect getVariable ["bet", 500];
+	_bet = _obj getVariable ["bet", 500];
 
-	if(player_objIntersect getVariable ["is_use", false]) exitWith {["This slot machine is already is use", Color_Red] call A3PL_Player_Notification;};
+	if(_obj getVariable ["is_use", false]) exitWith {["This slot machine is already is use", Color_Red] call A3PL_Player_Notification;};
 	if((player getVariable ["player_cash",0]) < _bet) exitWith {[format ["You don't have $%1 to bet",_bet], Color_Red] call A3PL_Player_Notification;};
 	player setVariable ["player_cash",(player getVariable ["player_cash",0])-(_bet),true];
 
-	player_objIntersect setVariable ["is_use", true, true];
+	_obj setVariable ["is_use", true, true];
 
 	createDialog "Dialog_SlotMachine";
 	_display = findDisplay 63;
@@ -57,7 +60,7 @@
 		_structText ctrlSetStructuredText parseText "<t align='center' size='2.0'>YOU LOSE</t>";
 		playSound "A3RL_Slot_Sound_Lose";
 	};
-	player_objIntersect setVariable ["is_use", false, true];
+	_obj setVariable ["is_use", false, true];
 
 
 

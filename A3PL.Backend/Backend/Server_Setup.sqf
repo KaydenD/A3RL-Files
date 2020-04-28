@@ -140,6 +140,7 @@
 	["itemAdd", ["Server_Loop_RepairTerrain", {[] spawn Server_Core_RepairTerrain;}, 300]] call BIS_fnc_loop;
 	["itemAdd", ["Server_Loop_BusinessLoop", {[] spawn Server_Business_Loop;}, 60]] call BIS_fnc_loop; //delete expired businesses etc
 	["itemAdd", ["Server_Loop_FogLoop", {10 setFog 0;}, 1800]] call BIS_fnc_loop;
+	["itemAdd", ["Server_Loop_TimeMultiLoop", {[] spawn Server_Core_SetTimeMulti;}, 60]] call BIS_fnc_loop;
 
 	//deprecated ["itemAdd", ["Server_Loop_SpawnOres", {[] spawn Server_Resources_SpawnOres;}, 600]] call BIS_fnc_loop; //5min
 

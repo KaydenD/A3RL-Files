@@ -208,6 +208,15 @@
 	//[format ["Server Debug: %1 terrain objects were repaired",_c]] remoteExec ["A3PL_Player_Notification", -2];
 },true] call Server_Setup_Compile;
 
+["Server_Core_SetTimeMulti",
+{
+	if(daytime > 19.5 || daytime < 4.5) then {
+	    setTimeMultiplier 50;
+	} else {
+	    setTimeMultiplier 25;
+	};
+},true] call Server_Setup_Compile;
+
 ["Server_Core_Restart",
 {
 	"IUqof456sd=!&L" serverCommand "#lock";

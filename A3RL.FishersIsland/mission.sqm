@@ -8,7 +8,7 @@ class EditorData
 	toggles=10;
 	class ItemIDProvider
 	{
-		nextID=2499;
+		nextID=2506;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={2030.5574,32.504002,5002.9604};
-		dir[]={0.25849682,-0.92342055,-0.28412807};
-		up[]={0.62136871,0.38392326,-0.6829834};
-		aside[]={-0.73975855,4.1330932e-006,-0.6730181};
+		pos[]={6304.4204,117.11563,7459.8198};
+		dir[]={0.81635416,-0.27055436,0.510261};
+		up[]={0.22942479,0.96270472,0.14340128};
+		aside[]={0.53002852,-2.9057264e-007,-0.84797984};
 	};
 };
 binarizationWanted=0;
@@ -65,7 +65,7 @@ class AddonsMetaData
 {
 	class List
 	{
-		items=26;
+		items=25;
 		class Item0
 		{
 			className="A3_Structures_F_Mil";
@@ -220,11 +220,6 @@ class AddonsMetaData
 		{
 			className="A3PL_Objects_BusStop";
 			name="A3PL_Objects_BusStop";
-		};
-		class Item25
-		{
-			className="DED_Simple_01";
-			name="DED_Simple_01";
 		};
 	};
 };
@@ -527,7 +522,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=703;
+		items=705;
 		class Item0
 		{
 			dataType="Object";
@@ -1099,7 +1094,7 @@ class Mission
 		{
 			dataType="Marker";
 			position[]={2512.3279,7.2729998,5649.2051};
-			name="shop3";
+			name="mcfishers_mark_1";
 			text="McFishers";
 			type="A3PL_Markers_Fish";
 			colorName="ColorBlue";
@@ -10740,7 +10735,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2630.8586,8.045104,5511.9292};
+						position[]={2630.8586,8.0451031,5511.9292};
 						angles[]={0,1.5089676,0};
 					};
 					side="Civilian";
@@ -11568,7 +11563,7 @@ class Mission
 					};
 					id=1448;
 					type="C_man_w_worker_F";
-					atlOffset=0.056418419;
+					atlOffset=0.056417465;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -14190,7 +14185,7 @@ class Mission
 					};
 					id=1613;
 					type="C_man_w_worker_F";
-					atlOffset=0.1487236;
+					atlOffset=0.14872384;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -15306,7 +15301,7 @@ class Mission
 					};
 					id=2023;
 					type="C_man_w_worker_F";
-					atlOffset=2.974196;
+					atlOffset=2.9741962;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -15747,7 +15742,7 @@ class Mission
 			};
 			id=1252;
 			type="A3PL_Mcfisher_Grill";
-			atlOffset=0.008194685;
+			atlOffset=0.0081949234;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -15822,7 +15817,7 @@ class Mission
 			text="Silverton Clinic";
 			type="A3PL_Markers_Clinic";
 			colorName="ColorBlue";
-			angle=280.54648;
+			angle=280.54642;
 			id=1258;
 			atlOffset=-7.3545156;
 		};
@@ -16433,7 +16428,7 @@ class Mission
 			};
 			id=1446;
 			type="Land_CampingTable_F";
-			atlOffset=0.068948746;
+			atlOffset=0.068932533;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -16633,7 +16628,7 @@ class Mission
 			text="FIFR Equipment Shop";
 			type="A3PL_Markers_FIFD";
 			colorName="ColorBlue";
-			angle=280.54648;
+			angle=280.54642;
 			id=1466;
 			atlOffset=-7.3544664;
 		};
@@ -16742,7 +16737,7 @@ class Mission
 			};
 			id=1495;
 			type="Land_CampingTable_F";
-			atlOffset=0.013575554;
+			atlOffset=0.013576031;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -16996,7 +16991,7 @@ class Mission
 		{
 			dataType="Marker";
 			position[]={7107.8311,0,7197.791};
-			name="shop4";
+			name="mcfishers_mark_2";
 			text="McFishers";
 			type="A3PL_Markers_Fish";
 			colorName="ColorBlue";
@@ -22381,7 +22376,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={10217.087,5.0310769,8728.1289};
+						position[]={10044.953,5.5127211,8725.4512};
 						angles[]={0,1.4869682,0};
 					};
 					side="Civilian";
@@ -22405,7 +22400,7 @@ class Mission
 					};
 					id=2133;
 					type="C_man_w_worker_F";
-					atlOffset=0.00037145615;
+					atlOffset=0.0049514771;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -22454,18 +22449,18 @@ class Mission
 			{
 			};
 			id=2132;
-			atlOffset=0.00037145615;
+			atlOffset=0.0049514771;
 		};
 		class Item488
 		{
 			dataType="Marker";
-			position[]={10217.08,4.9829998,8728.1025};
-			name="ccp_wep_1";
+			position[]={10044.946,5.4650002,8725.4248};
+			name="marker_verizon_1";
 			text="Verizon";
 			type="A3PL_Markers_Shop";
 			colorName="ColorBlue";
 			id=2134;
-			atlOffset=0.0003528595;
+			atlOffset=0.16471767;
 		};
 		class Item489
 		{
@@ -27941,7 +27936,7 @@ class Mission
 			};
 			id=2267;
 			type="A3PL_EMS_Locker";
-			atlOffset=1.1920929e-005;
+			atlOffset=1.1444092e-005;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -27983,7 +27978,7 @@ class Mission
 			};
 			id=2268;
 			type="A3PL_EMS_Locker";
-			atlOffset=1.1444092e-005;
+			atlOffset=1.0967255e-005;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -28025,7 +28020,7 @@ class Mission
 			};
 			id=2269;
 			type="A3PL_EMS_Locker";
-			atlOffset=1.2397766e-005;
+			atlOffset=1.1920929e-005;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -28067,7 +28062,7 @@ class Mission
 			};
 			id=2270;
 			type="A3PL_EMS_Locker";
-			atlOffset=1.1444092e-005;
+			atlOffset=1.0967255e-005;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -28109,7 +28104,7 @@ class Mission
 			};
 			id=2271;
 			type="A3PL_EMS_Locker";
-			atlOffset=1.1444092e-005;
+			atlOffset=1.0967255e-005;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -28151,7 +28146,7 @@ class Mission
 			};
 			id=2272;
 			type="A3PL_EMS_Locker";
-			atlOffset=1.1920929e-005;
+			atlOffset=1.1444092e-005;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -28193,7 +28188,7 @@ class Mission
 			};
 			id=2273;
 			type="A3PL_EMS_Locker";
-			atlOffset=1.0967255e-005;
+			atlOffset=1.0490417e-005;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -28235,7 +28230,7 @@ class Mission
 			};
 			id=2274;
 			type="A3PL_EMS_Locker";
-			atlOffset=1.1444092e-005;
+			atlOffset=1.0967255e-005;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -28277,7 +28272,7 @@ class Mission
 			};
 			id=2275;
 			type="A3PL_EMS_Locker";
-			atlOffset=1.0967255e-005;
+			atlOffset=1.0490417e-005;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -28319,7 +28314,7 @@ class Mission
 			};
 			id=2276;
 			type="A3PL_EMS_Locker";
-			atlOffset=1.0967255e-005;
+			atlOffset=1.0490417e-005;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -30233,7 +30228,7 @@ class Mission
 			};
 			id=2384;
 			type="B_supplyCrate_F";
-			atlOffset=0.010196447;
+			atlOffset=0.010196209;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -31714,7 +31709,7 @@ class Mission
 			};
 			id=2495;
 			type="Land_Home1g_DED_Home1g_01_F";
-			atlOffset=0.0010874271;
+			atlOffset=0.0010871887;
 		};
 		class Item701
 		{
@@ -31788,6 +31783,104 @@ class Mission
 			id=2498;
 			type="Land_Home6b_DED_Home6b_01_F";
 			atlOffset=0.030010939;
+		};
+		class Item703
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={2470.8035,7.5354304,5581.9409};
+						angles[]={0,0.58470494,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						init="call{if (isServer) then { this enableSimulationGlobal false; this disableAI ""ALL""; this allowDamage false; this addUniform ""A3PL_The_Gunn_Company_Rolex_Uniform""};}";
+						name="npc_verizonstart_1";
+						class Inventory
+						{
+							class uniform
+							{
+								typeName="U_Rangemaster";
+								isBackpack=0;
+							};
+							map="ItemMap";
+							compass="ItemCompass";
+							watch="ItemWatch";
+							goggles="G_Sport_Red";
+						};
+					};
+					id=2500;
+					type="C_man_w_worker_F";
+					atlOffset=0.19206285;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male04GRE";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.02;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=2499;
+			atlOffset=0.19206285;
+		};
+		class Item704
+		{
+			dataType="Marker";
+			position[]={2470.7285,7.3056221,5581.8433};
+			name="marker_verizon_2";
+			text="Verizon";
+			type="A3PL_Markers_Shop";
+			colorName="ColorBlue";
+			id=2501;
+			atlOffset=-0.03704071;
 		};
 	};
 };

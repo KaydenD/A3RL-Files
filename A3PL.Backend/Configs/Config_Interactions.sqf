@@ -1235,13 +1235,12 @@ A3PL_Interaction_Options =
 		{
 			private ["_house","_box"];
 			if(!([] call A3PL_Player_AntiSpam)) exitWith {};
-			_house = nearestObjects [player, ["Land_Home1g_DED_Home1g_01_F","Land_Mansion01","Land_A3PL_Ranch1","Land_A3PL_Ranch2","Land_A3PL_Ranch3","Land_A3PL_ModernHouse1","Land_A3PL_ModernHouse2","Land_A3PL_ModernHouse3","Land_A3PL_BostonHouse","Land_A3PL_Shed1","Land_A3PL_Shed2","Land_A3PL_Shed3","Land_A3PL_Shed4"], 10];
-			if (count _house < 1) exitwith {[localize "STR_INTER_FINDHOUSEN",Color_Red] call A3PL_Player_Notification;}; //System: Couldn't find house nearby, report this bug
-			_house = _house select 0;
 
 			_box = nearestObjects [player, ["Box_GEN_Equip_F"], 10];
 			if (count _box < 1) exitwith {[localize "STR_INTER_FINDSTORAGEN",Color_Red] call A3PL_Player_Notification;}; //System: Couldn't find the storage nearby, report this bug
 			_box = _box select 0;
+			_house = _box getVariable ["house", objNull];
+			if(isNull _house) exitWith {["Error storing box, Please report this.",Color_Red] call A3PL_Player_Notification;};
 			[_house,_box] remoteExec ["Server_Housing_SaveBox", 2];
 		},
 		{(player distance (nearestObject [player, "Box_GEN_Equip_F"]) < 5)}

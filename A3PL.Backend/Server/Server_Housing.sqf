@@ -105,6 +105,7 @@
 	{_box addItemCargoGlobal [_x,1]} foreach _actualitems;
 	{_box addBackpackCargoGlobal [_x,1]} foreach _backpacks;
 	_box setVariable ["storage",_vitems,true];
+	_box setVariable ["house",_house,true];
 },true] call Server_Setup_Compile;
 
 ["Server_Housing_SaveBox",

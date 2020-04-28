@@ -146,7 +146,7 @@
 
 	[_uid, _phoneNumber, _type] remoteExec ["Server_iPhoneX_AddPhoneNumber",2];
 
-	["Activation of the subscription...",Color_Orange] call A3PL_Player_Notification;
+	["Activating the subscription...",Color_Orange] call A3PL_Player_Notification;
 	uiSleep 5;
 
 	[player] remoteExec ["Server_iPhoneX_getPhoneNumber",2];
@@ -198,7 +198,7 @@
 
 	[_uid, _phoneNumber, _type] remoteExec ["Server_iPhoneX_addPhoneNumber",2];
 
-	["Activation of the subscription...",Color_Orange] call A3PL_Player_Notification;
+	["Activating the subscription...",Color_Orange] call A3PL_Player_Notification;
 	uiSleep 5;
 
 	[player] remoteExec ["Server_iPhoneX_getPhoneNumber",2];
@@ -248,7 +248,7 @@
 
 	[_uid, _phoneNumber, _type] remoteExec ["Server_iPhoneX_addPhoneNumber",2];
 
-	["Activation of the subscription...",Color_Orange] call A3PL_Player_Notification;
+	["Activating the subscription...",Color_Orange] call A3PL_Player_Notification;
 	uiSleep 5;
 
 	[player] remoteExec ["Server_iPhoneX_getPhoneNumber",2];

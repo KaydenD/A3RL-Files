@@ -1329,6 +1329,7 @@ A3PL_Interaction_Options =
 		"Knockout",
 		{
 			[] remoteExec ["A3RL_KnockedOut", cursorObject];
+			player switchMove "AwopPercMstpSgthWrflDnon_End2";
 		},
 		{isPlayer cursorObject && alive cursorObject && {player distance cursorObject < 3} && {currentWeapon player != ""} && {!(animationState cursorObject IN["incapacitated"])}} 
 

@@ -642,7 +642,7 @@
 			{
 				private ["_woundArr"];
 				_woundArr = _x select _i;
-				if ((_woundArr select 0) == _wound) then
+				if ((_woundArr select 0) == _wound && !(_woundArr select 1)) exitWith
 				{
 					//healing a wound by EMS
 					if ((_item == ([_wound,"itemHeal"] call A3PL_Config_GetWound)) && _isEMS) exitwith
@@ -675,7 +675,7 @@
 							[_player,format ["%1 treated a %2 wound on the %3",(player getVariable ["name",name player]),_woundName,_part],[0, 1, 0, 1]] call A3PL_Medical_AddLog;
 						};
 						["System Medical: You succesfully treated a wound, you may still require medical attention",Color_Green] call A3PL_Player_Notification;
-						[format ["System: You treated a %1 wound, you may still require medical attention",[_woundName,"name"] call A3PL_Config_GetWound]] call A3PL_Player_Notification;
+						[format ["System: You treated a %1, you may still require medical attention",_woundName]] call A3PL_Player_Notification;
 						_woundArr set [1,true];
 					};
 				};
@@ -1028,6 +1028,7 @@
 				private ["_woundArr","_index","_woundClass","_color"];
 				_woundArr = _x select _i;
 				_woundClass = _woundArr select 0;
+				_isKindaHealed = _woundArr select 1;
 				_index = _control lbAdd ([_woundClass,"name"] call A3PL_Config_GetWound);
 				_control lbSetData [_index,_woundClass];
 				_color = [_woundClass,"color"] call A3PL_Config_GetWound;
@@ -1037,6 +1038,7 @@
 					case ("orange"): {_color = [0.5, 0.5, 0, 1];};
 					case ("green"): {_color = [0, 1, 0, 1];};
 				};
+				if (_isKindaHealed) then {_color = [0, 1, 0, 1];};
 				if (typeName _color == "ARRAY") then { _control lbSetColor [_index,_color];	};
 			};
 		};

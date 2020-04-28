@@ -40,7 +40,7 @@
 ["A3PL_JobOil_Pump_Animation", 
 {
 	private ["_pump"];
-	_pump = param [1,objNull];
+	_pump = param [0,objNull];
 	sleep  2;
 	while {(_pump getVariable ["pumping",false])} do
 	{

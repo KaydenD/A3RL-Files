@@ -566,8 +566,8 @@
 	[_truck] remoteExec ["Server_Vehicle_EnableSimulation", 2];
 
 
-	_trailer animateSource ["Hitched",0];
-	_truck animateSource ["Hitched",0];
+	_trailer animateSource ["Hitched",0,true];
+	_truck animateSource ["Hitched",0,true];
 
 
 	[_trailer] remoteExec ["Server_Vehicle_EnableSimulation", 2];
@@ -720,8 +720,8 @@
 	};
 	
 
-	_trailer animateSource ["Hitched",20];
-	_truck animateSource ["Hitched",20];
+	_trailer animateSource ["Hitched",20,true];
+	_truck animateSource ["Hitched",20,true];
 
 
 	[_trailer] remoteExec ["Server_Vehicle_EnableSimulation", 2];

@@ -61,7 +61,7 @@
 	_name = _target getVariable ["name","::ERROR:: ::ERROR::"];
 	_firstname = (_name splitString " ") select 0;
 	_lastname = (_name splitString " ") select 1;
-	_ref = (((getPlayerUID _target) splitString "");
+	_ref = ((getPlayerUID _target) splitString "");
 	_ref deleteRange [0,8];
 	_ref = _ref joinString "";
 

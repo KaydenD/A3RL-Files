@@ -808,7 +808,7 @@ Server_Setup_Compile = {
 	_medStat = [(_return select 20)] call Server_Database_ToArray;
 	_paycheck = parseNumber (_return select 21);
 	_gender = _return select 22;
-	_rank = _return select 23;
+	_rank = parseNumber(_return select 23);
 
 	//Medstats
 	_unit setVariable ["A3PL_Wounds",_medStat select 0,true];

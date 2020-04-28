@@ -35,8 +35,8 @@ class Dialog_IDCard
 		{
 			idc = 1000;
 			text = "firstname"; //--- ToDo: Localize;
-			x = 0.0522917 * safezoneW + safezoneX;
-			y = 0.269185 * safezoneH + safezoneY;
+			x = 0.0544177 * safezoneW + safezoneX;
+			y = 0.270146 * safezoneH + safezoneY;
 			w = 0.0657291 * safezoneW;
 			h = 0.0142592 * safezoneH;
 		};
@@ -53,9 +53,9 @@ class Dialog_IDCard
 		{
 			idc = 1002;
 			text = "gender"; //--- ToDo: Localize;
-			x = 0.0334375 * safezoneW + safezoneX;
-			y = 0.30037 * safezoneH + safezoneY;
-			w = 0.0365625 * safezoneW;
+			x = 0.0334625 * safezoneW + safezoneX;
+			y = 0.30046 * safezoneH + safezoneY;
+			w = 0.0417708 * safezoneW;
 			h = 0.0170371 * safezoneH;
 		};
 		class RscText_1003: RscText
@@ -80,8 +80,8 @@ class Dialog_IDCard
 		{
 			idc = 1005;
 			text = "join date"; //--- ToDo: Localize;
-			x = 0.164896 * safezoneW + safezoneX;
-			y = 0.287037 * safezoneH + safezoneY;
+			x = 0.162884 * safezoneW + safezoneX;
+			y = 0.28418 * safezoneH + safezoneY;
 			w = 0.0527083 * safezoneW;
 			h = 0.0290741 * safezoneH;
 		};

@@ -68,6 +68,10 @@
 	_birthdate = (_target getVariable ["dob","::ERROR::"]) splitString "/";
 	_bd = format["%1-%2-%3", _birthdate select 2, _birthdate select 1, _birthdate select 0];
 
+	if(["driver"] call A3PL_DMV_Check) then {
+		(_display displayCtrl 1200) ctrlSetText "\A3PL_Common\gui\A3RL_DLCard.paa";
+	};
+
 	(_display displayCtrl 1000) ctrlSetText (_firstname);		//firstname
 	(_display displayCtrl 1001) ctrlSetText (_lastname);		//lastname
 	(_display displayCtrl 1002) ctrlSetText (_target getVariable ["gender","::ERROR::"]);		//Gender

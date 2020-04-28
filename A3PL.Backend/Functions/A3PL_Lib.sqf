@@ -773,6 +773,9 @@
 	_assignTime = param [3,1200];
 	_inArea = param [4,""]; //if this vehicle needs to stay in specific area
 
+	_pos = _pos findEmptyPosition[0, 15, _class];
+	if(_pos isEqualTo []) exitWith {["System: Spawn for job vehicle is blocked",Color_Red] call A3PL_Player_Notification;};
+
 	if(_job != "Roadside_Service") then {
 		[[_class,_pos,format ["%1",toUpper _job],player], "Server_Vehicle_Spawn", false, false] call BIS_fnc_MP;
 	} else {

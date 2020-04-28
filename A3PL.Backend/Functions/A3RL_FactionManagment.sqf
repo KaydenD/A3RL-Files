@@ -43,13 +43,13 @@
 ["A3RL_FactionManagment_UpdateRanks", {
 	_display = findDisplay 111;
 	_control = _display displayCtrl 1500;
-
 	lbClear _control;
-	_control = _display displayCtrl 1500;
+
+	_control = _display displayCtrl 1502;
 	_rank = _control lbData (lbCurSel _control);
 
 	{
-		if((_x select 0) == _rank) then {
+		if((_x select 1) == (parseNumber(_rank))) then {
 			_i = lbAdd [1500, (format ["%1 (%2)", _x select 0, [_x select 1] call A3RL_FactionManagment_GetRankName])];
 			lbSetData [1500,_i,format["%1", _x select 0]];
 		};
@@ -83,11 +83,8 @@
 	if(_exist) exitWith {["The rank already exist", Color_Red] call A3PL_Player_Notification;};
 	if(_rank == "") exitWith {["Please type in a name", Color_Red] call A3PL_Player_Notification;};
 	if((count _rank) > 50) exitWith {["The rank can't have more than 50 charcters", Color_Red] call A3PL_Player_Notification;};
-
-	[_rank, FactionID] remoteExec ["Server_FactionManagment_AddRank", 2];
 	
-	_i = lbAdd[1502, format["%1 ($0)", _rank]];
-	lbSetData [1502, _i, _rank];
+	[_rank, FactionID, player] remoteExec ["Server_FactionManagment_AddRank", 2];
 }] call Server_Setup_Compile;
 
 ["A3RL_FactionManagment_SetRank", {
@@ -103,6 +100,15 @@
 
 	[_player, _rank] remoteExec ["Server_FactionManagment_SetRank", 2];
 	_control lbSetText [lbCurSel(_control), (format ["%1 (%2)", _player, [parseNumber(_rank)] call A3RL_FactionManagment_GetRankName])];
+
+	_number = parseNumber(_rank);
+	{
+		if((_x select 0) == _player) then {
+			(FactionWhitelisted select _forEachIndex) set [1, _number];
+		};
+	} forEach FactionWhitelisted;
+
+	[] call A3RL_FactionManagment_UpdateRanks;
 }] call Server_Setup_Compile;
 
 ["A3RL_FactionManagment_RemoveRank", {
@@ -115,6 +121,24 @@
 	[_rank] remoteExec ["Server_FactionManagment_RemoveRank", 2];
 
 	_control lbDelete (lbCurSel _control);
+
+	_control = _display displayCtrl 1500;
+	lbClear _control;
+
+	_number = parseNumber(_rank);
+	{
+		if((_x select 1) == _number) then {
+			(FactionWhitelisted select _forEachIndex) set [1, 0];
+		};
+	}forEach FactionWhitelisted;
+
+	_control = _display displayCtrl 1501;
+	lbClear _control;
+
+	{
+		_i = lbAdd [1501, (format ["%1 (%2)", _x select 0, [_x select 1] call A3RL_FactionManagment_GetRankName])];
+		lbSetData [1501,_i,format["%1", _x select 0]];
+	} forEach FactionWhitelisted;
 }] call Server_Setup_Compile;
 
 ["A3RL_FactionManagment_SetPay", {
@@ -131,4 +155,18 @@
 
 	[_rank, _pay] remoteExec ["Server_FactionManagment_SetPay", 2];
 	_control lbSetText [lbCurSel(_control), (format["%1($%2)", [parseNumber(_rank)] call A3RL_FactionManagment_GetRankName,_pay])];
+}] call Server_Setup_Compile;
+
+["A3RL_FactionManagment_RefreshRanks", {
+	_ranks = param[0, []];
+	FactionRanks = _ranks;
+
+	_display = findDisplay 111;
+	_control = (_display displayCtrl 1502);
+	lbClear _control;
+
+	{
+		_i = lbAdd [1502, (format ["%1 ($%2)", _x select 1, _x select 2])];
+		lbSetData [1502,_i,format["%1", _x select 0]];
+	} forEach _ranks;
 }] call Server_Setup_Compile;

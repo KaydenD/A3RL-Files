@@ -21,9 +21,16 @@
 ["Server_FactionManagment_AddRank", {
 	_name = param[0, ""];
 	_fid = param[1, 0];
+	_target = param[2, ""];
+	_somthing = false;
+
 
 	_query = format ["INSERT INTO factionranks (fid, name) VALUES (%1, '%2')",_fid,_name];
-	[_query,1] spawn Server_Database_Async;
+	_somthing = [_query,2] spawn Server_Database_Async;
+
+	waitUntil {isNull(_somthing)};
+
+	[_fid, _target] call Server_FactionManagment_RefreshRanks;
 }, true] call Server_Setup_Compile;
 
 ["Server_FactionManagment_SetRank", {
@@ -53,4 +60,13 @@
 
 	_query = format ["UPDATE factionranks SET pay = %1 WHERE id = %2",_pay,_rank];
 	[_query,1] spawn Server_Database_Async;
+}, true] call Server_Setup_Compile;
+
+["Server_FactionManagment_RefreshRanks", {
+	private ["_faction"];
+	_faction = param[0, 0];
+	_target = param[1, ""];
+	_ranks = [format["SELECT id, name, pay FROM factionranks WHERE fid = %1", _faction], 2, true] call Server_Database_Async;
+
+	[_ranks] remoteExec ["A3RL_FactionManagment_RefreshRanks", _target];
 }, true] call Server_Setup_Compile;

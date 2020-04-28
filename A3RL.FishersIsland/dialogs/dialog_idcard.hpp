@@ -35,8 +35,8 @@ class Dialog_IDCard
 		{
 			idc = 1000;
 			text = "firstname"; //--- ToDo: Localize;
-			x = 0.0544177 * safezoneW + safezoneX;
-			y = 0.270146 * safezoneH + safezoneY;
+			x = 0.0518187 * safezoneW + safezoneX;
+			y = 0.26834 * safezoneH + safezoneY;
 			w = 0.0657291 * safezoneW;
 			h = 0.0142592 * safezoneH;
 		};
@@ -44,8 +44,8 @@ class Dialog_IDCard
 		{
 			idc = 1001;
 			text = "lastname"; //--- ToDo: Localize;
-			x = 0.054167 * safezoneW + safezoneX;
-			y = 0.237037 * safezoneH + safezoneY;
+			x = 0.0513031 * safezoneW + safezoneX;
+			y = 0.23512 * safezoneH + safezoneY;
 			w = 0.0777083 * safezoneW;
 			h = 0.0161111 * safezoneH;
 		};
@@ -53,8 +53,8 @@ class Dialog_IDCard
 		{
 			idc = 1002;
 			text = "gender"; //--- ToDo: Localize;
-			x = 0.0334625 * safezoneW + safezoneX;
-			y = 0.30046 * safezoneH + safezoneY;
+			x = 0.0324312 * safezoneW + safezoneX;
+			y = 0.29672 * safezoneH + safezoneY;
 			w = 0.0417708 * safezoneW;
 			h = 0.0170371 * safezoneH;
 		};
@@ -62,8 +62,8 @@ class Dialog_IDCard
 		{
 			idc = 1003;
 			text = "ref"; //--- ToDo: Localize;
-			x = 0.034375 * safezoneW + safezoneX;
-			y = 0.194333 * safezoneH + safezoneY;
+			x = 0.0302656 * safezoneW + safezoneX;
+			y = 0.19332 * safezoneH + safezoneY;
 			w = 0.0876042 * safezoneW;
 			h = 0.0281481 * safezoneH;
 		};
@@ -71,18 +71,18 @@ class Dialog_IDCard
 		{
 			idc = 1004;
 			text = "birth date"; //--- ToDo: Localize;
-			x = 0.162813 * safezoneW + safezoneX;
-			y = 0.213185 * safezoneH + safezoneY;
-			w = 0.0527083 * safezoneW;
+			x = 0.165978 * safezoneW + safezoneX;
+			y = 0.21224 * safezoneH + safezoneY;
+			w = 0.0657292 * safezoneW;
 			h = 0.0290741 * safezoneH;
 		};
 		class RscText_1005: RscText
 		{
 			idc = 1005;
 			text = "join date"; //--- ToDo: Localize;
-			x = 0.162884 * safezoneW + safezoneX;
-			y = 0.28418 * safezoneH + safezoneY;
-			w = 0.0527083 * safezoneW;
+			x = 0.165462 * safezoneW + safezoneX;
+			y = 0.28792 * safezoneH + safezoneY;
+			w = 0.0657292 * safezoneW;
 			h = 0.0290741 * safezoneH;
 		};
 	};

@@ -440,10 +440,10 @@ A3PL_Interaction_Options =
 	[
 		"Open Trunk",
 		{
-			[player_objintersect] call A3RL_VITrunk_Open;
+			[cursorObject] call A3RL_VITrunk_Open;
 
 		},
-		{(vehicle player == player) && {(simulationEnabled player_objintersect)} && {!isNil "player_objintersect"} && {!(cursorObject getVariable ["locked", true])}}
+		{(vehicle player == player) && {(simulationEnabled cursorObject)} && {!isNil "player_objintersect"} && {!(cursorObject getVariable ["locked", true])} && {cursorObject isKindOf "AllVehicles"}}
 	],
 
 	[

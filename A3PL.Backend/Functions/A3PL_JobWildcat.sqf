@@ -22,19 +22,21 @@
 			if ((player getVariable ["player_cash",0]) < 1000) exitwith {["System: You don't have enough money to buy this map",Color_Red] call A3PL_Player_Notification;};
 			player setVariable ["player_cash",(player getVariable ["player_cash",0]) - 1000,true];
 			
-			_oilArray = missionNameSpace getVariable ["Server_JobWildCat_Oil",[]];
-			_exactLocation = (_oilArray select (round (random ((count _oilArray) - 1)))) select 0; 
-			_pos = [((_exactLocation select 0) + (-100 + (random 200))),((_exactLocation select 1) + (-100 + (random 200)))]; //offset the real location
-
-			_marker = createMarkerLocal [format["%1_marker",floor (random 5000)],_pos];
+			_exactLocation = [] call A3RL_Find_Safe_Pos;
+			while{_exactLocation isEqualTo []} do {
+				_exactLocation = [] call A3RL_Find_Safe_Pos;
+			};
+			[_exactLocation] remoteExec ["Server_JobWildcat_CreateOilFromMap", 2];
+			
+			_marker = createMarkerLocal [format["%1_marker",floor (random 5000)],_exactLocation];
 			_marker setMarkerShapeLocal "ELLIPSE";
-			_marker setMarkerSizeLocal [142,142]; //same as oildistance defined in A3PL_JobWildCat + max of 300
+			_marker setMarkerSizeLocal [100,100]; //same as oildistance defined in A3PL_JobWildCat + max of 300
 			_marker setMarkerColorLocal "ColorGreen";
 			_marker setMarkerTypeLocal "Mil_dot";
 			_marker setMarkerAlphaLocal 0.7;
 			_markers pushback _marker;
 
-			_marker = createMarkerLocal [format["%1_marker",floor (random 5000)],_pos];
+			_marker = createMarkerLocal [format["%1_marker",floor (random 5000)],_exactLocation];
 			_marker setMarkerShapeLocal "ICON";
 			_marker setMarkerColorLocal "ColorBlue";
 			_marker setMarkerTypeLocal "Mil_dot"; 

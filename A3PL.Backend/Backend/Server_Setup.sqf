@@ -65,7 +65,6 @@
 		[] call A3PL_Lib_AnimBusStopInit;
 		[] call Server_Shop_BlackMarketPos;
 		[] call Server_JobFarming_DrugDealerPos;
-		[] spawn Server_JobWildcat_RandomizeOil; //create the oil positions
 		[] call Server_Core_GetDefVehicles; //create the defaulte vehicles array (for use in cleanup script)
 		[] call Server_JobPicking_Init; //get the marker locations for picking locations
 		[] spawn Server_Lumber_TreeRespawn; //spawn trees for lumberyacking
@@ -83,7 +82,10 @@
 		//[] call Server_iPhoneX_GetPhoneNumber;
 
 		Server_JobWildCat_Res = [];
+		Server_JobWildCat_Oil = [];
 		publicVariable "Server_JobWildCat_Res";
+		publicVariable "Server_JobWildCat_Oil";
+
 		//Load fuel
 		//Get All FuelStations
 		private _FuelPositions = [
@@ -144,8 +146,7 @@
 	//cleanup
 	["itemAdd", ["Server_Loop_Cleanup", {[] spawn Server_Core_Clean;}, 900]] call BIS_fnc_loop; //every 15 minutes run the cleanup loop
 
-	//oil randomization, 60 min
-	["itemAdd", ["Server_Loop_OilRandomization", {[] spawn Server_JobWildcat_RandomizeOil;}, 3600]] call BIS_fnc_loop;
+	//Remove old mining areas
 	["itemAdd", ["Server_Loop_ResTimeCheck", {[] spawn Server_JobWildcat_CheckResTimers;}, 60]] call BIS_fnc_loop;
 
 	//Fire

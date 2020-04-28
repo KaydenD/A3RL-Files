@@ -1101,7 +1101,7 @@ class Mission
 		{
 			dataType="Marker";
 			position[]={2512.3279,7.2729998,5649.2051};
-			name="shop3";
+			name="mcfishers_mark_1";
 			text="McFishers";
 			type="A3PL_Markers_Fish";
 			colorName="ColorBlue";
@@ -16998,7 +16998,7 @@ class Mission
 		{
 			dataType="Marker";
 			position[]={7107.8311,0,7197.791};
-			name="shop4";
+			name="mcfishers_mark_2";
 			text="McFishers";
 			type="A3PL_Markers_Fish";
 			colorName="ColorBlue";
@@ -22299,7 +22299,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={10217.087,5.0310769,8728.1289};
+						position[]={10044.953,5.5127211,8725.4512};
 						angles[]={0,1.4869682,0};
 					};
 					side="Civilian";
@@ -22377,8 +22377,8 @@ class Mission
 		class Item486
 		{
 			dataType="Marker";
-			position[]={10217.08,4.9829998,8728.1025};
-			name="ccp_wep_1";
+			position[]={10044.946,5.4650002,8725.4248};
+			name="marker_verizon_1";
 			text="Verizon";
 			type="A3PL_Markers_Shop";
 			colorName="ColorBlue";
@@ -33565,6 +33565,104 @@ class Mission
 			angle=100.49198;
 			id=2606;
 			atlOffset=-0.0077371597;
+		};
+		class Item778
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={2470.8035,7.5354304,5581.9409};
+						angles[]={0,0.58470494,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						init="call{if (isServer) then { this enableSimulationGlobal false; this disableAI ""ALL""; this allowDamage false; this addUniform ""A3PL_The_Gunn_Company_Rolex_Uniform""};}";
+						name="npc_verizonstart_1";
+						class Inventory
+						{
+							class uniform
+							{
+								typeName="U_Rangemaster";
+								isBackpack=0;
+							};
+							map="ItemMap";
+							compass="ItemCompass";
+							watch="ItemWatch";
+							goggles="G_Sport_Red";
+						};
+					};
+					id=2608;
+					type="C_man_w_worker_F";
+					atlOffset=0.19206285;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male04GRE";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.02;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=2607;
+			atlOffset=0.19206285;
+		};
+		class Item779
+		{
+			dataType="Marker";
+			position[]={2470.7285,7.3056221,5581.8433};
+			name="marker_verizon_2";
+			text="Verizon";
+			type="A3PL_Markers_Shop";
+			colorName="ColorBlue";
+			id=2609;
+			atlOffset=-0.03704071;
 		};
 	};
 };

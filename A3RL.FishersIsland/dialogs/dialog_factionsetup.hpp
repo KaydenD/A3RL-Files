@@ -36,7 +36,7 @@ class Dialog_FactionSetup
 		class RscPicture_1200: RscPicture
 		{
 			idc = 1200;
-			text = "P:\A3PL_Common\GUI\FactionSetup.paa";
+			text = "\A3PL_Common\GUI\FactionSetup.paa";
 			x = 0 * safezoneW + safezoneX;
 			y = 0 * safezoneH + safezoneY;
 			w = 1 * safezoneW;

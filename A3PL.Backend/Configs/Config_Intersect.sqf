@@ -276,7 +276,7 @@ Config_IntersectArray =
 	["spine3","Open Prisoner Shop",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect IN [npc_farmer_1]}],
 	["spine3","SFP Shop",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect IN [npc_sfp_sign]}],
 	["spine3","Talk to Oil Recoverer",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == npc_oilrecovery}],
-	["spine3","Verizon",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect in [npc_verizonstart, npc_verizonstart_1]}],
+	["spine3","Verizon",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == npc_verizonstart}],
 	["spine3","Talk to FAA 1",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == npc_faastart}],
 	["spine3","Talk to FAA 2",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == npc_faastop}],
 	["spine3","Talk to Taco Hell Employee",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect IN [npc_tacohell,npc_tacohell_1,npc_tacohell_2]}],

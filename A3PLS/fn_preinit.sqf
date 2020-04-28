@@ -766,11 +766,11 @@ Server_Setup_Compile = {
 
 
 ["Server_Gear_Load", {
-	private ["_unit", "_uid", "_return", "_query", "_pos", "_loadout","_name","_houseVar","_ownsHouse","_houseObj","_job","_virtinv","_cash","_bank","_facStorage","_licenses","_twitterProfile","_perks","_ship","_adminWatch","_paycheck"];
+	private ["_unit", "_uid", "_return", "_query", "_pos", "_loadout","_name","_houseVar","_ownsHouse","_houseObj","_job","_virtinv","_cash","_bank","_facStorage","_licenses","_twitterProfile","_perks","_ship","_adminWatch","_paycheck","_rank"];
 	_unit = _this select 0;
 	_uid = getPlayerUID _unit;
 
-	_query = format ["SELECT position,loadout,name,faction,userkey,job,virtualinv,cash,bank,jail,ID,dob,pasportdate,player_fstorage,adminLevel,licenses,twitterprofile,perks,ship,adminWatch,medstats,paycheck,gender FROM players WHERE uid='%1'", _uid];
+	_query = format ["SELECT position,loadout,name,faction,userkey,job,virtualinv,cash,bank,jail,ID,dob,pasportdate,player_fstorage,adminLevel,licenses,twitterprofile,perks,ship,adminWatch,medstats,paycheck,gender,rank FROM players WHERE uid='%1'", _uid];
 	_return = [_query, 2] call Server_Database_Async;
 
 	// Quick Checks //
@@ -808,6 +808,7 @@ Server_Setup_Compile = {
 	_medStat = [(_return select 20)] call Server_Database_ToArray;
 	_paycheck = parseNumber (_return select 21);
 	_gender = _return select 22;
+	_rank = _return select 23;
 
 	//Medstats
 	_unit setVariable ["A3PL_Wounds",_medStat select 0,true];
@@ -835,6 +836,7 @@ Server_Setup_Compile = {
 	_unit setVariable ["Player_Paycheck",_paycheck,true];
 	_unit setVariable ["dob",_dob,true];
 	_unit setVariable ["faction",_faction,true];
+	_unit setVariable ["rank",_rank,true];
 	_unit setVariable ["adminWatch",_adminWatch,true];
 	_unit setVariable ["dbVar_AdminLevel",_AdminLevel,true];
 	_unit setVariable ["Cuffed",false,true];

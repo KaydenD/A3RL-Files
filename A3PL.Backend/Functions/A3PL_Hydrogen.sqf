@@ -87,8 +87,8 @@
 {
 	private ["_intersect","_tank"];
 	//_intersect = param [0,objNull];
-	_intersect = nearestObject [player,"A3PL_Gas_Hose"];
-	if (!(typeOf _intersect IN ["A3PL_Gas_Hose","A3PL_GasHose"])) exitwith {["System: You are not looking at a gas hose", Color_Red] call A3PL_Player_Notification;};
+	_intersect = (nearestObjects [player,["A3PL_Gas_Hose","A3PL_GasHose"],2]) select 0;
+	//if (!(typeOf _intersect IN ["A3PL_Gas_Hose","A3PL_GasHose"])) exitwith {["System: You are not looking at a gas hose", Color_Red] call A3PL_Player_Notification;};
 	if ((isPlayer attachedTo _intersect) && (!((attachedTo _intersect) isKindOf "Car"))) exitwith {["System: This gas hose is already attached to a player", Color_Red] call A3PL_Player_Notification;};
 
 	_tank = nearestObjects [player, ["A3PL_Gas_Box"], 30];

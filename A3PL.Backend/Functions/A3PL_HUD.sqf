@@ -64,17 +64,19 @@
 	_ref = ((getPlayerUID _target) splitString "");
 	_ref deleteRange [0,8];
 	_ref = _ref joinString "";
-
+	_passportdate = ((_target getVariable ["date","::ERROR::"]) splitString " ") select 0;
+	_birthdate = (_target getVariable ["dob","::ERROR::"]) splitString "/";
+	_bd = format["%1-%2-%3", _birthdate select 2, _birthdate select 1, _birthdate select 0];
 
 	(_display displayCtrl 1000) ctrlSetText (_firstname);		//firstname
 	(_display displayCtrl 1001) ctrlSetText (_lastname);		//lastname
 	(_display displayCtrl 1002) ctrlSetText (_target getVariable ["gender","::ERROR::"]);		//Gender
 	(_display displayCtrl 1003) ctrlSetText (_ref);	//DB_ID
-	(_display displayCtrl 1004) ctrlSetText (_target getVariable ["dob","::ERROR::"]);					//DOB
-	(_display displayCtrl 1005) ctrlSetText (_target getVariable ["date","::ERROR::"]);					//Date Issued
+	(_display displayCtrl 1004) ctrlSetText (_bd);					//DOB
+	(_display displayCtrl 1005) ctrlSetText (_passportdate);					//Date Issued
 
 	uiSleep 30;
-	("Dialog_IDCard" call BIS_fnc_rscLayer) cutRsc ["","PLAIN"];
+	("Dialog_IDCard" call BIS_fnc_rscLayer) cutText ["","PLAIN"];
 
 }] call Server_Setup_Compile;
 

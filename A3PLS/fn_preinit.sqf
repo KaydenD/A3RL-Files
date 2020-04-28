@@ -769,7 +769,7 @@ Server_Setup_Compile = {
 	_unit = _this select 0;
 	_uid = getPlayerUID _unit;
 
-	_query = format ["SELECT position,loadout,name,faction,userkey,job,virtualinv,cash,bank,jail,ID,dob,pasportdate,player_fstorage,adminLevel,licenses,twitterprofile,perks,ship,adminWatch,medstats,paycheck FROM players WHERE uid='%1'", _uid];
+	_query = format ["SELECT position,loadout,name,faction,userkey,job,virtualinv,cash,bank,jail,ID,dob,pasportdate,player_fstorage,adminLevel,licenses,twitterprofile,perks,ship,adminWatch,medstats,paycheck,gender FROM players WHERE uid='%1'", _uid];
 	_return = [_query, 2] call Server_Database_Async;
 
 	// Quick Checks //
@@ -806,6 +806,7 @@ Server_Setup_Compile = {
 	_adminWatch = _return select 19;
 	_medStat = [(_return select 20)] call Server_Database_ToArray;
 	_paycheck = parseNumber (_return select 21);
+	_gender = _return select 22;
 
 	//Medstats
 	_unit setVariable ["A3PL_Wounds",_medStat select 0,true];
@@ -824,6 +825,7 @@ Server_Setup_Compile = {
 	//Informative
 	_unit setVariable ["name",_name,true];
 	_unit setVariable ["job",_job,true];
+	_unit setVariable ["gender",_gender,true];
 	_unit setVariable ["db_id",_id,true];
 	_unit setVariable ["date",_passportdate,true];
 	_unit setpos _pos;

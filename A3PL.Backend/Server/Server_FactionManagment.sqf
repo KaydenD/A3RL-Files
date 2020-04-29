@@ -24,13 +24,17 @@
 	_target = param[2, ""];
 	_somthing = false;
 
-
 	_query = format ["INSERT INTO factionranks (fid, name) VALUES (%1, '%2')",_fid,_name];
 	_somthing = [_query,2] spawn Server_Database_Async;
 
 	waitUntil {isNull(_somthing)};
 
-	[_fid, _target] call Server_FactionManagment_RefreshRanks;
+	_ranks = [format["SELECT id FROM factionranks WHERE fid = %1", _fid], 2, true] call Server_Database_Async;
+
+	A3RL_FactionRanks pushBack [((_ranks select 0) select 0), _fid, _name, 0, 0];
+	publicVariable "A3RL_FactionRanks";
+
+	[] remoteExec ["A3RL_FactionManagment_RefreshRanks", _target];
 }, true] call Server_Setup_Compile;
 
 ["Server_FactionManagment_SetRank", {
@@ -62,11 +66,10 @@
 	[_query,1] spawn Server_Database_Async;
 }, true] call Server_Setup_Compile;
 
-["Server_FactionManagment_RefreshRanks", {
-	private ["_faction"];
-	_faction = param[0, 0];
-	_target = param[1, ""];
-	_ranks = [format["SELECT id, name, pay FROM factionranks WHERE fid = %1", _faction], 2, true] call Server_Database_Async;
+["Server_FactionManagment_Startup", {
+	A3RL_Faction = ["SELECT id, name FROM factionranks", 2, true] call Server_Database_Async;
+	publicVariable "A3RL_Faction";
 
-	[_ranks] remoteExec ["A3RL_FactionManagment_RefreshRanks", _target];
+	A3RL_FactionRanks = ["SELECT id, fid, name, pay, managment FROM factionranks", 2, true] call Server_Database_Async;
+	publicVariable "A3RL_FactionRanks";
 }, true] call Server_Setup_Compile;

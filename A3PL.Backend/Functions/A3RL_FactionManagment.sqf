@@ -24,13 +24,9 @@
 	_display = findDisplay 111;
 
 	FactionID = _factionId;
-	FactionRanks = _ranks;
 	FactionWhitelisted = _whitelisted;
 
-	{
-		_i = lbAdd [1502, (format ["%1 ($%2)", _x select 1, _x select 2])];
-		lbSetData [1502,_i,format["%1", _x select 0]];
-	} forEach _ranks;
+	[] call A3RL_FactionManagment_RefreshRanks;
 
 	{
 		_i = lbAdd [1501, (format ["%1 (%2)", _x select 0, [_x select 1] call A3RL_FactionManagment_GetRankName])];
@@ -46,29 +42,28 @@
 	lbClear _control;
 
 	_control = _display displayCtrl 1502;
-	_rank = _control lbData (lbCurSel _control);
+	_rank = _control lbData (lbCurSel _control); 
 
 	{
 		if((_x select 1) == (parseNumber(_rank))) then {
-			_i = lbAdd [1500, (format ["%1 (%2)", _x select 0, [_x select 1] call A3RL_FactionManagment_GetRankName])];
+			_i = lbAdd [1500, (format ["%1", (_x select 0)])];
 			lbSetData [1500,_i,format["%1", _x select 0]];
 		};
 	} forEach FactionWhitelisted;
 
 }] call Server_Setup_Compile;
 
-["A3RL_FactionManagment_GetRankName", {
-	_rankID = param[0, 0];
+["A3RL_FactionManagment_RefreshRanks", {
+	_display = findDisplay 111;
+	_control = _display displayCtrl 1502;
+	lbClear _control; 
 
-	_rankName = "";
 	{
-		if((_x select 0) isEqualTo _rankID) exitWith
-		{
-			_rankName = _x select 1;
+		if((_x select 1) == FactionID) then {
+			_i = lbAdd [1502, (format ["%1 ($%2)", _x select 2, _x select 3])];
+			lbSetData [1502,_i,format["%1", _x select 0]];
 		};
-	} forEach FactionRanks;
-
-	_rankName;
+	} forEach A3RL_FactionRanks;
 }] call Server_Setup_Compile;
 
 ["A3RL_FactionManagment_AddRank", {
@@ -77,8 +72,12 @@
 	_exist = false;
 
 	{
-		if((_x select 1) == _rank) exitWith {_exist = true;};
-	} forEach FactionRanks;
+		_exit = false;
+		if((_x select 1) == FactionID) then {
+			if((_x select 2) == _rank) exitWith {_exit = true};
+		};
+		if(_exit) exitWith {};
+	} forEach A3RL_FactionRanks;
 
 	if(_exist) exitWith {["The rank already exist", Color_Red] call A3PL_Player_Notification;};
 	if(_rank == "") exitWith {["Please type in a name", Color_Red] call A3PL_Player_Notification;};
@@ -107,6 +106,13 @@
 			(FactionWhitelisted select _forEachIndex) set [1, _number];
 		};
 	} forEach FactionWhitelisted;
+
+	{
+		if((name _x) == _player) then {
+			_x setVariable ["rank", _number, true]; 
+		};
+	}forEach allPlayers;
+
 
 	[] call A3RL_FactionManagment_UpdateRanks;
 }] call Server_Setup_Compile;
@@ -139,6 +145,13 @@
 		_i = lbAdd [1501, (format ["%1 (%2)", _x select 0, [_x select 1] call A3RL_FactionManagment_GetRankName])];
 		lbSetData [1501,_i,format["%1", _x select 0]];
 	} forEach FactionWhitelisted;
+
+	{
+		if((_x select 0) == _number) exitWith {
+			A3RL_FactionRanks deleteAt _forEachIndex;
+			publicVariable "A3RL_FactionRanks";
+		};
+	} forEach A3RL_FactionRanks;
 }] call Server_Setup_Compile;
 
 ["A3RL_FactionManagment_SetPay", {
@@ -155,18 +168,24 @@
 
 	[_rank, _pay] remoteExec ["Server_FactionManagment_SetPay", 2];
 	_control lbSetText [lbCurSel(_control), (format["%1($%2)", [parseNumber(_rank)] call A3RL_FactionManagment_GetRankName,_pay])];
-}] call Server_Setup_Compile;
-
-["A3RL_FactionManagment_RefreshRanks", {
-	_ranks = param[0, []];
-	FactionRanks = _ranks;
-
-	_display = findDisplay 111;
-	_control = (_display displayCtrl 1502);
-	lbClear _control;
 
 	{
-		_i = lbAdd [1502, (format ["%1 ($%2)", _x select 1, _x select 2])];
-		lbSetData [1502,_i,format["%1", _x select 0]];
-	} forEach _ranks;
+		if((_x select 0) == parseNumber(_rank)) exitWith {
+			(A3RL_FactionRanks select _forEachIndex) set [3, _pay];
+		};
+	} forEach A3RL_FactionRanks;
+}] call Server_Setup_Compile;
+
+["A3RL_FactionManagment_GetRankName", {
+	_rankID = param[0, 0];
+
+	_rankName = "";
+	{
+		if((_x select 0) isEqualTo _rankID) exitWith
+		{
+			_rankName = _x select 2;
+		};
+	} forEach A3RL_FactionRanks;
+
+	_rankName;
 }] call Server_Setup_Compile;

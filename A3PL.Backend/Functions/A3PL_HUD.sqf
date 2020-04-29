@@ -224,7 +224,11 @@
 	_control ctrlSetStructuredText parseText format ["<t font='PuristaBold' align='right'>%1</t>",toUpper (player getVariable ["name",(name player)])];
 
 	_control = _display displayCtrl 1601; //job
-	_control ctrlSetStructuredText parseText format ["<t font='PuristaMedium' align='right'>%1</t>",toUpper (player getVariable ["job","unemployed"])];
+	_faction = player getVariable ["job", "unemployed"];
+	if(_faction in ["police", "uscg", "doj", "usms", "fifr"]) then {
+		_faction = [player getVariable ["rank", 0]] call A3RL_FactionManagment_GetRankName;
+	};
+	_control ctrlSetStructuredText parseText format ["<t font='PuristaMedium' align='right'>%1</t>",toUpper (_faction)];
 
 	_control = _display displayCtrl 1602; //cash, add toggle bank later
 	_text = missionNameSpace getVariable ["A3PL_HUD_S2T",0];

@@ -636,7 +636,7 @@
 {
 	player addEventHandler ["InventoryOpened", {
 		params ["_unit", "_container", "_secondaryContainer"];
-	    if((_container getVariable ["locked", true] || {_secondaryContainer getVariable ["locked", true]}) && {_container isKindOf "B_supplyCrate_F" || {_secondaryContainer isKindOf "B_supplyCrate_F"}}) then {true;};
+	    if((_container getVariable ["locked", false] || {_secondaryContainer getVariable ["locked", false]}) && {_container isKindOf "B_supplyCrate_F" || {_secondaryContainer isKindOf "B_supplyCrate_F"}}) then {true;};
 	}];
 }] call Server_Setup_Compile;
 

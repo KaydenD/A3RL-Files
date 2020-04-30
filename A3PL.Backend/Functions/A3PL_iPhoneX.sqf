@@ -786,6 +786,10 @@
 
 	_background_iPhone_X_background ctrlSetText "A3PL_Common\GUI\phone\iPhone_X_appSettings.paa";
 	_iPhone_X_clock_home ctrlSetTextColor [0,0,0,1];
+
+	sliderSetRange [1900, 3.125, 50];
+	sliderSetPosition [1900,getTerrainGrid];
+	(_display displayCtrl 1900) ctrlAddEventHandler ["SliderPosChanged","setTerrainGrid (param [1,getTerrainGrid]);"];
 }] call Server_Setup_Compile;
 
 ["A3PL_iPhoneX_AppSIM",

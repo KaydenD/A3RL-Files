@@ -1271,6 +1271,15 @@ class iPhone_X
 					colorBackgroundFocused[] = {0,0,0,0};
 				};
 
+				class iPhone_X_grass_slider: Rsc_Slider
+				{
+					idc = 1900;
+					x = safeZoneX + safeZoneW * 0.710375;
+					y = safeZoneY + safeZoneH * 0.65488;
+					w = safeZoneW * 0.117187;
+					h = safeZoneH * 0.018185;
+				};
+
 				class iPhone_X_icon_home_appSettings: Life_RscPicture
 				{
 					idc = -1;

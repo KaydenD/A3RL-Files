@@ -9,7 +9,6 @@
 	[_id, _ranks, _players] remoteExec ["A3RL_FactionManagment_Setup", _target];
 }, true] call Server_Setup_Compile;
 
-
 ["Server_FactionManagment_ID", {
 	_faction = param[0, ""];
 	_id = [format["SELECT id FROM factions WHERE NAME = '%1'", _faction], 2, true] call Server_Database_Async;
@@ -53,7 +52,7 @@
 		_query = format ["UPDATE players SET rank = 0 WHERE name = '%1'",_x select 0];
 		[_query,1] spawn Server_Database_Async;
 	} forEach _inrank;
-
+ 
 	_query = format ["DELETE FROM factionranks WHERE id = %1",_rank];
 	[_query,1] spawn Server_Database_Async;
 }, true] call Server_Setup_Compile;
@@ -67,9 +66,38 @@
 }, true] call Server_Setup_Compile;
 
 ["Server_FactionManagment_Startup", {
-	A3RL_Faction = ["SELECT id, name FROM factionranks", 2, true] call Server_Database_Async;
-	publicVariable "A3RL_Faction";
-
 	A3RL_FactionRanks = ["SELECT id, fid, name, pay, managment FROM factionranks", 2, true] call Server_Database_Async;
 	publicVariable "A3RL_FactionRanks";
+
+	A3RL_Factions = ["SELECT id, name, money FROM factions", 2, true] call Server_Database_Async;
+}, true] call Server_Setup_Compile;
+
+["Server_FactionManagment_HandlePayCheck", {
+	_player = param[0, objNull];
+	_faction = [A3RL_Factions, _player getVariable ["job","unemployed"]] call BIS_fnc_findNestedElement;
+
+	_factionAccount = (A3RL_Factions select (_faction select 0)) select 2;
+	_fid = (A3RL_Factions select (_faction select 0)) select 0;
+
+	_amount = 0;
+	{
+		if((_x select 1) == _fid) exitWith {
+			_amount = (_x select 3);
+		};
+	} forEach A3RL_FactionRanks;
+
+	if(_factionAccount >= _amount) then {
+		A3RL_Factions select (_faction select 0) set [2, (_factionAccount - _amount)];
+		_player setVariable ["Player_Bank",(_player getVariable ["Player_Bank",0]) + _amount,true];
+		["I have received my paycheck, it has been deposited into my bank account directly",'#17ED00'] remoteExec ["A3PL_Player_Notification", _player];
+	} else {
+		["Your faction does't have enough money to pay you",'#FD1703'] remoteExec ["A3PL_Player_Notification", _player];
+	}
+}, true] call Server_Setup_Compile;
+
+["Server_FactionManagment_SaveFaction", {
+	{
+		_query = format ["UPDATE factions SET money = %1 WHERE id = %2",_x select 2, _x select 0];
+		[_query,1] spawn Server_Database_Async;
+	} forEach A3RL_Factions;
 }, true] call Server_Setup_Compile;

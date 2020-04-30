@@ -410,7 +410,11 @@ Server_Setup_Compile = {
 	//Load Fuel in Gas Station
 	[] call Server_Hydrogen_Load;
 
+	//Load Evidnece Locker Stuff
 	[] call Server_EvidenceLocker_Load;
+
+	//Load Faction Managment Stuff
+	[] call Server_FactionManagment_Startup;
 	
 	//Temporary Hotfix
 	//all this crap runs into post-init
@@ -535,6 +539,8 @@ Server_Setup_Compile = {
 
 	//Evidence Locker Save
 	["itemAdd", ["Server_Loop_Server_EvidenceLockerSave", {[] spawn Server_EvidenceLocker_Save;}, 1800]] call BIS_fnc_loop; // 30 mintues
+
+	["itemAdd", ["Server_Loop_Server_FactionManagment_SaveFaction", {[] spawn Server_FactionManagment_SaveFaction;}, 1500]] call BIS_fnc_loop; // 25 mintues
 
 	["itemAdd", ["Server_Loop_Server_SaveTrunks", {[] spawn Server_Trunk_Save;}, 1500]] call BIS_fnc_loop; //Very database intensive, don't want it to run every 30 mins with the other loops. 
 

@@ -244,10 +244,10 @@ class ScenarioData
 	{
 		gameType="RPG";
 	};
-	wreckManagerMode=1;
-	wreckLimit=1;
-	wreckRemovalMinTime=20.338808;
-	wreckRemovalMaxTime=59.452965;
+	wreckManagerMode=0;
+	wreckLimit=10;
+	wreckRemovalMinTime=600;
+	wreckRemovalMaxTime=1200;
 	corpseManagerMode=1;
 	corpseLimit=1;
 	corpseRemovalMinTime=30.000002;

@@ -140,7 +140,7 @@
 		};
 	};
 
-	uiSleep 300;
+	uiSleep 600;
 
 	[_veh] call A3PL_Vehicle_SoundSourceClear;
 	_sirenObj = _veh getVariable ["sirenObj",objNull];

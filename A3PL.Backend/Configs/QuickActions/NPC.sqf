@@ -1023,7 +1023,7 @@
 	"",
 	"U-Haul",
 	{
-		["Rental_Uhaul"] call A3PL_Shop_Open;
+		["Rental_Uhaul"] call A3RL_UHAUL_Open;
 	}
 ],
 

@@ -103,6 +103,7 @@
 	_veh = param [0,objNull];
 	_ownerID = _veh getVariable "owner";
 	_msg = param [1,false];
+	diag_log (format["veh destoryed=%1 isserver = %2",_veh, isServer]);
 	if (!isNil "_ownerID") then //just in-case
 	{
 		private ["_player"];

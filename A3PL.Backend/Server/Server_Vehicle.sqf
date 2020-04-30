@@ -595,7 +595,7 @@
 	_veh lock 2;
 
 	//killed eventhandler
-	_veh addEventHandler ["Killed",{[(_this select 0)] call Server_Vehicle_HandleDestroyed;}];
+	_veh addEventHandler ["Killed",{[(_this select 0)] remoteExec ["Server_Vehicle_HandleDestroyed",2];}];
 
 	if (_veh isKindOf "LandVehicle") then
 	{

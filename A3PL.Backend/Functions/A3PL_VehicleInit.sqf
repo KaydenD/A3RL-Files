@@ -25,61 +25,8 @@
 	_isCar = _veh isKindOf "Car";
 	if (_isCar) then
 	{
-		switch (typeOf _veh) do
-		{
-			case ("A3PL_P362"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;_veh call A3PL_Vehicle_Init_A3PL_F150;};
-			case ("A3PL_P362_TowTruck"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("A3PL_MailTruck"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("A3PL_F150"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("A3PL_F150_marker"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("A3PL_F150_PD"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("A3PL_Ram"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("A3PL_Rover"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("A3PL_Wrangler"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("A3PL_BMW_M3"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("A3PL_Charger"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("A3PL_Charger_PD"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("A3PL_Charger_PD_Slicktop"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("A3PL_Charger69"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("A3PL_Mustang"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("A3PL_Mustang_PD"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("A3PL_Mustang_PD_Slicktop"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("A3PL_CVPI"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("A3PL_CVPI_PD"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("A3PL_CVPI_PD_Slicktop"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("A3PL_CVPI_Taxi"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("A3PL_Tahoe"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("A3PL_Tahoe_PD"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("A3PL_Tahoe_PD_Slicktop"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("A3PL_Tahoe_FD"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("Jonzie_Ambulance"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("A3PL_Camaro"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("A3PL_VetteZR1"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("A3PL_BMW_X5"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("A3PL_Gallardo"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("A3PL_Mustang_PD_Slicktop"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("A3PL_Pierce_Ladder"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("A3PL_Pierce_Heavy_Ladder"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("A3PL_Pierce_Pumper"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("A3PL_CVPI_Rusty"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("A3PL_Fuel_Van"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("A3PL_Transport_Van"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("A3PL_Silverado"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("A3PL_911GT2"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("A3PL_CRX"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("A3PL_Silverado_PD"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("A3PL_Challenger_Hellcat"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("A3PL_VetteZR1_PD"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("A3PL_P362_Garbage_Truck"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("red_explorer_16_base"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("red_camaro_18_base"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("red_taurus_13_base"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("red_hellcat_15_base"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("A3PL_Suburban"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("red_ambulance_14_p_base"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("red_ambulance_18_p_base"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-			case ("red_e350_14_e_base"): {_veh call A3PL_Vehicle_Init_A3PL_Engine;};
-		};
+		_veh call A3PL_Vehicle_Init_A3PL_Engine;
+		if((typeOf _veh) == "A3PL_P362") then { _veh call A3PL_Vehicle_Init_A3PL_F150; };
 		_veh call A3PL_Vehicle_Init_A3PL_Dealer; //deal with dealer vehs
 
 		_veh addEventHandler ["Killed",{

@@ -53,7 +53,7 @@
 			};
 		} else {
 			if(_itemType in ["vehicle"]) then {
-				_i = _control lbAdd format ["%1",_itemName,(count _objects)];
+				_i = _control lbAdd format ["%1",_itemName];
 			} else {
 				_i = _control lbAdd _itemName;
 				if(_itemPicture != "") then{_control lbSetPicture[(lbSize _control)-1,_itemPicture];};
@@ -155,14 +155,14 @@
 
 	_alreadyRentedType = false;
 	A3RL_Rented_Vehicles = nil;
-	[] remoteExec ["Server_UHaul_GetRentedVehicles", 2];
+	[player] remoteExec ["Server_UHaul_GetRentedVehicles", 2];
 	waitUntil {!(isNil "A3RL_Rented_Vehicles")};
 	{
 		if(((_x select 0) == (getPlayerUID player)) && {_itemClass IN (_x select 1)}) then {
 			_alreadyRentedType = true;
 		};
 	} forEach A3RL_Rented_Vehicles;
-	if(!_alreadyRentedType) exitWith {["You've already rented a vehicle of this type",Color_Red] call A3PL_Player_Notification;};
+	if(_alreadyRentedType) exitWith {["You've already rented a vehicle of this type",Color_Red] call A3PL_Player_Notification;};
 
 
 	//take stock if this was a stock item

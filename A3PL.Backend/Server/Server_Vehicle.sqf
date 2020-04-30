@@ -202,7 +202,7 @@
 	if(_id == "UHAUL") then {
 		_find = [A3RL_Server_Rented_Vehicles, getPlayerUID _owner] call BIS_fnc_findNestedElement;
 		if(_find isEqualTo []) then {
-			A3RL_Server_Rented_Vehicles pushBack [getPlayerUID _owner, _class];
+			A3RL_Server_Rented_Vehicles pushBack [getPlayerUID _owner, [_class]];
 		} else {
 			((A3RL_Server_Rented_Vehicles select (_find select 0)) select 1) pushBack _class;
 		};

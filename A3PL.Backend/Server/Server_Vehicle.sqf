@@ -127,10 +127,6 @@
 			};
 		};
 
-		//delete vehicle from database
-		_query = format ["DELETE FROM objects WHERE id=""%1""",_ownerID];
-		[_query,1] spawn Server_Database_Async;
-
 		if (_msg) then
 		{
 			_player = objNull;

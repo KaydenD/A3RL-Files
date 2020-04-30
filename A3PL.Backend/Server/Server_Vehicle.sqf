@@ -219,7 +219,7 @@
 				} else {
 					_find2 = ((A3RL_Server_Rented_Vehicles select (_find select 0)) select 1) find (typeOf _unit);
 					diag_log (format["_find2",_find2]);
-					if(_find > -1) then {
+					if(_find2 > -1) then {
 						((A3RL_Server_Rented_Vehicles select (_find select 0)) select 1) deleteAt _find2;
 					};
 				};

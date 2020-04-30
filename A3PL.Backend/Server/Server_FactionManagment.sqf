@@ -101,3 +101,23 @@
 		[_query,1] spawn Server_Database_Async;
 	} forEach A3RL_Factions;
 }, true] call Server_Setup_Compile;
+
+["Server_FactionManagment_SetNewFaction", {
+	_hire = param[0, false];
+	_target = param[1, objNull];
+	_player = param[2, objNull];
+
+	_faction = "citizen";
+	if(_hire) then {
+		_faction = _player getVariable ["faction", "citizen"];
+		["You have been hired!",'#17ED00'] remoteExec ["A3PL_Player_Notification", _target];
+	} else {
+		_target setVariable ["job", "unemployed", true];
+		["You have been fired!",'#FD1703'] remoteExec ["A3PL_Player_Notification", _target];
+	};
+
+	_query = format ["UPDATE players SET faction = '%1' WHERE name = '%2'",_faction,(_target getVariable ["name", ""])];
+	[_query,1] spawn Server_Database_Async;
+
+	_target setVariable ["faction", _faction, true];
+}, true] call Server_Setup_Compile;

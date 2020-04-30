@@ -1333,6 +1333,24 @@ A3PL_Interaction_Options =
 		},
 		{isPlayer cursorObject && alive cursorObject && {player distance cursorObject < 3} && {currentWeapon player != ""} && {!(animationState cursorObject IN["incapacitated"])}} 
 
+	],
+
+	[
+		"Hire",
+		{
+			[true, cursorObject, player] remoteExec ["Server_FactionManagment_SetNewFaction", 2];
+			["You have been hired!", Color_Green] call A3PL_Player_Notification;
+		},
+		{isPlayer cursorObject && alive cursorObject && cursorObject getVariable ["faction", "citizen"] == "citizen" && player getVariable ["isManagment", false]}
+	],
+
+	[
+		"Fire",
+		{
+			[false, cursorObject, player] remoteExec ["Server_FactionManagment_SetNewFaction", 2]; 
+			["You have been fired!", Color_Red] call A3PL_Player_Notification;
+		},
+		{isPlayer cursorObject && alive cursorObject && (cursorObject getVariable ["faction", "citizen"]) == (player getVariable ["faction", "citizen"]) && player getVariable ["isManagment", false]}
 	]
 
 ];

@@ -291,8 +291,12 @@
 			_control = _display displayCtrl 1501;
 			_class = _control lbData (lbCurSel _control);
 			_itemName = getText (configFile >> "CfgWeapons" >> _class >> "displayName");
+			_oldWep = weapons _target;
 			_target removeWeaponGlobal _class;
 			_weaponHolder addWeaponCargoGlobal [_class,1];
+			if(_oldWep isEqualTo (weapons _target)) then {
+				_target removeItem _class;
+			}
 		};
 		case ("mag"):
 		{

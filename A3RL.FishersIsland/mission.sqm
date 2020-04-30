@@ -33683,7 +33683,7 @@ class Mission
 					flags=7;
 					class Attributes
 					{
-						init="call{if (isServer) then { this enableSimulationGlobal false; this disableAI ""ALL""; this allowDamage false; this setVariable[""spawnPos"", [3597.35,6026.07,0],true];};}";
+						init="call{if (isServer) then { this enableSimulationGlobal false; this disableAI ""ALL""; this allowDamage false; this setVariable[""spawnPos"", [3597.35,6026.07,0],true]; this setVariable[""spawnDir"",311,true];};}";
 						name="npc_uhaul_1";
 						class Inventory
 						{
@@ -33786,7 +33786,7 @@ class Mission
 					flags=7;
 					class Attributes
 					{
-						init="call{if (isServer) then { this enableSimulationGlobal false; this disableAI ""ALL""; this allowDamage false; this setVariable[""spawnPos"", [6060.62,6829.2,0],true];};}";
+						init="call{if (isServer) then { this enableSimulationGlobal false; this disableAI ""ALL""; this allowDamage false; this setVariable[""spawnPos"", [6060.62,6829.2,0],true]; this setVariable[""spawnDir"",65,true];};}";
 						name="npc_uhaul_2";
 						class Inventory
 						{

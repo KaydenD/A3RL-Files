@@ -90,6 +90,7 @@ Server_Setup_Files = [
 	['Functions', 'A3RL_PrisonBreak'],
 	['Functions', 'A3RL_FactionManagment'],
 	['Functions', 'A3RL_Knockout'],
+	['Functions', 'A3RL_UHaul'],
 	['Backend', 'Server_Setup'],
 	['Server', 'Server_JobVDelivery'],
 	['Server', 'Server_JobMDelivery'],

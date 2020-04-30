@@ -2114,7 +2114,8 @@ Config_IntersectArray =
 	["spine3", "Rob Gas Station", _dir+"IGUI\Cfg\Actions\take_ca.paa", {player_objintersect IN [npc_gasstation_1, npc_gasstation_2, npc_gasstation_3, npc_gasstation_4, npc_gasstation_5, npc_gasstation_6, npc_gasstation_7, npc_gasstation_8]}],
  
 	["door_1","Lockpick Door",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa", {["v_lockpick"] call A3PL_Inventory_Has && (!(player_objIntersect getVariable ["unlocked",false])) && (typeOf player_objintersect IN ["Land_Home1g_DED_Home1g_01_F", "Land_Home2b_DED_Home2b_01_F", "Land_Home3r_DED_Home3r_01_F", "Land_Home4w_DED_Home4w_01_F", "Land_Home5y_DED_Home5y_01_F", "Land_Home6b_DED_Home6b_01_F", "Land_Mansion01", "Land_A3PL_Ranch1", "Land_A3PL_Ranch2", "Land_A3PL_Ranch3", "Land_A3PL_ModernHouse1", "Land_A3PL_ModernHouse2", "Land_A3PL_ModernHouse3", "Land_A3PL_BostonHouse", "Land_A3PL_Shed3", "Land_A3PL_Shed4", "Land_A3PL_Shed2"])}],
-	["door_1","Secure Door",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa", {((player_objIntersect getVariable ["unlocked",false])) && (typeOf player_objintersect IN ["Land_Home1g_DED_Home1g_01_F", "Land_Home2b_DED_Home2b_01_F", "Land_Home3r_DED_Home3r_01_F", "Land_Home4w_DED_Home4w_01_F", "Land_Home5y_DED_Home5y_01_F", "Land_Home6b_DED_Home6b_01_F", "Land_Mansion01", "Land_A3PL_Ranch1", "Land_A3PL_Ranch2", "Land_A3PL_Ranch3", "Land_A3PL_ModernHouse1", "Land_A3PL_ModernHouse2", "Land_A3PL_ModernHouse3", "Land_A3PL_BostonHouse", "Land_A3PL_Shed3", "Land_A3PL_Shed4", "Land_A3PL_Shed2"])}]
+	["door_1","Secure Door",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa", {((player_objIntersect getVariable ["unlocked",false])) && (typeOf player_objintersect IN ["Land_Home1g_DED_Home1g_01_F", "Land_Home2b_DED_Home2b_01_F", "Land_Home3r_DED_Home3r_01_F", "Land_Home4w_DED_Home4w_01_F", "Land_Home5y_DED_Home5y_01_F", "Land_Home6b_DED_Home6b_01_F", "Land_Mansion01", "Land_A3PL_Ranch1", "Land_A3PL_Ranch2", "Land_A3PL_Ranch3", "Land_A3PL_ModernHouse1", "Land_A3PL_ModernHouse2", "Land_A3PL_ModernHouse3", "Land_A3PL_BostonHouse", "Land_A3PL_Shed3", "Land_A3PL_Shed4", "Land_A3PL_Shed2"])}],
+	["spine3","Open Management System",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect IN [npc_police,npc_police_1,npc_police_2,NPC_doc,npc_doj_supplier,npc_emt,npc_emt_1,npc_emt_2,NPC_emt_3,npc_uscg] && player getVariable ["isManagment", false]}]
 ]; 
 publicVariable "Config_IntersectArray";
 
@@ -2719,7 +2720,8 @@ Config_GenArray =
 	"Lockpick Door",
 	"Secure Door",
 	"Lockpick Cell Door",
-	"Lockpick Handcuffs"
+	"Lockpick Handcuffs",
+	"Open Management System"
 ];
 publicVariable "Config_GenArray";
 

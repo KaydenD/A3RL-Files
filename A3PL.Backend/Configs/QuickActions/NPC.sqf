@@ -1082,4 +1082,12 @@
 	{
 		[player_objintersect] call A3RL_GasRobbery_Start;
 	}
+],
+
+[
+	"",
+	"Open Management System",
+	{
+		[player getVariable ["faction", "unemployed"]] call A3RL_FactionManagment_Open;
+	}
 ]

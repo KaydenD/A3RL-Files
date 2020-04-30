@@ -53,8 +53,6 @@
 			};
 		} else {
 			if(_itemType in ["vehicle"]) then {
-				_objects = nearestObjects [player,[_itemClass],10,true];
-				_objects = _objects - [_deletedItem];
 				_i = _control lbAdd format ["%1",_itemName,(count _objects)];
 			} else {
 				_i = _control lbAdd _itemName;

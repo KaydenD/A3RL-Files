@@ -255,6 +255,21 @@
 		deleteVehicle _x;
 	} foreach (attachedObjects _veh);
 
+	_owner = _veh getVariable ["owner", nil];
+	if((!(isNil "_owner")) && {(_owner select 1) == "UHAUL"}) then {
+		_find = [A3RL_Server_Rented_Vehicles, _owner select 0] call BIS_fnc_findNestedElement;
+		if !(_find isEqualTo []) then {
+			if ((count ((A3RL_Server_Rented_Vehicles select (_find select 0)) select 1)) < 2) then {
+				A3RL_Server_Rented_Vehicles deleteAt (_find select 0);
+			} else {
+				_find2 = ((A3RL_Server_Rented_Vehicles select (_find select 0)) select 1) find (typeOf _veh);
+				if(_find2 > -1) then {
+					((A3RL_Server_Rented_Vehicles select (_find select 0)) select 1) deleteAt _find2;
+				};
+			};
+		};
+	};
+
 	deleteVehicle _veh;
 }] call Server_Setup_Compile; //this is global on purpose so that as a client we can use this same function (admin menu)
 // Init for Vehicle Sirens

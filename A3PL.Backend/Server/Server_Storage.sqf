@@ -364,6 +364,10 @@
 		[[6],"A3PL_Storage_CarStoreResponse",_player,false] call BIS_FNC_MP;
 	};
 
+	if(((_playerCar getVariable "owner") select 1) IN ["WASTE","DELIVER","EXTERMY","KARTING","DMV", "ROADSID", "UHAUL"]) exitWith {
+		[10] remoteExec ["A3PL_Storage_CarStoreResponse", _player];
+	};
+
 	_storage animateSource ["storagedoor",1];
 
 	[[2],"A3PL_Storage_CarStoreResponse",_player,false] call BIS_FNC_MP;

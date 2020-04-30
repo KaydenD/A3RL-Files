@@ -280,11 +280,15 @@
 		if(count _cars < 1) exitWith {
 			["System: It doesn't seem like there is a car nearby that you can store", Color_Red] call A3PL_Player_Notification;
 		};
+
+		if(((_cars getVariable "owner") select 1) IN ["WASTE","DELIVER","EXTERMY","KARTING","DMV", "ROADSID", "UHAUL"]) exitWith {
+			[10] call A3PL_Storage_CarStoreResponse;
+		};
 		if (((_car getVariable "owner") select 0) != (getPlayerUID player)) exitWith
 		{
 			["System: You cannot store other players vehicles!", Color_Red] call A3PL_Player_Notification;
 		};
-			[_car,player] remoteExec ["Server_Storage_SaveLargeVehicles",2];
+		[_car,player] remoteExec ["Server_Storage_SaveLargeVehicles",2];
 	};
 }] call Server_Setup_Compile;
 
@@ -305,6 +309,8 @@
 		case 7: {_text = ["Vehicle storing failed, no vehicle nearby",Color_Red]};
 		case 8: {_text = ["Send request to server to store your nearest vehicle",Color_Green]};
 		case 9: {_text = ["Vehicle stored",Color_Green]};
+		case 10: {_text = ["You can't store a rented vehicle silly goose",Color_Red]};
+
 	};
 
 	_text call A3PL_Player_Notification;

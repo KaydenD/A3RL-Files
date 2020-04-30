@@ -1211,6 +1211,14 @@ Config_Shops_Items =
 			["uniform","U_O_Protagonist_VR",0,0]
 		],
 		{[2628.91,5604.64,0.1]}
+	],
+	[
+		"Rental_Uhaul",
+		[
+			["vehicle","A3PL_P362_TowTruck",1500,0],
+			["vehicle","A3PL_MiniExcavator",15000,0]
+		],
+		{[2942.43,5891.42,-0.75]}
 	]
 ];
 publicVariable "Config_Shops_Items";

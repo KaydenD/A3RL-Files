@@ -5,21 +5,21 @@ class EditorData
 	angleGridStep=0.2617994;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=138;
+	toggles=2;
 	class ItemIDProvider
 	{
-		nextID=2610;
+		nextID=2650;
 	};
 	class MarkerIDProvider
 	{
-		nextID=136;
+		nextID=138;
 	};
 	class Camera
 	{
-		pos[]={2471.3906,9.3949795,5583.7944};
-		dir[]={-0.55718285,-0.24465932,-0.79355705};
-		up[]={-0.14059862,0.9696061,-0.20024402};
-		aside[]={-0.81843048,3.3095421e-007,0.57464981};
+		pos[]={6070.7212,49.166775,6818.5024};
+		dir[]={-0.36983341,-0.62414134,0.68827653};
+		up[]={-0.29547319,0.78123015,0.54988939};
+		aside[]={0.88091171,-1.1606608e-006,0.47334042};
 	};
 };
 binarizationWanted=0;
@@ -529,7 +529,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=780;
+		items=784;
 		class Item0
 		{
 			dataType="Object";
@@ -8502,7 +8502,7 @@ class Mission
 			alpha=0;
 			a=2000;
 			b=5300;
-			angle=245.11293;
+			angle=245.11292;
 			id=986;
 			atlOffset=-1.8471389;
 		};
@@ -20901,7 +20901,6 @@ class Mission
 				angles[]={0,4.7191958,0};
 			};
 			side="Empty";
-			flags=4;
 			class Attributes
 			{
 				init="call{this setVariable [""positionSpawn"",[6937.97,3685.8,3,262],false]; this setVariable [""type"",""vehicle""];}";
@@ -20909,7 +20908,7 @@ class Mission
 			};
 			id=1999;
 			type="A3PL_CarInfo";
-			atlOffset=0.15173531;
+			atlOffset=11.776001;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -33563,7 +33562,7 @@ class Mission
 			alpha=0;
 			a=100;
 			b=100;
-			angle=100.49197;
+			angle=100.49196;
 			id=2606;
 			atlOffset=-0.0077371597;
 		};
@@ -33664,6 +33663,213 @@ class Mission
 			colorName="ColorBlue";
 			id=2609;
 			atlOffset=-0.0058164597;
+		};
+		class Item780
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={3629.033,15.11921,6019.2349};
+						angles[]={0,5.2867417,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						init="call{if (isServer) then { this enableSimulationGlobal false; this disableAI ""ALL""; this allowDamage false; this setVariable[""spawnPos"", [3597.35,6026.07,0],true];};}";
+						name="npc_uhaul_1";
+						class Inventory
+						{
+							class uniform
+							{
+								typeName="A3PL_CamelTow_Uniform";
+								isBackpack=0;
+							};
+							class vest
+							{
+								typeName="A3PL_Vest_Base";
+								isBackpack=0;
+							};
+							map="ItemMap";
+							compass="ItemCompass";
+							watch="ItemWatch";
+							headgear="A3PL_CamelTow_Cap";
+						};
+					};
+					id=2644;
+					type="C_man_w_worker_F";
+					atlOffset=0.00016593933;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male02GRE";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.05;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=2643;
+			atlOffset=0.00016593933;
+		};
+		class Item781
+		{
+			dataType="Marker";
+			position[]={3629.053,14.972,6019.231};
+			name="marker_uhaul_1";
+			text="U-Haul";
+			type="A3PL_Markers_Truck";
+			colorName="ColorBlue";
+			id=2646;
+			atlOffset=0.00020980835;
+		};
+		class Item782
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={6050.271,10.950867,6810.166};
+						angles[]={0,0.98256803,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						init="call{if (isServer) then { this enableSimulationGlobal false; this disableAI ""ALL""; this allowDamage false; this setVariable[""spawnPos"", [6060.62,6829.2,0],true];};}";
+						name="npc_uhaul_2";
+						class Inventory
+						{
+							class uniform
+							{
+								typeName="A3PL_CamelTow_Uniform";
+								isBackpack=0;
+							};
+							class vest
+							{
+								typeName="A3PL_Vest_Base";
+								isBackpack=0;
+							};
+							map="ItemMap";
+							compass="ItemCompass";
+							watch="ItemWatch";
+							headgear="A3PL_CamelTow_Cap";
+						};
+					};
+					id=2648;
+					type="C_man_w_worker_F";
+					atlOffset=0.00022125244;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male02GRE";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.05;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=2647;
+			atlOffset=0.00022125244;
+		};
+		class Item783
+		{
+			dataType="Marker";
+			position[]={6050.3047,10.803435,6810.0786};
+			name="marker_uhaul_2";
+			text="U-Haul";
+			type="A3PL_Markers_Truck";
+			colorName="ColorBlue";
+			angle=113.38893;
+			id=2649;
+			atlOffset=0.019963264;
 		};
 	};
 };

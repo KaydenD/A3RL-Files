@@ -1021,6 +1021,14 @@
 
 [
 	"",
+	"U-Haul",
+	{
+		["Rental_Uhaul"] call A3PL_Shop_Open;
+	}
+],
+
+[
+	"",
 	"Rent a Tow Truck",
 	{
 		[] call A3RL_JobRoadWorker_RentTruck;

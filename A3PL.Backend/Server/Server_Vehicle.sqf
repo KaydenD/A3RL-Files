@@ -208,13 +208,17 @@
 		};
 		_veh addEventHandler ["Killed",{
 			params ["_unit", "_killer", "_instigator", "_useEffects"];
+			diag_log "Killed fired";
 			_uid = (_unit getVariable ["owner", ["",""]]) select 0;
 			_find = [A3RL_Server_Rented_Vehicles, _uid] call BIS_fnc_findNestedElement;
+			diag_log (format["_find=%1",_find]);
 			if !(_find isEqualTo []) then {
+				diag_log (format["if",(count ((A3RL_Server_Rented_Vehicles select (_find select 0)) select 1))]);
 				if ((count ((A3RL_Server_Rented_Vehicles select (_find select 0)) select 1)) < 2) then {
 					A3RL_Server_Rented_Vehicles deleteAt (_find select 0);
 				} else {
 					_find2 = ((A3RL_Server_Rented_Vehicles select (_find select 0)) select 1) find (typeOf _unit);
+					diag_log (format["_find2",_find2]);
 					if(_find > -1) then {
 						((A3RL_Server_Rented_Vehicles select (_find select 0)) select 1) deleteAt _find2;
 					};

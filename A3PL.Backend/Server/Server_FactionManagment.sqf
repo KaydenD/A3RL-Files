@@ -5,8 +5,10 @@
 	_id = [_faction] call Server_FactionManagment_ID;
 	_ranks = [format["SELECT id, name, pay FROM factionranks WHERE fid = %1", _id], 2, true] call Server_Database_Async;
 	_players = [format["SELECT name, rank FROM players WHERE faction = '%1'", _faction], 2, true] call Server_Database_Async;
+	_faction = [A3RL_Factions, _target getVariable ["job","unemployed"]] call BIS_fnc_findNestedElement;
+	_factionAccount = (A3RL_Factions select (_faction select 0)) select 2;
 
-	[_id, _ranks, _players] remoteExec ["A3RL_FactionManagment_Setup", _target];
+	[_id, _ranks, _players, _factionAccount] remoteExec ["A3RL_FactionManagment_Setup", _target];
 }, true] call Server_Setup_Compile;
 
 ["Server_FactionManagment_ID", {

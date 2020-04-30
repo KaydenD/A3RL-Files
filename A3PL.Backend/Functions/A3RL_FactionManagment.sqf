@@ -2,6 +2,8 @@
 	disableSerialization;
 	_faction = param[0, ""];
 
+	if(player getVariable ["job", "unemployed"] != player getVariable ["faction", "citizen"]) exitWith {["You must been signed on-duty to mange your faction", Color_Red] call A3PL_Player_Notification;};
+
 	createDialog "dialog_factionsetup";
 	_display = findDisplay 111;
 
@@ -21,6 +23,7 @@
 	_factionId = param[0, 0];
 	_ranks = param[1, []];
 	_whitelisted = param[2, []];
+	_bank = param[3, 0]; 
 	_display = findDisplay 111;
 
 	FactionID = _factionId;
@@ -33,7 +36,8 @@
 		lbSetData [1501,_i,format["%1", _x select 0]];
 	} forEach _whitelisted;
 
-	(_display displayCtrl 1101) ctrlSetStructuredText parseText format ["%1",count(_whitelisted)];
+	(_display displayCtrl 1101) ctrlSetStructuredText parseText format ["%1",count(_whitelisted)]; 
+	(_display displayCtrl 1100) ctrlSetStructuredText parseText format ["%1",_bank]; 
 }] call Server_Setup_Compile;
 
 ["A3RL_FactionManagment_UpdateRanks", {

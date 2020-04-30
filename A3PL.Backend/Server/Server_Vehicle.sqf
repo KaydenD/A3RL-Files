@@ -199,6 +199,30 @@
 		_owner setVariable ["jobVehicle",_veh,true];
 	};
 
+	if(_id == "UHAUL") then {
+		_find = [A3RL_Server_Rented_Vehicles, getPlayerUID _owner] call BIS_fnc_findNestedElement;
+		if(_find isEqualTo []) then {
+			A3RL_Server_Rented_Vehicles pushBack [getPlayerUID _owner, _class];
+		} else {
+			((A3RL_Server_Rented_Vehicles select (_find select 0)) select 1) pushBack _class;
+		};
+		_veh addEventHandler ["Killed",{
+			params ["_unit", "_killer", "_instigator", "_useEffects"];
+			_uid = (_unit getVariable ["owner", ["",""]]) select 0;
+			_find = [A3RL_Server_Rented_Vehicles, _uid] call BIS_fnc_findNestedElement;
+			if !(_find isEqualTo []) then {
+				if ((count ((A3RL_Server_Rented_Vehicles select (_find select 0)) select 1)) < 2) then {
+					A3RL_Server_Rented_Vehicles deleteAt (_find select 0);
+				} else {
+					_find2 = ((A3RL_Server_Rented_Vehicles select (_find select 0)) select 1) find (typeOf _unit);
+					if(_find > -1) then {
+						((A3RL_Server_Rented_Vehicles select (_find select 0)) select 1) deleteAt _find2;
+					};
+				};
+			};
+		}];
+	};
+
 	[_veh,_id] call Server_Vehicle_Init_General;
 
 
@@ -214,6 +238,12 @@
 
 	_veh;
 
+},true] call Server_Setup_Compile;
+
+["Server_UHaul_GetRentedVehicles",
+{
+	_player = param [0,objNull];
+	[A3RL_Server_Rented_Vehicles] remoteExec ["A3RL_UHaul_RentedVeh_Return", _player];
 },true] call Server_Setup_Compile;
 
 //despawns a vehicle, delete all attached objects etc

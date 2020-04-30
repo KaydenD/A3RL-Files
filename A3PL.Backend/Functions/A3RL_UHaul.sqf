@@ -91,6 +91,13 @@
 	};
 }] call Server_Setup_Compile;
 
+["A3RL_UHaul_RentedVeh_Return",{
+	_return = param [0,[]];
+	A3RL_Rented_Vehicles = _return;
+}] call Server_Setup_Compile;
+
+
+
 ["A3RL_UHAUL_Rent",
 {
 	if(!([] call A3PL_Player_AntiSpam)) exitWith {};
@@ -145,6 +152,18 @@
 		};
 	};
 	if (!_moneyCheck) exitwith {};
+
+	_alreadyRentedType = false;
+	A3RL_Rented_Vehicles = nil;
+	[] remoteExec ["Server_UHaul_GetRentedVehicles", 2];
+	waitUntil{!inNil"A3RL_Rented_Vehicles"};
+	{
+		if(((_x select 0) == (getPlayerUID player)) && {_itemClass IN (_x select 1)}) then {
+			_alreadyRentedType = true;
+		};
+	} forEach A3RL_Rented_Vehicles;
+	if(!_alreadyRentedType) exitWith {["You've already rented a vehicle of this type",Color_Red] call A3PL_Player_Notification;};
+
 
 	//take stock if this was a stock item
 	if (_shop IN Config_Shops_StockSystem) then

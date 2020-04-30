@@ -886,8 +886,7 @@ Config_Factories =
         ["f_Goose_USCG","","inh","inh","A3PL_Goose_USCG","plane",true,5,[["Aluminium_Pellet",35],["Steel_Pellet",50]],1,""],
         ["f_Jayhawk_USCG","","inh","inh","A3PL_Jayhawk","plane",true,5,[["Aluminium_Pellet",30],["Titanium_Pellet",5],["Glass",6],["Blueprint_Jayhawk",1]],1,"uscg"],
         ["f_Cessna172","","inh","inh","A3PL_Cessna172","plane",true,5,[["Aluminium_Pellet",30],["Steel_Pellet",25]],1,""],
-        ["f_Heli_Light","","inh","inh","C_Heli_Light_01_civil_F","plane",true,5,[["Aluminium_Pellet",50],["Steel_Pellet",50],["Titanium_Pellet",25],["Glass",10]],1,""],
-		["f_Heli_Light","","inh","inh","C_Heli_Light_01_civil_F","plane",true,5,[["Aluminium_Pellet",50],["Steel_Pellet",50],["Titanium_Pellet",25],["Glass",10]],1,""]
+        ["f_Heli_Light","","inh","inh","C_Heli_Light_01_civil_F","plane",true,5,[["Aluminium_Pellet",50],["Steel_Pellet",50],["Titanium_Pellet",25],["Glass",10]],1,""]
 	],
 
     ["Faction Vehicle Factory",[5555.16,6811.24,0.00161457],

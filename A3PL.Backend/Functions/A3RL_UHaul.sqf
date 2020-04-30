@@ -18,7 +18,7 @@
 	_display = findDisplay 22;
 
 	_control = _display displayCtrl 1602;
-	_control ctrlAddEventHandler ["ButtonDown",format ["['%1','%2'] call A3RL_UHAUL_Rent;",_shop,_currency]];
+	_control ctrlAddEventHandler ["ButtonDown",format ["['%1','%2'] spawn A3RL_UHAUL_Rent;",_shop,_currency]];
 	_control = _display displayCtrl 1500;
 	_control ctrlAddEventHandler ["LBSelChanged",format ["['%1',1500, '%2'] call A3RL_UHAUL_ItemSwitch;",_shop,_npc]];
 	lbClear _control;
@@ -156,7 +156,7 @@
 	_alreadyRentedType = false;
 	A3RL_Rented_Vehicles = nil;
 	[] remoteExec ["Server_UHaul_GetRentedVehicles", 2];
-	waitUntil{!inNil"A3RL_Rented_Vehicles"};
+	waitUntil {!(isNil "A3RL_Rented_Vehicles")};
 	{
 		if(((_x select 0) == (getPlayerUID player)) && {_itemClass IN (_x select 1)}) then {
 			_alreadyRentedType = true;

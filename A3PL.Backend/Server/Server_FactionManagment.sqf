@@ -29,7 +29,7 @@
 
 	waitUntil {isNull(_somthing)};
 
-	_ranks = [format["SELECT id FROM factionranks WHERE fid = %1", _fid], 2, true] call Server_Database_Async;
+	_ranks = [format["SELECT id FROM factionranks WHERE name = '%1'", _name], 2, true] call Server_Database_Async;
 
 	A3RL_FactionRanks pushBack [((_ranks select 0) select 0), _fid, _name, 0, 0];
 	publicVariable "A3RL_FactionRanks";
@@ -60,7 +60,7 @@
 
 ["Server_FactionManagment_SetPay", {
 	_rank = param[0, 0];
-	_pay = param[1, 0];
+	_pay = param[1, 0]; 
 
 	_query = format ["UPDATE factionranks SET pay = %1 WHERE id = %2",_pay,_rank];
 	[_query,1] spawn Server_Database_Async;

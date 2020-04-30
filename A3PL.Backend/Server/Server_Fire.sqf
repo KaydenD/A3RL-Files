@@ -268,7 +268,7 @@
 			};
 		} forEach allPlayers;
 		["A3PL_Common\effects\firecall.ogg",150,2,10] spawn A3PL_FD_FireStationAlarm;
-		[position (_fireObject)] spawn Server_Fire_StartFire;
+		[getPosATL (_fireObject)] spawn Server_Fire_StartFire;
 		sleep 300;
 		deleteMarker _marker;
 	};

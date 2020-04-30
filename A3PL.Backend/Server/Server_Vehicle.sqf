@@ -103,7 +103,6 @@
 	_veh = param [0,objNull];
 	_ownerID = _veh getVariable "owner";
 	_msg = param [1,false];
-	diag_log (format["veh destoryed=%1 isserver = %2",_veh, isServer]);
 	if (!isNil "_ownerID") then //just in-case
 	{
 		private ["_player"];
@@ -112,14 +111,11 @@
 
 		if (_ownerID == "UHAUL") then {
 			_find = [A3RL_Server_Rented_Vehicles, _ownerUID] call BIS_fnc_findNestedElement;
-			diag_log (format["_find=%1",_find]);
 			if !(_find isEqualTo []) then {
-				diag_log (format["if",(count ((A3RL_Server_Rented_Vehicles select (_find select 0)) select 1))]);
 				if ((count ((A3RL_Server_Rented_Vehicles select (_find select 0)) select 1)) < 2) then {
 					A3RL_Server_Rented_Vehicles deleteAt (_find select 0);
 				} else {
 					_find2 = ((A3RL_Server_Rented_Vehicles select (_find select 0)) select 1) find (typeOf _veh);
-					diag_log (format["_find2",_find2]);
 					if(_find2 > -1) then {
 						((A3RL_Server_Rented_Vehicles select (_find select 0)) select 1) deleteAt _find2;
 					};
@@ -143,6 +139,9 @@
 			};
 		};
 	};
+
+	uiSleep 300;
+
 	[_veh] call A3PL_Vehicle_SoundSourceClear;
 	_sirenObj = _veh getVariable ["sirenObj",objNull];
 

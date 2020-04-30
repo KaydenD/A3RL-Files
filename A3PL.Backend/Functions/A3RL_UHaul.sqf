@@ -198,8 +198,8 @@
 		case ("vest"): {[_itemClass] call A3PL_Lib_ChangeVestSafe; _itemName = getText (configFile >> "CfgWeapons" >> _itemClass >> "displayName");};
 		case ("headgear"): {[_itemClass] call A3PL_Lib_ChangeHeadgear; _itemName = getText (configFile >> "CfgWeapons" >> _itemClass >> "displayName");};
 		case ("aitem"): {player addItem _itemClass; _itemName = getText (configFile >> "CfgWeapons" >> _itemClass >> "displayName");};
-		case ("vehicle"): {[_itemClass, (_shopObject getVariable ["spawnPos", [0,0,0]]) findEmptyPosition[0, 15, _itemClass], "UHAUL", player] remoteExec ["Server_Vehicle_Spawn", 2]; _itemName = getText (configFile >> "CfgVehicles" >> _itemClass >> "displayName");};
-		case ("plane"): {[_itemClass, (_shopObject getVariable ["spawnPos", [0,0,0]]) findEmptyPosition[0, 15, _itemClass], "UHAUL", player] remoteExec ["Server_Vehicle_Spawn", 2]; _itemName = getText (configFile >> "CfgVehicles" >> _itemClass >> "displayName");};
+		case ("vehicle"): {[_itemClass, _shopObject getVariable ["spawnPos", [0,0,0], "UHAUL", player, 0, true] remoteExec ["Server_Vehicle_Spawn", 2]; _itemName = getText (configFile >> "CfgVehicles" >> _itemClass >> "displayName");};
+		case ("plane"): {[_itemClass, _shopObject getVariable ["spawnPos", [0,0,0], "UHAUL", player, true] remoteExec ["Server_Vehicle_Spawn", 2]; _itemName = getText (configFile >> "CfgVehicles" >> _itemClass >> "displayName");};
 		case ("weapon"): {player addItem _itemClass; _itemName = getText (configFile >> "CfgWeapons" >> _itemClass >> "displayName");};
 		case ("weaponPrimary"): {player addWeapon _itemClass; _itemName = getText (configFile >> "CfgWeapons" >> _itemClass >> "displayName");};
 		case ("magazine"): {player addMagazines [_itemClass, _amount];_itemName = getText (configFile >> "CfgMagazines" >> _itemClass >> "displayName");};

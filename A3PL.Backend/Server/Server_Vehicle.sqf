@@ -166,6 +166,7 @@
 	_id = param [2,-1];
 	_owner = param [3,objNull];
 	_dir = param [4,0];
+	_safe = param [5,false];
 
 	_initfunction = !isNil ('Server_Vehicle_Init_' + _class);
 
@@ -176,16 +177,16 @@
 
 	if (typename _pos == 'Object') then
 	{
-		_veh = createVehicle [_class, (getPos _pos), [], 0, 'CAN_COLLIDE'];
-		_veh allowDamage false;
-		_veh setDir (getDir _pos);
-		_veh setpos (getPos _pos);
-	} else
-	{
-		_veh = createVehicle [_class, _pos, [], 0, 'CAN_COLLIDE'];
-		_veh allowDamage false;
-		_veh setDir _dir;
+		_pos = (getPos _pos);
 	};
+
+	if(_safe) then {
+		_veh = createVehicle [_class, _pos];
+	} else {
+		_veh = createVehicle [_class, _pos, [], 0, 'CAN_COLLIDE'];
+	};
+	_veh allowDamage false;
+	_veh setDir _dir;
 
 	if (isNull _veh) exitwith {diag_log "Server_Vehicle_Spawn Error: _veh isNull"};
 

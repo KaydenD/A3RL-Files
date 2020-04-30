@@ -67,6 +67,8 @@
 	Server_JobRoadWorker_Marked = [];
 	publicVariable "Server_JobRoadWorker_Marked";
 
+	A3RL_Server_Rented_Vehicles = [];
+
 }, true] call Server_Setup_Compile;
 
 //saves a variable into the persistent variables table

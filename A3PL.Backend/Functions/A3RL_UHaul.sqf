@@ -18,7 +18,7 @@
 	_display = findDisplay 22;
 
 	_control = _display displayCtrl 1602;
-	_control ctrlAddEventHandler ["ButtonDown",format ["['%1','%2'] call A3RL_UHAUL_Rent;",_shop,_currency]];
+	_control ctrlAddEventHandler ["ButtonDown",format ["['%1','%2'] spawn A3RL_UHAUL_Rent;",_shop,_currency]];
 	_control = _display displayCtrl 1500;
 	_control ctrlAddEventHandler ["LBSelChanged",format ["['%1',1500, '%2'] call A3RL_UHAUL_ItemSwitch;",_shop,_npc]];
 	lbClear _control;
@@ -53,7 +53,7 @@
 			};
 		} else {
 			if(_itemType in ["vehicle"]) then {
-				_i = _control lbAdd format ["%1",_itemName,(count _objects)];
+				_i = _control lbAdd format ["%1",_itemName];
 			} else {
 				_i = _control lbAdd _itemName;
 				if(_itemPicture != "") then{_control lbSetPicture[(lbSize _control)-1,_itemPicture];};
@@ -90,6 +90,13 @@
 		player cameraEffect ["terminate", "BACK"];
 	};
 }] call Server_Setup_Compile;
+
+["A3RL_UHaul_RentedVeh_Return",{
+	_return = param [0,[]];
+	A3RL_Rented_Vehicles = _return;
+}] call Server_Setup_Compile;
+
+
 
 ["A3RL_UHAUL_Rent",
 {
@@ -145,6 +152,18 @@
 		};
 	};
 	if (!_moneyCheck) exitwith {};
+
+	_alreadyRentedType = false;
+	A3RL_Rented_Vehicles = nil;
+	[player] remoteExec ["Server_UHaul_GetRentedVehicles", 2];
+	waitUntil {!(isNil "A3RL_Rented_Vehicles")};
+	{
+		if(((_x select 0) == (getPlayerUID player)) && {_itemClass IN (_x select 1)}) then {
+			_alreadyRentedType = true;
+		};
+	} forEach A3RL_Rented_Vehicles;
+	if(_alreadyRentedType) exitWith {["You've already rented a vehicle of this type",Color_Red] call A3PL_Player_Notification;};
+
 
 	//take stock if this was a stock item
 	if (_shop IN Config_Shops_StockSystem) then

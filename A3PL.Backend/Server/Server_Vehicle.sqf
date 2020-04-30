@@ -103,11 +103,29 @@
 	_veh = param [0,objNull];
 	_ownerID = _veh getVariable "owner";
 	_msg = param [1,false];
+	diag_log (format["veh destoryed=%1 isserver = %2",_veh, isServer]);
 	if (!isNil "_ownerID") then //just in-case
 	{
 		private ["_player"];
 		_ownerUID = _ownerID select 0;
 		_ownerID = _ownerID select 1;
+
+		if (_ownerID == "UHAUL") then {
+			_find = [A3RL_Server_Rented_Vehicles, _ownerUID] call BIS_fnc_findNestedElement;
+			diag_log (format["_find=%1",_find]);
+			if !(_find isEqualTo []) then {
+				diag_log (format["if",(count ((A3RL_Server_Rented_Vehicles select (_find select 0)) select 1))]);
+				if ((count ((A3RL_Server_Rented_Vehicles select (_find select 0)) select 1)) < 2) then {
+					A3RL_Server_Rented_Vehicles deleteAt (_find select 0);
+				} else {
+					_find2 = ((A3RL_Server_Rented_Vehicles select (_find select 0)) select 1) find (typeOf _veh);
+					diag_log (format["_find2",_find2]);
+					if(_find2 > -1) then {
+						((A3RL_Server_Rented_Vehicles select (_find select 0)) select 1) deleteAt _find2;
+					};
+				};
+			};
+		};
 
 		//delete vehicle from database
 		_query = format ["DELETE FROM objects WHERE id=""%1""",_ownerID];
@@ -199,6 +217,15 @@
 		_owner setVariable ["jobVehicle",_veh,true];
 	};
 
+	if(_id == "UHAUL") then {
+		_find = [A3RL_Server_Rented_Vehicles, getPlayerUID _owner] call BIS_fnc_findNestedElement;
+		if(_find isEqualTo []) then {
+			A3RL_Server_Rented_Vehicles pushBack [getPlayerUID _owner, [_class]];
+		} else {
+			((A3RL_Server_Rented_Vehicles select (_find select 0)) select 1) pushBack _class;
+		};
+	};
+
 	[_veh,_id] call Server_Vehicle_Init_General;
 
 
@@ -214,6 +241,12 @@
 
 	_veh;
 
+},true] call Server_Setup_Compile;
+
+["Server_UHaul_GetRentedVehicles",
+{
+	_player = param [0,objNull];
+	[A3RL_Server_Rented_Vehicles] remoteExec ["A3RL_UHaul_RentedVeh_Return", _player];
 },true] call Server_Setup_Compile;
 
 //despawns a vehicle, delete all attached objects etc

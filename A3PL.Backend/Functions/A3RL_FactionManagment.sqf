@@ -178,6 +178,7 @@
 			(A3RL_FactionRanks select _forEachIndex) set [3, _pay];
 		};
 	} forEach A3RL_FactionRanks;
+	publicVariable "A3RL_FactionRanks";
 }] call Server_Setup_Compile;
 
 ["A3RL_FactionManagment_GetRankName", {

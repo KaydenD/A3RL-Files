@@ -59,7 +59,7 @@
 	[_query,1] spawn Server_Database_Async;
 }, true] call Server_Setup_Compile;
 
-["Server_FactionManagment_SetPay", {
+["Server_FactionManagment_SetPay", { 
 	_rank = param[0, 0];
 	_pay = param[1, 0]; 
 
@@ -94,7 +94,7 @@
 		["I have received my paycheck, it has been deposited into my bank account directly",'#17ED00'] remoteExec ["A3PL_Player_Notification", _player];
 	} else {
 		["Your faction does't have enough money to pay you",'#FD1703'] remoteExec ["A3PL_Player_Notification", _player];
-	}
+	};
 }, true] call Server_Setup_Compile;
 
 ["Server_FactionManagment_SaveFaction", {

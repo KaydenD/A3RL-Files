@@ -281,7 +281,7 @@
 			["System: It doesn't seem like there is a car nearby that you can store", Color_Red] call A3PL_Player_Notification;
 		};
 
-		if(((_cars getVariable "owner") select 1) IN ["WASTE","DELIVER","EXTERMY","KARTING","DMV", "ROADSID", "UHAUL"]) exitWith {
+		if(((_car getVariable "owner") select 1) IN ["WASTE","DELIVER","EXTERMY","KARTING","DMV", "ROADSID", "UHAUL"]) exitWith {
 			[10] call A3PL_Storage_CarStoreResponse;
 		};
 		if (((_car getVariable "owner") select 0) != (getPlayerUID player)) exitWith

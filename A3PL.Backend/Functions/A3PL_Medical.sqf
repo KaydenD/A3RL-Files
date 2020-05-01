@@ -1106,7 +1106,7 @@
 
 ["A3PL_Medical_Heal",
 {
-	if ((count(["fifr"] call A3PL_Lib_FactionPlayers)) > 0) exitwith {["System: You cannot use Doctor Bob when EMS is available!",Color_Red] call A3PL_Player_Notification;};
+	//if ((count(["fifr"] call A3PL_Lib_FactionPlayers)) > 0) exitwith {["System: You cannot use Doctor Bob when EMS is available!",Color_Red] call A3PL_Player_Notification;};
 	if (100 > (player getVariable ["player_cash",0])) exitwith {[format ["System: You don't have enough money to be healed."]] call A3PL_Player_notification;};
 	player setVariable ["player_cash",(player getVariable ["player_cash",0]) - 100,true];
 	player setDamage 0;

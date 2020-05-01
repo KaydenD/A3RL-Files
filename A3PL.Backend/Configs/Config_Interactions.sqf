@@ -1328,6 +1328,7 @@ A3PL_Interaction_Options =
 	[
 		"Knockout",
 		{
+			if((player distance cursorObject) > 3) exitWith {["Player too far away", Color_Red] call A3PL_Player_Notification;};
 			[] remoteExec ["A3RL_KnockedOut", cursorObject];
 			player switchMove "AwopPercMstpSgthWrflDnon_End2";
 		},

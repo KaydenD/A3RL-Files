@@ -1,9 +1,10 @@
 ["A3RL_PortRobbery_Rob",{
 	_port = param[0, objNull];
 	if(!([] call A3PL_Player_AntiSpam)) exitWith {};
+	if(missionNamespace getVariable ["PortRobbery", false]) exitWith {["A port was robbed recently!", Color_Red] call A3PL_Player_Notification;};
 	if ((count (["uscg"] call A3PL_Lib_FactionPlayers)) < 3) exitWith {["There must be 3 USCG on-duty to rob the port!", Color_Red] call A3PL_Player_Notification;}; 
 	if(!(currentWeapon player != "")) exitWith {["You must have a weapon to rob the port", Color_Red] call A3PL_Player_Notification;};
-	if(_port getVariable ["cooldown", false]) exitWith {["The port was robbed recently", Color_Red] call A3PL_Player_Notification;};
+	if ((currentWeapon player) IN ["hgun_Pistol_Signal_F","A3PL_FireAxe","A3PL_Shovel","A3PL_Pickaxe","A3PL_Golf_Club","A3PL_Jaws","A3PL_High_Pressure","A3PL_Medium_Pressure","A3PL_Low_Pressure","A3PL_Taser","A3PL_FireExtinguisher","A3PL_Paintball_Marker","A3PL_Paintball_Marker_Camo","A3PL_Paintball_Marker_PinkCamo","A3PL_Paintball_Marker_DigitalBlue","A3PL_Paintball_Marker_Green","A3PL_Paintball_Marker_Purple","A3PL_Paintball_Marker_Red","A3PL_Paintball_Marker_Yellow","A3PL_Predator"]) exitwith {["You cannot rob the gas station with this!",Color_Red] call A3PL_Player_Notification;};
 	_name = "Invaild Port";
 	
 	switch(_port) do 
@@ -25,9 +26,9 @@
 	["You successfully robbed the port! ", Color_Green] call A3PL_Player_Notification;
 	[_port, random[1, 3, 5]] call A3RL_PortRobbery_GetReward;
 
-	_port setVariable["cooldown", true, true];
+	missionNamespace setVariable ["PortRobbery", true];
 	uiSleep 600;
-	_port setVariable["cooldown", false, true];
+	missionNamespace setVariable ["PortRobbery", false];
 }] call Server_Setup_Compile;
 
 
@@ -62,7 +63,7 @@
 					_amount = round(random[_amountMin,_amountMin + ((_amountMax - _amountMin)/2),_amountMax]);
 					_veh addItemCargoGlobal[_class,_amount];
 				};
-			};
+			}; 
 		};
 	} forEach Config_PortRobbery;
 

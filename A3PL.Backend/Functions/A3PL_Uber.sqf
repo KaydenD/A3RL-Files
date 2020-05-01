@@ -1,5 +1,6 @@
 ['A3PL_Uber_addDriver',
 {
+	if(player getVariable ["job","unemployed"] != "unemployed") exitWith {["You are already employed",Color_Red] call A3PL_Player_Notification;};
 	[player] remoteExec ["Server_Uber_addDriver", 2];
 	["System: Request to become an uber driver has been send",Color_Green] call A3PL_Player_Notification;
 }] call Server_Setup_Compile;

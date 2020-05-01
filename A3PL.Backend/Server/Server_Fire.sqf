@@ -253,7 +253,7 @@
 ["Server_Fire_VehicleExplode",
 {
 	_fireObject = param [0,objNull];
-	if ((count(["fifr"] call A3PL_Lib_FactionPlayers)) >= 1) then {
+	if ((count(["fifr"] call A3PL_Lib_FactionPlayers)) >= 5) then {
 		_marker = createMarker [format ["vehiclefire_%1",random 4000], position (_fireObject)];
 		_marker setMarkerShape "ICON";
 		_marker setMarkerType "mil_dot";

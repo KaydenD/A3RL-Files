@@ -37,6 +37,7 @@
 		A3PL_Uber_Drivers deleteAt _id;
 	};
 
+	if(_user getVariable ["job","unemployed"] != "uber") exitWith {};
 	_user setVariable ["job","unemployed",true];
 
 }, true] call Server_Setup_Compile;

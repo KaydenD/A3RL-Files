@@ -20487,7 +20487,7 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="call{this setVariable [""positionSpawn"",[2628.82,5286.19,0,153.917],false]; this setVariable [""type"",""plane""];}";
+				init="call{this setVariable [""positionSpawn"",[3295.27,5884.48,0.00144672],false]; this setVariable [""type"",""vehicle""];}";
 				disableSimulation=1;
 			};
 			id=1925;

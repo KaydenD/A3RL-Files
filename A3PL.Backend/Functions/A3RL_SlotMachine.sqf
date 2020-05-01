@@ -26,9 +26,9 @@
 	playSound "A3RL_Slot_Sound_Roll";
 	_delayLeft = 4.6;
 	while{_delayLeft > 0} do {
-		_box1Roll = _icons selectRandomWeighted [10,7,9,10,18];
-		_box2Roll = _icons selectRandomWeighted [10,7,9,10,18];
-		_box3Roll = _icons selectRandomWeighted [10,7,9,10,18];
+		_box1Roll = _icons selectRandomWeighted [10,7,9,2,18];
+		_box2Roll = _icons selectRandomWeighted [10,7,9,2,18];
+		_box3Roll = _icons selectRandomWeighted [10,7,9,2,18];
 		_box1 ctrlSetText (format["%1%2.paa", _dir, _box1Roll]);
 		_box2 ctrlSetText (format["%1%2.paa", _dir, _box2Roll]);
 		_box3 ctrlSetText (format["%1%2.paa", _dir, _box3Roll]);

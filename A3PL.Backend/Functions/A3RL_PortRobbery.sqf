@@ -16,7 +16,7 @@
 	["uscg", format ["!!! ALERT !!! The %1 is being robbed!", _name]] spawn A3RL_Notify_Robbery;
 
 	Player_ActionCompleted = false;
-	["Robbing the port...",10] spawn A3PL_Lib_LoadAction;
+	["Robbing the port...",120] spawn A3PL_Lib_LoadAction;
 
 	waitUntil {Player_ActionCompleted || !(alive player) || (_port distance2D player) > 3 || player getVariable ["Incapacitated",false]};
 	if(!(alive player)) exitWith {Player_ActionCanceled = true;};

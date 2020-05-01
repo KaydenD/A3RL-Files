@@ -1271,7 +1271,7 @@ class iPhone_X
 					colorBackgroundFocused[] = {0,0,0,0};
 				};
 
-				class iPhone_X_grass_slider: Rsc_Slider
+				class iPhone_X_grass_slider: RscSlider
 				{
 					idc = 1900;
 					x = safeZoneX + safeZoneW * 0.710375;

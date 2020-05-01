@@ -177,6 +177,7 @@
 
 	if (typename _pos == 'Object') then
 	{
+		_dir = getDir _pos;
 		_pos = (getPos _pos);
 	};
 

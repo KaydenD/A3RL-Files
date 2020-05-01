@@ -26,9 +26,9 @@
 	playSound "A3RL_Slot_Sound_Roll";
 	_delayLeft = 4.6;
 	while{_delayLeft > 0} do {
-		_box1Roll = _icons selectRandomWeighted [5,9,10,1,18];
-		_box2Roll = _icons selectRandomWeighted [5,9,10,1,18];
-		_box3Roll = _icons selectRandomWeighted [5,9,10,1,18];
+		_box1Roll = _icons selectRandomWeighted [10,7,9,10,18];
+		_box2Roll = _icons selectRandomWeighted [10,7,9,10,18];
+		_box3Roll = _icons selectRandomWeighted [10,7,9,10,18];
 		_box1 ctrlSetText (format["%1%2.paa", _dir, _box1Roll]);
 		_box2 ctrlSetText (format["%1%2.paa", _dir, _box2Roll]);
 		_box3 ctrlSetText (format["%1%2.paa", _dir, _box3Roll]);
@@ -46,8 +46,6 @@
 		case(_box1Roll == "seven" && _box2Roll == "seven" && _box3Roll == "seven"): {_multi = 200;};
 		case(_box1Roll IN ["cherry","bell","seven"] && _box2Roll IN ["cherry","bell","seven"]): {_multi = 5;};
 		case(_box2Roll IN ["cherry","bell","seven"] && _box3Roll IN ["cherry","bell","seven"]): {_multi = 5;};
-		case(_box1Roll IN ["cherry","bell","seven"] && _box3Roll IN ["cherry","bell","seven"]): {_multi = 5;};
-
 	};
 
 	if(_multi > 0) then {

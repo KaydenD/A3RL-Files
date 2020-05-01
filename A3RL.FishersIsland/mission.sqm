@@ -35835,6 +35835,7 @@ class Mission
 					{
 						class data
 						{
+							class type
 							{
 								type[]=
 								{

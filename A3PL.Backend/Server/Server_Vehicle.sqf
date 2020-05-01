@@ -554,10 +554,10 @@
 
 ["Server_Vehicle_Init_C_Van_02_transport_F",
 {
-	_this setVariable [_door,true,true];
+	//_this setVariable [_door,true,true];
 	_this setObjectTextureGlobal [1, "\a3\Soft_F_Orange\Van_02\Data\van_wheel_transport_co.paa"];
 	_this setObjectTextureGlobal [2, "\a3\Soft_F_Orange\Van_02\Data\van_glass_civservice_ca.paa"];
-	_this call Server_Vehicle_Init_C_Van_02_transport_F;
+	//_this call Server_Vehicle_Init_C_Van_02_transport_F;
 },true] call Server_Setup_Compile;
 
 ["Server_Vehicle_Init_C_Heli_Light_01_civil_F",

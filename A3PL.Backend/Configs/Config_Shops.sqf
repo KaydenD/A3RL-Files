@@ -642,11 +642,16 @@ Config_Shops_Items =
             ["weapon","hgun_Rook40_F",500,0],
 			["weapon","hgun_ACPC2_F",500,0],
 			["weapon","RH_p226",500,0],
+			["weapon","RH_g17",500,0],
+			
+			
 
             ["magazine","A3PL_TaserMag",50,0],
             ["magazine","16Rnd_9x21_Mag",50,0],
             ["magazine","9Rnd_45ACP_Mag",50,0],
 			["magazine","RH_15Rnd_9x19_SIG",50,0],
+			["magazine","RH_17Rnd_9x19_g17",50,0],
+
 
             ["item","handcuffs",15,0],
             ["item","stinger",15,0],

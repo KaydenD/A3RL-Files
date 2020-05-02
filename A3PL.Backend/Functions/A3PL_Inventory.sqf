@@ -120,9 +120,8 @@
 	if (count _itemToAdd > 0) then
 	{
 		{
-			if(!((_x select 0) IN ["ME_Bucket","ME_Jackhammer","ME_Claw"])) then {
+			if(((_x select 0) IN ["ME_Bucket","ME_Jackhammer","ME_Claw"])) exitWith {_inventory = [_inventory, (_x select 0), -999, true] call BIS_fnc_addToPairs;};
 			_inventory = [_inventory, (_x select 0), (_x select 1), true] call BIS_fnc_addToPairs; //last param set to true to prevent overwriting of original variable
-			};
 		} foreach _itemToAdd;
 	};
 

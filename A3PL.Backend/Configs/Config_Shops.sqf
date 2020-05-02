@@ -1221,7 +1221,7 @@ Config_Shops_Items =
 			["vehicle","A3PL_P362_TowTruck",1500,0],
 			["vehicle","A3PL_MiniExcavator",15000,0]
 		],
-		{[2820.89,6004.03,-0.75]}
+		{[7304.04,11613.3,1]}
 	]
 ];
 publicVariable "Config_Shops_Items";

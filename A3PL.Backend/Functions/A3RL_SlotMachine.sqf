@@ -26,7 +26,7 @@
 	playSound "A3RL_Slot_Sound_Roll";
 	_delayLeft = 4.6;
 	while{_delayLeft > 0} do {
-		if((_delayLeft - ((2/(_delayLeft + 1)) - 0.2)) <= 0) exitWith {}; //check if last icon change. Want to exit loop to choose winning combo
+		if((_delayLeft - ((2/(_delayLeft + 1)) - 0.2)) <= 0) exitWith {uiSleep ((2/(_delayLeft + 1)) - 0.4);}; //check if last icon change. Want to exit loop to choose winning combo
 		_box1Roll = _icons selectRandomWeighted [10,7,9,2,18];
 		_box2Roll = _icons selectRandomWeighted [10,7,9,2,18];
 		_box3Roll = _icons selectRandomWeighted [10,7,9,2,18];
@@ -46,6 +46,14 @@
 		case (_rand <= 150): {{_x ctrlSetText (format["%1%2.paa", _dir, "bell"]);} forEach [_box1, _box2, _box3]; _multi = 8;};
 		case (_rand <= 500): {{_x ctrlSetText (format["%1%2.paa", _dir, "horseshoe"]);} forEach [_box1, _box2, _box3]; _multi = 4;};
 		case (_rand <= 2500): {{_x ctrlSetText (format["%1%2.paa", _dir, "watermelon"]);} forEach [_box1, _box2, _box3]; _multi = 2;};
+		default {
+			_arr = ["bell", "bell", "cherry", "cherry", "horseshoe", "horseshoe", "seven", "seven", "watermelon", "watermelon"];
+			{
+				_select = floor(random (count _arr));
+				_x ctrlSetText (format["%1%2.paa", _dir, _arr select _select]);
+				_arr deleteAt _select;
+			} forEach [_box1, _box2, _box3];
+		}; 
 	};
 
 	if(_multi > 0) then {

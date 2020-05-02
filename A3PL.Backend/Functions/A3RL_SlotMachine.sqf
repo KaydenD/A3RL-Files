@@ -26,6 +26,7 @@
 	playSound "A3RL_Slot_Sound_Roll";
 	_delayLeft = 4.6;
 	while{_delayLeft > 0} do {
+		if((_delayLeft - ((2/(_delayLeft + 1)) - 0.2)) <= 0) exitWith {}; //check if last icon change. Want to exit loop to choose winning combo
 		_box1Roll = _icons selectRandomWeighted [10,7,9,2,18];
 		_box2Roll = _icons selectRandomWeighted [10,7,9,2,18];
 		_box3Roll = _icons selectRandomWeighted [10,7,9,2,18];
@@ -37,15 +38,14 @@
 		uiSleep _sleep;
 	};
 
+	_rand = random 10000;
 	_multi = 0;
-	switch(true) do {
-		case(_box1Roll == "watermelon" && _box2Roll == "watermelon" && _box3Roll == "watermelon"): {_multi = 2;};
-		case(_box1Roll == "horseshoe" && _box2Roll == "horseshoe" && _box3Roll == "horseshoe"): {_multi = 4;};
-		case(_box1Roll == "cherry" && _box2Roll == "cherry" && _box3Roll == "cherry"): {_multi = 10;};
-		case(_box1Roll == "bell" && _box2Roll == "bell" && _box3Roll == "bell"): {_multi = 20;};
-		case(_box1Roll == "seven" && _box2Roll == "seven" && _box3Roll == "seven"): {_multi = 200;};
-		case(_box1Roll IN ["cherry","bell","seven"] && _box2Roll IN ["cherry","bell","seven"]): {_multi = 4;};
-		case(_box2Roll IN ["cherry","bell","seven"] && _box3Roll IN ["cherry","bell","seven"]): {_multi = 4;};
+	switch (true) do {
+		case (_rand <= 10): {{_x ctrlSetText (format["%1%2.paa", _dir, "seven"]);} forEach [_box1, _box2, _box3]; _multi = 50;};
+		case (_rand <= 50): {{_x ctrlSetText (format["%1%2.paa", _dir, "cherry"]);} forEach [_box1, _box2, _box3]; _multi = 15;};
+		case (_rand <= 150): {{_x ctrlSetText (format["%1%2.paa", _dir, "bell"]);} forEach [_box1, _box2, _box3]; _multi = 8;};
+		case (_rand <= 500): {{_x ctrlSetText (format["%1%2.paa", _dir, "horseshoe"]);} forEach [_box1, _box2, _box3]; _multi = 4;};
+		case (_rand <= 2500): {{_x ctrlSetText (format["%1%2.paa", _dir, "watermelon"]);} forEach [_box1, _box2, _box3]; _multi = 2;};
 	};
 
 	if(_multi > 0) then {

@@ -52,8 +52,7 @@
 		case (_random > 10 && _random <= 15): {_foundSomething = true; ["You have found keycard in the trash", Color_Green] call A3PL_Player_Notification; ["keycard", 1] call A3PL_Inventory_Add;};
 	};
 	
-	if(!_foundSomething) exitWith {};
-	["You have found nothing in the trash", Color_Red] call A3PL_Player_Notification;
+	if(!_foundSomething) exitWith {["You have found nothing in the trash", Color_Red] call A3PL_Player_Notification;};
 }] call Server_Setup_Compile;
 
 

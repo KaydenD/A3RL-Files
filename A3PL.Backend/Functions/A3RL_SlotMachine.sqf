@@ -50,7 +50,7 @@
 
 	if(_multi > 0) then {
 		_structText = _display displayCtrl 1100;
-		_structText ctrlSetStructuredText parseText (format ["<t align='center' size='2.0'>YOU WIN $%1</t>", (_multi-1)*_bet]);
+		_structText ctrlSetStructuredText parseText (format ["<t align='center' size='2.0'>YOU WIN $%1</t>", [(_multi-1)*_bet, 1, 0, true] call CBA_fnc_formatNumber]);
 		playSound "A3RL_Slot_Sound_Win";
 		player setVariable ["player_cash",(player getVariable ["player_cash",0])+(_multi*_bet),true];
 	} else {

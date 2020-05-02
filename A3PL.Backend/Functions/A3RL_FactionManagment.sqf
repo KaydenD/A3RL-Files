@@ -37,7 +37,7 @@
 	} forEach _whitelisted;
 
 	(_display displayCtrl 1101) ctrlSetStructuredText parseText format ["%1",count(_whitelisted)]; 
-	(_display displayCtrl 1100) ctrlSetStructuredText parseText format ["%1",_bank]; 
+	(_display displayCtrl 1100) ctrlSetStructuredText parseText ([_bank, 1, 0, true] call CBA_fnc_formatNumber]); 
 }] call Server_Setup_Compile;
 
 ["A3RL_FactionManagment_UpdateRanks", {

@@ -89,6 +89,7 @@
 	_newBetStr =  ctrlText _ctrl;
 	_newBet = parseNumber _newBetStr;
 	if(_newBet < 1) exitWith {["Invaild bet amount", Color_Red] call A3PL_Player_Notification;};
+	if(_newBet > 50000) exitWith {["You can't bet more than $50,000", Color_Red] call A3PL_Player_Notification;};
 	if(_bet != _newBet) then {
 		player_objIntersect setVariable ["bet", _newBet, true];
 	};

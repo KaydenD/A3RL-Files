@@ -53,8 +53,14 @@
 	{
 		[_veh] call Server_Vehicle_EnableSimulation;
 	};
+	_id = "";
+	{
+		if(_x select 3 == _class) then {
+			_id = _x select 0;
+		};
+	} forEach Config_Items;
 	_veh setOwner (owner _player);
-	_veh setVariable ["class",_class,true];
+	_veh setVariable ["class",_id,true];
 	_veh setVariable ["owner",getPlayerUID _player,true];
 
 },true] call Server_Setup_Compile;

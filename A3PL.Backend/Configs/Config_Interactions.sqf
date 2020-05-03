@@ -150,7 +150,7 @@ A3PL_Interaction_Options =
 		{
 			[] call A3PL_DMV_Open;
 		},
-		{((player getVariable ["job","unemployed"]) IN ["doj","dmv","uscg"])}
+		{((player getVariable ["job","unemployed"]) IN ["doj","dao","dmv","uscg"])}
 	],
 
 

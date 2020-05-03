@@ -56,6 +56,11 @@
 			_index = _control lbAdd (["fml","name"] call A3PL_Config_GetLicense);
 			_control lbSetData [_index,"fml"];
 		};
+		case ("dao"):
+		{
+			_index = _control lbAdd (["fiba","name"] call A3PL_Config_GetLicense);
+			_control lbSetData [_index,"fiba"];
+		};
 		case ("uscg"):
 		{
 			_index = _control lbAdd (["boat","name"] call A3PL_Config_GetLicense);

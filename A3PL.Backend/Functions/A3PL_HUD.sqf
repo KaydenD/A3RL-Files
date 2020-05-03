@@ -225,7 +225,7 @@
 
 	_control = _display displayCtrl 1601; //job
 	_faction = player getVariable ["job", "unemployed"];
-	if(_faction in ["police", "uscg", "doj", "usms", "fifr"]) then {
+	if(_faction in ["police", "uscg", "doj", "usms", "fifr", "dao", "pdo"]) then {
 		_faction = [player getVariable ["rank", 0]] call A3RL_FactionManagment_GetRankName;
 	};
 	_control ctrlSetStructuredText parseText format ["<t font='PuristaMedium' align='right'>%1</t>",toUpper (_faction)];

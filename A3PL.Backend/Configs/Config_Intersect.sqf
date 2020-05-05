@@ -1346,8 +1346,8 @@ Config_IntersectArray =
 	["fireworkIgnite",localize"STR_INTSECT_IGNROCKET",_dir+"IGUI\Cfg\Actions\take_ca.paa",{((player_objintersect getVariable ["stock",-1]) == -1) && (simulationEnabled player_objIntersect)}], //Ignite Rocket
 	["fireworkrocket",localize"STR_INTSECT_BUSEITEM",_dir+"IGUI\Cfg\Actions\take_ca.paa",{!(player_objintersect getVariable ["stock",-1] == -1)}], //Buy/Sell Item
 
-	["atego_tow",localize"STR_INTSECT_LoadVehicle",_dir+"IGUI\Cfg\Actions\take_ca.paa",{!(player_objIntersect getVariable ["locked",true])&& ((player getVariable ["job","unemployed"]) == "Roadside_Service")}],// && !(player_objIntersect getVariable ["Towing",true])
-	["atego_tow",localize"STR_INTSECT_UnloadVehicle",_dir+"IGUI\Cfg\Actions\take_ca.paa",{!(player_objIntersect getVariable ["locked",true])&& ((player getVariable ["job","unemployed"]) == "Roadside_Service")}],//&& (player_objIntersect getVariable ["Towing",true])
+	["atego_tow",localize"STR_INTSECT_LoadVehicle",_dir+"IGUI\Cfg\Actions\take_ca.paa",{!(player_objIntersect getVariable ["locked",true])&& (((player getVariable ["job","unemployed"]) == "Roadside_Service") || ((((player_objIntersect getVariable ["owner",["",""]]) select 1) == "UHAUL") && ((getPlayerUID player) == ((player_objIntersect getVariable ["owner",["",""]]) select 0))))}],// && !(player_objIntersect getVariable ["Towing",true])
+	["atego_tow",localize"STR_INTSECT_UnloadVehicle",_dir+"IGUI\Cfg\Actions\take_ca.paa",{!(player_objIntersect getVariable ["locked",true])&& (((player getVariable ["job","unemployed"]) == "Roadside_Service") || ((((player_objIntersect getVariable ["owner",["",""]]) select 1) == "UHAUL") && ((getPlayerUID player) == ((player_objIntersect getVariable ["owner",["",""]]) select 0))))}],//&& (player_objIntersect getVariable ["Towing",true])
 	["Ramp_Switch",localize"STR_INTSECT_TOGGRAMP",_dir+"IGUI\Cfg\Actions\take_ca.paa",{true}],
 
 	["Spotlight_Switch",localize"STR_INTSECT_TOGREARSPOTL",_dir+"IGUI\Cfg\Actions\take_ca.paa",{true}], //Toggle Rear Spotlight

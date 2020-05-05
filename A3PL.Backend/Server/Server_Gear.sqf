@@ -435,6 +435,7 @@
 		//we can spawn this because we wont be requiring any setvariables after this point
 		[_unit,_uid,true] spawn Server_Gear_Save;
 		[] call Server_Bowling_BLaneCheck;
+		[_uid] spawn Server_iPhoneX_PlayerDisconnect;
 	}];
 }, true] call Server_Setup_Compile;
 

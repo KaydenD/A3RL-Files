@@ -8,7 +8,7 @@
 	_mapMarkers = [];
 	_disallowedMapMarkers = getArray(missionConfigFile >> "A3PL_mapAreas" >> "exclude");
 
-	{if(markerType _x != "Empty" && !(_x in _disallowedMapMarkers)) then {_mapMarkers pushBack _x;};} forEach allMapMarkers;
+	{if(markerType _x != "Empty" && {!(_x in _disallowedMapMarkers)} && {_x != "myGPS"}) then {_mapMarkers pushBack _x;};} forEach allMapMarkers;
 
 	if(_currentFilterMarkers == "ALL") then {
 		{_x setMarkerAlphaLocal 1;} forEach _mapMarkers;

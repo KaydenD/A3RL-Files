@@ -410,7 +410,11 @@ Server_Setup_Compile = {
 	//Load Fuel in Gas Station
 	[] call Server_Hydrogen_Load;
 
+	//Load Evidnece Locker Stuff
 	[] call Server_EvidenceLocker_Load;
+
+	//Load Faction Managment Stuff
+	[] call Server_FactionManagment_Startup;
 	
 	//Temporary Hotfix
 	//all this crap runs into post-init
@@ -427,8 +431,6 @@ Server_Setup_Compile = {
 		[] call A3PL_Lib_AnimBusStopInit;
 		[] call Server_Shop_BlackMarketPos;
 		[] call Server_JobFarming_DrugDealerPos;
-		[] spawn Server_JobWildcat_RandomizeOil; //create the oil positions
-		[] spawn Server_JobWildcat_RandomizeRes;
 		[] call Server_Core_GetDefVehicles; //create the defaulte vehicles array (for use in cleanup script)
 		[] call Server_JobPicking_Init; //get the marker locations for picking locations
 		[] spawn Server_Lumber_TreeRespawn;
@@ -440,11 +442,16 @@ Server_Setup_Compile = {
 		[] spawn Server_Locker_Load;
 
 		/*iPhoneX*/
-		A3PL_iPhoneX_ListNumber = [];
+		//A3PL_iPhoneX_ListNumber = [];
 		A3PL_iPhoneX_switchboardSD = [];
 		A3PL_iPhoneX_switchboardFD = [];
-		[] call Server_iPhoneX_GetPhoneNumber;
+		//[] call Server_iPhoneX_GetPhoneNumber;
 
+		Server_JobWildCat_Res = [];
+		Server_JobWildCat_Oil = [];
+		publicVariable "Server_JobWildCat_Res";
+		publicVariable "Server_JobWildCat_Oil";
+		
 		//Load fuel
 		/*Get All FuelStations*/
 		private _FuelPositions = [
@@ -497,7 +504,8 @@ Server_Setup_Compile = {
 	["itemAdd", ["Server_Loop_MDelivery", {[] spawn Server_JobMDelivery_Loop;}, 35]] call BIS_fnc_loop;
 	["itemAdd", ["Server_Loop_RepairTerrain", {[] spawn Server_Core_RepairTerrain;}, 300]] call BIS_fnc_loop;
 	["itemAdd", ["Server_Loop_BusinessLoop", {[] spawn Server_Business_Loop;}, 60]] call BIS_fnc_loop; //delete expired businesses etc
-	["itemAdd", ["Server_Loop_FogLoop", {10 setFog 0;}, 1800]] call BIS_fnc_loop;
+	["itemAdd", ["Server_Loop_FogLoop", {10 setFog 0;}, 1800]] call BIS_fnc_loop; 
+	["itemAdd", ["Server_Loop_TimeMultiLoop", {[] spawn Server_Core_SetTimeMulti;}, 60]] call BIS_fnc_loop;
 
 	// Save Gear and Player Variables //
 
@@ -508,9 +516,8 @@ Server_Setup_Compile = {
 	//cleanup
 	["itemAdd", ["Server_Loop_Cleanup", {[] spawn Server_Core_Clean;}, 900]] call BIS_fnc_loop; //every 15 minutes run the cleanup loop
 
-	//oil randomization, 60 min
-	["itemAdd", ["Server_Loop_OilRandomization", {[] spawn Server_JobWildcat_RandomizeOil;}, 3600]] call BIS_fnc_loop;
-	["itemAdd", ["Server_Loop_ResRandomization", {[] spawn Server_JobWildcat_RandomizeRes;}, 3600]] call BIS_fnc_loop;
+	//Remove old mining areas
+	["itemAdd", ["Server_Loop_ResTimeCheck", {[] spawn Server_JobWildcat_CheckResTimers;}, 60]] call BIS_fnc_loop;
 
 	//Fire
 	["itemAdd", ["Server_Fire_FireLoop", {[] spawn Server_Fire_FireLoop;}, 10]] call BIS_fnc_loop; //Spread fire every 10sec, edit the number to increase spread time
@@ -532,6 +539,10 @@ Server_Setup_Compile = {
 
 	//Evidence Locker Save
 	["itemAdd", ["Server_Loop_Server_EvidenceLockerSave", {[] spawn Server_EvidenceLocker_Save;}, 1800]] call BIS_fnc_loop; // 30 mintues
+
+	["itemAdd", ["Server_Loop_Server_FactionManagment_SaveFaction", {[] spawn Server_FactionManagment_SaveFaction;}, 1500]] call BIS_fnc_loop; // 25 mintues
+
+	["itemAdd", ["Server_Loop_Server_SaveTrunks", {[] spawn Server_Trunk_Save;}, 1500]] call BIS_fnc_loop; //Very database intensive, don't want it to run every 30 mins with the other loops. 
 
 	//loop for animals
 	["itemAdd", ["Server_Loop_Goats",
@@ -582,6 +593,271 @@ Server_Setup_Compile = {
 	A3PL_ServerLoaded = true;
 	publicVariable "A3PL_ServerLoaded";
 },true,true] call Server_Setup_Compile;
+
+["Server_EvidenceLocker_Load", {
+	_query = "SELECT value FROM persistent_vars WHERE var='Evidence_Locker'";
+	_return = [_query, 2] call Server_Database_Async;
+	_cargo = call compile (_return select 0);
+	_box = nearestObject [[4776.12,6315.75,0.00143862], "B_supplyCrate_F"];
+
+	clearItemCargoGlobal _box; 
+	clearWeaponCargoGlobal _box;
+	clearMagazineCargoGlobal _box;
+	clearBackpackCargoGlobal _box;
+
+	{_box addWeaponCargoGlobal [_x,1]} foreach (_cargo select 0);
+	{_box addMagazineCargoGlobal [_x,1]} foreach (_cargo select 1);
+	{_box addItemCargoGlobal [_x,1]} foreach (_cargo select 2);
+	{_box addBackpackCargoGlobal [_x,1]} foreach (_cargo select 3);
+	_box setVariable ["storage",(_cargo select 4),true];
+	_box setVariable ["locked", true, true];
+}, true] call Server_Setup_Compile;
+
+["Server_Storage_RetrieveVehiclePos",
+{
+	private ["_class","_player","_id","_storage","_dir","_veh","_db"];
+	_class = param [0,""];
+	_player = param [1,objNull];
+	_id = param [2,-1];
+	_storage = param [3,[]]; //position in this case
+
+	if (count _storage > 3) then
+	{
+		_dir = _storage select 3;
+		_storage = [_storage select 0,_storage select 1,_storage select 2];
+	};
+
+	_query = format ["UPDATE objects SET plystorage = '0',impounded='0' WHERE id = '%1'",_id];
+	[_query,1] spawn Server_Database_Async;
+
+	_query = format ["SELECT fuel,color,numpchange,iscustomplate,material,tuning,inventory FROM objects WHERE id = '%1'",_id];
+	_db = [_query, 2, false] call Server_Database_Async;
+
+
+	_veh = [_class,_storage,_id,_player] call Server_Vehicle_Spawn;
+	if (!isNil "_dir") then
+	{
+		_veh setDir _dir;
+	};
+	if (_veh isKindOf "Ship") then
+	{
+		_veh setpos _storage;
+	} else {
+		_veh setPosATL _storage;
+	};
+
+	if (_veh isKindOf "helicopter") then
+	{
+		_veh setOwner (owner _player);
+	};
+	_storageclass = nearestObject [_storage, "Land_A3PL_Sheriffpd"];
+	if (typeOf _storageclass == "Land_A3PL_Sheriffpd") then
+	{
+		[_player,_storageclass,_veh,_id] spawn
+		{
+			private ["_player","_storage","_t","_veh","_id"];
+			_player = param [0,ObjNull];
+			_storage = param [1,ObjNull];
+			_veh = param [2,ObjNull];
+			_id = param [3,""];
+
+			_t = 0;
+			while {(_veh distance _storage) < 8} do
+			{
+				uiSleep 1;
+				_t = _t + 1;
+				if (isNull _veh) exitwith
+				{
+
+				};
+				if (_t > 119) exitwith
+				{
+					[[3],"A3PL_Storage_CarRetrieveResponse",_player,false] call BIS_FNC_MP;
+					_query = format ["UPDATE objects SET plystorage = '1' WHERE id = '%1'",_id];
+					[_query,1] spawn Server_Database_Async;
+					[_veh] call Server_Vehicle_Despawn;
+				};
+			};
+			if (_storage animationSourcePhase "StorageDoor" > 0.5) then {_storage animateSource ["storagedoor",0];};
+			if (_storage animationSourcePhase "StorageDoor2" > 0.5) then {_storage animateSource ["StorageDoor2",0];};
+
+		};
+	};
+
+	if ((count _db) != 0) then
+	{
+		_veh setFuel (_db select 0);
+		_veh setObjectTextureGlobal [0,(_db select 1)];
+		_veh setObjectMaterialGlobal [0,(_db select 4)];
+		_veh setVariable["numPChange",(_db select 2),true];
+		_veh setVariable["isCustomPlate",(_db select 3),true];
+		
+		//tuning
+		_addons = [(_db select 5)] call Server_Database_ToArray;
+		if ((count _addons) > 0) then {
+			{
+				_animName = _x select 0;
+				_animPhase = _x select 1;
+				_veh animatesource [_animName, _animPhase, true];
+			} foreach _addons;
+			_veh setVariable["installedAddons", _addons, true];
+		};		
+		_cargo = call compile (_db select 6);
+		if((count _cargo) != 5) exitWith {};
+		{_veh addWeaponCargoGlobal [_x,1]} foreach (_cargo select 0);
+		{_veh addMagazineCargoGlobal [_x,1]} foreach (_cargo select 1);
+		{_veh addItemCargoGlobal [_x,1]} foreach (_cargo select 2);
+		{_veh addBackpackCargoGlobal [_x,1]} foreach (_cargo select 3);
+		_veh setVariable ["storage",(_cargo select 4),true];
+	};
+	[[4],"A3PL_Storage_CarRetrieveResponse",_player,false] call BIS_FNC_MP;
+
+
+}] call Server_Setup_Compile;
+
+["Server_Storage_RetrieveVehicle",
+{
+	private ["_query","_class","_player","_id","_storage","_veh","_trailer","_db"];
+	_class = param [0,""];
+	_player = param [1,objNull];
+	_id = param [2,-1];
+	_storage = param [3,objNull,[objNull,[]]];
+	_whitelistTrailer = ["A3PL_Ski_Base"];
+	//[format ["%1",_storage],"hint",true,false,false] call BIS_fnc_MP;
+	if (typeName _storage == "ARRAY") exitwith
+	{
+		[_class,_player,_id,_storage] call Server_Storage_RetrieveVehiclePos;
+	};
+
+	if (_storage animationPhase "StorageDoor1" > 0.1) exitwith
+	{
+		diag_log "Server_Storage_RetrieveVehicle";
+		[[1],"A3PL_Storage_CarRetrieveResponse",_player,false] call BIS_FNC_MP;
+	};
+
+	_query = format ["SELECT fuel,color,numpchange,iscustomplate,material,tuning,inventory FROM objects WHERE id = '%1'",_id];
+	_db = [_query, 2, false] call Server_Database_Async;
+
+	_query = format ["UPDATE objects SET plystorage = '0',impounded = '0' WHERE id = '%1'",_id];
+	[_query,1] spawn Server_Database_Async;
+
+	[[2],"A3PL_Storage_CarRetrieveResponse",_player,false] call BIS_FNC_MP;
+
+	_veh = [_class,_storage,_id,_player] call Server_Vehicle_Spawn;
+
+	if ((count _db) != 0) then
+	{
+		_veh setFuel (_db select 0);
+		_veh setObjectTextureGlobal [0,(_db select 1)];
+		_veh setObjectMaterialGlobal [0,(_db select 4)];
+		_veh setVariable["numPChange",(_db select 2),true];
+		_veh setVariable["isCustomPlate",(_db select 3),true];
+		
+		//Activate Tuning
+		_addons = [(_db select 5)] call Server_Database_ToArray;
+		if ((count _addons) > 0) then {
+			{
+				_animName = _x select 0;
+				_animPhase = _x select 1;
+				_veh animatesource [_animName, _animPhase, true];
+			} foreach _addons;
+			_veh setVariable["installedAddons", _addons, true];
+		};		
+
+		_cargo = call compile (_db select 6);
+		if((count _cargo) != 5) exitWith {};
+		{_veh addWeaponCargoGlobal [_x,1]} foreach (_cargo select 0);
+		{_veh addMagazineCargoGlobal [_x,1]} foreach (_cargo select 1);
+		{_veh addItemCargoGlobal [_x,1]} foreach (_cargo select 2);
+		{_veh addBackpackCargoGlobal [_x,1]} foreach (_cargo select 3);
+		_veh setVariable ["storage",(_cargo select 4),true];
+
+	};
+
+	if ((_veh isKindOf "ship") && (!(typeOf _veh IN _whitelistTrailer))) then
+	{
+		_trailer = createVehicle ["A3PL_BoatTrailer_Normal", (getPos _veh), [], 0, 'CAN_COLLIDE'];
+		_trailer allowDamage false;
+		_veh attachTo [_trailer,[0,0,1.5]];
+		_trailer setDir (getDir _storage);
+		_trailer setPos (getPos _storage);
+
+		[_veh,_trailer,_player] spawn
+		{
+			_veh = param [0,objNull];
+			_trailer = param [1,objNull];
+			_player = param [2,objNull];
+			sleep 1.5;
+			_veh setOwner (owner _player);
+		};
+	};
+
+	_storage animateSource ["storagedoor",1];
+	[_player,_storage,_veh,_id] spawn
+	{
+		private ["_player","_storage","_t","_veh","_id"];
+		_player = param [0,ObjNull];
+		_storage = param [1,ObjNull];
+		_veh = param [2,ObjNull];
+		_id = param [3,""];
+
+		_t = 0;
+		while {(_veh distance _storage) < 8} do
+		{
+			uiSleep 1;
+			_t = _t + 1;
+			if (isNull _veh) exitwith
+			{
+
+			};
+			if (_t > 119) exitwith
+			{
+				[[3],"A3PL_Storage_CarRetrieveResponse",_player,false] call BIS_FNC_MP;
+				_query = format ["UPDATE objects SET plystorage = '1' WHERE id = '%1'",_id];
+				[_query,1] spawn Server_Database_Async;
+				[_veh] call Server_Vehicle_Despawn;
+			};
+		};
+		_storage animateSource ["storagedoor",0];
+
+	};
+
+},true] call Server_Setup_Compile;
+
+['Server_Locker_Save', {
+	private ["_lockers"];
+	_lockers = ["SELECT locker, owner, items, objects FROM lockers", 2, true] call Server_Database_Async;
+	{
+		private ["_locker","_attachedObjects","_query"];
+		_locker = call compile (_x select 0);
+
+		//Attached objects
+		_objects = [];
+		{if (!isNull _x) then {_objects pushBack (typeOf _x);};} foreach (attachedObjects _locker);
+		//Core inventory
+		_items = [weaponCargo _locker, magazineCargo _locker, itemCargo _locker, backpackCargo _locker];
+
+		//Update DB
+		_query = format["UPDATE lockers SET items='%1',objects='%2' WHERE locker ='%3'",_items,_objects,_locker];
+		[_query,1] spawn Server_Database_Async;
+	} foreach _lockers;
+},true] call Server_Setup_Compile;
+
+['Server_Locker_Load', {
+	private ["_lockers"];
+	_lockers = ["SELECT locker, owner, items, objects FROM lockers", 2, true] call Server_Database_Async;
+	{
+		private ["_locker","_items"];
+		_locker = call compile (_x select 0);
+		_locker setVariable ["owner",_x select 1,true];
+
+		_items = call compile (_x select 2);
+		{_locker addWeaponCargoGlobal [_x,1]} foreach (_items select 0);
+		{_locker addMagazineCargoGlobal [_x,1]} foreach (_items select 1);
+		{_locker addItemCargoGlobal [_x,1]} foreach (_items select 2);
+		{_locker addBackpackCargoGlobal [_x,1]} foreach (_items select 3);
+	} foreach _lockers;
+},true] call Server_Setup_Compile;
 
 
 //////////////////////////
@@ -762,11 +1038,11 @@ Server_Setup_Compile = {
 
 
 ["Server_Gear_Load", {
-	private ["_unit", "_uid", "_return", "_query", "_pos", "_loadout","_name","_houseVar","_ownsHouse","_houseObj","_job","_virtinv","_cash","_bank","_facStorage","_licenses","_twitterProfile","_perks","_ship","_adminWatch","paycheck"];
+	private ["_unit", "_uid", "_return", "_query", "_pos", "_loadout","_name","_houseVar","_ownsHouse","_houseObj","_job","_virtinv","_cash","_bank","_facStorage","_licenses","_twitterProfile","_perks","_ship","_adminWatch","_paycheck","_rank"];
 	_unit = _this select 0;
 	_uid = getPlayerUID _unit;
 
-	_query = format ["SELECT position,loadout,name,faction,userkey,job,virtualinv,cash,bank,jail,ID,dob,pasportdate,player_fstorage,adminLevel,licenses,twitterprofile,perks,ship,adminWatch,medstats,paycheck FROM players WHERE uid='%1'", _uid];
+	_query = format ["SELECT position,loadout,name,faction,userkey,job,virtualinv,cash,bank,jail,ID,dob,pasportdate,player_fstorage,adminLevel,licenses,twitterprofile,perks,ship,adminWatch,medstats,paycheck,gender,rank FROM players WHERE uid='%1'", _uid];
 	_return = [_query, 2] call Server_Database_Async;
 
 	// Quick Checks //
@@ -803,6 +1079,8 @@ Server_Setup_Compile = {
 	_adminWatch = _return select 19;
 	_medStat = [(_return select 20)] call Server_Database_ToArray;
 	_paycheck = parseNumber (_return select 21);
+	_gender = _return select 22;
+	_rank = _return select 23;
 
 	//Medstats
 	_unit setVariable ["A3PL_Wounds",_medStat select 0,true];
@@ -821,6 +1099,7 @@ Server_Setup_Compile = {
 	//Informative
 	_unit setVariable ["name",_name,true];
 	_unit setVariable ["job",_job,true];
+	_unit setVariable ["gender",_gender,true];
 	_unit setVariable ["db_id",_id,true];
 	_unit setVariable ["date",_passportdate,true];
 	_unit setpos _pos;
@@ -829,6 +1108,7 @@ Server_Setup_Compile = {
 	_unit setVariable ["Player_Paycheck",_paycheck,true];
 	_unit setVariable ["dob",_dob,true];
 	_unit setVariable ["faction",_faction,true];
+	_unit setVariable ["rank",_rank,true];
 	_unit setVariable ["adminWatch",_adminWatch,true];
 	_unit setVariable ["dbVar_AdminLevel",_AdminLevel,true];
 	_unit setVariable ["Cuffed",false,true];
@@ -1010,6 +1290,7 @@ Server_Setup_Compile = {
 	{_box addItemCargoGlobal [_x,1]} foreach _actualitems;
 	{_box addBackpackCargoGlobal [_x,1]} foreach _backpacks;
 	_box setVariable ["storage",_vitems,true];
+	_box setVariable ["house",_house,true];
 },true] call Server_Setup_Compile;
 
 
@@ -1025,6 +1306,7 @@ Server_Setup_Compile = {
 	_camera camCommit 0;
 },false,true] call Server_Setup_Compile;
 
+/*
 ["A3PL_Phone_Open",
 {
 	// make sure that TFR has our cellphone
@@ -1051,7 +1333,7 @@ Server_Setup_Compile = {
 			sleep 0.5;
 		};
 	};
-	*/
+	//There want a star slash here
 	//1 == currently calling someone, 2 == currently being called, 3 == currenlty in an active call
 	//Currently calling someone...
 	if((player getvariable "A3PL_Call_Status" select 1) == 1) exitWith {
@@ -1108,6 +1390,8 @@ Server_Setup_Compile = {
 
 
 }] call Server_Setup_Compile;
+
+*/
 
 ["A3PL_Garage_InstallUpgrades",
 {
@@ -1354,4 +1638,5 @@ Server_Setup_Compile = {
 	[] spawn Server_EvidenceLocker_Save;
 	[] spawn Server_ShopStock_Save;
 	[] spawn Server_Locker_Save;
+	[] spawn Server_Trunk_Save;
 }] call Server_Setup_Compile;

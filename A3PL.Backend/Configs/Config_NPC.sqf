@@ -87,7 +87,7 @@ Config_NPC_Text =
 
 	//FIFR
 	//  "Hello!<br/>How can I help you?",["1. I don't feel well, can you check me out?","2. How do I become part of the FIFR?","3. Hello colleague, I'm here to start my shift."]
-	["fifr_initial",parseText localize"STR_NPC_FIFRINIT",[localize"STR_NPC_FIFRINIT1",localize"STR_NPC_FIFRINIT2",localize"STR_NPC_FIFRINIT3"],["if ((str (player getvariable ['A3PL_Wounds',[]]) == '[]') OR ((player getvariable ['A3PL_MedicalVars',[5000]] select 0) == 5000)) exitwith {['fifr_healdenied'] call A3PL_NPC_Start;}; ['fifr_heal'] call A3PL_NPC_Start;","['fifr_howto'] call A3PL_NPC_Start;","if (player getVariable 'job' == 'fifr') exitwith {['fifr_already'] call A3PL_NPC_Start;}; if (player getVariable 'faction' == 'fifr') then { ['fifr_work'] call A3PL_NPC_Start; } else {['fifr_workdenied'] call A3PL_NPC_Start;};"]],
+	["fifr_initial",parseText localize"STR_NPC_FIFRINIT",[localize"STR_NPC_FIFRINIT1",localize"STR_NPC_FIFRINIT2",localize"STR_NPC_FIFRINIT3"],["if ((str (player getvariable ['A3PL_Wounds',[]]) == '[]') AND ((player getvariable ['A3PL_MedicalVars',[5000]] select 0) == 5000)) exitwith {['fifr_healdenied'] call A3PL_NPC_Start;}; ['fifr_heal'] call A3PL_NPC_Start;","['fifr_howto'] call A3PL_NPC_Start;","if (player getVariable 'job' == 'fifr') exitwith {['fifr_already'] call A3PL_NPC_Start;}; if (player getVariable 'faction' == 'fifr') then { ['fifr_work'] call A3PL_NPC_Start; } else {['fifr_workdenied'] call A3PL_NPC_Start;};"]],
 	// "You seem fine<br/>You don't need medical attention",["1. Alright then, thanks anyway."]
 	["fifr_healdenied",parseText localize"STR_NPC_FIFRHEALD",[localize"STR_NPC_FIFRHEALD1"],[""]],
 	//"You can find more info on our website:<br/>http://www.FIFR.com/",["STR_NPC_ALRIGHTTNX"]

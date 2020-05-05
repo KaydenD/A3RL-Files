@@ -1,69 +1,38 @@
 //dmg value from which ore will get removed
 #define OREDMGDISS 0.55
 
-//Randomizes the oil around the island and publicvariables the resulting variable
-["Server_JobWildcat_RandomizeOil", 
-{	
-	Server_JobWildCat_Oil = [];
-	
-	//50 areas for now
-	for "_i" from 0 to 76 do
+["Server_JobWildcat_CheckResTimers", 
+{
 	{
-		private ["_randPos","_overWater"];
-		
-		_randPos = ["OilSpawnArea"] call CBA_fnc_randPosArea;
-		_overWater = !(_randPos isFlatEmpty  [-1, -1, -1, -1, 2, false] isEqualTo []);
-		while {_overWater} do
-		{
-			_randPos = ["OilSpawnArea"] call CBA_fnc_randPosArea;
-			_overWater = !(_randPos isFlatEmpty  [-1, -1, -1, -1, 2, false] isEqualTo []);
+		_time = _x select 3;
+		if(diag_tickTime > _time) then {
+			Server_JobWildCat_Res deleteAt _forEachIndex;
 		};
-		
-		//oilAmount in gallons, 5 levels
-		_oilAmounts = [50,75,80,100,110,140,160,180,200,250];
-		_r = floor random 10;
-		_arr = [_randPos,(_oilAmounts select _r)];
-		
-		Server_JobWildCat_Oil pushback _arr;
-	};	
-	
+	} forEach Server_JobWildCat_Res;
+	publicVariable "Server_JobWildCat_Res";
+	{
+		_time = _x select 2;
+		if(diag_tickTime > _time) then {
+			Server_JobWildCat_Oil deleteAt _forEachIndex;
+		};
+	} forEach Server_JobWildCat_Oil;
 	publicVariable "Server_JobWildCat_Oil";
-	
+
 },true] call Server_Setup_Compile;
 
-//Randomizes the resources around the map
-["Server_JobWildcat_RandomizeRes", 
+["Server_JobWildcat_CreateResFromMap", 
 {
-	private ["_minArea","_maxArea","_minOres","_maxOres","_areas","_arr","_name"];
-	Server_JobWildCat_Res = [];
-	{
-		private ["_areas"];
-		_name = _x select 0; //resource name
-		_minArea = _x select 1;
-		_maxArea = _x select 2;
-		_minOres = _x select 3;
-		_maxOres = _x select 4;
-		_areas = round (_minArea + (random (_maxArea-_minArea)));
-		for "_i" from 0 to _areas do
-		{
-			private ["_randPos","_overWater"];
-			
-			_randPos = ["OilSpawnArea"] call CBA_fnc_randPosArea;
-			_overWater = !(_randPos isFlatEmpty  [-1, -1, -1, -1, 2, false] isEqualTo []);
-			while {_overWater} do
-			{
-				_randPos = ["OilSpawnArea"] call CBA_fnc_randPosArea;
-				_overWater = !(_randPos isFlatEmpty  [-1, -1, -1, -1, 2, false] isEqualTo []);
-			};
-			
-			//ore amounts
-			_arr = [_name,_randPos,round(_minOres + (random (_maxOres-_minOres)))];
-			
-			Server_JobWildCat_Res pushback _arr;
-		};	
-	} foreach Config_Resources_Ores;
-	
+	_type = param[0,""];
+	_pos = param[1,[0,0,0]];
+	Server_JobWildCat_Res pushback [_type, _pos, 25, diag_tickTime + 1800];
 	publicVariable "Server_JobWildCat_Res";
+},true] call Server_Setup_Compile;
+
+["Server_JobWildcat_CreateOilFromMap", 
+{
+	_pos = param[0,[0,0,0]];
+	Server_JobWildCat_Oil pushback [_pos, 250, diag_tickTime + 1800];
+	publicVariable "Server_JobWildCat_Oil";
 },true] call Server_Setup_Compile;
 
 ["Server_JobWildCat_SpawnRes",

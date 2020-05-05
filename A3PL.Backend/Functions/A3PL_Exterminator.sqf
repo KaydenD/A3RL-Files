@@ -24,8 +24,10 @@
 	["System: Welcome to The Great Ratsby!",Color_Green] call A3PL_Player_Notification;
 	["System: Go take your truck and check the map for your destination, take care of the pest and you will be rewarded!",Color_Green] call A3PL_Player_Notification;
 
-	player addUniform "A3PL_Exterminator_Uniform";
-	player addgoggles "A3PL_FD_Mask";
+	//player addUniform "A3PL_Exterminator_Uniform";
+	["A3PL_Exterminator_Uniform"] call A3PL_Lib_ChangeUniformSafe;
+	//player addgoggles "A3PL_FD_Mask";
+	["A3PL_FD_Mask"] call A3PL_Lib_ChangeGoggles;
 	_mask = createVehicle ["A3PL_FD_Mask_Obj", getpos player, [], 0, "CAN_COLLIDE"];
 	_mask attachto [player,[-0.12,-0.15,-0.73],"RightHand"];
 	player playaction "gesture_maskon";

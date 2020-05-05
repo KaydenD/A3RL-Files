@@ -556,6 +556,8 @@ Config_Shops_Items =
             ["vehicle","A3PL_Tahoe_FD",25000,0],
 			["vehicle","A3PL_Tahoe_PD",25000,0],
 			["vehicle","A3PL_Charger_PD",25000,0],
+			["vehicle","A3PL_Silverado_PD",25000,0],
+			["vehicle","A3PL_Mustang_PD",35000,0],
             ["vehicle","A3PL_Pierce_Ladder",35000,0],
             ["vehicle","A3PL_Pierce_Heavy_Ladder",35000,0],
             ["vehicle","A3PL_Pierce_Pumper",35000,0]
@@ -640,16 +642,25 @@ Config_Shops_Items =
             ["weapon","hgun_Rook40_F",500,0],
 			["weapon","hgun_ACPC2_F",500,0],
 			["weapon","RH_p226",500,0],
+			["weapon","RH_g17",500,0],
+			
+			
 
             ["magazine","A3PL_TaserMag",50,0],
             ["magazine","16Rnd_9x21_Mag",50,0],
             ["magazine","9Rnd_45ACP_Mag",50,0],
 			["magazine","RH_15Rnd_9x19_SIG",50,0],
+			["magazine","RH_17Rnd_9x19_g17",50,0],
+
 
             ["item","handcuffs",15,0],
             ["item","stinger",15,0],
             ["item","roadcones",100,0],
 			["item","wood_barrier",200,0],
+			["item","med_icepack",15,0],
+            ["item","med_bandage",15,0],
+            ["item","med_splint",15,0],
+            ["item","med_painkillers",15,0],
 			["item","plastic_barrier_small",200,0],
 			["item","plastic_barrier_large",200,0],
 			["aitem","Rangefinder",1000,0],
@@ -767,11 +778,17 @@ Config_Shops_Items =
 			["weapon","hgun_P07_F",500,0],
 			["weapon","hgun_Rook40_F",500,0],
 			["weapon","RH_p226",500,0],
+			["weapon","RH_g17",500,0],
             ["magazine","A3PL_TaserMag",100,0],
             ["magazine","16Rnd_9x21_Mag",50,0],
 			["magazine","RH_15Rnd_9x19_SIG",50,0],
+			["magazine","RH_17Rnd_9x19_g17",50,0],
             ["aitem","Rangefinder",1000,0],
             ["item","handcuffs",15,0],
+			["item","med_icepack",15,0],
+            ["item","med_bandage",15,0],
+            ["item","med_splint",15,0],
+            ["item","med_painkillers",15,0],
             ["item","stinger",15,0],
 			["item","wood_barrier",200,0],
 			["item","plastic_barrier_small",200,0],
@@ -856,9 +873,15 @@ Config_Shops_Items =
             ["magazine","16Rnd_9x21_Mag",50,0],
 			["weapon","RH_p226",100,0],
 			["magazine","RH_15Rnd_9x19_SIG",50,0],
+			["weapon","RH_g17",500,0],
+			["magazine","RH_17Rnd_9x19_g17",50,0],
             ["weaponPrimary","srifle_LRR_SOS_F",100,0],
             ["magazine","7Rnd_408_Mag",50,0],
             ["item","handcuffs",15,0],
+			["item","med_icepack",15,0],
+            ["item","med_bandage",15,0],
+            ["item","med_splint",15,0],
+            ["item","med_painkillers",15,0],
 			["item","roadcones",100,0],
 			["item","wood_barrier",200,0],
 			["item","plastic_barrier_small",200,0],
@@ -957,7 +980,10 @@ Config_Shops_Items =
 				["item","Blueprint_Pistol_Ammo_Illegal",3000,0],
 				["item","v_lockpick",3000,0],
 				["item","shrooms",999999,100],
-				["item","zipties",10000,0]
+				["item","zipties",10000,0],
+				["item","drill_bit",30000,0],
+            	["backpack","A3PL_Backpack_Drill",40000,0],
+            	["backpack","A3PL_Backpack_Money",20000,0]
 		],
 		{[11008.7,8362.2,0.2]}
 	],
@@ -1197,6 +1223,14 @@ Config_Shops_Items =
 			["uniform","U_O_Protagonist_VR",0,0]
 		],
 		{[2628.91,5604.64,0.1]}
+	],
+	[
+		"Rental_Uhaul",
+		[
+			["vehicle","A3PL_P362_TowTruck",1500,0],
+			["vehicle","A3PL_MiniExcavator",15000,0]
+		],
+		{[7304.04,11613.3,1]}
 	]
 ];
 publicVariable "Config_Shops_Items";

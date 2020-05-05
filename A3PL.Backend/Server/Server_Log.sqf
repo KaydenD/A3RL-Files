@@ -16,7 +16,7 @@
 	{
 		{
 			if(_dataString == "") then {
-				_dataString = _X;
+				_dataString = format["%1",_x];
 			} else {
 				_dataString = format["%1:%2",_dataString,_x];
 			};
@@ -44,7 +44,7 @@
 
 	{
 		if(_dataString == "") then {
-			_dataString = _X;
+			_dataString = format["%1",_x];
 		} else {
 			_dataString = format["%1:%2",_dataString,_x];
 		};
@@ -67,7 +67,7 @@
 
 	{
 		if(_dataString == "") then {
-			_dataString = _X;
+			_dataString = format["%1",_x];
 		} else {
 			_dataString = format["%1:%2",_dataString,_x];
 		};

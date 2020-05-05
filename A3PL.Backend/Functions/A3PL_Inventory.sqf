@@ -120,9 +120,8 @@
 	if (count _itemToAdd > 0) then
 	{
 		{
-			if(!((_x select 0) IN ["ME_Bucket","ME_Jackhammer","ME_Claw"])) then {
-				_inventory = [_inventory, (_x select 0), (_x select 1), true] call BIS_fnc_addToPairs; //last param set to true to prevent overwriting of original variable
-			};
+			if(((_x select 0) IN ["ME_Bucket","ME_Jackhammer","ME_Claw"])) exitWith {_inventory = [_inventory, (_x select 0), -999, true] call BIS_fnc_addToPairs;};
+			_inventory = [_inventory, (_x select 0), (_x select 1), true] call BIS_fnc_addToPairs; //last param set to true to prevent overwriting of original variable
 		} foreach _itemToAdd;
 	};
 
@@ -234,6 +233,7 @@
 	private ['_selection', '_classname', '_itemClass', '_itemDir', '_canUse', '_format',"_display","_attach", "_needsWeaponHolder"];
 
 	_className = param [0,""];
+	_patdown = param [1, false];
 
 	if (_className == "") then
 	{
@@ -270,7 +270,7 @@
 		["System: You cannot take items out of your inventory when inside a vehicle", Color_Red] call A3PL_Player_Notification;
 	};
 
-	if (animationState player IN ["a3pl_handsuptokneel","a3pl_handsupkneelgetcuffed","a3pl_cuff","a3pl_handsupkneelcuffed","a3pl_handsupkneelkicked","a3pl_cuffkickdown","a3pl_idletohandsup","a3pl_kneeltohandsup","a3pl_handsuptokneel","a3pl_handsupkneel"]) exitWith
+	if (!_patdown && animationState player IN ["a3pl_handsuptokneel","a3pl_handsupkneelgetcuffed","a3pl_cuff","a3pl_handsupkneelcuffed","a3pl_handsupkneelkicked","a3pl_cuffkickdown","a3pl_idletohandsup","a3pl_kneeltohandsup","a3pl_handsuptokneel","a3pl_handsupkneel"]) exitWith
 	{
 		["System: You cannot take items out of your inventory when handcuffed/surrendered", Color_Red] call A3PL_Player_Notification;
 	};
@@ -303,6 +303,15 @@
 		Player_Item setDamage 1;
 	};
 
+	//set name
+	Player_ItemClass = _classname;
+
+	if(_patdown) exitWith 
+	{	
+		_amount = [(player getVariable ["Player_Inventory",[]]), _classname, 0] call BIS_fnc_getFromPairs;
+		[true, _amount, true] call A3PL_Inventory_Drop;
+	};
+
 	//attach item to player's hand
 	if (_classname == "popcornbucket") then
 	{
@@ -320,9 +329,6 @@
 
 	//set item dir in hand
 	Player_Item setDir _itemDir;
-
-	//set name
-	Player_ItemClass = _classname;
 
 	//close inventory dialog
 	if (!isNil "_display") then
@@ -372,6 +378,7 @@
 	private ["_itemClass", "_obj", "_format","_setpos","_amount"];
 	_setpos = param [0,true];
 	_amount = param [1,1];
+	_patdown = param [2, false];
 	_itemClass = Player_ItemClass;
 	_obj = Player_Item;
 	_droppedItems = server getVariable 'droppedObjects';
@@ -388,10 +395,12 @@
 		["System: You are currently eating something and cannot perform this action",Color_Red] call A3PL_Player_Notification;
 	};
 
-	//play animation
-	if (!(animationState player IN ["crew"])) then
-	{
-		player playMove 'AmovPercMstpSnonWnonDnon_AinvPercMstpSnonWnonDnon_Putdown';
+	if(!_patdown) then {
+		//play animation
+		if (!(animationState player IN ["crew"])) then
+		{
+			player playMove 'AmovPercMstpSnonWnonDnon_AinvPercMstpSnonWnonDnon_Putdown';
+		};
 	};
 
 	//change position
@@ -416,8 +425,10 @@
 		default {[[player,_obj,_itemClass,_amount], "Server_Inventory_Drop", false] call BIS_fnc_MP;};
 	};
 
-	_format = format["You dropped a %1.", [_itemClass, 'name'] call A3PL_Config_GetItem];
-	[_format, Color_Green] call A3PL_Player_Notification;
+	if(!_patdown) then {
+		_format = format["You dropped a %1.", [_itemClass, 'name'] call A3PL_Config_GetItem];
+		[_format, Color_Green] call A3PL_Player_Notification;
+	};
 }] call Server_Setup_Compile;
 
 //Pickup items from ground
@@ -625,4 +636,17 @@
 
 	//close inventory dialog
 	[0] call A3PL_Lib_CloseDialog;
+}] call Server_Setup_Compile;
+
+["A3RL_Inventory_ItemName", {
+	_item = _this select 0;
+	_return = "";
+
+	{
+		if((_x select 0) == _item) exitWith {
+			_return = _x select 1;
+		};
+	} forEach Config_Items;
+
+	_return;
 }] call Server_Setup_Compile;

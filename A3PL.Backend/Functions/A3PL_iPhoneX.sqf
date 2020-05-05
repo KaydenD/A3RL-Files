@@ -146,7 +146,7 @@
 
 	[_uid, _phoneNumber, _type] remoteExec ["Server_iPhoneX_AddPhoneNumber",2];
 
-	["Activation of the subscription...",Color_Orange] call A3PL_Player_Notification;
+	["Activating the subscription...",Color_Orange] call A3PL_Player_Notification;
 	uiSleep 5;
 
 	[player] remoteExec ["Server_iPhoneX_getPhoneNumber",2];
@@ -198,7 +198,7 @@
 
 	[_uid, _phoneNumber, _type] remoteExec ["Server_iPhoneX_addPhoneNumber",2];
 
-	["Activation of the subscription...",Color_Orange] call A3PL_Player_Notification;
+	["Activating the subscription...",Color_Orange] call A3PL_Player_Notification;
 	uiSleep 5;
 
 	[player] remoteExec ["Server_iPhoneX_getPhoneNumber",2];
@@ -248,7 +248,7 @@
 
 	[_uid, _phoneNumber, _type] remoteExec ["Server_iPhoneX_addPhoneNumber",2];
 
-	["Activation of the subscription...",Color_Orange] call A3PL_Player_Notification;
+	["Activating the subscription...",Color_Orange] call A3PL_Player_Notification;
 	uiSleep 5;
 
 	[player] remoteExec ["Server_iPhoneX_getPhoneNumber",2];
@@ -378,6 +378,7 @@
 
 	_callSettings = player getVariable ["A3PL_iPhoneX_CallSettings", ""];
 
+
 	if !(isNil "_callSettings") then
 	{
 		if !(_callSettings isEqualTo []) then
@@ -392,22 +393,75 @@
 			_iPhone_X_phoneNumber ctrlSetText _phoneNumberContact;
 
 			_phoneNumberSendCall = player getVariable ["A3PL_iPhoneX_PhoneNumberSendCall",""];
-
-			if ((_callSettings select 0) isEqualTo "1") then {ctrlShow [97667,true]; ctrlShow [97663,true]; buttonSetAction [97663, "_sound = player getVariable [""A3PL_iPhoneX_SoundCall"",""""]; if !(_sound isEqualTo []) then {deleteVehicle _sound;}; playSound3D [""A3PL_Common\GUI\phone\sounds\endcall_sound.ogg"", player, false, getPosASL player, 20, 1, 5]; [] spawn A3PL_iPhoneX_EndCall; _phoneNumberContact = player getVariable [""A3PL_iPhoneX_PhoneNumberReceiveCall"",""""]; _exists = [A3PL_iPhoneX_ListNumberClient, _phoneNumberContact] call BIS_fnc_findNestedElement; if (!(_exists isEqualTo [])) then {[] remoteExec [""A3PL_iPhoneX_EndCall"", ((A3PL_iPhoneX_ListNumberClient select (_exists select 0)) select 1)]};"]; _iPhone_X_informations ctrlSetText (_callSettings select 2)};
-			if ((_callSettings select 0) isEqualTo "2") then {ctrlShow [97675,true]; ctrlShow [97676,true]; ctrlShow [97677,true]; ctrlShow [97678,true]; buttonSetAction [97676, "[] spawn A3PL_iPhoneX_StartCall; _phoneNumberSendCall = player getVariable [""A3PL_iPhoneX_PhoneNumberSendCall"",""""]; _exists = [A3PL_iPhoneX_ListNumberClient, _phoneNumberSendCall] call BIS_fnc_findNestedElement; if (!(_exists isEqualTo [])) then {[] remoteExec [""A3PL_iPhoneX_StartCall"", ((A3PL_iPhoneX_ListNumberClient select (_exists select 0)) select 1)]};"]; buttonSetAction [97678, "_sound = player getVariable [""A3PL_iPhoneX_SoundCall"",""""]; if !(_sound isEqualTo []) then {deleteVehicle _sound;}; playSound3D [""A3PL_Common\GUI\phone\sounds\endcall_sound.ogg"", player, false, getPosASL player, 20, 1, 5]; [] spawn A3PL_iPhoneX_EndCall; _phoneNumberSendCall = player getVariable [""A3PL_iPhoneX_PhoneNumberSendCall"",""""]; _exists = [A3PL_iPhoneX_ListNumberClient, _phoneNumberSendCall] call BIS_fnc_findNestedElement; if (!(_exists isEqualTo [])) then {[] remoteExec [""A3PL_iPhoneX_StartCall"", ((A3PL_iPhoneX_ListNumberClient select (_exists select 0)) select 1)]};"];};
-			if ((_callSettings select 0) isEqualTo "3") then {ctrlShow [97667,true]; ctrlShow [97663,true]; ctrlShow [97668,true]; ctrlShow [97664,true]; ctrlShow [97669,true]; ctrlShow [97665,true]; ctrlShow [97671,true]; ctrlShow [97672,true]; ctrlShow [97673,true]; ctrlShow [97674,true];
-			if (A3PL_phoneNumberActive isEqualTo _phoneNumberSendCall) then {
-				buttonSetAction [97663, "[] spawn A3PL_iPhoneX_EndCall; _phoneNumberContact = player getVariable [""A3PL_iPhoneX_PhoneNumberReceiveCall"",""""]; _exists = [A3PL_iPhoneX_ListNumberClient, _phoneNumberContact] call BIS_fnc_findNestedElement; if (!(_exists isEqualTo [])) then {[] remoteExec [""A3PL_iPhoneX_EndCall"", ((A3PL_iPhoneX_ListNumberClient select (_exists select 0)) select 1)]};"];
-			} else {
-				buttonSetAction [97663, "[] spawn A3PL_iPhoneX_EndCall; _phoneNumberSendCall = player getVariable [""A3PL_iPhoneX_PhoneNumberSendCall"",""""]; _exists = [A3PL_iPhoneX_ListNumberClient, _phoneNumberSendCall] call BIS_fnc_findNestedElement; if (!(_exists isEqualTo [])) then {[] remoteExec [""A3PL_iPhoneX_EndCall"", ((A3PL_iPhoneX_ListNumberClient select (_exists select 0)) select 1)]};"];
+			//Send call
+			if ((_callSettings select 0) isEqualTo "1") then {
+				ctrlShow [97667,true]; 
+				ctrlShow [97663,true]; 
+				buttonSetAction [97663, "
+					_sound = player getVariable [""A3PL_iPhoneX_SoundCall"",""""]; 
+					if !(_sound isEqualTo []) then {
+						deleteVehicle _sound;
+					};
+					playSound3D [""A3PL_Common\GUI\phone\sounds\endcall_sound.ogg"", player, false, getPosASL player, 20, 1, 5]; 
+					[] spawn A3PL_iPhoneX_EndCall; 
+					_phoneNumberContact = player getVariable [""A3PL_iPhoneX_PhoneNumberReceiveCall"",""""]; 
+					_exists = [A3PL_iPhoneX_ListNumberClient, _phoneNumberContact] call BIS_fnc_findNestedElement; 
+					if (!(_exists isEqualTo [])) then {
+						[] remoteExec [""A3PL_iPhoneX_EndCall"", ((A3PL_iPhoneX_ListNumberClient select (_exists select 0)) select 1)]
+					};
+				"]; 
+				_iPhone_X_informations ctrlSetText (_callSettings select 2)
 			};
+			if ((_callSettings select 0) isEqualTo "2") then {
+				ctrlShow [97675,true]; 
+				ctrlShow [97676,true]; 
+				ctrlShow [97677,true]; 
+				ctrlShow [97678,true]; 
+				//Accept call?
+				buttonSetAction [97676, "
+					[] spawn A3PL_iPhoneX_StartCall; 
+					_phoneNumberSendCall = player getVariable [""A3PL_iPhoneX_PhoneNumberSendCall"",""""]; 
+					_exists = [A3PL_iPhoneX_ListNumberClient, _phoneNumberSendCall] call BIS_fnc_findNestedElement; 
+					if (!(_exists isEqualTo [])) then {
+						[] remoteExec [""A3PL_iPhoneX_StartCall"", ((A3PL_iPhoneX_ListNumberClient select (_exists select 0)) select 1)]
+					};
+				"];
+				//Decline call?
+				buttonSetAction [97678, "
+					_sound = player getVariable [""A3PL_iPhoneX_SoundCall"",""""]; 
+					if !(_sound isEqualTo []) then {deleteVehicle _sound;}; 
+					playSound3D [""A3PL_Common\GUI\phone\sounds\endcall_sound.ogg"", player, false, getPosASL player, 20, 1, 5]; 
+					[] spawn A3PL_iPhoneX_EndCall; 
+					_phoneNumberSendCall = player getVariable [""A3PL_iPhoneX_PhoneNumberSendCall"",""""]; 
+					_exists = [A3PL_iPhoneX_ListNumberClient, _phoneNumberSendCall] call BIS_fnc_findNestedElement; 
+					if (!(_exists isEqualTo [])) then {
+						 [] remoteExec [""A3PL_iPhoneX_StartCall"", ((A3PL_iPhoneX_ListNumberClient select (_exists select 0)) select 1)]
+					};"
+				];
+			};
+			//Active call
+			if ((_callSettings select 0) isEqualTo "3") then {
+				ctrlShow [97667,true]; 
+				ctrlShow [97663,true]; 
+				ctrlShow [97668,true]; 
+				ctrlShow [97664,true]; 
+				ctrlShow [97669,true]; 
+				ctrlShow [97665,true]; 
+				ctrlShow [97671,true]; 
+				ctrlShow [97672,true]; 
+				ctrlShow [97673,true]; 
+				ctrlShow [97674,true];
+				if (A3PL_phoneNumberActive isEqualTo _phoneNumberSendCall) then {
+					buttonSetAction [97663, "[] spawn A3PL_iPhoneX_EndCall; _phoneNumberContact = player getVariable [""A3PL_iPhoneX_PhoneNumberReceiveCall"",""""]; _exists = [A3PL_iPhoneX_ListNumberClient, _phoneNumberContact] call BIS_fnc_findNestedElement; if (!(_exists isEqualTo [])) then {[] remoteExec [""A3PL_iPhoneX_EndCall"", ((A3PL_iPhoneX_ListNumberClient select (_exists select 0)) select 1)]};"];
+				} else {
+					buttonSetAction [97663, "[] spawn A3PL_iPhoneX_EndCall; _phoneNumberSendCall = player getVariable [""A3PL_iPhoneX_PhoneNumberSendCall"",""""]; _exists = [A3PL_iPhoneX_ListNumberClient, _phoneNumberSendCall] call BIS_fnc_findNestedElement; if (!(_exists isEqualTo [])) then {[] remoteExec [""A3PL_iPhoneX_EndCall"", ((A3PL_iPhoneX_ListNumberClient select (_exists select 0)) select 1)]};"];
+				};
 
 				_iPhone_X_informations ctrlSetText (_callSettings select 2);
 
-				_hour = _callSettings select 3;
-				_minute = _callSettings select 4;
-				_second = _callSettings select 5;
-
+				_hour = _callSettings param[3,0];
+				_minute = _callSettings param[4,0];
+				_second = _callSettings param[5,0];
 				while {A3PL_phoneInCall} do
 				{
 					_time = format["%1:%2:%3", if (_hour < 10) then {"0" + (str _hour)} else {_hour}, if (_minute < 10) then {"0" + (str _minute)} else {_minute}, if (_second < 10) then {"0" + (str _second)} else {_second}];
@@ -732,6 +786,10 @@
 
 	_background_iPhone_X_background ctrlSetText "A3PL_Common\GUI\phone\iPhone_X_appSettings.paa";
 	_iPhone_X_clock_home ctrlSetTextColor [0,0,0,1];
+
+	sliderSetRange [1900, 3.125, 50];
+	sliderSetPosition [1900,getTerrainGrid];
+	(_display displayCtrl 1900) ctrlAddEventHandler ["SliderPosChanged","setTerrainGrid (param [1,getTerrainGrid]);"];
 }] call Server_Setup_Compile;
 
 ["A3PL_iPhoneX_AppSIM",
@@ -1287,7 +1345,6 @@
 	_display = findDisplay 97000;
 
 	_iPhone_X_informations = _display displayCtrl 97670;
-
 	_sound = player getVariable ["A3PL_iPhoneX_SoundCall",""];
 	if !(_sound isEqualTo []) then {deleteVehicle _sound;};
 	_phoneNumberSendCall = player getVariable ["A3PL_iPhoneX_PhoneNumberSendCall",""];
@@ -1457,7 +1514,7 @@
 
 	_display = findDisplay 97000;
 	ctrlShow [97002, true];
-	_ctrl = [97005,97501,97502,97503,97504,97505,97506,97507,97508,97509,97510,97512,97513,97515,97517,97115,97800,97801,97805,98122,98133,98144,98155,98166,98177,98188,98199,98210,98220,98230,98240,98260,98270,98280,98290,99714,99715,99716,97720,99719,99718,99721,99722,97519,10515,10616,10617,10618,10719,10720,10721];
+	_ctrl = [97005,97501,97502,97503,97504,97505,97506,97507,97508,97509,97510,97512,97513,97515,97517,97115,97800,97801,97805,98122,98133,98144,98155,98166,98177,98188,98199,98210,98220,98230,98240,98260,98270,98280,98290,99714,99715,99716,97720,99719,99718,99721,99722,97519,10515,10616,10617,10618,10719,10720,10721,97580];
 	{(_display displayCtrl _x) ctrlShow false;} forEach _ctrl;
 
 	_background_iPhone_X_base = _display displayCtrl 97001;
@@ -1493,30 +1550,27 @@
 		(findDisplay 97000) displayRemoveEventHandler ["KeyDown", noesckey];
 	};
 
-	_ctrl2 = [97004,97006,97007,97008,97009,97010,97011,97012,97016,97106,97107,97108,97109,97110,97111,97112,97117,97500];
+	_ctrl2 = [97004,97006,97007,97008,97009,97010,97011,97012,97013,97016,97106,97107,97108,97109,97110,97111,97112,97113,97117,97500];
 	{
 		(_display displayCtrl _x) ctrlShow true;
 	} forEach _ctrl2;
 
 	if ((player getVariable ["job","unemployed"]) IN ["dispatch"]) then
 	{
-		ctrlShow [97013,true];
-		ctrlShow [97113,true];
 		ctrlShow [97014,true];
 		ctrlShow [97015,true];
 	};
 
 	_background_iPhone_X_background ctrlSetText format[_wallpaperActive, (A3PL_settings select 0)];
-	_iPhone_X_clock_home ctrlSetTextColor [1,1,1,1];
+	_iPhone_X_clock_home ctrlSetTextColor [0,0,0,1];
 
 	player setVariable ["iPhone_X_lastSMS", []];
 }] call Server_Setup_Compile;
 
-["A3PL_iPhoneX_ListNumber",
+["A3PL_iPhoneX_ListNumberReceive",
 {
 	private ["_listNumberClient"];
 	_listNumberClient = [_this,0,[],[[]]] call BIS_fnc_param;
-
 	if (_listNumberClient isEqualTo [[]]) then {_listNumberClient = [];};
 
 	A3PL_iPhoneX_ListNumberClient = _listNumberClient;
@@ -1811,7 +1865,7 @@
 
 	if (!isNull (findDisplay 97000)) then {[] spawn A3PL_iPhoneX_AppCall};
 
-	["Un individu essai de vous joindre sur votre téléphone",Color_Yellow] call A3PL_Player_Notification;
+	["Your getting a phone call",Color_Yellow] call A3PL_Player_Notification;
 }] call Server_Setup_Compile;
 
 ["A3PL_iPhoneX_ReceiveCallSwitchboard",
@@ -1925,6 +1979,7 @@
 			} count (player getVariable ["iPhoneX_PhoneConversations", []]);
 		} else {
 			[player, _from, _message] remoteExec ["Server_iPhoneX_SaveLastSMS", 2];
+			A3PL_conversations set [_exists select 0, [_nameContact, _from, _message]];
 		};
 
 		if (_to isEqualTo A3PL_phoneNumberActive) then
@@ -1970,7 +2025,7 @@
 
 			if ((A3PL_settings select 2) isEqualTo 0) then {playSound3D ["A3PL_Common\GUI\phone\sounds\notification_sound.ogg", player, false, getPosASL player, 20, 1, 5];};
 
-			["You receive a SMS",Color_Yellow] call A3PL_Player_Notification;
+			["You received a SMS",Color_Yellow] call A3PL_Player_Notification;
 			playSound3D ["A3PL_Common\GUI\phone\sounds\notification_sound.ogg", player, false, getPosASL player, 20, 1, 5];
 		};
 	};
@@ -1983,11 +2038,6 @@
 
 	_phoneNumberContact = _this select 0;
 
-	_display = findDisplay 97000;
-
-	_iPhone_X_phoneNumber = _display displayCtrl 97661;
-	_iPhone_X_informations = _display displayCtrl 97670;
-
 	_error = false;
 
 	if (_phoneNumberContact in ["Number", ""]) exitWith {hint "Number invalid.";};
@@ -1998,10 +2048,6 @@
 
 	if (_error) exitWith {["You can not call this number",Color_Red] call A3PL_Player_Notification; _error = false;};
 
-	[] spawn A3PL_iPhoneX_AppCall;
-
-	_iPhone_X_phoneNumber ctrlSetText _phoneNumberContact;
-	_iPhone_X_informations ctrlSetText "Call in progress...";
 
 	player setVariable ["A3PL_iPhoneX_PhoneNumberSendCall", []];
 	player setVariable ["A3PL_iPhoneX_PhoneNumberReceiveCall", []];
@@ -2010,7 +2056,14 @@
 	A3PL_phoneCallOn = false;
 	A3PL_phoneInCall = false;
 
-	_error = false;
+	player setVariable ["A3PL_iPhoneX_CallSettings", ["1", _phoneNumberContact]];
+	[] spawn A3PL_iPhoneX_AppCall;
+	
+	_display = findDisplay 97000;
+	_iPhone_X_phoneNumber = _display displayCtrl 97661;
+	_iPhone_X_informations = _display displayCtrl 97670;
+	_iPhone_X_phoneNumber ctrlSetText _phoneNumberContact;
+	_iPhone_X_informations ctrlSetText "Call in progress...";
 
 	if ((_phoneNumberContact isEqualTo "911")) then
 	{
@@ -2024,7 +2077,6 @@
 		buttonSetAction [97663, "_sound = player getVariable [""A3PL_iPhoneX_SoundCall"",[]];if !(_sound isEqualTo []) then {deleteVehicle _sound;}; playSound3D [""A3PL_Common\GUI\phone\sounds\endcall_sound.ogg"", player, false, getPosASL player, 20, 1, 5];[] spawn A3PL_iPhoneX_EndCall;_fd = [""fifr""] call A3PL_Lib_FactionPlayers;_cops = [""dispatch""] call A3PL_Lib_FactionPlayers;{[A3PL_phoneNumberActive] remoteExec [""A3PL_iPhoneX_EndCallSwitchboard"", _x];} foreach _cops;{[A3PL_phoneNumberActive] remoteExec [""A3PL_iPhoneX_EndCallSwitchboard"", _x];} foreach _fd;"];
 	} else {
 		[player] remoteExec ["Server_iPhoneX_GetListNumber",2];
-
 		waitUntil {!(isNil "A3PL_iPhoneX_ListNumberClient")};
 		waitUntil {!(A3PL_iPhoneX_ListNumberClient isEqualTo [])};
 
@@ -2553,4 +2605,72 @@
 
 	if (_result isEqualTo [[]]) then {_result = [];};
 	A3PL_switchboard = _result;
+}] call Server_Setup_Compile;
+
+["A3PL_iPhoneX_DeleteContact",
+{
+	private _number = ctrlText 97610;
+	[player,_number] remoteExec ["Server_iPhoneX_DeleteContact",2];
+	[] spawn {
+		uiSleep 0.5;
+		[] call A3PL_iPhoneX_AppContactsList;
+	};
+}] call Server_Setup_Compile;
+
+["A3RL_iPhoneX_appBank",{
+	disableSerialization;
+	_display = findDisplay 97000;
+	_ctrl = [97004,97006,97007,97008,97009,97010,97011,97012,97013,97014,97015,97016,97106,97107,97108,97109,97110,97111,97112,97113,97117,97503,97504,99714,99715,99716,99719,99718,99721,97720];
+	{
+		(_display displayCtrl _x) ctrlShow false;
+	} forEach _ctrl;
+	ctrlShow [97580,true];
+
+	_background_iPhone_X_background = _display displayCtrl 97002;
+	_iPhone_X_clock_home = _display displayCtrl 97500;
+	_background_iPhone_X_background ctrlSetText "A3PL_Common\GUI\phone\iPhone_X_appBank.paa";
+	_iPhone_X_clock_home ctrlSetTextColor [0,0,0,1];
+
+	_pBank = player getVariable["Player_Bank",0];
+	_control = _display displayCtrl 99400;
+	_control ctrlSetStructuredText parseText format ["<t align='center' size='1.3'>$%1</t>",[_pBank, 1, 0, true] call CBA_fnc_formatNumber];
+	_control = _display displayCtrl 99401;
+	_control ctrlSetText "Amount to send";
+	_control = _display displayCtrl 99402;
+	lbClear 99402;
+	{
+		_index = _control lbAdd format["%1", _x getVariable ["name","unknown"]];
+		_control lbSetData [_index, str _x];
+	} forEach (allPlayers - [player]);
+}] call Server_Setup_Compile;
+
+["A3RL_iPhoneX_bankSend",{
+	disableSerialization;
+	_display = findDisplay 97000;
+	_pBank = player getVariable["Player_Bank",0];
+	_cooldown = player getVariable["transferCooldown",nil];
+	if(!isNil '_cooldown') exitWith {["You can only transfer money every 10 minutes!", Color_Red] call A3PL_Player_Notification;};
+
+	_control = _display displayCtrl 99401;
+	_amount = round(parseNumber(ctrlText _control));
+	if(_amount < 1) exitWith {["Please enter a valid number", Color_Red] call A3PL_Player_Notification;};
+	if(_amount > _pBank) exitWith {["You cannot send more money than what's in your bank.", Color_Red] call A3PL_Player_Notification;};
+	if(_amount > 100000) exitWith {["You cannot send more than $100,000 per transfer", Color_Red] call A3PL_Player_Notification;};
+	_control = _display displayCtrl 99402;
+	_sendTo = _control lbData (lbCurSel _control);
+	if(_sendTo isEqualTo "") exitWith {["Please select a recipient.", Color_Red] call A3PL_Player_Notification;};
+	_sendToCompile = call compile _sendTo;
+
+	[getPlayerUID player,"bankAppTransfer",[str(_sendToCompile getVariable["name","unknown"]), str(_amount)]] remoteExec ["Server_Log_New",2];
+
+	[player, 'Player_Bank', ((player getVariable 'Player_Bank') - _amount)] remoteExec ["Server_Core_ChangeVar",2];
+	[format["You have transferred $%1 to %2's bank account", [_amount] call A3PL_Lib_FormatNumber, (_sendToCompile getVariable ["name","unknown"])], Color_Green] call A3PL_Player_Notification;
+	[_sendToCompile, 'Player_Bank', ((_sendToCompile getVariable 'Player_Bank') + _amount)] remoteExec ["Server_Core_ChangeVar",2];
+	[format["You received a bank transfer of $%1",_amount], Color_Green] remoteExec ["A3PL_Player_Notification",_sendToCompile];
+
+	player setVariable["transferCooldown",true,false];
+	[] spawn {
+		sleep 600;
+		player setVariable["transferCooldown",nil,false];
+	};
 }] call Server_Setup_Compile;

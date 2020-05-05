@@ -1021,6 +1021,14 @@
 
 [
 	"",
+	"U-Haul",
+	{
+		["Rental_Uhaul"] call A3RL_UHAUL_Open;
+	}
+],
+
+[
+	"",
 	"Rent a Tow Truck",
 	{
 		[] call A3RL_JobRoadWorker_RentTruck;
@@ -1057,5 +1065,29 @@
 	"Purchase Drivers License($500)",
 	{
 		[] call A3RL_License_Buy;
+	}
+], 
+
+[
+	"",
+	"Rob the port",
+	{
+		[player_objintersect] call A3RL_PortRobbery_Rob;
+	}
+],
+
+[
+	"",
+	"Rob Gas Station",
+	{
+		[player_objintersect] call A3RL_GasRobbery_Start;
+	}
+],
+
+[
+	"",
+	"Open Management System",
+	{
+		[player getVariable ["faction", "unemployed"]] call A3RL_FactionManagment_Open;
 	}
 ]

@@ -109,9 +109,19 @@
 		_ownerUID = _ownerID select 0;
 		_ownerID = _ownerID select 1;
 
-		//delete vehicle from database
-		_query = format ["DELETE FROM objects WHERE id=""%1""",_ownerID];
-		[_query,1] spawn Server_Database_Async;
+		if (_ownerID == "UHAUL") then {
+			_find = [A3RL_Server_Rented_Vehicles, _ownerUID] call BIS_fnc_findNestedElement;
+			if !(_find isEqualTo []) then {
+				if ((count ((A3RL_Server_Rented_Vehicles select (_find select 0)) select 1)) < 2) then {
+					A3RL_Server_Rented_Vehicles deleteAt (_find select 0);
+				} else {
+					_find2 = ((A3RL_Server_Rented_Vehicles select (_find select 0)) select 1) find (typeOf _veh);
+					if(_find2 > -1) then {
+						((A3RL_Server_Rented_Vehicles select (_find select 0)) select 1) deleteAt _find2;
+					};
+				};
+			};
+		};
 
 		if (_msg) then
 		{
@@ -129,6 +139,9 @@
 			};
 		};
 	};
+
+	uiSleep 600;
+
 	[_veh] call A3PL_Vehicle_SoundSourceClear;
 	_sirenObj = _veh getVariable ["sirenObj",objNull];
 
@@ -152,6 +165,8 @@
 	_pos = param [1,[]];
 	_id = param [2,-1];
 	_owner = param [3,objNull];
+	_dir = param [4,0];
+	_safe = param [5,false];
 
 	_initfunction = !isNil ('Server_Vehicle_Init_' + _class);
 
@@ -162,15 +177,17 @@
 
 	if (typename _pos == 'Object') then
 	{
-		_veh = createVehicle [_class, (getPos _pos), [], 0, 'CAN_COLLIDE'];
-		_veh allowDamage false;
-		_veh setDir (getDir _pos);
-		_veh setpos (getPos _pos);
-	} else
-	{
-		_veh = createVehicle [_class, _pos, [], 0, 'CAN_COLLIDE'];
-		_veh allowDamage false;
+		_dir = getDir _pos;
+		_pos = (getPos _pos);
 	};
+
+	if(_safe) then {
+		_veh = createVehicle [_class, _pos];
+	} else {
+		_veh = createVehicle [_class, _pos, [], 0, 'CAN_COLLIDE'];
+	};
+	_veh allowDamage false;
+	_veh setDir _dir;
 
 	if (isNull _veh) exitwith {diag_log "Server_Vehicle_Spawn Error: _veh isNull"};
 
@@ -197,6 +214,15 @@
 		_owner setVariable ["jobVehicle",_veh,true];
 	};
 
+	if(_id == "UHAUL") then {
+		_find = [A3RL_Server_Rented_Vehicles, getPlayerUID _owner] call BIS_fnc_findNestedElement;
+		if(_find isEqualTo []) then {
+			A3RL_Server_Rented_Vehicles pushBack [getPlayerUID _owner, [_class]];
+		} else {
+			((A3RL_Server_Rented_Vehicles select (_find select 0)) select 1) pushBack _class;
+		};
+	};
+
 	[_veh,_id] call Server_Vehicle_Init_General;
 
 
@@ -214,15 +240,36 @@
 
 },true] call Server_Setup_Compile;
 
+["Server_UHaul_GetRentedVehicles",
+{
+	_player = param [0,objNull];
+	[A3RL_Server_Rented_Vehicles] remoteExec ["A3RL_UHaul_RentedVeh_Return", _player];
+},true] call Server_Setup_Compile;
+
 //despawns a vehicle, delete all attached objects etc
 ["Server_Vehicle_Despawn",
 {
 	private ["_veh"];
 	_veh = param [0,objNull];
-
+	Server_Storage_ListVehicles = Server_Storage_ListVehicles - [_veh];
 	{
 		deleteVehicle _x;
 	} foreach (attachedObjects _veh);
+
+	_owner = _veh getVariable ["owner", nil];
+	if((!(isNil "_owner")) && {(_owner select 1) == "UHAUL"}) then {
+		_find = [A3RL_Server_Rented_Vehicles, _owner select 0] call BIS_fnc_findNestedElement;
+		if !(_find isEqualTo []) then {
+			if ((count ((A3RL_Server_Rented_Vehicles select (_find select 0)) select 1)) < 2) then {
+				A3RL_Server_Rented_Vehicles deleteAt (_find select 0);
+			} else {
+				_find2 = ((A3RL_Server_Rented_Vehicles select (_find select 0)) select 1) find (typeOf _veh);
+				if(_find2 > -1) then {
+					((A3RL_Server_Rented_Vehicles select (_find select 0)) select 1) deleteAt _find2;
+				};
+			};
+		};
+	};
 
 	deleteVehicle _veh;
 }] call Server_Setup_Compile; //this is global on purpose so that as a client we can use this same function (admin menu)
@@ -507,10 +554,10 @@
 
 ["Server_Vehicle_Init_C_Van_02_transport_F",
 {
-	_this setVariable [_door,true,true];
+	//_this setVariable [_door,true,true];
 	_this setObjectTextureGlobal [1, "\a3\Soft_F_Orange\Van_02\Data\van_wheel_transport_co.paa"];
 	_this setObjectTextureGlobal [2, "\a3\Soft_F_Orange\Van_02\Data\van_glass_civservice_ca.paa"];
-	_this call Server_Vehicle_Init_C_Van_02_transport_F;
+	//_this call Server_Vehicle_Init_C_Van_02_transport_F;
 },true] call Server_Setup_Compile;
 
 ["Server_Vehicle_Init_C_Heli_Light_01_civil_F",
@@ -560,7 +607,7 @@
 	_veh lock 2;
 
 	//killed eventhandler
-	_veh addEventHandler ["Killed",{[(_this select 0)] call Server_Vehicle_HandleDestroyed;}];
+	_veh addMPEventHandler  ["MPKilled",{if(isServer) then {[(_this select 0)] spawn Server_Vehicle_HandleDestroyed;};}];
 
 	if (_veh isKindOf "LandVehicle") then
 	{

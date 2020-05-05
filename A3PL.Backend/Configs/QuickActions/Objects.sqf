@@ -902,4 +902,44 @@
 	{
 		[player_objintersect] call A3PL_Hydrogen_LoadPetrolStation;
 	}
+],
+
+[
+	"",
+	"Play Slots",
+	{
+		[player_objintersect] spawn A3RL_Slots_Roll;
+	}
+],
+
+[
+	"",
+	"Set Bet",
+	{
+		[] spawn A3RL_Slots_OpenSetBet;
+	}
+],
+
+[
+	"Land_MetalCase_01_large_F",
+	"",
+	{
+		[player_objIntersect] spawn A3RL_HouseRob_Open;
+	}
+], 
+
+[
+	"",
+	"Lockpick Handcuffs",
+	{
+		[player_objintersect] spawn A3RL_PrisonBreak_Handcuffs;
+	}
+],
+
+[
+	"Land_GarbageBarrel_01_F",
+	"",
+	{
+		[] spawn A3RL_PrisonBreak_Search;
+	}
 ]

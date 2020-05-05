@@ -123,6 +123,8 @@
 	_control buttonSetAction "call A3PL_Garage_SetMaterial";
 	_control = _display displayCtrl 1606;
 	_control buttonSetAction "call A3PL_Garage_SetLicensePlate";
+	_control = _display displayCtrl 1607;
+	_control buttonSetAction format ["['%1'] call A3RL_Garage_RepairAll",_veh];
 
 	A3PL_Garage_Veh = _veh;
 	A3PL_Garage_Cam = _cam; //save in missionNamespace so we can reference it later
@@ -237,7 +239,7 @@
 	 switch (_response) do
 	 {
 		case (0): {["System: License plate already in use!",Color_Red] call A3PL_Player_Notification;};
-    case (1): {["System: License plate succesfully changed!",Color_Green] call A3PL_Player_Notification;};
+   		case (1): {["System: License plate succesfully changed!",Color_Green] call A3PL_Player_Notification;};
 		case (2): {["System: You recently changed the number plate of this vehicle!",Color_Red] call A3PL_Player_Notification;};
 		case (3): {["System: You do not have enough money to change the license plate of this vehicle!",Color_Red] call A3PL_Player_Notification;};
 	};
@@ -322,13 +324,25 @@
 	_veh setHit [_selHit,0];
 
 	//message
-	_title = [_selHit,"title"] call A3PL_Config_GetGarageRepair;
+	_title = [_selHit,"title"] call A3PL_Confi_gGetGarageRepair;
 	[format ["System: You repaired this component (%1)",_title],Color_Green] call A3PL_Player_Notification;
 
 	//update the damage text
 	_control = _display displayCtrl 1100;
 	_control ctrlSetStructuredText parseText format ["<t align='center' size ='1.4'> %1%2 </t>",0,"%"];
 }] call Server_Setup_Compile;
+
+["A3RL_Garage_RepairAll",
+{
+	private ["_veh"];
+	_veh = param [0,objNull];
+
+	if (typeName _veh == "STRING") then { _veh = [_veh] call A3PL_Lib_vehStringToObj; };
+
+	_veh setDamage 0;
+	["System: Your vehicle has been repaired",Color_Green] call A3PL_Player_Notification;
+}] call Server_Setup_Compile;
+
 ["A3PL_Garage_ColourSet",
 {
 	private ["_display","_control","_rSlider","_gSlider","_bSlider","_veh","_text","_texture"];
@@ -419,7 +433,7 @@
 	_gSlider = sliderPosition _control;
 	_control = _display displayCtrl 1902;
 	_bSlider = sliderPosition _control;
-	systemchat format ["RGB: %1 %2 %3",round(255 * _rSlider),round (255 * _gSlider),round (255 * _bSlider)];
+	//systemchat format ["RGB: %1 %2 %3",round(255 * _rSlider),round (255 * _gSlider),round (255 * _bSlider)];
 	_text = format ["#(argb,8,8,3)color(%1,%2,%3,1.0,CO)",_rSlider,_gSlider,_bSlider];
 	_veh setObjectTextureGlobal [0,_text];
 }] call Server_Setup_Compile;
@@ -537,7 +551,7 @@
 
 	//determine if upgrade is already installed
 	_isInstalled = [_veh,_id] call A3PL_Garage_isInstalled;
-	systemChat format ["%1",_forceInstall];
+	//systemChat format ["%1",_forceInstall];
 	switch (_upgradeType) do
 	{
 		case ("addon"):
@@ -787,10 +801,38 @@
 				{_vehicle lockCargo [_x, _blockCargo];} forEach _lockCargo;
 
 				[_vehicle, _phase] call compile (getText(configfile >> "CfgVehicles" >> _vehicleType >> "AnimationSources" >> _source >> "onPhaseChanged"));
-				
-				//Update in DB
-				[_vehicle,_addons] remoteExec ["Server_Garage_UpdateAddons",2];
 			};
+
+			if((_vehicle getVariable ["installedAddons", []]) isEqualTo []) then {
+				_vehicle setVariable ["installedAddons", _addons, true];
+			} else {
+				_newArr = _vehicle getVariable ["installedAddons", []];
+				_keys = [];
+				_values = [];
+				{
+					_keys pushBack (_x select 0);
+					_values pushBack (_x select 1);
+				} forEach _newArr;
+				_toPushback = [];
+				{
+					private["_x"];
+					_find = _keys find (_x select 0);
+					if(_find > -1) then {
+						//systemChat (format ["%1",_x]);
+						_newArr set [_find, [_x select 0, _x select 1]];
+					} else {
+						_toPushback pushBack _x;
+					};
+				} forEach _addons;
+
+				{
+					_newArr pushBack _x;
+				} forEach _toPushback;
+
+				_vehicle setVariable ["installedAddons", _newArr, true];
+			};
+			//Update in DB
+			[_vehicle,_vehicle getVariable ["installedAddons", []]] remoteExec ["Server_Garage_UpdateAddons",2];
 		};
 	};
 

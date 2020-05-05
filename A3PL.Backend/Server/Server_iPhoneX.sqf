@@ -184,7 +184,7 @@
 	_playerUID = getPlayerUID _unit;
 	if (_playerUID == "") exitWith {};
 
-	[A3PL_iPhoneX_ListNumber] remoteExec ["A3PL_iPhoneX_listNumber", _ownerID];
+	[A3PL_iPhoneX_ListNumber] remoteExec ["A3PL_iPhoneX_ListNumberReceive", _ownerID];
 }] call Server_Setup_Compile;
 
 ['Server_iPhoneX_GetPhoneNumber', 
@@ -199,7 +199,6 @@
 
 	_queryPrimary = format ["SELECT phone_number FROM iphone_phone_numbers WHERE player_id='%1' AND type_id='1'", _playerUID];
 	_resultPrimary = [_queryPrimary,2] call Server_Database_Async;
-
 	if !(_resultPrimary isEqualTo []) then
 	{
 		if (_resultPrimary isEqualType []) then {_resultPrimary = _resultPrimary select 0;};
@@ -208,7 +207,6 @@
 
 	_querySecondary = format ["SELECT phone_number FROM iphone_phone_numbers WHERE player_id='%1' AND type_id='2'", _playerUID];
 	_resultSecondary = [_querySecondary,2] call Server_Database_Async;
-
 	if !(_resultSecondary isEqualTo []) then
 	{
 		if (_resultSecondary isEqualType []) then {_resultSecondary = _resultSecondary select 0;};
@@ -217,7 +215,6 @@
 
 	_queryEnterprise = format ["SELECT phone_number FROM iphone_phone_numbers WHERE player_id='%1' AND type_id='3'", _playerUID];
 	_resultEnterprise = [_queryEnterprise,2] call Server_Database_Async;
-
 	if !(_resultEnterprise isEqualTo []) then
 	{
 		if (_resultEnterprise isEqualType []) then {_resultEnterprise = _resultEnterprise select 0;};
@@ -227,7 +224,6 @@
 
 	_queryActive = format ["SELECT phone_number_active FROM iphone_phone_numbers_active WHERE player_id='%1'", _playerUID];
 	_resultActive = [_queryActive,2] call Server_Database_Async;
-
 	if !(_resultActive isEqualTo []) then
 	{
 		if (_resultActive isEqualType []) then {_resultActive = _resultActive select 0;};
@@ -244,6 +240,7 @@
 
 	if !(_resultPrimary isEqualTo []) then
 	{
+		if(isNil"A3PL_iPhoneX_ListNumber") then {A3PL_iPhoneX_ListNumber = []};
 		_inList = ([A3PL_iPhoneX_ListNumber, _resultPrimary] call BIS_fnc_findNestedElement);
 		if (_inList isEqualTo []) then {
 			A3PL_iPhoneX_ListNumber pushBack [_resultPrimary, _ownerID];
@@ -251,14 +248,48 @@
 			A3PL_iPhoneX_ListNumber set [(_inList select 0), [_resultPrimary, _ownerID]];
 		};
 	};
-
 	if !(_resultSecondary isEqualTo []) then
 	{
+		if(isNil"A3PL_iPhoneX_ListNumber") then {A3PL_iPhoneX_ListNumber = []};
 		_inList = ([A3PL_iPhoneX_ListNumber, _resultSecondary] call BIS_fnc_findNestedElement);
 		if (_inList isEqualTo []) then {
 			A3PL_iPhoneX_ListNumber pushBack [_resultSecondary, _ownerID];
 		} else {
 			A3PL_iPhoneX_ListNumber set [(_inList select 0), [_resultSecondary, _ownerID]];
+		};
+	};
+}] call Server_Setup_Compile;
+
+['Server_iPhoneX_PlayerDisconnect', 
+{
+	_uid= param[0,""];
+	if (_uid == "") exitWith {};
+
+	_queryPrimary = format ["SELECT phone_number FROM iphone_phone_numbers WHERE player_id='%1' AND type_id='1'", _uid];
+	_resultPrimary = [_queryPrimary,2] call Server_Database_Async;
+	if !(_resultPrimary isEqualTo []) then
+	{
+		if (_resultPrimary isEqualType []) then {_resultPrimary = _resultPrimary select 0;};
+	};
+	_querySecondary = format ["SELECT phone_number FROM iphone_phone_numbers WHERE player_id='%1' AND type_id='2'", _uid];
+	_resultSecondary = [_querySecondary,2] call Server_Database_Async;
+	if !(_resultSecondary isEqualTo []) then
+	{
+		if (_resultSecondary isEqualType []) then {_resultSecondary = _resultSecondary select 0;};
+	};
+
+	if !(_resultPrimary isEqualTo []) then
+	{
+		_inList = ([A3PL_iPhoneX_ListNumber, _resultPrimary] call BIS_fnc_findNestedElement);
+		if !(_inList isEqualTo []) then {
+			A3PL_iPhoneX_ListNumber deleteAt (_inList select 0);
+		};
+	};
+	if !(_resultSecondary isEqualTo []) then
+	{
+		_inList = ([A3PL_iPhoneX_ListNumber, _resultSecondary] call BIS_fnc_findNestedElement);
+		if (_inList isEqualTo []) then {
+			A3PL_iPhoneX_ListNumber deleteAt (_inList select 0);
 		};
 	};
 }] call Server_Setup_Compile;

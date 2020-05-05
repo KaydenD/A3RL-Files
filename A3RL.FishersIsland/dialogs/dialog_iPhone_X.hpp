@@ -249,6 +249,30 @@ class iPhone_X
 			show = false;
 		};
 
+		class iPhone_Icon_appBank: Life_RscPicture
+		{
+			idc = 97013;
+			x = 0.773046878 * safezoneW + safezoneX;
+			y = 0.34541667 * safezoneH + safezoneY;
+			w = 0.0224609 * safezoneW;
+			h = 0.0399306 * safezoneH;
+			text = "A3PL_Common\GUI\phone\iPhone_X_icon_bank.paa";
+			show = false;
+		};
+		class iPhone_Button_appBank: Life_RscButtonMenu
+		{
+			idc = 97113;
+			x = 0.773046878 * safezoneW + safezoneX;
+			y = 0.34541667 * safezoneH + safezoneY;
+			w = 0.0224609 * safezoneW;
+			h = 0.0399306 * safezoneH;
+			action = "[] spawn A3RL_iPhoneX_appBank;";
+			colorBackground[] = {0,0,0,0};
+			colorBackground2[] = {0,0,0,0};
+			colorBackgroundFocused[] = {0,0,0,0};
+			show = false;
+		};
+
 		class iPhone_X_clock_home: Life_RscText
 		{
 			idc = 97500;
@@ -287,7 +311,7 @@ class iPhone_X
 			y = safeZoneY + safeZoneH * 0.42;
 			w = safeZoneW * 0.09532032;
 			h = safeZoneH * 0.04541667;
-			text = "Aucune SIM";
+			text = "No SIM";
 			sizeEx = 0.02 * safezoneW;
 			colorBackground[] = {0,0,0,0};
 			shadow = 0;
@@ -1245,6 +1269,15 @@ class iPhone_X
 					colorBackground[] = {0,0,0,0};
 					colorBackground2[] = {0,0,0,0};
 					colorBackgroundFocused[] = {0,0,0,0};
+				};
+
+				class iPhone_X_grass_slider: RscSlider
+				{
+					idc = 1900;
+					x = safeZoneX + safeZoneW * 0.710375;
+					y = safeZoneY + safeZoneH * 0.65488;
+					w = safeZoneW * 0.117187;
+					h = safeZoneH * 0.018185;
 				};
 
 				class iPhone_X_icon_home_appSettings: Life_RscPicture
@@ -2769,7 +2802,7 @@ class iPhone_X
 					y = safeZoneY + safeZoneH * 0.52641667;
 					w = safeZoneW * 0.025;
 					h = safeZoneH * 0.045;
-					//action = "if (TF_tangent_iPhone_X_pressed) then {_info = ""Mute""; [_info] call TFAR_fnc_oniPhoneXTangentReleased; ctrlSetText [97673,""A3PL_Common\GUI\phone\iPhone_X_icon_muteON.paa""];} else {_info = ""Appel en cours...""; [_info] call TFAR_fnc_oniPhoneXTangentPressed; ctrlSetText [97673,""A3PL_Common\GUI\phone\iPhone_X_icon_muteOFF.paa""];};";
+					action = "if !(player getVariable [""tf_unable_to_use_radio"", false]) then {player setVariable [""tf_unable_to_use_radio"", true]; ctrlSetText [97673,""A3PL_Common\GUI\phone\iPhone_X_icon_muteON.paa""];} else {player setVariable [""tf_unable_to_use_radio"", false]; ctrlSetText [97673,""A3PL_Common\GUI\phone\iPhone_X_icon_muteOFF.paa""];};";
 					colorBackground[] = {0,0,0,0};
 					colorBackground2[] = {0,0,0,0};
 					colorBackgroundFocused[] = {0,0,0,0};
@@ -3288,6 +3321,97 @@ class iPhone_X
 			};
 		};
 
+		class iPhone_X_appBank: Life_RscControlsGroup
+		{
+			idc = 97580;
+			w = 1.5 * safezoneW;
+			h = 1.5 * safezoneH;
+			show = false;
+
+			class VScrollbar : VScrollbar
+			{
+       			width = 0;
+    		};
+
+    		class HScrollbar : HScrollbar
+    		{
+        		height = 0;
+    		};
+
+			class Controls
+			{
+				class iPhone_SendAmount: Life_RscEdit
+				{
+					idc = 99401;
+					x = 0.742344 * safezoneW + safezoneX;
+					y = 0.643 * safezoneH + safezoneY;
+					w = 0.0825 * safezoneW;
+					h = 0.022 * safezoneH;
+					text = "Amount to send";
+					colorText[] = {0,0,0,1};
+					colorBackground[] = {0,0,0,0};
+					shadow = 0;
+					maxChars = 15;
+					onSetFocus = "_text = ctrlText 99401; if (_text isEqualTo ""Amount to send"") then {ctrlSetText [99401,""""]};";
+				};
+				class iPhone_Button_SendAmount: Life_RscButtonMenu
+				{
+					idc = -1;
+					x = 0.70625 * safezoneW + safezoneX;
+					y = 0.632 * safezoneH + safezoneY;
+					w = 0.0257812 * safezoneW;
+					h = 0.044 * safezoneH;
+					action = "[] call A3RL_iPhoneX_bankSend;";
+					colorBackground[] = {0,0,0,0};
+					colorBackground2[] = {0,0,0,0};
+					colorBackgroundFocused[] = {0,0,0,0};
+				};
+				class iPhone_BankAmount: Life_RscStructuredText
+				{
+					idc = 99400;
+					x = 0.711406 * safezoneW + safezoneX;
+					y = 0.434 * safezoneH + safezoneY;
+					w = 0.113437 * safezoneW;
+					h = 0.033 * safezoneH;
+				};
+				class iPhone_BankPlayersList: Life_RscCombo
+				{
+					idc = 99402;
+					x = 0.70625 * safezoneW + safezoneX;
+					y = 0.599 * safezoneH + safezoneY;
+					w = 0.12375 * safezoneW;
+					h = 0.022 * safezoneH;
+				};
+
+				class iPhone_X_icon_home_appBank: Life_RscPicture
+				{
+					idc = -1;
+					x = safeZoneX + safeZoneW * 0.80948282;
+					y = safeZoneY + safeZoneH * 0.31525;
+					w = safeZoneW * 0.0175;
+					h = safeZoneH * 0.0175;
+					text = "A3PL_Common\GUI\phone\iPhone_X_icon_home.paa";
+				};
+
+				class iPhone_X_button_home_appBank: Life_RscButtonMenu
+				{
+					idc = -1;
+					x = safeZoneX + safeZoneW * 0.80948282;
+					y = safeZoneY + safeZoneH * 0.31525;
+					w = safeZoneW * 0.0175;
+					h = safeZoneH * 0.0175;
+					action = "[] call A3PL_iPhoneX_home;";
+					colorBackground[] = {0,0,0,0};
+					colorBackground2[] = {0,0,0,0};
+					colorBackgroundFocused[] = {0,0,0,0};
+
+					class Attributes
+					{
+						align = "center";
+					};
+				};
+			};
+		};
 
 		class iPhone_X_appAddEventGroup: Life_RscControlsGroup
 		{

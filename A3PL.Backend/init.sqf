@@ -41,7 +41,7 @@ Server_Setup_Files = [
 	['Functions', 'A3PL_JobVDelivery'],
 	['Functions', 'A3PL_JobMDelivery'],
 	['Functions', 'A3PL_JobPicking'],
-	['Functions', 'A3PL_Phone'],
+	//['Functions', 'A3PL_Phone'],
 	['Functions', 'A3PL_Uber'],
 	['Functions', 'A3PL_Goose'],
 	['Functions', 'A3PL_Dogs'],
@@ -82,6 +82,15 @@ Server_Setup_Files = [
 	['Functions', 'A3RL_Waterfall'],
 	['Functions', 'A3RL_Blindfold'],
 	['Functions', 'A3RL_License'],
+	['Functions', 'A3RL_PortRobbery'],
+	['Functions', 'A3RL_VehicleTrunks'],
+	['Functions', 'A3RL_SlotMachine'],
+	['Functions', 'A3RL_GasRobbery'],
+	['Functions', 'A3RL_HouseRobbery'],
+	['Functions', 'A3RL_PrisonBreak'],
+	['Functions', 'A3RL_FactionManagment'],
+	['Functions', 'A3RL_Knockout'],
+	['Functions', 'A3RL_UHaul'],
 	['Backend', 'Server_Setup'],
 	['Server', 'Server_JobVDelivery'],
 	['Server', 'Server_JobMDelivery'],
@@ -128,6 +137,8 @@ Server_Setup_Files = [
 	['Server', 'Server_iPhoneX'],
 	['Server', 'Server_SpeedCam'],
 	['Server', 'Server_EvidenceLocker'],
+	['Server', 'Server_Trunk'],
+	['Server', 'Server_FactionManagment'],
 	['Configs', 'Config_Setup'],
 	['Configs', 'Config_Gear'],
 	['Configs', 'Config_Shops'],
@@ -145,7 +156,9 @@ Server_Setup_Files = [
 	['Configs', 'Config_Garage'],
 	['Configs', 'Config_Government'],
 	['Configs', 'Config_Licenses'],
-	['Configs', 'Config_CombineItems']
+	['Configs', 'Config_CombineItems'],
+	['Configs', 'Config_TrunkSpace'],
+	['Configs', 'Config_Robberies']
 ];
 
 Server_Setup_Compile = {

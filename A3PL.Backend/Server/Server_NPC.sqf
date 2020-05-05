@@ -16,11 +16,15 @@
 	[[1,_job],"A3PL_NPC_TakeJobResponse",_player,false] call BIS_fnc_MP;
 
 	//add radio if EMS/Police/USCG/dispatch
-	if (backpack _player != "A3PL_LR") then {
-		if (_job IN ["uscg","fifr","police","dispatch","usms","doj","pdo","dao"]) then
+
+	if (_job IN ["uscg","fifr","police","dispatch","usms","doj","pdo","dao"]) then
+	{
+		if (backpack _player != "A3PL_LR") then { _player addBackpackGlobal "A3PL_LR"; };
 		{
-			_player addBackpackGlobal "A3PL_LR";
-		};
+			if(((_x select 0) == _player getVariable ["rank", 0]) && ((_x select 4) == 1)) then {
+				_player setVariable ["isManagment", true, true];
+			};
+		} forEach A3RL_FactionRanks;
 	};
 
 	if (_job in ["dispatch"]) then {

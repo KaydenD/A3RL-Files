@@ -705,6 +705,8 @@
 		_controlPosition progressSetPosition _percent;
 		uiSleep 0.1;
 		_time = _time + 0.1;
+
+		if(Player_ActionCanceled) exitWith {};
 	};
 
 	(_display displayCtrl 394) ctrlSetFade 1;
@@ -719,6 +721,7 @@
 	//set completed
 	Player_ActionCompleted = true;
 	Player_ActionDoing = false;
+	Player_ActionCanceled = false;
 }] call Server_Setup_Compile;
 
 ["A3PL_Lib_AnimBusStopInit",
@@ -770,6 +773,9 @@
 	_assignTime = param [3,1200];
 	_inArea = param [4,""]; //if this vehicle needs to stay in specific area
 
+	_pos = _pos findEmptyPosition[0, 15, _class];
+	if(_pos isEqualTo []) exitWith {["System: Spawn for job vehicle is blocked",Color_Red] call A3PL_Player_Notification;};
+
 	if(_job != "Roadside_Service") then {
 		[[_class,_pos,format ["%1",toUpper _job],player], "Server_Vehicle_Spawn", false, false] call BIS_fnc_MP;
 	} else {
@@ -794,7 +800,7 @@
 	{
 		if (isNull _veh) exitwith {["System: Your job vehicle has been destroyed!",Color_Red] call A3PL_Player_Notification; true;};
 		if (getDammage _veh >= 1) exitwith {["System: Your job vehicle has been destroyed!",Color_Red] call A3PL_Player_Notification; true;};
-		if ((player distance2D _veh) > 100) exitwith {["System: You walked too far away from your job vehicle, it has been returned.",Color_Red] call A3PL_Player_Notification; true;};
+		if ((player distance2D _veh) > 200) exitwith {["System: You walked too far away from your job vehicle, it has been returned.",Color_Red] call A3PL_Player_Notification; true;};
 		/* if ((player getVariable ["jobVehicleTimer",diag_tickTime]) <= diag_tickTime) exitwith {["System: You reached the maximum time to use this job vehicle, it has been returned!",Color_Red] call A3PL_Player_Notification; true;}; */
 		//if ((_inArea != "") && (!(player inArea _inArea))) exitwith {["System: Your job vehicle exited the area it needs to stay in! (e.g. go karts only in Sally Speedway!)",Color_Red] call A3PL_Player_Notification; true;};
 		sleep 10;
@@ -827,4 +833,85 @@
 		_hasPerk = true;
 	};
 	_hasPerk;
+}] call Server_Setup_Compile;
+
+
+["A3PL_Lib_ChangeUniformSafe",
+{
+	_newUniform = param [0, ""];
+	_curUni = uniform player;
+	if(_curUni == "") exitWith {player addUniform _newUniform;};
+	_items = [weaponCargo (uniformContainer player),magazineCargo (uniformContainer player),itemCargo (uniformContainer player),backpackCargo (uniformContainer player)];
+	_veh = createVehicle ["GroundWeaponHolder", (getPosATL  player), [], 0, "CAN_COLLIDE"]; 
+	_veh addItemCargoGlobal[_curUni, 1];
+	player addUniform _newUniform;
+	clearItemCargoGlobal (uniformContainer player); 
+	clearWeaponCargoGlobal (uniformContainer player);
+	clearMagazineCargoGlobal (uniformContainer player);
+	clearBackpackCargoGlobal (uniformContainer player);
+	{(uniformContainer player) addWeaponCargoGlobal [_x,1]} foreach (_items select 0);
+	{(uniformContainer player) addMagazineCargoGlobal [_x,1]} foreach (_items select 1);
+	{(uniformContainer player) addItemCargoGlobal [_x,1]} foreach (_items select 2);
+	{(uniformContainer player) addBackpackCargoGlobal [_x,1]} foreach (_items select 3);
+
+}] call Server_Setup_Compile;
+
+["A3PL_Lib_ChangeVestSafe",
+{
+	_newVest = param [0, ""];
+	_curVest = vest player;
+	if(_curVest == "") exitWith {player addVest _newVest;};
+	_items = [weaponCargo (vestContainer player),magazineCargo (vestContainer player),itemCargo (vestContainer player),backpackCargo (vestContainer player)];
+	_veh = createVehicle ["GroundWeaponHolder", (getPosATL  player), [], 0, "CAN_COLLIDE"]; 
+	_veh addItemCargoGlobal[_curVest, 1];
+	player addVest _newVest;
+	clearItemCargoGlobal (vestContainer player); 
+	clearWeaponCargoGlobal (vestContainer player);
+	clearMagazineCargoGlobal (vestContainer player);
+	clearBackpackCargoGlobal (vestContainer player);
+	{(vestContainer player) addWeaponCargoGlobal [_x,1]} foreach (_items select 0);
+	{(vestContainer player) addMagazineCargoGlobal [_x,1]} foreach (_items select 1);
+	{(vestContainer player) addItemCargoGlobal [_x,1]} foreach (_items select 2);
+	{(vestContainer player) addBackpackCargoGlobal [_x,1]} foreach (_items select 3);
+
+}] call Server_Setup_Compile;
+
+["A3PL_Lib_ChangeBackpackSafe",
+{
+	_newBackpack = param [0, ""];
+	_curBackpack = backpack player;
+	if(_curBackpack == "") exitWith {player addBackpack _newBackpack;};
+	_items = [weaponCargo (backpackContainer player),magazineCargo (backpackContainer player),itemCargo (backpackContainer player),backpackCargo (backpackContainer player)];
+	_veh = createVehicle ["GroundWeaponHolder", (getPosATL  player), [], 0, "CAN_COLLIDE"]; 
+	_veh addItemCargoGlobal[_curBackpack, 1];
+	player addBackpack _newBackpack;
+	clearItemCargoGlobal (backpackContainer player); 
+	clearWeaponCargoGlobal (backpackContainer player);
+	clearMagazineCargoGlobal (backpackContainer player);
+	clearBackpackCargoGlobal (backpackContainer player);
+	{(backpackContainer player) addWeaponCargoGlobal [_x,1]} foreach (_items select 0);
+	{(backpackContainer player) addMagazineCargoGlobal [_x,1]} foreach (_items select 1);
+	{(backpackContainer player) addItemCargoGlobal [_x,1]} foreach (_items select 2);
+	{(backpackContainer player) addBackpackCargoGlobal [_x,1]} foreach (_items select 3);
+
+}] call Server_Setup_Compile;
+
+["A3PL_Lib_ChangeGoggles",
+{
+	_newGoggles = param [0, ""];
+	_curGoggles = goggles player;
+	if(_curGoggles == "") exitWith {player addGoggles _newGoggles;};
+	_veh = createVehicle ["GroundWeaponHolder", (getPosATL  player), [], 0, "CAN_COLLIDE"]; 
+	_veh addItemCargoGlobal[_curGoggles, 1];
+	player addGoggles _newGoggles;
+}] call Server_Setup_Compile;
+
+["A3PL_Lib_ChangeHeadgear",
+{
+	_newHeadgear = param [0, ""];
+	_curHeadgear = headgear player;
+	if(_curHeadgear == "") exitWith {player addHeadgear _newHeadgear;};
+	_veh = createVehicle ["GroundWeaponHolder", (getPosATL  player), [], 0, "CAN_COLLIDE"]; 
+	_veh addItemCargoGlobal[_curHeadgear, 1];
+	player addHeadgear _newHeadgear;
 }] call Server_Setup_Compile;

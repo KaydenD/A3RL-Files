@@ -375,7 +375,7 @@
 		_wounds pushback [_part,[_wound,false]];
 		switch(true) do
 		{
-			case (_part IN ["right upper leg","right lower leg","left lower leg","left upper leg"]):
+			case (_part IN ["right upper leg","right lower leg","left lower leg","left upper leg"] && _wound IN ["wound_major", "bone_broken", "bullet_minor"]):
 			{
 				_player setHit ["legs", 0.5];
 			};
@@ -642,7 +642,8 @@
 			{
 				private ["_woundArr"];
 				_woundArr = _x select _i;
-				if ((_woundArr select 0) == _wound) exitwith
+				_exit = false;
+				if ((_woundArr select 0) == _wound) then
 				{
 					//healing a wound by EMS
 					if ((_item == ([_wound,"itemHeal"] call A3PL_Config_GetWound)) && _isEMS) exitwith
@@ -651,6 +652,7 @@
 						[format ["System Medical: You succesfully healed a %1 wound",_woundName]] call A3PL_Player_Notification;
 						[_player,format ["EMS %1 healed a %2 wound",(player getVariable ["name",name player]),_woundName],[0, 1, 0, 1]] call A3PL_Medical_AddLog;
 						_x deleteAt _i;
+						_exit = true;
 					};
 
 					//is this an item that heals or not?
@@ -665,8 +667,10 @@
 							[_player,format ["%1 treated a %2 wound on the %3",(player getVariable ["name",name player]),_woundName,_part],[0, 1, 0, 1]] call A3PL_Medical_AddLog;
 						};
 						_x deleteAt _i;
+						_exit = true;
 					} else
 					{
+						if(_woundArr select 1) exitWith {["System: This wound is already treated, but still needs to be healed with the correct item",Color_Red] call A3PL_Player_Notification;};
 						if ((player getVariable ["job","unemployed"]) == "fifr") then
 						{
 							[_player,format ["FIFR: %1 treated a %2 wound on the %3",(player getVariable ["name",name player]),_woundName,_part],[0, 1, 0, 1]] call A3PL_Medical_AddLog;
@@ -675,10 +679,12 @@
 							[_player,format ["%1 treated a %2 wound on the %3",(player getVariable ["name",name player]),_woundName,_part],[0, 1, 0, 1]] call A3PL_Medical_AddLog;
 						};
 						["System Medical: You succesfully treated a wound, you may still require medical attention",Color_Green] call A3PL_Player_Notification;
-						[format ["System: You treated a %1 wound, you may still require medical attention",[_woundName,"name"] call A3PL_Config_GetWound]] call A3PL_Player_Notification;
+						[format ["System: You treated a %1, you may still require medical attention",_woundName]] call A3PL_Player_Notification;
 						_woundArr set [1,true];
+						_exit = true;
 					};
 				};
+				if(_exit) exitWith {};
 			};
 			if (count _x < 2) then { (_player getVariable ["A3PL_Wounds",[]]) deleteAt _forEachIndex; };
 		};
@@ -1028,6 +1034,7 @@
 				private ["_woundArr","_index","_woundClass","_color"];
 				_woundArr = _x select _i;
 				_woundClass = _woundArr select 0;
+				_isKindaHealed = _woundArr select 1;
 				_index = _control lbAdd ([_woundClass,"name"] call A3PL_Config_GetWound);
 				_control lbSetData [_index,_woundClass];
 				_color = [_woundClass,"color"] call A3PL_Config_GetWound;
@@ -1037,6 +1044,7 @@
 					case ("orange"): {_color = [0.5, 0.5, 0, 1];};
 					case ("green"): {_color = [0, 1, 0, 1];};
 				};
+				if (_isKindaHealed) then {_color = [0, 1, 0, 1];};
 				if (typeName _color == "ARRAY") then { _control lbSetColor [_index,_color];	};
 			};
 		};
@@ -1104,7 +1112,7 @@
 
 ["A3PL_Medical_Heal",
 {
-	if ((count(["fifr"] call A3PL_Lib_FactionPlayers)) > 0) exitwith {["System: You cannot use Doctor Bob when EMS is available!",Color_Red] call A3PL_Player_Notification;};
+	//if ((count(["fifr"] call A3PL_Lib_FactionPlayers)) > 0) exitwith {["System: You cannot use Doctor Bob when EMS is available!",Color_Red] call A3PL_Player_Notification;};
 	if (100 > (player getVariable ["player_cash",0])) exitwith {[format ["System: You don't have enough money to be healed."]] call A3PL_Player_notification;};
 	player setVariable ["player_cash",(player getVariable ["player_cash",0]) - 100,true];
 	player setDamage 0;

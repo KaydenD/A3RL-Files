@@ -253,7 +253,7 @@
 ["Server_Fire_VehicleExplode",
 {
 	_fireObject = param [0,objNull];
-	if ((count(["fifr"] call A3PL_Lib_FactionPlayers)) >= 9) then {
+	if ((count(["fifr"] call A3PL_Lib_FactionPlayers)) >= 5) then {
 		_marker = createMarker [format ["vehiclefire_%1",random 4000], position (_fireObject)];
 		_marker setMarkerShape "ICON";
 		_marker setMarkerType "mil_dot";
@@ -268,7 +268,7 @@
 			};
 		} forEach allPlayers;
 		["A3PL_Common\effects\firecall.ogg",150,2,10] spawn A3PL_FD_FireStationAlarm;
-		[position (_fireObject)] spawn Server_Fire_StartFire;
+		[getPosATL (_fireObject)] spawn Server_Fire_StartFire;
 		sleep 300;
 		deleteMarker _marker;
 	};

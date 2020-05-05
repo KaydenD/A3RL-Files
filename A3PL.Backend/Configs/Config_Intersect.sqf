@@ -8,7 +8,9 @@ _dir = "\a3\ui_f\data\";
 Config_Intersect_NoName =
 [
 	["RoadCone_F","Cone","\a3\ui_f\data\gui\Rsc\RscDisplayArcadeMap\icon_toolbox_triggers_ca.paa"],
-	["Box_GEN_Equip_F",localize"STR_INTSECT_ACCVIRSTOR",_dir+"IGUI\Cfg\Actions\Obsolete\ui_action_open_ca.paa"] //temp || Access virtual storage
+	["Box_GEN_Equip_F",localize"STR_INTSECT_ACCVIRSTOR",_dir+"IGUI\Cfg\Actions\Obsolete\ui_action_open_ca.paa"], //temp || Access virtual storage
+	["Land_MetalCase_01_large_F","Access Robbery Storage",_dir+"IGUI\Cfg\Actions\Obsolete\ui_action_open_ca.paa"], //temp || Access virtual storage
+	["Land_GarbageBarrel_01_F","Search Trash Can",_dir+"IGUI\Cfg\Actions\take_ca.paa"] //temp || Access virtual storage
 ];
 publicVariable "Config_Intersect_NoName";
 
@@ -220,6 +222,8 @@ Config_IntersectArray =
 	["button_bargate1",localize"STR_INTSECT_OPCLBARG",_dir+"IGUI\Cfg\Actions\take_ca.paa",{true}], //Open/Close Bargate
 
 	["Virtual_Storage",localize"STR_INTSECT_ACCVIRSTOR",_dir+"IGUI\Cfg\Actions\take_ca.paa",{true}], //Access virtual storage
+	["Virtual_Storage_Rob","Access Robbery Storage",_dir+"IGUI\Cfg\Actions\take_ca.paa",{true}], //Access virtual storage
+	["Search_Trash","Search Trash Can",_dir+"IGUI\Cfg\Actions\take_ca.paa",{true}], //Search Trash Can
 
 	// Common
 	["Body",localize"STR_INTSECT_REPVEH",_dir+"IGUI\Cfg\VehicleToggles\lightsiconon_ca.paa",{player_ItemClass == "repairwrench"}], //Repair Vehicle
@@ -271,12 +275,13 @@ Config_IntersectArray =
 	["spine3","Talk to Bank Employee",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect IN [npc_bank,npc_bank_1,npc_bank_2,npc_bank_3,npc_bank_4]}],
 	["spine3","Talk to USCG Officer",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == npc_uscg}],
 	["spine3","Talk to Roadside Service Worker",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect  IN [npc_roadworker,npc_roadworker_1,npc_roadworker_2,npc_roadworker_3]}],
+	["spine3","U-Haul",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect  IN [npc_uhaul_1,npc_uhaul_2]}],
 	["spine3","Rent a Tow Truck",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect  IN [npc_roadworker]}],
 	["spine3","Talk to Farmer",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect IN [npc_farmer,npc_farmer_1]}],
 	["spine3","Open Prisoner Shop",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect IN [npc_farmer_1]}],
 	["spine3","SFP Shop",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect IN [npc_sfp_sign]}],
 	["spine3","Talk to Oil Recoverer",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == npc_oilrecovery}],
-	["spine3","Verizon",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == npc_verizonstart}],
+	["spine3","Verizon",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect in [npc_verizonstart, npc_verizonstart_1]}],
 	["spine3","Talk to FAA 1",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == npc_faastart}],
 	["spine3","Talk to FAA 2",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == npc_faastop}],
 	["spine3","Talk to Taco Hell Employee",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect IN [npc_tacohell,npc_tacohell_1,npc_tacohell_2]}],
@@ -368,6 +373,8 @@ Config_IntersectArray =
 	["spine3","Access USCG Car Shop",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == NPC_uscg_vehicles}],
 	["spine3","Access USCG Boat Shop",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == NPC_uscg_boats}],
 	["spine3","Access USCG Aircraft Shop",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == NPC_uscg_aircraft}],
+
+	["spine3","Rob the port",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect IN [portrobbery_IE,portrobbery_Steel,portrobbery_Wep]}],
 	
 	//DMV
 	["spine3","Purchase Drivers License($500)",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == NPC_DMV && !("driver" IN (player getVariable ["licenses",[]]))}],
@@ -401,7 +408,7 @@ Config_IntersectArray =
 	["deposit_20",localize"STR_INTSECT_OPDEPBOX",_dir+"IGUI\Cfg\Actions\take_ca.paa",{true}], //Open Deposit Box
 
 	//ATM
-	["ATM",localize"STR_INTSECT_USEATM",_dir+"IGUI\Cfg\Actions\take_ca.paa",{true}], //Use ATM
+	["start",localize"STR_INTSECT_USEATM",_dir+"IGUI\Cfg\Actions\take_ca.paa",{true}], //Use ATM
 
 	//Dog cage
 	["dogcage",localize"STR_INTSECT_OPK9MEN",_dir+"IGUI\Cfg\Actions\take_ca.paa",{player getVariable ["job","unemployed"] IN ["police","uscg","usms"]}], //Open K-9 Menu
@@ -530,46 +537,66 @@ Config_IntersectArray =
 	["jailDoor_2",localize"STR_INTSECT_OPCLJAILD",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" == "police"}], //Open/Close Jail Door
 	["jailDoor_3",localize"STR_INTSECT_OPCLJAILD",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" == "police"}], //Open/Close Jail Door
 
+
+	//Lockpick prison doors
+	["cell_door_1","Lockpick Cell Door",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{["v_lockpick", 1] call A3PL_Inventory_Has}], 
+	["cell_door_2","Lockpick Cell Door",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{["v_lockpick", 1] call A3PL_Inventory_Has}], 
+	["cell_door_3","Lockpick Cell Door",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{["v_lockpick", 1] call A3PL_Inventory_Has}], 
+	["cell_door_4","Lockpick Cell Door",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{["v_lockpick", 1] call A3PL_Inventory_Has}], 
+	["cell_door_5","Lockpick Cell Door",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{["v_lockpick", 1] call A3PL_Inventory_Has}], 
+	["cell_door_6","Lockpick Cell Door",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{["v_lockpick", 1] call A3PL_Inventory_Has}], 
+	["cell_door_7","Lockpick Cell Door",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{["v_lockpick", 1] call A3PL_Inventory_Has}], 
+	["cell_door_8","Lockpick Cell Door",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{["v_lockpick", 1] call A3PL_Inventory_Has}], 
+	["cell_door_9","Lockpick Cell Door",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{["v_lockpick", 1] call A3PL_Inventory_Has}], 
+	["cell_door_10","Lockpick Cell Door",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{["v_lockpick", 1] call A3PL_Inventory_Has}], 
+	["cell_door_11","Lockpick Cell Door",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{["v_lockpick", 1] call A3PL_Inventory_Has}],
+	["cell_door_12","Lockpick Cell Door",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{["v_lockpick", 1] call A3PL_Inventory_Has}], 
+	["cell_door_13","Lockpick Cell Door",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{["v_lockpick", 1] call A3PL_Inventory_Has}], 
+	["cell_door_14","Lockpick Cell Door",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{["v_lockpick", 1] call A3PL_Inventory_Has}], 
+	["door_17","Lockpick Cell Door",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{["v_lockpick", 1] call A3PL_Inventory_Has && (typeof player_objIntersect) == "Land_A3PL_Prison"}], 
+	["door_18","Lockpick Cell Door",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{["v_lockpick", 1] call A3PL_Inventory_Has && (typeof player_objIntersect) == "Land_A3PL_Prison"}], 
+	["door_19","Lockpick Cell Door",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{["v_lockpick", 1] call A3PL_Inventory_Has && (typeof player_objIntersect) == "Land_A3PL_Prison"}], 
+
 	//prison/PD
-	["Door_1_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_1_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_2_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_2_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_3_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_3_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_4_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_4_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_5_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_5_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_6_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_6_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_7_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_7_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_8_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_8_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_9_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_9_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_10_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_10_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_11_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_11_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_12_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_12_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_13_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_13_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_14_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_14_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_15_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_15_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_16_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_16_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_22_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_22_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}],	 //Use Door Button
-	["Door_23_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_23_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_24_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_25_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
-	["Door_26_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"]}], //Use Door Button
+	["Door_1_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_1_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_2_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_2_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_3_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_3_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_4_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_4_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_5_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_5_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_6_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_6_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_7_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_7_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_8_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_8_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_9_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_9_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_10_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_10_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_11_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_11_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_12_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_12_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_13_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_13_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_14_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_14_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_15_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_15_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_16_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{(player getVariable "job" in ["police","uscg","usms","dispatch"]) || (["keycard", 1] call A3PL_Inventory_Has)}], //Use Door Button
+	["Door_16_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_22_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_22_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}],	 //Use Door Button
+	["Door_23_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_23_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_24_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_25_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
+	["Door_26_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{player getVariable "job" in ["police","uscg","usms","dispatch"] || ["keycard", 1] call A3PL_Inventory_Has}], //Use Door Button
 	["garageDoor_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{!(player_objIntersect getVariable ["locked",false])}], //Use Door Button
 	["garageDoor_button2",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{!(player_objIntersect getVariable ["locked",false])}], //Use Door Button
 	["garageDoor_1_button",localize"STR_INTSECT_USEDOORB",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa",{!(player_objIntersect getVariable ["locked",false])}], //Use Door Button
@@ -852,6 +879,8 @@ Config_IntersectArray =
 	["Spine1","Grab","\a3\ui_f\data\IGUI\RscIngameUI\RscUnitInfoAirRTDFull\ico_insp_hand_1_ca.paa",{(isPlayer player_objintersect) && ((player getVariable "job") IN ["police","uscg","usms"]) && ((surfaceIsWater position player) || player_objintersect getVariable ["dragged",false])}], //Drag
 	["spine3",localize"STR_INTSECT_KICKDOWN","\a3\ui_f\data\IGUI\RscIngameUI\RscUnitInfo\si_prone_down_ca.paa",{animationState player_objintersect == "a3pl_handsupkneelcuffed"}], //Kick Down
 	["Spine3",localize"STR_INTSECT_PATDOWN","\a3\ui_f\data\IGUI\RscIngameUI\RscUnitInfoAirRTDFull\ico_insp_hand_1_ca.paa",{((player getVariable "job") IN ["police","uscg","faa","usms"]) && (isPlayer player_objintersect)&& (animationState player_objintersect IN ["a3pl_idletohandsup","a3pl_handsuptokneel"])or ((player getVariable "job") IN ["police","uscg","faa","usms"]) && player_objintersect getVariable ["Cuffed",true]}], //Pat down
+	["Spine3","Lockpick Handcuffs","\a3\ui_f\data\IGUI\RscIngameUI\RscUnitInfoAirRTDFull\ico_insp_hand_1_ca.paa",{(isPlayer player_objintersect)&& ((animationState player_objintersect IN ["a3pl_idletohandsup","a3pl_handsuptokneel"])or player_objintersect getVariable ["Cuffed",true]) && ["v_lockpick", 1] call A3PL_Inventory_Has}], //Lockpick Handcuffs
+
 
 	//crim stuff
 	["Spine1","Restrain/Unrestrain","\a3\ui_f\data\IGUI\RscIngameUI\RscUnitInfoAirRTDFull\ico_insp_hand_1_ca.paa",{((player_Itemclass == "zipties") && (isPlayer player_objintersect)) || ((player_objintersect getVariable ["Zipped",true])&& (isPlayer player_objintersect))}], //zip/unzip
@@ -934,6 +963,10 @@ Config_IntersectArray =
 	["score5",localize"STR_INTSECT_SHOWSCORE","",{true}], //Show Scoring
 	["score6",localize"STR_INTSECT_SHOWSCORE","",{true}], //Show Scoring
 	["bowlingBall",localize"STR_INTSECT_PICKBALL","",{true}], //Pickup Ball
+
+	["pullHandle","Play Slots","",{true}],
+	["setBet","Set Bet","",{true}],
+
 
 	//computers
 	["sd_computer",localize"STR_INTSECT_ACCTVSYS",_dir+"map\MapControl\bunker_ca.paa",{(player getVariable ["job","unemployed"]) == "police"}], //Access CCTV System
@@ -1313,8 +1346,8 @@ Config_IntersectArray =
 	["fireworkIgnite",localize"STR_INTSECT_IGNROCKET",_dir+"IGUI\Cfg\Actions\take_ca.paa",{((player_objintersect getVariable ["stock",-1]) == -1) && (simulationEnabled player_objIntersect)}], //Ignite Rocket
 	["fireworkrocket",localize"STR_INTSECT_BUSEITEM",_dir+"IGUI\Cfg\Actions\take_ca.paa",{!(player_objintersect getVariable ["stock",-1] == -1)}], //Buy/Sell Item
 
-	["atego_tow",localize"STR_INTSECT_LoadVehicle",_dir+"IGUI\Cfg\Actions\take_ca.paa",{!(player_objIntersect getVariable ["locked",true])&& ((player getVariable ["job","unemployed"]) == "Roadside_Service")}],// && !(player_objIntersect getVariable ["Towing",true])
-	["atego_tow",localize"STR_INTSECT_UnloadVehicle",_dir+"IGUI\Cfg\Actions\take_ca.paa",{!(player_objIntersect getVariable ["locked",true])&& ((player getVariable ["job","unemployed"]) == "Roadside_Service")}],//&& (player_objIntersect getVariable ["Towing",true])
+	["atego_tow",localize"STR_INTSECT_LoadVehicle",_dir+"IGUI\Cfg\Actions\take_ca.paa",{!(player_objIntersect getVariable ["locked",true])&& (((player getVariable ["job","unemployed"]) == "Roadside_Service") || ((((player_objIntersect getVariable ["owner",["",""]]) select 1) == "UHAUL") && ((getPlayerUID player) == ((player_objIntersect getVariable ["owner",["",""]]) select 0))))}],// && !(player_objIntersect getVariable ["Towing",true])
+	["atego_tow",localize"STR_INTSECT_UnloadVehicle",_dir+"IGUI\Cfg\Actions\take_ca.paa",{!(player_objIntersect getVariable ["locked",true])&& (((player getVariable ["job","unemployed"]) == "Roadside_Service") || ((((player_objIntersect getVariable ["owner",["",""]]) select 1) == "UHAUL") && ((getPlayerUID player) == ((player_objIntersect getVariable ["owner",["",""]]) select 0))))}],//&& (player_objIntersect getVariable ["Towing",true])
 	["Ramp_Switch",localize"STR_INTSECT_TOGGRAMP",_dir+"IGUI\Cfg\Actions\take_ca.paa",{true}],
 
 	["Spotlight_Switch",localize"STR_INTSECT_TOGREARSPOTL",_dir+"IGUI\Cfg\Actions\take_ca.paa",{true}], //Toggle Rear Spotlight
@@ -1633,6 +1666,14 @@ Config_IntersectArray =
 	["burgerbread",localize"STR_INTSECT_PICKITEMTOHAND",_dir+"IGUI\Cfg\Actions\take_ca.paa",{(isNil {player_objintersect getVariable ["bitem",nil]})}], //Pickup Item To Hand
 	["burgerbread",localize"STR_INTSECT_BUYITEM",_dir+"IGUI\Cfg\Actions\take_ca.paa",{(!isNil {player_objintersect getVariable ["bitem",nil]})}], //Buy Item
 	["burgerbread",localize"STR_INTSECT_SELLITEM",_dir+"IGUI\Cfg\Actions\take_ca.paa",{(player_objintersect getVariable ["owner","0"]) == (getPlayerUID player)}],		 //Sell Item
+	["keycard",localize"STR_INTSECT_PICKUPITEM",_dir+"IGUI\Cfg\Actions\take_ca.paa",{(isNil {player_objintersect getVariable ["bitem",nil]})}], //Pickup Item
+	["keycard",localize"STR_INTSECT_PICKITEMTOHAND",_dir+"IGUI\Cfg\Actions\take_ca.paa",{(isNil {player_objintersect getVariable ["bitem",nil]})}], //Pickup Item To Hand
+	["keycard",localize"STR_INTSECT_BUYITEM",_dir+"IGUI\Cfg\Actions\take_ca.paa",{(!isNil {player_objintersect getVariable ["bitem",nil]})}], //Buy Item
+	["keycard",localize"STR_INTSECT_SELLITEM",_dir+"IGUI\Cfg\Actions\take_ca.paa",{(player_objintersect getVariable ["owner","0"]) == (getPlayerUID player)}],		 //Sell Item
+	["lockpick",localize"STR_INTSECT_PICKUPITEM",_dir+"IGUI\Cfg\Actions\take_ca.paa",{(isNil {player_objintersect getVariable ["bitem",nil]})}], //Pickup Item
+	["lockpick",localize"STR_INTSECT_PICKITEMTOHAND",_dir+"IGUI\Cfg\Actions\take_ca.paa",{(isNil {player_objintersect getVariable ["bitem",nil]})}], //Pickup Item To Hand
+	["lockpick",localize"STR_INTSECT_BUYITEM",_dir+"IGUI\Cfg\Actions\take_ca.paa",{(!isNil {player_objintersect getVariable ["bitem",nil]})}], //Buy Item
+	["lockpick",localize"STR_INTSECT_SELLITEM",_dir+"IGUI\Cfg\Actions\take_ca.paa",{(player_objintersect getVariable ["owner","0"]) == (getPlayerUID player)}],		 //Sell Item
 	["fishburger",localize"STR_INTSECT_PICKUPITEM",_dir+"IGUI\Cfg\Actions\take_ca.paa",{(isNil {player_objintersect getVariable ["bitem",nil]})}], //Pickup Item
 	["fishburger",localize"STR_INTSECT_PICKITEMTOHAND",_dir+"IGUI\Cfg\Actions\take_ca.paa",{(isNil {player_objintersect getVariable ["bitem",nil]})}], //Pickup Item To Hand
 	["fishburger",localize"STR_INTSECT_BUYITEM",_dir+"IGUI\Cfg\Actions\take_ca.paa",{(!isNil {player_objintersect getVariable ["bitem",nil]})}], //Buy Item
@@ -2068,8 +2109,14 @@ Config_IntersectArray =
 	["Door_LF","Unflip vehicle",_dir+"IGUI\Cfg\VehicleToggles\lightsiconon_ca.paa",{((vehicle player) == player) && (simulationEnabled player_objIntersect) && !(player_objIntersect getVariable ["locked",true])}],
 	["Door_RF","Unflip vehicle",_dir+"IGUI\Cfg\VehicleToggles\lightsiconon_ca.paa",{((vehicle player) == player) && (simulationEnabled player_objIntersect) && !(player_objIntersect getVariable ["locked",true])}],
 
-	["furniture","Load into fuelstation tank",_dir+"IGUI\Cfg\Actions\take_ca.paa",{(player_objintersect getVariable ["class",""]) == "Petrol" && ((count (nearestObjects [player_objintersect, ["Land_A3PL_Gas_Station"], 7])) > 0)}]
-];
+	["furniture","Load into fuelstation tank",_dir+"IGUI\Cfg\Actions\take_ca.paa",{(player_objintersect getVariable ["class",""]) == "Petrol" && ((count (nearestObjects [player_objintersect, ["Land_A3PL_Gas_Station"], 7])) > 0)}],
+
+	["spine3", "Rob Gas Station", _dir+"IGUI\Cfg\Actions\take_ca.paa", {player_objintersect IN [npc_gasstation_1, npc_gasstation_2, npc_gasstation_3, npc_gasstation_4, npc_gasstation_5, npc_gasstation_6, npc_gasstation_7, npc_gasstation_8]}],
+ 
+	["door_1","Lockpick Door",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa", {["v_lockpick"] call A3PL_Inventory_Has && (!(player_objIntersect getVariable ["unlocked",false])) && (typeOf player_objintersect IN ["Land_Home1g_DED_Home1g_01_F", "Land_Home2b_DED_Home2b_01_F", "Land_Home3r_DED_Home3r_01_F", "Land_Home4w_DED_Home4w_01_F", "Land_Home5y_DED_Home5y_01_F", "Land_Home6b_DED_Home6b_01_F", "Land_Mansion01", "Land_A3PL_Ranch1", "Land_A3PL_Ranch2", "Land_A3PL_Ranch3", "Land_A3PL_ModernHouse1", "Land_A3PL_ModernHouse2", "Land_A3PL_ModernHouse3", "Land_A3PL_BostonHouse", "Land_A3PL_Shed3", "Land_A3PL_Shed4", "Land_A3PL_Shed2"])}],
+	["door_1","Secure Door",_dir+"IGUI\Cfg\Actions\open_Door_ca.paa", {((player_objIntersect getVariable ["unlocked",false])) && (typeOf player_objintersect IN ["Land_Home1g_DED_Home1g_01_F", "Land_Home2b_DED_Home2b_01_F", "Land_Home3r_DED_Home3r_01_F", "Land_Home4w_DED_Home4w_01_F", "Land_Home5y_DED_Home5y_01_F", "Land_Home6b_DED_Home6b_01_F", "Land_Mansion01", "Land_A3PL_Ranch1", "Land_A3PL_Ranch2", "Land_A3PL_Ranch3", "Land_A3PL_ModernHouse1", "Land_A3PL_ModernHouse2", "Land_A3PL_ModernHouse3", "Land_A3PL_BostonHouse", "Land_A3PL_Shed3", "Land_A3PL_Shed4", "Land_A3PL_Shed2"])}],
+	["spine3","Open Management System",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect IN [npc_police,npc_police_1,npc_police_2,NPC_doc,npc_doj_supplier,npc_emt,npc_emt_1,npc_emt_2,NPC_emt_3,npc_uscg] && player getVariable ["isManagment", false]}]
+]; 
 publicVariable "Config_IntersectArray";
 
 // If a specific intersection name is in this array it will execute and not check for a specific typeOf aka it ignores that parameter
@@ -2210,6 +2257,7 @@ Config_GenArray =
 	"Talk to Supermarket NPC",
 	"Talk to Tron NPC",
 	"Talk to Roadside Service Worker",
+	"U-Haul",
 	"Rent a Tow Truck",
 	"Open Silverton CCTV",
 	"Open Elk City CCTV",
@@ -2664,7 +2712,16 @@ Config_GenArray =
 	"Rent locker",
 	"SFP Shop",
 	
-	"Purchase Drivers License($500)"
+	"Purchase Drivers License($500)",
+	"Rob the port",
+	"Play Slots",
+	"Set Bet",
+	"Rob Gas Station",
+	"Lockpick Door",
+	"Secure Door",
+	"Lockpick Cell Door",
+	"Lockpick Handcuffs",
+	"Open Management System"
 ];
 publicVariable "Config_GenArray";
 

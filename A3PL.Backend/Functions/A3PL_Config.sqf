@@ -563,3 +563,30 @@
 
 	_return;
 }] call Server_Setup_Compile;
+
+["A3RL_Config_GetMaxTrunkWeight",
+{
+	private ["_class", "_Search", "_config", "_return"];
+
+	_class = param [0,""];
+	_search = param [1,""];
+	_config = [];
+	_return = "";
+
+	if (_class == '') exitWith {false};
+
+	{
+		if(_x select 0 == _class) then {
+			_config = _x;
+		};
+	} forEach Config_CarTruckSpace;
+	
+	if (count _config == 0) exitwith {false;};
+
+	switch (_search) do {
+		default { _return = _config; };
+		case "maxWeight": { _return = _config select 1; };
+	};
+
+	_return;
+}] call Server_Setup_Compile;

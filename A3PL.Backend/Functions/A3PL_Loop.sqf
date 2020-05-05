@@ -128,38 +128,15 @@
 	private ["_job", "_payment", "_directDeposit"];
 
 	Player_PayCheckTime = Player_PayCheckTime + 1;
-	_directDeposit = false;
 	if (Player_PayCheckTime >= 20) then
 	{
-		_job = player getVariable ["job","unemployed"];
-
-		switch (_job) do
-		{
-			case ("police"): {_payment = 3000; _directDeposit = true;};
-			case ("usms"): {_payment = 3000; _directDeposit = true;};
-			case ("fifr"): {_payment = 3000; _directDeposit = true;};
-			case ("uscg"): {_payment = 3000; _directDeposit = true;};
-			case ("doj"): {_payment = 3000; _directDeposit = true;};
-			case ("dao"):  {_payment = 3000; _directDeposit = true;};
-			case ("pdo"): {_payment = 3000; _directDeposit = true;};
-			case ("faa"): {_payment = 3000; _directDeposit = true;};
-			case ("dmv"): {_payment = 2000; _directDeposit = true;};
-			case ("dispatch"): {_payment = 3000; _directDeposit = true;};
-			case ("gov"): {_payment = 2000; _directDeposit = true;};
-			case default {_payment = 250;};
-		};
-
-		if (_directDeposit) then
-		{
-			player setVariable ["Player_Bank",(player getVariable ["Player_Bank",0]) + _payment,true];
-			["I have received my paycheck, it has been deposited into my bank account directly",Color_Green] call A3PL_Player_Notification;
-			Player_PayCheckTime = 0;
-		} else
-		{
-			player setVariable["Player_Paycheck", ((player getVariable ["Player_Paycheck", 0]) + _payment), true];
+		if(player getVariable ["job","unemployed"] in ["police", "usms", "fifr", "uscg", "doj", "dao", "pdo", "faa", "dmv", "dispatch", "gov"]) then {
+			[player] remoteExec ["Server_FactionManagment_HandlePayCheck", 2];
+		} else {
+			player setVariable["Player_Paycheck", ((player getVariable ["Player_Paycheck", 0]) + 250), true];
 			["I have received a paycheck, I have to go to the bank to pick it up", Color_Green] call A3PL_Player_Notification;
-			Player_PayCheckTime = 0;
 		};
+		Player_PayCheckTime = 0;
 	};
 	profileNameSpace setVariable ["Player_PayCheckTime",Player_PayCheckTime];
 }] call Server_Setup_Compile;

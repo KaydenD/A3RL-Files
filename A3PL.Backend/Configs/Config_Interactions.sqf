@@ -150,7 +150,7 @@ A3PL_Interaction_Options =
 		{
 			[] call A3PL_DMV_Open;
 		},
-		{((player getVariable ["job","unemployed"]) IN ["doj","dmv","uscg"])}
+		{((player getVariable ["job","unemployed"]) IN ["doj","dao","dmv","uscg"])}
 	],
 
 
@@ -427,6 +427,23 @@ A3PL_Interaction_Options =
 			[] call A3PL_JobRoadworker_RepairTerrain;
 		},
 		{((player getVariable ["job","unemployed"]) IN ["roadworker","Roadside_Service"]) && (vehicle player == player)}
+	],
+
+	[ 
+		"Open Trunk", 
+		{
+			[vehicle player] call A3RL_VITrunk_Open;
+		},
+		{(vehicle player != player) && {!((vehicle player) getVariable ["locked", true])}}
+	],
+
+	[
+		"Open Trunk",
+		{
+			[cursorObject] call A3RL_VITrunk_Open;
+
+		},
+		{(vehicle player == player) && {(simulationEnabled cursorObject)} && {!isNil "player_objintersect"} && {!(cursorObject getVariable ["locked", true])} && {cursorObject isKindOf "AllVehicles"}}
 	],
 
 	[
@@ -1218,13 +1235,12 @@ A3PL_Interaction_Options =
 		{
 			private ["_house","_box"];
 			if(!([] call A3PL_Player_AntiSpam)) exitWith {};
-			_house = nearestObjects [player, ["Land_Home1g_DED_Home1g_01_F","Land_Mansion01","Land_A3PL_Ranch1","Land_A3PL_Ranch2","Land_A3PL_Ranch3","Land_A3PL_ModernHouse1","Land_A3PL_ModernHouse2","Land_A3PL_ModernHouse3","Land_A3PL_BostonHouse","Land_A3PL_Shed1","Land_A3PL_Shed2","Land_A3PL_Shed3","Land_A3PL_Shed4"], 10];
-			if (count _house < 1) exitwith {[localize "STR_INTER_FINDHOUSEN",Color_Red] call A3PL_Player_Notification;}; //System: Couldn't find house nearby, report this bug
-			_house = _house select 0;
 
 			_box = nearestObjects [player, ["Box_GEN_Equip_F"], 10];
 			if (count _box < 1) exitwith {[localize "STR_INTER_FINDSTORAGEN",Color_Red] call A3PL_Player_Notification;}; //System: Couldn't find the storage nearby, report this bug
 			_box = _box select 0;
+			_house = _box getVariable ["house", objNull];
+			if(isNull _house) exitWith {["Error storing box, Please report this.",Color_Red] call A3PL_Player_Notification;};
 			[_house,_box] remoteExec ["Server_Housing_SaveBox", 2];
 		},
 		{(player distance (nearestObject [player, "Box_GEN_Equip_F"]) < 5)}
@@ -1307,6 +1323,35 @@ A3PL_Interaction_Options =
 			[_veh] call A3PL_Vehicle_DisableSimulation;
 		},
 		{((typeOf cursorObject) IN ["A3PL_Cutter"]) && ((player distance cursorObject) < 30) && (!(cursorObject getVariable ["locked",true])) && ((speed cursorObject) < 4)} // visible if true
+	],
+
+	[
+		"Knockout",
+		{
+			if((player distance cursorObject) > 3) exitWith {["Player too far away", Color_Red] call A3PL_Player_Notification;};
+			[] remoteExec ["A3RL_KnockedOut", cursorObject];
+			player switchMove "AwopPercMstpSgthWrflDnon_End2";
+		},
+		{isPlayer cursorObject && alive cursorObject && {player distance cursorObject < 3} && {currentWeapon player != ""} && {!(animationState cursorObject IN["incapacitated"])}} 
+
+	],
+
+	[
+		"Hire",
+		{
+			[true, cursorObject, player] remoteExec ["Server_FactionManagment_SetNewFaction", 2];
+			["You have been hired!", Color_Green] call A3PL_Player_Notification;
+		},
+		{isPlayer cursorObject && alive cursorObject && cursorObject getVariable ["faction", "citizen"] == "citizen" && player getVariable ["isManagment", false]}
+	],
+
+	[
+		"Fire",
+		{
+			[false, cursorObject, player] remoteExec ["Server_FactionManagment_SetNewFaction", 2]; 
+			["You have been fired!", Color_Red] call A3PL_Player_Notification;
+		},
+		{isPlayer cursorObject && alive cursorObject && (cursorObject getVariable ["faction", "citizen"]) == (player getVariable ["faction", "citizen"]) && player getVariable ["isManagment", false]}
 	]
 
 ];

@@ -22,22 +22,24 @@
 			if ((player getVariable ["player_cash",0]) < 1000) exitwith {["System: You don't have enough money to buy this map",Color_Red] call A3PL_Player_Notification;};
 			player setVariable ["player_cash",(player getVariable ["player_cash",0]) - 1000,true];
 			
-			_oilArray = missionNameSpace getVariable ["Server_JobWildCat_Oil",[]];
-			_exactLocation = (_oilArray select (round (random ((count _oilArray) - 1)))) select 0; 
-			_pos = [((_exactLocation select 0) + (-100 + (random 200))),((_exactLocation select 1) + (-100 + (random 200)))]; //offset the real location
-
-			_marker = createMarkerLocal [format["%1_marker",floor (random 5000)],_pos];
+			_exactLocation = [] call A3RL_Find_Safe_Pos;
+			while{_exactLocation isEqualTo []} do {
+				_exactLocation = [] call A3RL_Find_Safe_Pos;
+			};
+			[_exactLocation] remoteExec ["Server_JobWildcat_CreateOilFromMap", 2];
+			
+			_marker = createMarkerLocal [format["%1_marker",floor (random 5000)],_exactLocation];
 			_marker setMarkerShapeLocal "ELLIPSE";
-			_marker setMarkerSizeLocal [142,142]; //same as oildistance defined in A3PL_JobWildCat + max of 300
+			_marker setMarkerSizeLocal [100,100]; //same as oildistance defined in A3PL_JobWildCat + max of 300
 			_marker setMarkerColorLocal "ColorGreen";
 			_marker setMarkerTypeLocal "Mil_dot";
 			_marker setMarkerAlphaLocal 0.7;
 			_markers pushback _marker;
 
-			_marker = createMarkerLocal [format["%1_marker",floor (random 5000)],_pos];
+			_marker = createMarkerLocal [format["%1_marker",floor (random 5000)],_exactLocation];
 			_marker setMarkerShapeLocal "ICON";
 			_marker setMarkerColorLocal "ColorBlue";
-			_marker setMarkerTypeLocal "Mil_dot";
+			_marker setMarkerTypeLocal "Mil_dot"; 
 			_marker setMarkerTextLocal format ["OIL IN THIS VICINITY"];
 			_markers pushback _marker;			
 		};
@@ -48,24 +50,22 @@
 			if ((player getVariable ["player_cash",0]) < 500) exitwith {["System: You don't have enough money to buy this map",Color_Red] call A3PL_Player_Notification;};
 			player setVariable ["player_cash",(player getVariable ["player_cash",0]) - 500,true];			
 			
-			_resArray = missionNameSpace getVariable ["Server_JobWildCat_Res",[]];
-			_newResArray = [];
-			{
-				if ((_x select 0) == _mapType) then {_newResArray pushback _x};
-			} foreach _resArray;
+			_exactLocation = [] call A3RL_Find_Safe_Pos;
+			while{_exactLocation isEqualTo []} do {
+				_exactLocation = [] call A3RL_Find_Safe_Pos;
+			};
 			
-			_exactLocation = (_newResArray select (round (random ((count _newResArray) - 1)))) select 1;
-			_pos = [((_exactLocation select 0) + (-100 + random 200)),((_exactLocation select 1) + (-100 + random 200))];
+			[_mapType, _exactLocation] remoteExec ["Server_JobWildcat_CreateResFromMap", 2];
 
-			_marker = createMarkerLocal [format["%1_marker",floor (random 5000)],_pos];
+			_marker = createMarkerLocal [format["%1_marker",floor (random 5000)],_exactLocation];
 			_marker setMarkerShapeLocal "ELLIPSE";
-			_marker setMarkerSizeLocal [142,142]; //same as oildistance defined in A3PL_JobWildCat + max of 300
+			_marker setMarkerSizeLocal [100,100];
 			_marker setMarkerColorLocal "ColorGreen";
 			_marker setMarkerTypeLocal "Mil_dot";
 			_marker setMarkerAlphaLocal 0.7;
 			_markers pushback _marker;
 
-			_marker = createMarkerLocal [format["%1_marker",floor (random 5000)],_pos];
+			_marker = createMarkerLocal [format["%1_marker",floor (random 5000)],_exactLocation];
 			_marker setMarkerShapeLocal "ICON";
 			_marker setMarkerColorLocal "ColorYellow";
 			_marker setMarkerTypeLocal "Mil_dot";
@@ -86,6 +86,28 @@
 	[format ["System: You bought an %1 map, the location will be marked on your map for 10 minutes",_maptype],Color_Green] call A3PL_Player_Notification;
 }] call Server_Setup_Compile;
 
+["A3RL_Find_Safe_Pos",
+{
+	_found = false;
+	_foundPos = [];
+	while {!_found} do {
+		_randPos = ["OilSpawnArea"] call CBA_fnc_randPosArea;
+		_isOverLand = !(_randPos isFlatEmpty  [-1, -1, -1, -1, 0, false] isEqualTo []);
+		_isOverShore = !(_randPos isFlatEmpty  [-1, -1, -1, -1, 0, true] isEqualTo []);
+		if(_isOverLand && !_isOverShore) then {
+			_isBlacklisted = false;
+			for "_i" from 1 to 28 do {
+				if(_randPos inArea (format["miningExclude_%1",_i])) exitWith {_isBlacklisted = true;};
+			};
+			if(!_isBlacklisted) exitWith {
+				_found = true;
+				_foundPos = _randPos;
+			};
+		};
+	};
+	_foundPos;
+}] call Server_Setup_Compile;
+
 //opens prospect menu
 ["A3PL_JobWildCat_ProspectOpen",
 {
@@ -99,12 +121,14 @@
 		_control lbAdd (_x select 0);
 	} foreach Config_Resources_Ores;
 	_control lbAdd "Oil"; //add oil, cause its not in the ores array
-	_control lbSetCurSel 0;
+	if(isNil"A3RL_Last_Prospect_Index") then {A3RL_Last_Prospect_Index = 0;};
+	_control lbSetCurSel A3RL_Last_Prospect_Index;
 	//set buttonaction
 	_control = _display displayCtrl 1601;
 	_control buttonSetAction 
 	"
 			[(lbText [2100,(lbCurSel 2100)])] call A3PL_JobWildcat_ProspectInit;
+			A3RL_Last_Prospect_Index = (lbCurSel 2100);
 			closeDialog 0;
 	";
 }] call Server_Setup_Compile;

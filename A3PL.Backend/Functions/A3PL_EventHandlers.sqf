@@ -100,7 +100,7 @@
 	params["_ctrl", "_dikCode", "_shift", "_ctrlKey", "_alt"];
 
 	if(isNil "A3PL_Manual_KeyDown") then {A3PL_Manual_KeyDown = false};
-
+	if (player getVariable ["knockedout", false]) exitWith {};
 	/*
 	if (_dikCode == 18) exitWith {
 		if(!isNil "A3PL_MedicalVar_Unconscious") exitWith {};
@@ -119,8 +119,8 @@
 		closeDialog 0;
 		if (!([] call A3PL_Lib_HasPhone)) exitwith {["You don't have phone"] call A3PL_Player_Notification;};
 		if (player getVariable["Cuffed",true] || player getVariable["Zipped",true]) exitwith {["You are cuffed",Color_Red] call A3PL_Player_Notification;};
-		//[] call A3PL_iPhoneX_Master;
-		[] call A3PL_Phone_Open;
+		[] call A3PL_iPhoneX_Master;
+		//[] call A3PL_Phone_Open;
 	};
 	
 	//Esacape Animation
@@ -636,7 +636,7 @@
 {
 	player addEventHandler ["InventoryOpened", {
 		params ["_unit", "_container", "_secondaryContainer"];
-	    if(_container getVariable ["locked", false] || _secondaryContainer getVariable ["locked", false]) then {true;};
+	    if((_container getVariable ["locked", false] || {_secondaryContainer getVariable ["locked", false]}) && {_container isKindOf "B_supplyCrate_F" || {_secondaryContainer isKindOf "B_supplyCrate_F"}}) then {true;};
 	}];
 }] call Server_Setup_Compile;
 

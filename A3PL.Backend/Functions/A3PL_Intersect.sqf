@@ -256,7 +256,7 @@
 				Player_ObjIntersect = _obj;
 
 				{
-					if (_x select 0 == (typeOf _obj)) then
+					if (_x select 0 == (typeOf _obj) && {player distance _obj < 3}) then
 					{
 						private ["_name","_icon"];
 						_name = _x select 1;

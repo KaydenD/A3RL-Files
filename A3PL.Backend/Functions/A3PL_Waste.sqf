@@ -6,9 +6,12 @@
 	["System: Welcome to Fishers Island Waste Management.",Color_Green] call A3PL_Player_Notification;
 	[] spawn A3PL_Player_SetMarkers;
 	["System: Go and hunt for trash bins around the island, and empty the trash into your truck!",Color_Green] call A3PL_Player_Notification;
-	player adduniform "A3PL_Waste_Manage_Uni_Uniform";
-	player addVest "A3PL_Waste_Manage_Vest";
-	player addHeadGear "A3PL_Waste_Manage_Cap";
+	//player adduniform "A3PL_Waste_Manage_Uni_Uniform";
+	//player addVest "A3PL_Waste_Manage_Vest";
+	//player addHeadGear "A3PL_Waste_Manage_Cap";
+	["A3PL_Waste_Manage_Uni_Uniform"] call A3PL_Lib_ChangeUniformSafe;
+	["A3PL_Waste_Manage_Cap"] call A3PL_Lib_ChangeHeadgear;
+	["A3PL_Waste_Manage_Vest"] call A3PL_Lib_ChangeVestSafe;
 
 	sleep (random 2 + 2);
 	["A3PL_P362_Garbage_Truck",[6059.44,7502.32,0],"waste",1800] spawn A3PL_Lib_JobVehicle_Assign;

@@ -692,17 +692,17 @@
 			};
 			_itemName = [_itemClass,"name"] call A3PL_Config_GetItem;
 		};
-		case ("backpack"): {player addBackPack _itemClass; _itemName = getText (configFile >> "CfgVehicles" >> _itemClass >> "displayName");};
-		case ("uniform"): {player addUniform _itemClass; _itemName = getText (configFile >> "CfgWeapons" >> _itemClass >> "displayName");};
-		case ("vest"): {player addVest _itemClass; _itemName = getText (configFile >> "CfgWeapons" >> _itemClass >> "displayName");};
-		case ("headgear"): {player addHeadgear _itemClass; _itemName = getText (configFile >> "CfgWeapons" >> _itemClass >> "displayName");};
+		case ("backpack"): {[_itemClass] call A3PL_Lib_ChangeBackpackSafe; _itemName = getText (configFile >> "CfgVehicles" >> _itemClass >> "displayName");};
+		case ("uniform"): {[_itemClass] call A3PL_Lib_ChangeUniformSafe; _itemName = getText (configFile >> "CfgWeapons" >> _itemClass >> "displayName");};
+		case ("vest"): {[_itemClass] call A3PL_Lib_ChangeVestSafe; _itemName = getText (configFile >> "CfgWeapons" >> _itemClass >> "displayName");};
+		case ("headgear"): {[_itemClass] call A3PL_Lib_ChangeHeadgear; _itemName = getText (configFile >> "CfgWeapons" >> _itemClass >> "displayName");};
 		case ("aitem"): {player addItem _itemClass; _itemName = getText (configFile >> "CfgWeapons" >> _itemClass >> "displayName");};
 		case ("vehicle"): {[player,[_itemClass,1],"","car"] remoteExec ["Server_Factory_Create", 2]; _itemName = getText (configFile >> "CfgVehicles" >> _itemClass >> "displayName");};
 		case ("plane"): {[player,[_itemClass,1],"","plane"] remoteExec ["Server_Factory_Create", 2]; _itemName = getText (configFile >> "CfgVehicles" >> _itemClass >> "displayName");};
 		case ("weapon"): {player addItem _itemClass; _itemName = getText (configFile >> "CfgWeapons" >> _itemClass >> "displayName");};
 		case ("weaponPrimary"): {player addWeapon _itemClass; _itemName = getText (configFile >> "CfgWeapons" >> _itemClass >> "displayName");};
 		case ("magazine"): {player addMagazines [_itemClass, _amount];_itemName = getText (configFile >> "CfgMagazines" >> _itemClass >> "displayName");};
-		case ("goggles"): {player addGoggles _itemClass; _itemName = getText (configFile >> "CfgGlasses" >> _itemClass >> "displayName");};
+		case ("goggles"): {[_itemClass] call A3PL_Lib_ChangeGoggles; _itemName = getText (configFile >> "CfgGlasses" >> _itemClass >> "displayName");};
 	};
 	//take money
 	switch (_currency) do

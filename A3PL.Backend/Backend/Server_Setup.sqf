@@ -16,7 +16,7 @@
 ["Server_Setup_ResetPlayerDB",
 {
 	private ["_query","_query2"];
-	_query = "UPDATE players SET position = '[0,0,0]',job = 'unemployed',ship = '[[],[]]'";
+	_query = "UPDATE players SET position = '[0,0,0]',job = 'unemployed'";
 	_query2 = "UPDATE objects SET impounded = '2' WHERE impounded = '3'";
 	_query3 = "UPDATE objects SET stolen = '0' WHERE stolen = '1'";
 	_query4 = "UPDATE objects SET numpchange = '0' WHERE numpchange = '1'";
@@ -65,8 +65,6 @@
 		[] call A3PL_Lib_AnimBusStopInit;
 		[] call Server_Shop_BlackMarketPos;
 		[] call Server_JobFarming_DrugDealerPos;
-		[] spawn Server_JobWildcat_RandomizeOil; //create the oil positions
-		[] spawn Server_JobWildcat_RandomizeRes;
 		[] call Server_Core_GetDefVehicles; //create the defaulte vehicles array (for use in cleanup script)
 		[] call Server_JobPicking_Init; //get the marker locations for picking locations
 		[] spawn Server_Lumber_TreeRespawn; //spawn trees for lumberyacking
@@ -78,10 +76,15 @@
 		[] spawn Server_ShopStock_Load;
 
 		/*iPhoneX*/
-		A3PL_iPhoneX_ListNumber = [];
+		//A3PL_iPhoneX_ListNumber = [];
 		A3PL_iPhoneX_switchboardSD = [];
 		A3PL_iPhoneX_switchboardFD = [];
-		[] call Server_iPhoneX_GetPhoneNumber;
+		//[] call Server_iPhoneX_GetPhoneNumber;
+
+		Server_JobWildCat_Res = [];
+		Server_JobWildCat_Oil = [];
+		publicVariable "Server_JobWildCat_Res";
+		publicVariable "Server_JobWildCat_Oil";
 
 		//Load fuel
 		//Get All FuelStations
@@ -137,15 +140,15 @@
 	["itemAdd", ["Server_Loop_RepairTerrain", {[] spawn Server_Core_RepairTerrain;}, 300]] call BIS_fnc_loop;
 	["itemAdd", ["Server_Loop_BusinessLoop", {[] spawn Server_Business_Loop;}, 60]] call BIS_fnc_loop; //delete expired businesses etc
 	["itemAdd", ["Server_Loop_FogLoop", {10 setFog 0;}, 1800]] call BIS_fnc_loop;
+	["itemAdd", ["Server_Loop_TimeMultiLoop", {[] spawn Server_Core_SetTimeMulti;}, 60]] call BIS_fnc_loop;
 
 	//deprecated ["itemAdd", ["Server_Loop_SpawnOres", {[] spawn Server_Resources_SpawnOres;}, 600]] call BIS_fnc_loop; //5min
 
 	//cleanup
 	["itemAdd", ["Server_Loop_Cleanup", {[] spawn Server_Core_Clean;}, 900]] call BIS_fnc_loop; //every 15 minutes run the cleanup loop
 
-	//oil randomization, 60 min
-	["itemAdd", ["Server_Loop_OilRandomization", {[] spawn Server_JobWildcat_RandomizeOil;}, 3600]] call BIS_fnc_loop;
-	["itemAdd", ["Server_Loop_ResRandomization", {[] spawn Server_JobWildcat_RandomizeRes;}, 3600]] call BIS_fnc_loop;
+	//Remove old mining areas
+	["itemAdd", ["Server_Loop_ResTimeCheck", {[] spawn Server_JobWildcat_CheckResTimers;}, 60]] call BIS_fnc_loop;
 
 	//Fire
 	["itemAdd", ["Server_Fire_FireLoop", {[] spawn Server_Fire_FireLoop;}, 10]] call BIS_fnc_loop; //Spread fire every 10sec, edit the number to increase spread time

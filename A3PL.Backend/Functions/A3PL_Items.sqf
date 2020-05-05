@@ -241,7 +241,6 @@
 
 	_rocket = param [0,objNull];
 	_color = param [1,"rocket_blue"];
-	systemChat "run";
 	//wait until the rocket is deleted, upon deletion we will do our fireworks :D
 	_i = 0;
 	_pos = getPos _rocket;

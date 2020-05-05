@@ -16,6 +16,7 @@
 	Player_illegalItems = ["seed_marijuana","marijuana","cocaine","shrooms","cannabis_bud","cannabis_bud_cured","cannabis_grinded_5g","weed_5g","weed_10g","weed_15g","weed_20g","weed_25g","weed_30g","weed_35g","weed_40g","weed_45g","weed_50g","weed_55g","weed_60g","weed_65g","weed_70g","weed_75g","weed_80g","weed_85g","weed_90g","weed_95g","weed_100g","jug_moonshine","turtle","drill_bit","diamond_ill","diamond_emerald_ill","diamond_ruby_ill","diamond_sapphire_ill","diamond_alex_ill","diamond_aqua_ill","diamond_tourmaline_ill","v_lockpick","zipties"];
 	Player_DogIllegalItems = ["seed_marijuana","marijuana","cocaine","shrooms","cannabis_bud","cannabis_bud_cured","cannabis_grinded_5g","weed_5g","weed_10g","weed_15g","weed_20g","weed_25g","weed_30g","weed_35g","weed_40g","weed_45g","weed_50g","weed_55g","weed_60g","weed_65g","weed_70g","weed_75g","weed_80g","weed_85g","weed_90g","weed_95g","weed_100g","jug_moonshine","turtle"];
 	Player_ActionCompleted = true;
+	Player_ActionCanceled = false;
 	Player_ActionDoing = false;
 	Player_Item = objNull;
 	Player_ItemClass = '';
@@ -840,8 +841,7 @@
 	_job = player getVariable ["job","unemployed"];
 	_faction = _player getVariable ["faction","citizen"];
 
-	"mushroom_zone" setMarkerAlpha 0;
-	if((_job != "uscg") && (_job != "faa") && (_job != "doj") && (_job != "police") && (_job != "fifr") && (_job != "dao") && (_job != "pdo")) then {{_x setMarkerAlpha 1;} forEach ["mushroom_marker"];} else {{_x setMarkerAlpha 0;} forEach ["mushroom_marker"];};
+	if!((_job != "uscg") && (_job != "faa") && (_job != "doj") && (_job != "police") && (_job != "fifr") && (_job != "dao") && (_job != "pdo")) then {{_x setMarkerAlpha 0;} forEach ["mushroom_marker","mushroom_zone"];};
 
 	//if (!(["motorhead"] call A3PL_Lib_hasPerk)) then {deleteMarkerLocal "perk_store_marker";};
 	if(_job != "uscg") then {{_x setMarkerAlpha 0;} forEach ["USCG_Shop","USCG_Boat","USCG_Boat_Spawn","USCG_Vehicle","USCG_Aircraft"];} else {{_x setMarkerAlpha 1;} forEach ["USCG_Shop","USCG_Boat","USCG_Boat_Spawn","USCG_Vehicle","USCG_Aircraft"];};
@@ -864,8 +864,73 @@
 	} else {
 		{_x setMarkerAlphaLocal 1;} forEach ["Fishing1","Fishing2","Fishing3","Fishing3_1","Fishing4","Fishing5","Fishing5_1","Fishing6"];
 	};
-	"crime_marker" setMarkerAlpha 0;
-	if((_job != "uscg") && (_job != "faa") && (_job != "doj") && (_job != "police") && (_job != "fifr") && (_job != "doj") && (_job != "dao") && (_job != "pdo")) then {
-		"crime_marker" setMarkerAlpha 1;
+	if!((_job != "uscg") && (_job != "faa") && (_job != "doj") && (_job != "police") && (_job != "fifr") && (_job != "doj") && (_job != "dao") && (_job != "pdo")) then {
+		"crime_marker" setMarkerAlpha 0;
 	};
+	for "_i" from 1 to 28 do {
+		(format["miningExclude_%1",_i]) setMarkerAlpha 0;
+	};
+}] call Server_Setup_Compile;
+
+['A3RL_HUD_GPS', {
+	73673 cutRsc ["Dialog_HUD_GPS", "PLAIN"];
+	A3RL_GPS_Active = true;
+	A3RL_GPS_OldPos = [0,0,0];
+	createMarkerLocal["myGPS", (getPos player)];
+	"myGPS" setMarkerShapeLocal "ICON";
+	"myGPS" setMarkerTypeLocal "A3PL_GPS";
+	"myGPS" setMarkerColorLocal "ColorOrange";
+	"myGPS" setMarkerSizeLocal[0.7, 0.7];
+	["A3RL_HUD_GPS", "onEachFrame", { 
+		disableSerialization;
+	    if (("ItemGPS" in (assignedItems player)) && {(profilenamespace getVariable["A3PL_HUD_Enabled", true])}) then {
+			_hud = uiNameSpace getVariable["Dialog_Hud_GPS", displayNull];
+	        if (((vehicle player) distance A3RL_GPS_OldPos) > 2) then {
+	            "myGPS" setMarkerPosLocal(getPos(vehicle player));
+	            A3RL_GPS_OldPos = getPos(vehicle player);
+	        };
+			_dir = getDir(vehicle player);
+	        "myGPS" setMarkerDirLocal floor(_dir - 40);
+	        _heading = switch (true) do { 
+				default { "N" }; 
+				case (_dir >= 25 && _dir < 65) : {"NE"}; 
+				case (_dir >= 65 && _dir < 115) : {"E"}; 
+				case (_dir >= 115 && _dir < 155) : {"SE"}; 
+				case (_dir >= 155 && _dir < 205) : {"S"}; 
+				case (_dir >= 205 && _dir < 245) : {"SW"}; 
+				case (_dir >= 245 && _dir < 295) : {"W"}; 
+				case (_dir >= 295 && _dir < 335) : {"NW"};
+			};
+	        (_hud displayCtrl 23542) ctrlSetStructuredText parseText format["<t size='0.7' font='PuristaLight' color='#ffffff' align='center'>%1</t>",_heading];
+	        (_hud displayCtrl 23543) ctrlSetStructuredText parseText format["<t size='0.7' font='PuristaLight' color='#ffffff' align='center'>%1</t>",round((getPosASL(vehicle player)) select 2)];
+	        (_hud displayCtrl 23544) ctrlSetStructuredText parseText format["<t size='0.7' font='PuristaLight' color='#ffffff' align='center'>%1</t>",(mapGridPosition player)];
+			_ctrl_gps_map = _hud displayCtrl 23539;
+	        if ((vehicle player) isEqualTo player) then {
+	            _ctrl_gps_map ctrlMapAnimAdd[0, 0.05, player];
+	        } else {
+	            _ctrl_gps_map ctrlMapAnimAdd[0, 0.15, (vehicle player)];
+	        };
+	        ctrlMapAnimCommit _ctrl_gps_map;
+	        if (!A3RL_GPS_Active) then {
+	            "myGPS" setMarkerAlphaLocal 1;
+	            (_hud displayCtrl 23542) ctrlShow true;
+	            (_hud displayCtrl 23544) ctrlShow true;
+	            (_hud displayCtrl 23543) ctrlShow true;
+	            _ctrl_gps_map 			 ctrlShow true;
+	            (_hud displayCtrl 23540) ctrlShow true;
+	            A3RL_GPS_Active = true;
+	        };
+	    } else {
+	        if (A3RL_GPS_Active) then {
+				_hud = uiNameSpace getVariable["Dialog_Hud_GPS", displayNull];
+	            "myGPS" setMarkerAlphaLocal 0;
+	            (_hud displayCtrl 23542) ctrlShow false;
+	            (_hud displayCtrl 23544) ctrlShow false;
+	            (_hud displayCtrl 23543) ctrlShow false;
+	            (_hud displayCtrl 23539) ctrlShow false;
+	            (_hud displayCtrl 23540) ctrlShow false;
+	            A3RL_GPS_Active = false;
+	        };
+	    };
+	}] call BIS_fnc_addStackedEventHandler;
 }] call Server_Setup_Compile;

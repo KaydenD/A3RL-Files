@@ -53,8 +53,14 @@
 	{
 		[_veh] call Server_Vehicle_EnableSimulation;
 	};
+	_id = "";
+	{
+		if(_x select 3 == _class) then {
+			_id = _x select 0;
+		};
+	} forEach Config_Items;
 	_veh setOwner (owner _player);
-	_veh setVariable ["class",_class,true];
+	_veh setVariable ["class",_id,true];
 	_veh setVariable ["owner",getPlayerUID _player,true];
 
 },true] call Server_Setup_Compile;
@@ -118,7 +124,7 @@
 	_query = format ["UPDATE objects SET plystorage = '0',impounded='0' WHERE id = '%1'",_id];
 	[_query,1] spawn Server_Database_Async;
 
-		_query = format ["SELECT fuel,color,numpchange,iscustomplate,material,tuning FROM objects WHERE id = '%1'",_id];
+	_query = format ["SELECT fuel,color,numpchange,iscustomplate,material,tuning,inventory FROM objects WHERE id = '%1'",_id];
 	_db = [_query, 2, false] call Server_Database_Async;
 
 
@@ -163,7 +169,6 @@
 					[[3],"A3PL_Storage_CarRetrieveResponse",_player,false] call BIS_FNC_MP;
 					_query = format ["UPDATE objects SET plystorage = '1' WHERE id = '%1'",_id];
 					[_query,1] spawn Server_Database_Async;
-					Server_Storage_ListVehicles - [_veh];
 					[_veh] call Server_Vehicle_Despawn;
 				};
 			};
@@ -189,7 +194,15 @@
 				_animPhase = _x select 1;
 				_veh animatesource [_animName, _animPhase, true];
 			} foreach _addons;
+			_veh setVariable["installedAddons", _addons, true];
 		};		
+		_cargo = call compile (_db select 6);
+		if((count _cargo) != 5) exitWith {};
+		{_veh addWeaponCargoGlobal [_x,1]} foreach (_cargo select 0);
+		{_veh addMagazineCargoGlobal [_x,1]} foreach (_cargo select 1);
+		{_veh addItemCargoGlobal [_x,1]} foreach (_cargo select 2);
+		{_veh addBackpackCargoGlobal [_x,1]} foreach (_cargo select 3);
+		_veh setVariable ["storage",(_cargo select 4),true];
 	};
 	[[4],"A3PL_Storage_CarRetrieveResponse",_player,false] call BIS_FNC_MP;
 
@@ -216,7 +229,7 @@
 		[[1],"A3PL_Storage_CarRetrieveResponse",_player,false] call BIS_FNC_MP;
 	};
 
-	_query = format ["SELECT fuel,color,numpchange,iscustomplate,material,tuning FROM objects WHERE id = '%1'",_id];
+	_query = format ["SELECT fuel,color,numpchange,iscustomplate,material,tuning,inventory FROM objects WHERE id = '%1'",_id];
 	_db = [_query, 2, false] call Server_Database_Async;
 
 	_query = format ["UPDATE objects SET plystorage = '0',impounded = '0' WHERE id = '%1'",_id];
@@ -242,7 +255,17 @@
 				_animPhase = _x select 1;
 				_veh animatesource [_animName, _animPhase, true];
 			} foreach _addons;
+			_veh setVariable["installedAddons", _addons, true];
 		};		
+
+		_cargo = call compile (_db select 6);
+		if((count _cargo) != 5) exitWith {};
+		{_veh addWeaponCargoGlobal [_x,1]} foreach (_cargo select 0);
+		{_veh addMagazineCargoGlobal [_x,1]} foreach (_cargo select 1);
+		{_veh addItemCargoGlobal [_x,1]} foreach (_cargo select 2);
+		{_veh addBackpackCargoGlobal [_x,1]} foreach (_cargo select 3);
+		_veh setVariable ["storage",(_cargo select 4),true];
+
 	};
 
 	if ((_veh isKindOf "ship") && (!(typeOf _veh IN _whitelistTrailer))) then
@@ -286,7 +309,6 @@
 				[[3],"A3PL_Storage_CarRetrieveResponse",_player,false] call BIS_FNC_MP;
 				_query = format ["UPDATE objects SET plystorage = '1' WHERE id = '%1'",_id];
 				[_query,1] spawn Server_Database_Async;
-				Server_Storage_ListVehicles - [_veh];
 				[_veh] call Server_Vehicle_Despawn;
 			};
 		};
@@ -348,6 +370,10 @@
 		[[6],"A3PL_Storage_CarStoreResponse",_player,false] call BIS_FNC_MP;
 	};
 
+	if(((_playerCar getVariable "owner") select 1) IN ["WASTE","DELIVER","EXTERMY","KARTING","DMV", "ROADSID", "UHAUL"]) exitWith {
+		[10] remoteExec ["A3PL_Storage_CarStoreResponse", _player];
+	};
+
 	_storage animateSource ["storagedoor",1];
 
 	[[2],"A3PL_Storage_CarStoreResponse",_player,false] call BIS_FNC_MP;
@@ -398,10 +424,9 @@
 			_materialFormat = format ["%1",_material];
 			_Texture = [_Pathformat, "\", "\\"] call CBA_fnc_replace;
 			_materialLocation = [_materialFormat, "\", "\\"] call CBA_fnc_replace;
-			_query = format ["UPDATE objects SET plystorage = '1',fuel='%2',color='%3',material='%4' WHERE id = '%1'",_id,(fuel _playerCar),_Texture,_materialLocation];
+			_inv = [weaponCargo _playerCar,magazineCargo _playerCar,itemCargo _playerCar,backpackCargo _playerCar,_playerCar getVariable ["storage",[]]];
+			_query = format ["UPDATE objects SET plystorage = '1',fuel='%2',color='%3',material='%4',inventory='%5' WHERE id = '%1'",_id,(fuel _playerCar),_Texture,_materialLocation,_inv];
 			[_query,1] spawn Server_Database_Async;
-			Server_Storage_ListVehicles - [_playerCar];
-
 			[_playercar] call Server_Vehicle_Despawn;
 		};
 	};
@@ -423,7 +448,8 @@
 		_materialFormat = format ["%1",_material];
 		_Texture = [_Pathformat, "\", "\\"] call CBA_fnc_replace;
 		_materialLocation = [_materialFormat, "\", "\\"] call CBA_fnc_replace;
-		_query = format ["UPDATE objects SET plystorage = '1',fuel='%2',color='%3',material='%4' WHERE id = '%1'",_id,(fuel _playerCar),_Texture,_materialLocation];
+		_inv = [weaponCargo _playerCar,magazineCargo _playerCar,itemCargo _playerCar,backpackCargo _playerCar,_playerCar getVariable ["storage",[]]];
+		_query = format ["UPDATE objects SET plystorage = '1',fuel='%2',color='%3',material='%4',inventory='%5' WHERE id = '%1'",_id,(fuel _playerCar),_Texture,_materialLocation,_inv];
 		[_query,1] spawn Server_Database_Async;
 
 	[_playerCar] call Server_Vehicle_Despawn;

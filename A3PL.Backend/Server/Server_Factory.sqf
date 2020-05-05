@@ -223,7 +223,7 @@
 	{
 		case (_classType == "car"):
 		{
-			private ["_lp","_pos"];
+			private ["_lp","_pos","_dir"];
 			_lp = [_player,_id,"vehicle",false] call Server_Vehicle_Buy; //inserts into DB, returns id/license plate
 			if (_id isKindOf "Ship") then
 			{
@@ -233,7 +233,11 @@
 				_pos = (getpos _player) findEmptyPosition [2,25,_id];
 			};
 			if (count _pos == 0) then {_pos = getpos _player}; //just use player pos if we cant find a suitable spot
-			_veh = [_id,_pos,_lp,_player] call Server_Vehicle_Spawn;
+			_dir = 0;
+			switch (_type) do {
+				case ("Vehicle Factory"): {_dir = 195;};
+			};
+			_veh = [_id,_pos,_lp,_player, _dir] call Server_Vehicle_Spawn;
 			//_veh setVariable ["dealer",true,true]; //set a variable so we know it's a dealer vehicle
 		};
 		case (_classType == "plane"):

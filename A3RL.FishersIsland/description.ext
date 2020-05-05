@@ -102,6 +102,7 @@ corpseRemovalMaxTime = 60;
 #include "Dialogs\dialog_slotmachine.hpp"
 #include "Dialogs\dialog_setbet.hpp"
 #include "Dialogs\dialog_uhaul.hpp"
+#include "Dialogs\dialog_blackjack.hpp"
 
 
 class RscTitles

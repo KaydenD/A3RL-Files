@@ -4,10 +4,14 @@
 	_obj = param[0, objNull];
 	if(isNull _obj) exitWith {["Error: Please try again", Color_Red] call A3PL_Player_Notification;};
 
+	if(_obj getVariable ["is_use", false]) exitWith {["This slot machine is already is use", Color_Red] call A3PL_Player_Notification;};
+
 	_bet = _obj getVariable ["bet", 500];
 	if(_bet > 50000) exitWith {["Error: Max bet is $50000", Color_Red] call A3PL_Player_Notification;};
 	
-	_dir = "\A3PL_Common\gui\blackjack\";
+	_obj setVariable ["is_use", true, true];
+
+	_dir = "\A3PL_Common\gui\blackjack\cards\";
 	_icons = ["J", "Q", "K", "A"];
 	for "_i" from 2 to 10 do {
 		_icons pushBack (str _i);
@@ -29,13 +33,21 @@
 	_betCtrl ctrlSetText (format ["$%1", _bet]);
 
 	_dealerCard1 = _display displayCtrl 1201;
-	_dealerCard1 ctrlSetText (format["%1%2", _dir, selectRandom _icons]);
+	_dealerCard1 ctrlSetText (format["%1%2.paa", _dir, selectRandom _icons]);
 	_dealerCard2 = _display displayCtrl 1202;
-	_dealerCard2 ctrlSetText (format["%1%2", _dir, "red_back.paa"]);
+	_dealerCard2 ctrlSetText (format["%1%2.paa", _dir, "red_back"]);
+	_dealerCard3 = _display displayCtrl 1203;
+	_dealerCard3 ctrlSetText "";
+	_dealerCard4 = _display displayCtrl 1204;
+	_dealerCard4 ctrlSetText "";
+	_dealerCard5 = _display displayCtrl 1205;
+	_dealerCard5 ctrlSetText "";
 
-	(_display displayCtrl 34000) ctrlShow true;
+	ctrlShow [34000,true];
 	_playerCard1 = _display displayCtrl 34001;
-	_playerCard1 ctrlSetText (format["%1%2", _dir, selectRandom _icons]);
+	_playerCard1 ctrlSetText (format["%1%2.paa", _dir, selectRandom _icons]);
 	_playerCard2 = _display displayCtrl 34002;
-	_playerCard2 ctrlSetText (format["%1%2", _dir, selectRandom _icons]);
+	_playerCard2 ctrlSetText (format["%1%2.paa", _dir, selectRandom _icons]);
+	_obj setVariable ["is_use", false, true];
+
 }] call Server_Setup_Compile;

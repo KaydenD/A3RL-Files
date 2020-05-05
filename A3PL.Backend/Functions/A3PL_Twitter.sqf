@@ -91,11 +91,11 @@
 	if ((! ([] call A3PL_Lib_HasPhone)) && _needcellphone) exitwith {["Twitter: You don't have a cellphone so you can't send tweets"] call A3PL_Player_Notification;};
 	if(((diag_ticktime-(missionNameSpace getVariable ["A3PL_Twitter_Cooldown",-10])) < 10) && _needcellphone) exitwith {[format ["Twitter: You need to wait %1 more seconds for your next tweet",round (10-(diag_ticktime-A3PL_Twitter_Cooldown))], Color_Red] call A3PL_Player_Notification; };
 	if (_needcellphone) then {A3PL_Twitter_Cooldown = diag_ticktime;}; //no timer if se
-	if (((_splitted select 0 == "/911") && !_doubleCommand) && ((count(["dispatch"] call A3PL_Lib_FactionPlayers)) > 0)) exitWith {["System: You cannot use /911 when dispatch is active! Please CALL *911* using your cell-phone.",Color_Red] call A3PL_Player_Notification;};
+	//if (((_splitted select 0 == "/911") && !_doubleCommand) && ((count(["dispatch"] call A3PL_Lib_FactionPlayers)) > 0)) exitWith {["System: You cannot use /911 when dispatch is active! Please CALL *911* using your cell-phone.",Color_Red] call A3PL_Player_Notification;};
 
 
 	//------------------Command need cellphone---------------------
-	if ((_splitted select 0 == "/911") && !_doubleCommand) then {
+	/*if ((_splitted select 0 == "/911") && !_doubleCommand) then {
 		_splitted deleteat 0;
 		_messageto = ["911",["911",player,player getvariable ["name",(name player)],(time + 300)]];
 		_todatabase = false;
@@ -105,7 +105,7 @@
 		_namecolor = "#1c00db"; //Set the name text to blueish
 		_namepicture = ""; //N
 		A3PL_Twitter_Cooldown = A3PL_Twitter_Cooldown - 5; //Make cooldown 5 seconds for 911
-	};
+	};*/
 
 	if (((toLower (_splitted select 0) == "/r")) && !_doubleCommand) then {
 		if(!(pVar_AdminTwitter OR ((player getVariable ["job","unemployed"]) IN ["fifr","police","uscg","dispatch"]))) exitwith {["You do not have the credentials to this command.","#a3ffc1","","Commands","#42f47d",""] spawn A3PL_Twitter_NewMsg; _exitwith = true;};
@@ -208,7 +208,7 @@
 	// A3PL_Twitter_ReplyArr = [["911",player,player getvariable "name",time]];
 	if (((_splitted select 0 == "/h") or (_splitted select 0 == "/H")) && !_doubleCommand) exitwith {
 		A3PL_Twitter_Cooldown = 0;
-		["/h [help] | /911 | /a [admin] | /r (name) [reply] | /ad [advertisment]","#a3ffc1","","Commands","#42f47d",""] spawn A3PL_Twitter_NewMsg;
+		["/h [help] | /a [admin] | /r (name) [reply] | /ad [advertisment]","#a3ffc1","","Commands","#42f47d",""] spawn A3PL_Twitter_NewMsg;
 	};
 
 	//---------------END Command need cellphone--------------------
@@ -272,10 +272,10 @@
 			A3PL_Twitter_ReplyArr = (missionNameSpace getVariable ["A3PL_Twitter_ReplyArr",[]]) + [(_messageto select 1)];
 		};
 
-		if (_messageto select 0 == "911") then {
+		/*if (_messageto select 0 == "911") then {
 			if(pVar_AdminTwitter OR ((player getVariable ["job","unemployed"]) IN ["fifr","police","uscg","dispatch","usms"])) then {_cancelaction = false;};
 			A3PL_Twitter_ReplyArr = (missionNameSpace getVariable ["A3PL_Twitter_ReplyArr",[]]) + [(_messageto select 1)];
-		};
+		};*/
 
 		/*if (_messageto select 0 == "darknet") then {
 			if(pVar_AdminTwitter) then {
@@ -286,11 +286,11 @@
 
 
 		// A3PL_Twitter_ReplyArr = [["911",player,player getvariable "name",time]];
-		if (_messageto select 0 == "reply") then {
+		/*if (_messageto select 0 == "reply") then {
 			if (player == (_messageto select 1) select 1) then {_cancelaction = false;};
 			if (((_messageto select 1) select 0 == "911") && (pVar_AdminTwitter OR ((player getVariable ["job","unemployed"]) IN ["fifr","police","uscg","dispatch","usms"]))) then {_cancelaction = false;};
 			if (((_messageto select 1) select 0 == "admin") && pVar_AdminTwitter) then {_cancelaction = false;};
-		};
+		};*/
 	};
 
 	if (typename _messageto == "STRING") then {

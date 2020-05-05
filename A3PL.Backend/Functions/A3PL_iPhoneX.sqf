@@ -162,6 +162,27 @@
 	closeDialog 0;
 }] call Server_Setup_Compile;
 
+["A3PL_iPhoneX_Received911Message",
+{
+	private["_message","_location"];
+
+	_message = [_this,0,"",[""]] call BIS_fnc_param;
+	_location = [_this,1,"",[]] call BIS_fnc_param;
+	[player, "911", A3PL_phoneNumberPrimary, _message] remoteExec ["Server_iPhoneX_SendSMS", 2];
+	["You received a 911 message!",Color_Red] call A3PL_Player_Notification;
+
+	_marker = createMarkerLocal [format ["panic_btn_%1",(floor (random 1000))],_location];
+	_marker setMarkerShapeLocal "ICON";
+	_marker setMarkerTypeLocal "mil_warning";
+	_marker setMarkerTextLocal "Emergency Call!";
+	_marker setMarkerColorLocal "ColorRed";
+	
+	//delete marker after 30 seconds
+	uiSleep 60;
+	deleteMarkerLocal _marker;
+	
+}] call Server_Setup_Compile;
+
 ["A3PL_iPhoneX_AddPhoneNumberPrimary",
 {
 	private["_uid","_type","_price","_phoneNumber"];
@@ -2024,8 +2045,9 @@
 			player setVariable ["iPhone_X_lastSMS",[_namecontact, _message, _time, _from]];
 
 			if ((A3PL_settings select 2) isEqualTo 0) then {playSound3D ["A3PL_Common\GUI\phone\sounds\notification_sound.ogg", player, false, getPosASL player, 20, 1, 5];};
-
-			["You received a SMS",Color_Yellow] call A3PL_Player_Notification;
+			if(!(_from isEqualTo "911"))then{
+				["You received a SMS",Color_Yellow] call A3PL_Player_Notification;
+			};
 			playSound3D ["A3PL_Common\GUI\phone\sounds\notification_sound.ogg", player, false, getPosASL player, 20, 1, 5];
 		};
 	};
@@ -2117,6 +2139,9 @@
 	uiSleep random 0.2;
 
 	_SMS pushBack [A3PL_phoneNumberActive, _phoneNumbercontact, _message];
+	if(_phoneNumbercontact == "911") then{
+		[A3PL_phoneNumberActive,_message,position player] remoteExec ["Server_iPhoneX_Send911Message",2];
+	};
 	[player, A3PL_phoneNumberActive, _phoneNumberContact, _message] remoteExec ["Server_iPhoneX_SendSMS", 2];
 
 	{

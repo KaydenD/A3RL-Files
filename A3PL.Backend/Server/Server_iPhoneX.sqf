@@ -398,6 +398,23 @@
 	[A3PL_iPhoneX_switchboardSD] remoteExec ["A3PL_iPhoneX_switchboard", _ownerID];
 }] call Server_Setup_Compile;
 
+['Server_iPhoneX_Send911Message', 
+{
+	private ["_caller","_message","_location","_query","_result","_faction_members"];
+	_caller = [_this,0,"",[""]] call BIS_fnc_param;
+	_message = [_this,1,"",[""]] call BIS_fnc_param;
+	_location = [_this,2,"",[]] call BIS_fnc_param;
+
+	_message = "From: " + _caller + "                                   " + _message;
+	_faction_members = (["uscg"] call A3PL_Lib_FactionPlayers) + (["police"] call A3PL_Lib_FactionPlayers) + (["fifr"] call A3PL_Lib_FactionPlayers) + (["usms"] call A3PL_Lib_FactionPlayers);
+	
+	{ 
+    	[_message,_location] remoteExec ["A3PL_iPhoneX_Received911Message", (owner _x)];
+	} 
+	forEach _faction_members;
+
+}] call Server_Setup_Compile;
+
 ['Server_iPhoneX_SaveContact', 
 {
 	private ["_uid","_ownerPhoneNumber","_nameContact","_phoneNumberContact","_query"];

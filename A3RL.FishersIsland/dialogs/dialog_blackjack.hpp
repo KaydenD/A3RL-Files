@@ -142,6 +142,18 @@ class Dialog_Blackjack
 		class blackjack_normalIcons: Life_RscControlsGroup {
 			idc = 34000;
 			show = false;
+			w = 1.5 * safezoneW;
+			h = 1.5 * safezoneH;
+			class VScrollbar : VScrollbar
+			{
+       			width = 0;
+    		};
+
+    		class HScrollbar : HScrollbar
+    		{
+        		height = 0;
+    		};
+
 			class Controls
 			{
 				class RscPicture_34001: RscPicture
@@ -264,7 +276,18 @@ class Dialog_Blackjack
 		class blackjack_splitIcons: Life_RscControlsGroup {
 			idc = 35000;
 			show = false;
+			w = 1.5 * safezoneW;
+			h = 1.5 * safezoneH;
+			class VScrollbar : VScrollbar
+			{
+       			width = 0;
+    		};
 
+    		class HScrollbar : HScrollbar
+    		{
+        		height = 0;
+    		};
+			
 			class Controls
 			{
 				class RscPicture_35001: RscPicture //Split 1

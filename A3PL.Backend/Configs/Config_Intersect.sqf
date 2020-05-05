@@ -967,6 +967,8 @@ Config_IntersectArray =
 	["pullHandle","Play Slots","",{true}],
 	["setBet","Set Bet","",{true}],
 
+	["play","Play Blackjack","",{true}],
+	["play","Set Bet","",{true}],
 
 	//computers
 	["sd_computer",localize"STR_INTSECT_ACCTVSYS",_dir+"map\MapControl\bunker_ca.paa",{(player getVariable ["job","unemployed"]) == "police"}], //Access CCTV System
@@ -2715,6 +2717,7 @@ Config_GenArray =
 	"Purchase Drivers License($500)",
 	"Rob the port",
 	"Play Slots",
+	"Play Blackjack",
 	"Set Bet",
 	"Rob Gas Station",
 	"Lockpick Door",

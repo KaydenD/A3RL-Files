@@ -8,7 +8,7 @@ class EditorData
 	toggles=10;
 	class ItemIDProvider
 	{
-		nextID=2760;
+		nextID=2763;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={6096.5068,29.728712,7748.8271};
-		dir[]={0.92911059,-0.22462116,-0.29405135};
-		up[]={0.21424538,0.97441059,-0.067805283};
-		aside[]={-0.3017638,-3.6496203e-007,-0.95346582};
+		pos[]={2938.5793,30.286493,5874.6523};
+		dir[]={0.2840808,-0.55646265,0.78081608};
+		up[]={0.1902633,0.83085704,0.52295053};
+		aside[]={0.93974733,-1.0360964e-007,-0.34190464};
 	};
 };
 binarizationWanted=0;
@@ -535,7 +535,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=851;
+		items=854;
 		class Item0
 		{
 			dataType="Object";
@@ -19121,7 +19121,7 @@ class Mission
 			type="A3PL_Markers_Trashbin";
 			colorName="ColorRed";
 			id=1721;
-			atlOffset=7.4386597e-005;
+			atlOffset=7.4863434e-005;
 		};
 		class Item365
 		{
@@ -32936,7 +32936,7 @@ class Mission
 			alpha=0;
 			a=75;
 			b=100;
-			angle=110.7009;
+			angle=110.70089;
 			id=2600;
 			atlOffset=-0.058908463;
 		};
@@ -33311,7 +33311,7 @@ class Mission
 			text="U-Haul";
 			type="A3PL_Markers_Truck";
 			colorName="ColorBlue";
-			angle=113.38885;
+			angle=113.38884;
 			id=2649;
 			atlOffset=0.019963264;
 		};
@@ -33691,13 +33691,13 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={2919.9578,6.8609276,5889.645};
+				position[]={2920.71,6.8564806,5889.8477};
 			};
 			areaSize[]={3,0,3};
 			flags=1;
 			id=2661;
 			type="ModuleHideTerrainObjects_F";
-			atlOffset=0.00019598007;
+			atlOffset=-0.0038075447;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -35883,6 +35883,54 @@ class Mission
 			};
 			id=2759;
 			type="A3PL_John_ATM";
+		};
+		class Item851
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={2931.6143,8.1214409,5892.5825};
+				angles[]={0,4.5461655,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+			};
+			id=2760;
+			type="A3RL_Blackjack";
+			atlOffset=0.76601553;
+		};
+		class Item852
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={2930.2407,8.1446877,5890.6689};
+				angles[]={0,6.1439772,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+			};
+			id=2761;
+			type="A3RL_Blackjack";
+			atlOffset=0.79135895;
+		};
+		class Item853
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={2928.3838,8.1364603,5892.1113};
+				angles[]={0,1.4138765,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+			};
+			id=2762;
+			type="A3RL_Blackjack";
+			atlOffset=0.77991819;
 		};
 	};
 };

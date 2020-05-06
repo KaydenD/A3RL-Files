@@ -125,16 +125,16 @@ class Dialog_Blackjack
 		class RscText_1000: RscText // Bet
 		{
 			idc = 1000;
-			x = 0.741823 * safezoneW + safezoneX;
-			y = 0.436778 * safezoneH + safezoneY;
+			x = 0.737 * safezoneW + safezoneX;
+			y = 0.433 * safezoneH + safezoneY;
 			w = 0.0521355 * safezoneW;
 			h = 0.0147037 * safezoneH;
 		};
 		class RscText_1001: RscText //Cash
 		{
 			idc = 1001;
-			x = 0.751614 * safezoneW + safezoneX;
-			y = 0.475222 * safezoneH + safezoneY;
+			x = 0.748 * safezoneW + safezoneX;
+			y = 0.474 * safezoneH + safezoneY;
 			w = 0.0417708 * safezoneW;
 			h = 0.0161111 * safezoneH;
 		};

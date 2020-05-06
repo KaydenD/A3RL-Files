@@ -768,7 +768,13 @@ A3PL_Interaction_Options =
 
 	[
 		localize "STR_INTER_USEDRUGS", // Use drugs
-		{[Player_ItemClass,1] call A3PL_Drugs_Use; }, // code to run
+		{[Player_ItemClass,1] call A3PL_Drugs_Use_Old; }, // code to run
+		{(([Player_ItemClass, 'fnc'] call A3PL_Config_GetItem) isEqualTo 'A3PL_Drugs_Use_Old')} // visible if true
+	],
+
+	[
+		localize "STR_INTER_USEDRUGS", // Use drugs
+		{[Player_ItemClass] call A3PL_Drugs_Use; }, // code to run
 		{(([Player_ItemClass, 'fnc'] call A3PL_Config_GetItem) isEqualTo 'A3PL_Drugs_Use')} // visible if true
 	],
 

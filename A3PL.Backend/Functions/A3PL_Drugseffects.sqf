@@ -1,7 +1,7 @@
 /*
 // Enable drugs system
 // Types of drugs in array,If passed out or not
-player setvariable ["drugs_array",[[["alcohol",0],["cocaine",0],["shrooms",0]],false],true];
+player setvariable ["drugs_array",[[["alcohol",0],["cocaine",0],["shrooms",0],['weed_5g',0],false],true];
 player getvariable "drugs_array";
 
 
@@ -11,7 +11,7 @@ player getvariable "drugs_array";
 
 */
 
-["A3PL_Drugs_Use",
+["A3PL_Drugs_Use_Old",
 {
 	private ["_item"];
 	_item = param [0,""];
@@ -76,6 +76,7 @@ player getvariable "drugs_array";
 			};			
 		};
 		case ("cocaine"): {["cocaine",10] call A3PL_Drugs_Add; [false] call A3PL_Inventory_PutBack; [_item,-1] call A3PL_Inventory_Add;};
+		case ("shrooms"): {["shrooms",5] call A3PL_Drugs_Add; [false] call A3PL_Inventory_PutBack; [_item,-1] call A3PL_Inventory_Add;};
 		case ("shrooms"): {["shrooms",5] call A3PL_Drugs_Add; [false] call A3PL_Inventory_PutBack; [_item,-1] call A3PL_Inventory_Add;};
 	};
 }] call Server_Setup_Compile;
@@ -209,4 +210,97 @@ player getvariable "drugs_array";
 	} foreach (_drugsarray select 0);
 	
 	[true] spawn A3PL_Drugs_Loop;
+}] call Server_Setup_Compile;
+
+
+["A3PL_Drugs_Use",
+{
+	private ["_item","_drugcooldown","_until"];
+	_item = param [0,""];
+	_drugcooldown = player getVariable ["drugcooldown", diag_tickTime];
+	if (_drugcooldown > diag_tickTime) exitwith {["If you take drugs you will overdose, you must wait " + str(ceil((_drugcooldown-diag_tickTime)/60)) + " minutes!",Color_Red] call A3PL_Player_Notification;};
+	switch (_item) do
+	{
+		case ("shrooms"): 
+		{
+			player setVariable ["drugcooldown", diag_tickTime+(5*60), true];
+			"colorCorrections" ppEffectEnable true;
+			"colorCorrections" ppEffectAdjust [0.5, 0.5, 0, [(random 10),(random 10),(random 10),0.2], [1,1,5,2], [(random 5),(random 5),(random 5),(random 5)]]; 
+			"colorCorrections" ppEffectCommit 40;
+			player enableFatigue false;
+
+			sleep 10;
+			player enableFatigue true;
+			"colorCorrections" ppEffectEnable false; 
+		};
+		case ("weed_5g"):
+		{
+			[] spawn{
+				"chromAberration" ppEffectEnable true; 
+				"radialBlur" ppEffectEnable true; 
+				enableCamShake true; 
+					
+				//Let's go for 45secs of effetcs 
+				for "_i" from 0 to 300 do 
+				{ 
+					"chromAberration" ppEffectAdjust [random 0.25,random 0.25,true]; 
+					"chromAberration" ppEffectCommit 1;    
+					"radialBlur" ppEffectAdjust  [random 0.02,random 0.02,0.15,0.15]; 
+					"radialBlur" ppEffectCommit 1; 
+					addcamShake[random 3, 1, random 3]; 
+					sleep 1; 
+				}; 
+			};
+			[_until] spawn {
+				waitUntil {
+					// Wait 20 seconds
+					_until = diag_tickTime + 20;
+					waitUntil {sleep 1; diag_tickTime > _until;};
+
+					if(([player,"blood"] call A3PL_Medical_GetVar) < 5000) then {
+						[player,[250]] call A3PL_Medical_ApplyVar;
+						if(([player,"blood"] call A3PL_Medical_GetVar) == 5000) then{
+							true; // Stop Loop
+						}else{
+							false; // Continue Loop
+						}
+					}else{
+						true; // Stop Loop
+					};
+				};
+
+				"chromAberration" ppEffectAdjust [0,0,true]; 
+				"chromAberration" ppEffectCommit 5; 
+				"radialBlur" ppEffectAdjust  [0,0,0,0]; 
+				"radialBlur" ppEffectCommit 5; 
+				sleep 4; 
+				
+				"chromAberration" ppEffectEnable false; 
+				"radialBlur" ppEffectEnable false; 
+				resetCamShake;
+			};
+		};
+		case ("cocaine"):
+		{
+			["FilmGrain", 2000, [0.6, 0.15, 3, 0.2, 1.0, 0]] spawn 
+			{
+				params ["_name", "_priority", "_effect", "_handle"]; 
+				player setAnimSpeedCoef 1.2;
+				while { 
+				_handle = ppEffectCreate [_name, _priority]; 
+				_handle < 0; 
+				} do { 
+				_priority = _priority + 1; 
+				}; 
+				_handle ppEffectEnable true; 
+				_handle ppEffectAdjust _effect; 
+				_handle ppEffectCommit 5; 
+				waitUntil {ppEffectCommitted _handle}; 
+				uiSleep 60; 
+				_handle ppEffectEnable false; 
+				ppEffectDestroy _handle; 
+				player setAnimSpeedCoef 1;
+			};
+		};
+	};
 }] call Server_Setup_Compile;

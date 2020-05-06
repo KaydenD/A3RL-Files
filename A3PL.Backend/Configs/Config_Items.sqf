@@ -61,7 +61,7 @@ Config_Items =
 	["cannabis_bud_cured","Cured Cannabis Bud", 0.25, "A3PL_Cannabis_Bud",0,true,true,true, true, true,"", [0,0,0], ""],
 	["marijuana","Marijuana (deprecated item, not used)",1,"A3PL_MarijuanaBag",0,true,true,true, true, true,"", [0,0,0], ""], //OLD MARIJUANA
 	["cannabis_grinded_5g","Grinded cannabis", 0.25, "A3PL_Cannabis_Bud",0,true,true,true, true, true,"", [0,0,0], ""],
-	["weed_5g","Marijuana (5 grams)",1,"A3PL_MarijuanaBag",90,true,true,true, true, true,"", [0,0,0], ""],
+	["weed_5g","Marijuana (5 grams)",1,"A3PL_MarijuanaBag",90,true,true,true, true, true,"A3PL_Drugs_Use", [0,0,0], ""],
 	["weed_10g","Marijuana (10 grams)",1,"A3PL_MarijuanaBag",90,true,true,true, true, true,"", [0,0,0], ""],
 	["weed_15g","Marijuana (15 grams)",1,"A3PL_MarijuanaBag",90,true,true,true, true, true,"", [0,0,0], ""],
 	["weed_20g","Marijuana (20 grams)",1,"A3PL_MarijuanaBag",90,true,true,true, true, true,"", [0,0,0], ""],
@@ -336,8 +336,8 @@ Config_Items =
 	["lettuce","Lettuce",2,"A3PL_LettuceItem",0,true,true,true, true, true,"A3PL_Items_Food", [0,0,0], ""],
 
 	//narcotics
-	["beer", "Corona Beer", 0.1, "A3PL_Corona",180,true,true,true,true,true,"A3PL_Drugs_Use", [-0.03,-0.05,0.1], ""],
-	["beer_gold", "XXXX Gold Beer", 0.1, "A3PL_4xGold",180,true,true,true,true,true,"A3PL_Drugs_Use", [0,0,0], ""],
+	["beer", "Corona Beer", 0.1, "A3PL_Corona",180,true,true,true,true,true,"A3PL_Drugs_Use_Old", [-0.03,-0.05,0.1], ""],
+	["beer_gold", "XXXX Gold Beer", 0.1, "A3PL_4xGold",180,true,true,true,true,true,"A3PL_Drugs_Use_Old", [0,0,0], ""],
 	["cocaine", "Cocaine", 0.1, "A3PL_PowderedMilk",0,true,true,true,true,true,"A3PL_Drugs_Use", [0,0,0], ""],
 	["shrooms", "Mushrooms", 0.1, "A3PL_TacticalBacon",0,true,true,true,true,true,"A3PL_Drugs_Use", [0,0,0], ""],
 

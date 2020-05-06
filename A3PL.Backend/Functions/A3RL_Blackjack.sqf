@@ -112,9 +112,9 @@
 			ctrlShow [35016 + (_splitIndex * 100), false];
 			ctrlShow [35017 + (_splitIndex * 100), false];
 			A3RL_Blackjack_SplitGamestate set [_splitIndex, true];
-			if((A3RL_Blackjack_SplitGamestate select 0) && (A3RL_Blackjack_SplitGamestate select 1)) then {
-				[] call A3RL_Blackjack_DealerResolve;
-			};
+		};
+		if((A3RL_Blackjack_SplitGamestate select 0) && (A3RL_Blackjack_SplitGamestate select 1)) then {
+			[] call A3RL_Blackjack_DealerResolve;
 		};
 	};
 }] call Server_Setup_Compile;
@@ -149,11 +149,15 @@
 	_newCard = selectRandom A3RL_Blackjack_Icons;
 	A3RL_Player_Cards pushBack _newCard;
 	((findDisplay 65) displayCtrl _nextIdc) ctrlSetText (format["%1%2.paa", _dir, _newCard]);
-	if([A3RL_Player_Cards] call A3RL_Blackjack_CardsValue > 21) then {
-		systemChat "BUST";
-	} else {
-		[] call A3RL_Blackjack_DealerResolve;
-	};
+	ctrlShow [34006, false];
+	ctrlShow [34007, false];
+	ctrlShow [34008, false];
+	ctrlShow [34009, false];
+	ctrlShow [34016, false];
+	ctrlShow [34017, false];
+	ctrlShow [34018, false];
+	ctrlShow [34019, false];
+	[] call A3RL_Blackjack_DealerResolve;
 }] call Server_Setup_Compile;
 
 ["A3RL_Blackjack_Split", {

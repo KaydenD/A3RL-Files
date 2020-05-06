@@ -408,7 +408,7 @@ class Dialog_Blackjack
 		class RscButton_35116: RscButtonEmpty //Split Hit 2
 		{
 			idc = 35116;
-			x = 0.587656 * safezoneW + safezoneX;
+			x = 0.520625 * safezoneW + safezoneX;
 			y = 0.643 * safezoneH + safezoneY;
 			w = 0.0469792 * safezoneW;
 			h = 0.0781482 * safezoneH;
@@ -417,7 +417,7 @@ class Dialog_Blackjack
 		class RscButton_35117: RscButtonEmpty //Split Stand 2
 		{
 			idc = 35117;
-			x = 0.520625 * safezoneW + safezoneX;
+			x = 0.587656 * safezoneW + safezoneX;
 			y = 0.643 * safezoneH + safezoneY;
 			w = 0.0469792 * safezoneW;
 			h = 0.0781482 * safezoneH;

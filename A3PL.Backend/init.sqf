@@ -91,6 +91,7 @@ Server_Setup_Files = [
 	['Functions', 'A3RL_FactionManagment'],
 	['Functions', 'A3RL_Knockout'],
 	['Functions', 'A3RL_UHaul'],
+	['Functions', 'A3RL_Blackjack'],
 	['Backend', 'Server_Setup'],
 	['Server', 'Server_JobVDelivery'],
 	['Server', 'Server_JobMDelivery'],

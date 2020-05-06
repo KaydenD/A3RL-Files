@@ -921,6 +921,14 @@
 ],
 
 [
+	"",
+	"Play Blackjack",
+	{
+		[player_objintersect] spawn A3RL_Blackjack_Start;
+	}
+],
+
+[
 	"Land_MetalCase_01_large_F",
 	"",
 	{

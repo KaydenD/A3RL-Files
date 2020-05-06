@@ -82,6 +82,7 @@
 
 ["A3RL_Blackjack_Hit", {
 	_splitIndex = param [0, -1];
+	_dir = "\A3PL_Common\gui\blackjack\cards\";
 	if(_splitIndex == -1) then {
 		_nextIdc = 34000 + (count A3RL_Player_Cards) + 1;
 		_newCard = selectRandom A3RL_Blackjack_Icons;
@@ -143,6 +144,7 @@
 }] call Server_Setup_Compile;
 
 ["A3RL_Blackjack_Double", {
+	_dir = "\A3PL_Common\gui\blackjack\cards\";
 	_nextIdc = 34000 + (count A3RL_Player_Cards) + 1;
 	_newCard = selectRandom A3RL_Blackjack_Icons;
 	A3RL_Player_Cards pushBack _newCard;
@@ -160,6 +162,7 @@
 	_splitArr = [35001, 35002, 35003, 35004, 35005, 35006, 35007, 35016, 35017, 35101, 35102, 35103, 35104, 35105, 35116, 35117, 35106, 35107];
 	{ctrlShow[_x, false];} forEach _normalArr;
 	{ctrlShow[_x, true];} forEach _splitArr;
+	_dir = "\A3PL_Common\gui\blackjack\cards\";
 
 	((findDisplay 65) displayCtrl 35001) ctrlSetText (format["%1%2.paa", _dir, (A3RL_Player_Cards select 0) select 0]);
 	((findDisplay 65) displayCtrl 35002) ctrlSetText "";
@@ -176,6 +179,7 @@
 }] call Server_Setup_Compile;
 
 ["A3RL_Blackjack_DealerResolve", {
+	_dir = "\A3PL_Common\gui\blackjack\cards\";
 	A3RL_Dealer_Cards set [1, selectRandom A3RL_Blackjack_Icons];
 	_dealerCard2 = (findDisplay 65) displayCtrl 1202;
 	_dealerCard2 ctrlSetText (format["%1%2.paa", _dir, A3RL_Dealer_Cards select 1]);

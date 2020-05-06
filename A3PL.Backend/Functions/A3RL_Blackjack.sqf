@@ -64,14 +64,12 @@
 	_playerCard5 = _display displayCtrl 34005;
 	_playerCard5 ctrlSetText "";
 
-	_card1 = ((A3RL_Player_Cards select 0) splitString "");
-	_card1 deleteAt ((count _card1) - 1);
-	_card2 = ((A3RL_Player_Cards select 1) splitString "");
-	_card2 deleteAt ((count _card2) - 1);
+	_card1 = (A3RL_Player_Cards select 0);
+	_card2 = (A3RL_Player_Cards select 1);
 
 	ctrlShow [34008, false];
 	ctrlShow [34018, false];
-	if(_card1 isEqualTo _card2) then {
+	if(([[_card1]] call A3RL_Blackjack_CardsValue) isEqualTo ([[_card2]] call A3RL_Blackjack_CardsValue)) then {
 		ctrlShow [34008, true];
 		ctrlShow [34018, true];
 	};

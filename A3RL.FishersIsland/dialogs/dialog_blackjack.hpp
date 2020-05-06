@@ -142,10 +142,9 @@ class Dialog_Blackjack
 		class blackjack_normalIcons: Life_RscControlsGroup {
 			idc = 34000;
 			show = false;
-			x = 0 * safezoneW + safezoneX;
-			y = 0 * safezoneH + safezoneY;
 			w = 1.5 * safezoneW;
 			h = 1.5 * safezoneH;
+			
 			class VScrollbar : VScrollbar
 			{
        			width = 0;
@@ -278,8 +277,6 @@ class Dialog_Blackjack
 		class blackjack_splitIcons: Life_RscControlsGroup {
 			idc = 35000;
 			show = false;
-			x = 0 * safezoneW + safezoneX;
-			y = 0 * safezoneH + safezoneY;
 			w = 1.5 * safezoneW;
 			h = 1.5 * safezoneH;
 			class VScrollbar : VScrollbar

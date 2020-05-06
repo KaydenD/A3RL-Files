@@ -221,37 +221,43 @@ class Dialog_Blackjack
 			w = 0.0464063 * safezoneW;
 			h = 0.077 * safezoneH;
 		};
-		class RscButton_34016: RscButtonEmpty
+		class RscButton_34016: RscButtonEmpty // Hit
 		{
 			idc = 34016;
 			x = 0.37625 * safezoneW + safezoneX;
 			y = 0.763815 * safezoneH + safezoneY;
 			w = 0.0469792 * safezoneW;
 			h = 0.0781482 * safezoneH;
+			action = "[] call A3RL_Blackjack_Hit;";
+
 		};
-		class RscButton_34017: RscButtonEmpty
+		class RscButton_34017: RscButtonEmpty // Stand
 		{
 			idc = 34017;
 			x = 0.4375 * safezoneW + safezoneX;
 			y = 0.763889 * safezoneH + safezoneY;
 			w = 0.0469792 * safezoneW;
 			h = 0.0781482 * safezoneH;
+			action = "[] call A3RL_Blackjack_Stand;";
 		};
-		class RscButton_34018: RscButtonEmpty 
+		class RscButton_34018: RscButtonEmpty // Split
 		{
 			idc = 34018;
 			x = 0.5 * safezoneW + safezoneX;
 			y = 0.764 * safezoneH + safezoneY;
 			w = 0.0469792 * safezoneW;
 			h = 0.0781482 * safezoneH;
+			action = "[] call A3RL_Blackjack_Split;";
+
 		};
-		class RscButton_34019: RscButtonEmpty
+		class RscButton_34019: RscButtonEmpty // Double
 		{
 			idc = 34019;
 			x = 0.561875 * safezoneW + safezoneX;
 			y = 0.764 * safezoneH + safezoneY;
 			w = 0.0469792 * safezoneW;
 			h = 0.0781482 * safezoneH;
+			action = "[] call A3RL_Blackjack_Double;";
 		};
 
 		//Normal - Non-Split
@@ -307,10 +313,11 @@ class Dialog_Blackjack
 			y = 0.489 * safezoneH + safezoneY;
 			w = 0.0469792 * safezoneW;
 			h = 0.0781482 * safezoneH;
+			action = "[0] call A3RL_Blackjack_Hit;";
 		};
-		class RscPicture_35016: RscPicture //Split Hit 1
+		class RscPicture_35006: RscPicture //Split Hit 1
 		{
-			idc = 35016;
+			idc = 35006;
 			text = "\A3PL_Common\gui\blackjack\hit.paa";
 			x = 0.520625 * safezoneW + safezoneX;
 			y = 0.489 * safezoneH + safezoneY;
@@ -333,6 +340,7 @@ class Dialog_Blackjack
 			y = 0.489 * safezoneH + safezoneY;
 			w = 0.0469792 * safezoneW;
 			h = 0.0781482 * safezoneH;
+			action = "[0] call A3RL_Blackjack_Stand;";
 		};
 		class RscPicture_35101: RscPicture //Split 2
 		{
@@ -379,39 +387,41 @@ class Dialog_Blackjack
 			w = 0.0515625 * safezoneW;
 			h = 0.11 * safezoneH;
 		};
-		class RscPicture_35116: RscPicture //Split Hit 2
+		class RscPicture_35106: RscPicture //Split Hit 2
 		{
-			idc = 35116;
+			idc = 35106;
 			text = "\A3PL_Common\gui\blackjack\hit.paa";
 			x = 0.520625 * safezoneW + safezoneX;
 			y = 0.643 * safezoneH + safezoneY;
 			w = 0.0464063 * safezoneW;
 			h = 0.077 * safezoneH;
 		};
-		class RscPicture_35117: RscPicture //Split Stand 2
+		class RscPicture_35107: RscPicture //Split Stand 2
 		{
-			idc = 35117;
+			idc = 35107;
 			text = "\A3PL_Common\gui\blackjack\stand.paa";
 			x = 0.587656 * safezoneW + safezoneX;
 			y = 0.643 * safezoneH + safezoneY;
 			w = 0.0464063 * safezoneW;
 			h = 0.077 * safezoneH;
 		};
-		class RscButton_35106: RscButtonEmpty //Split Hit 2
+		class RscButton_35116: RscButtonEmpty //Split Hit 2
 		{
-			idc = 35106;
+			idc = 35116;
 			x = 0.587656 * safezoneW + safezoneX;
 			y = 0.643 * safezoneH + safezoneY;
 			w = 0.0469792 * safezoneW;
 			h = 0.0781482 * safezoneH;
+			action = "[1] call A3RL_Blackjack_Hit;";
 		};
-		class RscButton_35107: RscButtonEmpty //Split Stand 2
+		class RscButton_35117: RscButtonEmpty //Split Stand 2
 		{
-			idc = 35107;
+			idc = 35117;
 			x = 0.520625 * safezoneW + safezoneX;
 			y = 0.643 * safezoneH + safezoneY;
 			w = 0.0469792 * safezoneW;
 			h = 0.0781482 * safezoneH;
+			action = "[1] call A3RL_Blackjack_Stand;";
 		};
 		
 	};

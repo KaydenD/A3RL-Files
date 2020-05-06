@@ -32,6 +32,13 @@
 	_cashCtrl ctrlSetText (format ["$%1", [player getVariable ["player_cash", 0], 1, 0, true] call CBA_fnc_formatNumber]);
 	_betCtrl ctrlSetText (format ["$%1", _bet]);
 
+	_normalArr = [34001, 34002, 34003, 34004, 34005, 34006, 34007, 34008, 34009, 34016, 34017, 34018, 34019];
+	_splitArr = [35001, 35002, 35003, 35004, 35005, 35006, 35007, 35016, 35017, 35101, 35102, 35103, 35104, 35105, 35116, 35117, 35106, 35107];
+
+	{
+		ctrlShow[_x, false];
+	} forEach _splitArr;
+
 	_dealerCard1 = _display displayCtrl 1201;
 	_dealerCard1 ctrlSetText (format["%1%2.paa", _dir, selectRandom _icons]);
 	_dealerCard2 = _display displayCtrl 1202;

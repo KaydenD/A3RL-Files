@@ -139,322 +139,281 @@ class Dialog_Blackjack
 			h = 0.0161111 * safezoneH;
 		};
 
-		class blackjack_normalIcons: Life_RscControlsGroup {
-			idc = 34000;
-			show = false;
-			x = 0.0 * safezoneW + safezoneX;
-			y = 0.0 * safezoneH + safezoneY;
-			w = 1.5 * safezoneW;
-			h = 1.5 * safezoneH;
-			
-			class VScrollbar : VScrollbar
-			{
-       			width = 0;
-    		};
-
-    		class HScrollbar : HScrollbar
-    		{
-        		height = 0;
-    		};
-
-			class Controls
-			{
-				class RscPicture_34001: RscPicture
-				{
-					idc = 34001;
-					text = "\A3PL_Common\gui\blackjack\cards\5C.paa";
-					x = 0.206094 * safezoneW + safezoneX;
-					y = 0.522 * safezoneH + safezoneY;
-					w = 0.0928125 * safezoneW;
-					h = 0.198 * safezoneH;
-				};
-				class RscPicture_34002: RscPicture
-				{
-					idc = 34002;
-					text = "\A3PL_Common\gui\blackjack\cards\5C.paa";
-					x = 0.314375 * safezoneW + safezoneX;
-					y = 0.522 * safezoneH + safezoneY;
-					w = 0.0928125 * safezoneW;
-					h = 0.198 * safezoneH;
-				};
-				class RscPicture_34003: RscPicture
-				{
-					idc = 34003;
-					text = "\A3PL_Common\gui\blackjack\cards\5C.paa";
-					x = 0.427812 * safezoneW + safezoneX;
-					y = 0.522 * safezoneH + safezoneY;
-					w = 0.0928125 * safezoneW;
-					h = 0.198 * safezoneH;
-				};
-				class RscPicture_34004: RscPicture
-				{
-					idc = 34004;
-					text = "\A3PL_Common\gui\blackjack\cards\5C.paa";
-					x = 0.54125 * safezoneW + safezoneX;
-					y = 0.522 * safezoneH + safezoneY;
-					w = 0.0928125 * safezoneW;
-					h = 0.198 * safezoneH;
-				};
-				class RscPicture_34005: RscPicture
-				{
-					idc = 34005;
-					text = "\A3PL_Common\gui\blackjack\cards\5C.paa";
-					x = 0.654688 * safezoneW + safezoneX; 
-					y = 0.522 * safezoneH + safezoneY;
-					w = 0.0928125 * safezoneW;
-					h = 0.198 * safezoneH;
-				};
-				class RscPicture_34006: RscPicture
-				{
-					idc = 34006;
-					text = "\A3PL_Common\gui\blackjack\hit.paa";
-					x = 0.37625 * safezoneW + safezoneX;
-					y = 0.764 * safezoneH + safezoneY;
-					w = 0.0464063 * safezoneW;
-					h = 0.077 * safezoneH;
-				};
-				class RscPicture_34007: RscPicture 
-				{
-					idc = 34007;
-					text = "\A3PL_Common\gui\blackjack\stand.paa";
-					x = 0.438125 * safezoneW + safezoneX;
-					y = 0.764 * safezoneH + safezoneY;
-					w = 0.0464063 * safezoneW;
-					h = 0.077 * safezoneH;
-				};
-				class RscPicture_34008: RscPicture 
-				{
-					idc = 34008;
-					text = "\A3PL_Common\gui\blackjack\split.paa";
-					x = 0.5 * safezoneW + safezoneX;
-					y = 0.764 * safezoneH + safezoneY;
-					w = 0.0464063 * safezoneW;
-					h = 0.077 * safezoneH;
-				};
-				class RscPicture_34009: RscPicture 
-				{
-					idc = 34009;
-					text = "\A3PL_Common\gui\blackjack\double.paa";
-					x = 0.561875 * safezoneW + safezoneX;
-					y = 0.764 * safezoneH + safezoneY;
-					w = 0.0464063 * safezoneW;
-					h = 0.077 * safezoneH;
-				};
-				class RscButton_35016: RscButtonEmpty
-				{
-					idc = 35016;
-					x = 0.37625 * safezoneW + safezoneX;
-					y = 0.763815 * safezoneH + safezoneY;
-					w = 0.0469792 * safezoneW;
-					h = 0.0781482 * safezoneH;
-				};
-				class RscButton_35017: RscButtonEmpty
-				{
-					idc = 35017;
-					x = 0.4375 * safezoneW + safezoneX;
-					y = 0.763889 * safezoneH + safezoneY;
-					w = 0.0469792 * safezoneW;
-					h = 0.0781482 * safezoneH;
-				};
-				class RscButton_35018: RscButtonEmpty 
-				{
-					idc = 35018;
-					x = 0.5 * safezoneW + safezoneX;
-					y = 0.764 * safezoneH + safezoneY;
-					w = 0.0469792 * safezoneW;
-					h = 0.0781482 * safezoneH;
-				};
-				class RscButton_35019: RscButtonEmpty
-				{
-					idc = 35019;
-					x = 0.561875 * safezoneW + safezoneX;
-					y = 0.764 * safezoneH + safezoneY;
-					w = 0.0469792 * safezoneW;
-					h = 0.0781482 * safezoneH;
-				};
-			};
+		//Normal - Non-Split
+		class RscPicture_34001: RscPicture
+		{
+			idc = 34001;
+			text = "\A3PL_Common\gui\blackjack\cards\5C.paa";
+			x = 0.206094 * safezoneW + safezoneX;
+			y = 0.522 * safezoneH + safezoneY;
+			w = 0.0928125 * safezoneW;
+			h = 0.198 * safezoneH;
+		};
+		class RscPicture_34002: RscPicture
+		{
+			idc = 34002;
+			text = "\A3PL_Common\gui\blackjack\cards\5C.paa";
+			x = 0.314375 * safezoneW + safezoneX;
+			y = 0.522 * safezoneH + safezoneY;
+			w = 0.0928125 * safezoneW;
+			h = 0.198 * safezoneH;
+		};
+		class RscPicture_34003: RscPicture
+		{
+			idc = 34003;
+			text = "\A3PL_Common\gui\blackjack\cards\5C.paa";
+			x = 0.427812 * safezoneW + safezoneX;
+			y = 0.522 * safezoneH + safezoneY;
+			w = 0.0928125 * safezoneW;
+			h = 0.198 * safezoneH;
+		};
+		class RscPicture_34004: RscPicture
+		{
+			idc = 34004;
+			text = "\A3PL_Common\gui\blackjack\cards\5C.paa";
+			x = 0.54125 * safezoneW + safezoneX;
+			y = 0.522 * safezoneH + safezoneY;
+			w = 0.0928125 * safezoneW;
+			h = 0.198 * safezoneH;
+		};
+		class RscPicture_34005: RscPicture
+		{
+			idc = 34005;
+			text = "\A3PL_Common\gui\blackjack\cards\5C.paa";
+			x = 0.654688 * safezoneW + safezoneX; 
+			y = 0.522 * safezoneH + safezoneY;
+			w = 0.0928125 * safezoneW;
+			h = 0.198 * safezoneH;
+		};
+		class RscPicture_34006: RscPicture
+		{
+			idc = 34006;
+			text = "\A3PL_Common\gui\blackjack\hit.paa";
+			x = 0.37625 * safezoneW + safezoneX;
+			y = 0.764 * safezoneH + safezoneY;
+			w = 0.0464063 * safezoneW;
+			h = 0.077 * safezoneH;
+		};
+		class RscPicture_34007: RscPicture 
+		{
+			idc = 34007;
+			text = "\A3PL_Common\gui\blackjack\stand.paa";
+			x = 0.438125 * safezoneW + safezoneX;
+			y = 0.764 * safezoneH + safezoneY;
+			w = 0.0464063 * safezoneW;
+			h = 0.077 * safezoneH;
+		};
+		class RscPicture_34008: RscPicture 
+		{
+			idc = 34008;
+			text = "\A3PL_Common\gui\blackjack\split.paa";
+			x = 0.5 * safezoneW + safezoneX;
+			y = 0.764 * safezoneH + safezoneY;
+			w = 0.0464063 * safezoneW;
+			h = 0.077 * safezoneH;
+		};
+		class RscPicture_34009: RscPicture 
+		{
+			idc = 34009;
+			text = "\A3PL_Common\gui\blackjack\double.paa";
+			x = 0.561875 * safezoneW + safezoneX;
+			y = 0.764 * safezoneH + safezoneY;
+			w = 0.0464063 * safezoneW;
+			h = 0.077 * safezoneH;
+		};
+		class RscButton_35016: RscButtonEmpty
+		{
+			idc = 34016;
+			x = 0.37625 * safezoneW + safezoneX;
+			y = 0.763815 * safezoneH + safezoneY;
+			w = 0.0469792 * safezoneW;
+			h = 0.0781482 * safezoneH;
+		};
+		class RscButton_35017: RscButtonEmpty
+		{
+			idc = 34017;
+			x = 0.4375 * safezoneW + safezoneX;
+			y = 0.763889 * safezoneH + safezoneY;
+			w = 0.0469792 * safezoneW;
+			h = 0.0781482 * safezoneH;
+		};
+		class RscButton_35018: RscButtonEmpty 
+		{
+			idc = 34018;
+			x = 0.5 * safezoneW + safezoneX;
+			y = 0.764 * safezoneH + safezoneY;
+			w = 0.0469792 * safezoneW;
+			h = 0.0781482 * safezoneH;
+		};
+		class RscButton_35019: RscButtonEmpty
+		{
+			idc = 34019;
+			x = 0.561875 * safezoneW + safezoneX;
+			y = 0.764 * safezoneH + safezoneY;
+			w = 0.0469792 * safezoneW;
+			h = 0.0781482 * safezoneH;
 		};
 
-
-		class blackjack_splitIcons: Life_RscControlsGroup {
-			idc = 35000;
-			show = false;
-			x = 0.0 * safezoneW + safezoneX;
-			y = 0.0 * safezoneH + safezoneY;
-			w = 1.5 * safezoneW;
-			h = 1.5 * safezoneH;
-			class VScrollbar : VScrollbar
-			{
-       			width = 0;
-    		};
-
-    		class HScrollbar : HScrollbar
-    		{
-        		height = 0;
-    		};
-			
-			class Controls
-			{
-				class RscPicture_35001: RscPicture //Split 1
-				{
-					idc = 35001;
-					text = "\A3PL_Common\gui\blackjack\cards\5C.paa";
-					x = 0.200937 * safezoneW + safezoneX;
-					y = 0.467 * safezoneH + safezoneY;
-					w = 0.0515625 * safezoneW;
-					h = 0.11 * safezoneH;
-				};
-				class RscPicture_35002: RscPicture //Split 1
-				{
-					idc = 35002;
-					text = "\A3PL_Common\gui\blackjack\cards\5C.paa";
-					x = 0.262812 * safezoneW + safezoneX;
-					y = 0.467 * safezoneH + safezoneY;
-					w = 0.0515625 * safezoneW;
-					h = 0.11 * safezoneH;
-				};
-				class RscPicture_35003: RscPicture //Split 1
-				{
-					idc = 35003;
-					text = "\A3PL_Common\gui\blackjack\cards\5C.paa";
-					x = 0.324687 * safezoneW + safezoneX;
-					y = 0.467 * safezoneH + safezoneY;
-					w = 0.0515625 * safezoneW;
-					h = 0.11 * safezoneH;
-				};
-				class RscPicture_35004: RscPicture //Split 1
-				{
-					idc = 35004;
-					text = "\A3PL_Common\gui\blackjack\cards\5C.paa";
-					x = 0.386562 * safezoneW + safezoneX;
-					y = 0.467 * safezoneH + safezoneY;
-					w = 0.0515625 * safezoneW;
-					h = 0.11 * safezoneH;
-				};
-				class RscPicture_35005: RscPicture //Split 1
-				{
-					idc = 35005;
-					text = "\A3PL_Common\gui\blackjack\cards\5C.paa";
-					x = 0.448438 * safezoneW + safezoneX;
-					y = 0.467 * safezoneH + safezoneY;
-					w = 0.0515625 * safezoneW;
-					h = 0.11 * safezoneH;
-				};
-				class RscButton_35006: RscButtonEmpty //Split Hit 1
-				{
-					idc = 35006;
-					x = 0.520625 * safezoneW + safezoneX;
-					y = 0.489 * safezoneH + safezoneY;
-					w = 0.0469792 * safezoneW;
-					h = 0.0781482 * safezoneH;
-				};
-				class RscPicture_35016: RscPicture //Split Hit 1
-				{
-					idc = 35016;
-					text = "\A3PL_Common\gui\blackjack\hit.paa";
-					x = 0.520625 * safezoneW + safezoneX;
-					y = 0.489 * safezoneH + safezoneY;
-					w = 0.0464063 * safezoneW;
-					h = 0.077 * safezoneH;
-				};
-				class RscPicture_35007: RscPicture //Split Stand 1
-				{
-					idc = 35007;
-					text = "\A3PL_Common\gui\blackjack\stand.paa";
-					x = 0.587656 * safezoneW + safezoneX;
-					y = 0.489 * safezoneH + safezoneY;
-					w = 0.0464063 * safezoneW;
-					h = 0.077 * safezoneH;
-				};
-				class RscButton_35017: RscButtonEmpty //Split Stand 1
-				{
-					idc = 35017;
-					x = 0.587656 * safezoneW + safezoneX;
-					y = 0.489 * safezoneH + safezoneY;
-					w = 0.0469792 * safezoneW;
-					h = 0.0781482 * safezoneH;
-				};
-				class RscPicture_35101: RscPicture //Split 2
-				{
-					idc = 35101;
-					text = "\A3PL_Common\gui\blackjack\cards\5C.paa";
-					x = 0.200937 * safezoneW + safezoneX;
-					y = 0.621 * safezoneH + safezoneY;
-					w = 0.0515625 * safezoneW;
-					h = 0.11 * safezoneH;
-				};
-				class RscPicture_35102: RscPicture //Split 2
-				{
-					idc = 35102;
-					text = "\A3PL_Common\gui\blackjack\cards\5C.paa";
-					x = 0.262812 * safezoneW + safezoneX;
-					y = 0.621 * safezoneH + safezoneY;
-					w = 0.0515625 * safezoneW;
-					h = 0.11 * safezoneH;
-				};
-				class RscPicture_35103: RscPicture //Split 2
-				{
-					idc = 35103;
-					text = "\A3PL_Common\gui\blackjack\cards\5C.paa";
-					x = 0.324687 * safezoneW + safezoneX;
-					y = 0.621 * safezoneH + safezoneY;
-					w = 0.0515625 * safezoneW;
-					h = 0.11 * safezoneH;
-				};
-				class RscPicture_35104: RscPicture //Split 2
-				{
-					idc = 35104;
-					text = "\A3PL_Common\gui\blackjack\cards\5C.paa";
-					x = 0.386562 * safezoneW + safezoneX;
-					y = 0.621 * safezoneH + safezoneY;
-					w = 0.0515625 * safezoneW;
-					h = 0.11 * safezoneH;
-				};
-				class RscPicture_35105: RscPicture //Split 2
-				{
-					idc = 35105;
-					text = "\A3PL_Common\gui\blackjack\cards\5C.paa";
-					x = 0.448438 * safezoneW + safezoneX;
-					y = 0.621 * safezoneH + safezoneY;
-					w = 0.0515625 * safezoneW;
-					h = 0.11 * safezoneH;
-				};
-				class RscPicture_35116: RscPicture //Split Hit 2
-				{
-					idc = 35116;
-					text = "\A3PL_Common\gui\blackjack\hit.paa";
-					x = 0.520625 * safezoneW + safezoneX;
-					y = 0.643 * safezoneH + safezoneY;
-					w = 0.0464063 * safezoneW;
-					h = 0.077 * safezoneH;
-				};
-				class RscPicture_35117: RscPicture //Split Stand 2
-				{
-					idc = 35117;
-					text = "\A3PL_Common\gui\blackjack\stand.paa";
-					x = 0.587656 * safezoneW + safezoneX;
-					y = 0.643 * safezoneH + safezoneY;
-					w = 0.0464063 * safezoneW;
-					h = 0.077 * safezoneH;
-				};
-				class RscButton_35106: RscButtonEmpty //Split Hit 2
-				{
-					idc = 35106;
-					x = 0.587656 * safezoneW + safezoneX;
-					y = 0.643 * safezoneH + safezoneY;
-					w = 0.0469792 * safezoneW;
-					h = 0.0781482 * safezoneH;
-				};
-				class RscButton_35107: RscButtonEmpty //Split Stand 2
-				{
-					idc = 35107;
-					x = 0.520625 * safezoneW + safezoneX;
-					y = 0.643 * safezoneH + safezoneY;
-					w = 0.0469792 * safezoneW;
-					h = 0.0781482 * safezoneH;
-				};
-			};
+		//Normal - Non-Split
+		class RscPicture_35001: RscPicture //Split 1
+		{
+			idc = 35001;
+			text = "\A3PL_Common\gui\blackjack\cards\5C.paa";
+			x = 0.200937 * safezoneW + safezoneX;
+			y = 0.467 * safezoneH + safezoneY;
+			w = 0.0515625 * safezoneW;
+			h = 0.11 * safezoneH;
 		};
+		class RscPicture_35002: RscPicture //Split 1
+		{
+			idc = 35002;
+			text = "\A3PL_Common\gui\blackjack\cards\5C.paa";
+			x = 0.262812 * safezoneW + safezoneX;
+			y = 0.467 * safezoneH + safezoneY;
+			w = 0.0515625 * safezoneW;
+			h = 0.11 * safezoneH;
+		};
+		class RscPicture_35003: RscPicture //Split 1
+		{
+			idc = 35003;
+			text = "\A3PL_Common\gui\blackjack\cards\5C.paa";
+			x = 0.324687 * safezoneW + safezoneX;
+			y = 0.467 * safezoneH + safezoneY;
+			w = 0.0515625 * safezoneW;
+			h = 0.11 * safezoneH;
+		};
+		class RscPicture_35004: RscPicture //Split 1
+		{
+			idc = 35004;
+			text = "\A3PL_Common\gui\blackjack\cards\5C.paa";
+			x = 0.386562 * safezoneW + safezoneX;
+			y = 0.467 * safezoneH + safezoneY;
+			w = 0.0515625 * safezoneW;
+			h = 0.11 * safezoneH;
+		};
+		class RscPicture_35005: RscPicture //Split 1
+		{
+			idc = 35005;
+			text = "\A3PL_Common\gui\blackjack\cards\5C.paa";
+			x = 0.448438 * safezoneW + safezoneX;
+			y = 0.467 * safezoneH + safezoneY;
+			w = 0.0515625 * safezoneW;
+			h = 0.11 * safezoneH;
+		};
+		class RscButton_35006: RscButtonEmpty //Split Hit 1
+		{
+			idc = 35006;
+			x = 0.520625 * safezoneW + safezoneX;
+			y = 0.489 * safezoneH + safezoneY;
+			w = 0.0469792 * safezoneW;
+			h = 0.0781482 * safezoneH;
+		};
+		class RscPicture_35016: RscPicture //Split Hit 1
+		{
+			idc = 35016;
+			text = "\A3PL_Common\gui\blackjack\hit.paa";
+			x = 0.520625 * safezoneW + safezoneX;
+			y = 0.489 * safezoneH + safezoneY;
+			w = 0.0464063 * safezoneW;
+			h = 0.077 * safezoneH;
+		};
+		class RscPicture_35007: RscPicture //Split Stand 1
+		{
+			idc = 35007;
+			text = "\A3PL_Common\gui\blackjack\stand.paa";
+			x = 0.587656 * safezoneW + safezoneX;
+			y = 0.489 * safezoneH + safezoneY;
+			w = 0.0464063 * safezoneW;
+			h = 0.077 * safezoneH;
+		};
+		class RscButton_35017: RscButtonEmpty //Split Stand 1
+		{
+			idc = 35017;
+			x = 0.587656 * safezoneW + safezoneX;
+			y = 0.489 * safezoneH + safezoneY;
+			w = 0.0469792 * safezoneW;
+			h = 0.0781482 * safezoneH;
+		};
+		class RscPicture_35101: RscPicture //Split 2
+		{
+			idc = 35101;
+			text = "\A3PL_Common\gui\blackjack\cards\5C.paa";
+			x = 0.200937 * safezoneW + safezoneX;
+			y = 0.621 * safezoneH + safezoneY;
+			w = 0.0515625 * safezoneW;
+			h = 0.11 * safezoneH;
+		};
+		class RscPicture_35102: RscPicture //Split 2
+		{
+			idc = 35102;
+			text = "\A3PL_Common\gui\blackjack\cards\5C.paa";
+			x = 0.262812 * safezoneW + safezoneX;
+			y = 0.621 * safezoneH + safezoneY;
+			w = 0.0515625 * safezoneW;
+			h = 0.11 * safezoneH;
+		};
+		class RscPicture_35103: RscPicture //Split 2
+		{
+			idc = 35103;
+			text = "\A3PL_Common\gui\blackjack\cards\5C.paa";
+			x = 0.324687 * safezoneW + safezoneX;
+			y = 0.621 * safezoneH + safezoneY;
+			w = 0.0515625 * safezoneW;
+			h = 0.11 * safezoneH;
+		};
+		class RscPicture_35104: RscPicture //Split 2
+		{
+			idc = 35104;
+			text = "\A3PL_Common\gui\blackjack\cards\5C.paa";
+			x = 0.386562 * safezoneW + safezoneX;
+			y = 0.621 * safezoneH + safezoneY;
+			w = 0.0515625 * safezoneW;
+			h = 0.11 * safezoneH;
+		};
+		class RscPicture_35105: RscPicture //Split 2
+		{
+			idc = 35105;
+			text = "\A3PL_Common\gui\blackjack\cards\5C.paa";
+			x = 0.448438 * safezoneW + safezoneX;
+			y = 0.621 * safezoneH + safezoneY;
+			w = 0.0515625 * safezoneW;
+			h = 0.11 * safezoneH;
+		};
+		class RscPicture_35116: RscPicture //Split Hit 2
+		{
+			idc = 35116;
+			text = "\A3PL_Common\gui\blackjack\hit.paa";
+			x = 0.520625 * safezoneW + safezoneX;
+			y = 0.643 * safezoneH + safezoneY;
+			w = 0.0464063 * safezoneW;
+			h = 0.077 * safezoneH;
+		};
+		class RscPicture_35117: RscPicture //Split Stand 2
+		{
+			idc = 35117;
+			text = "\A3PL_Common\gui\blackjack\stand.paa";
+			x = 0.587656 * safezoneW + safezoneX;
+			y = 0.643 * safezoneH + safezoneY;
+			w = 0.0464063 * safezoneW;
+			h = 0.077 * safezoneH;
+		};
+		class RscButton_35106: RscButtonEmpty //Split Hit 2
+		{
+			idc = 35106;
+			x = 0.587656 * safezoneW + safezoneX;
+			y = 0.643 * safezoneH + safezoneY;
+			w = 0.0469792 * safezoneW;
+			h = 0.0781482 * safezoneH;
+		};
+		class RscButton_35107: RscButtonEmpty //Split Stand 2
+		{
+			idc = 35107;
+			x = 0.520625 * safezoneW + safezoneX;
+			y = 0.643 * safezoneH + safezoneY;
+			w = 0.0469792 * safezoneW;
+			h = 0.0781482 * safezoneH;
+		};
+		
 	};
 };
 

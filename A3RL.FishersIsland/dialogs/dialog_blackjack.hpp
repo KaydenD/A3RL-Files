@@ -221,7 +221,7 @@ class Dialog_Blackjack
 			w = 0.0464063 * safezoneW;
 			h = 0.077 * safezoneH;
 		};
-		class RscButton_35016: RscButtonEmpty
+		class RscButton_34016: RscButtonEmpty
 		{
 			idc = 34016;
 			x = 0.37625 * safezoneW + safezoneX;
@@ -229,7 +229,7 @@ class Dialog_Blackjack
 			w = 0.0469792 * safezoneW;
 			h = 0.0781482 * safezoneH;
 		};
-		class RscButton_35017: RscButtonEmpty
+		class RscButton_34017: RscButtonEmpty
 		{
 			idc = 34017;
 			x = 0.4375 * safezoneW + safezoneX;
@@ -237,7 +237,7 @@ class Dialog_Blackjack
 			w = 0.0469792 * safezoneW;
 			h = 0.0781482 * safezoneH;
 		};
-		class RscButton_35018: RscButtonEmpty 
+		class RscButton_34018: RscButtonEmpty 
 		{
 			idc = 34018;
 			x = 0.5 * safezoneW + safezoneX;
@@ -245,7 +245,7 @@ class Dialog_Blackjack
 			w = 0.0469792 * safezoneW;
 			h = 0.0781482 * safezoneH;
 		};
-		class RscButton_35019: RscButtonEmpty
+		class RscButton_34019: RscButtonEmpty
 		{
 			idc = 34019;
 			x = 0.561875 * safezoneW + safezoneX;

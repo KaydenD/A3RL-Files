@@ -573,7 +573,7 @@
 			if (!([_item,1] call A3PL_Inventory_Has)) exitwith {["System Medical: You don't have this item"] call A3PL_Player_Notification; _exit = true;};
 			if (_isEMS) then
 			{
-				if (([_player,"blood"] call A3PL_Medical_GetVar) >= 5000) exitwith {["System Medical: This patient already has maximum blood"] call A3PL_Player_Notification;};
+				if (([_player,"blood"] call A3PL_Medical_GetVar) >= MAXBLOODLVL) exitwith {["System Medical: This patient already has maximum blood"] call A3PL_Player_Notification;};
 				if (player_itemClass == _item) then {[] call A3PL_Inventory_Clear};
 				["medS_bloodbag",-1] call A3PL_Inventory_Add;
 				[_player,[BLOODPERBAG]] call A3PL_Medical_ApplyVar;

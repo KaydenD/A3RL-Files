@@ -686,6 +686,7 @@ Server_Setup_Compile = {
 
 	if ((count _db) != 0) then
 	{
+		clearItemCargoGlobal _veh; clearWeaponCargoGlobal _veh; clearMagazineCargoGlobal _veh;
 		_veh setFuel (_db select 0);
 		_veh setObjectTextureGlobal [0,(_db select 1)];
 		_veh setObjectMaterialGlobal [0,(_db select 4)];
@@ -714,6 +715,7 @@ Server_Setup_Compile = {
 
 
 }] call Server_Setup_Compile;
+
 
 ["Server_Storage_RetrieveVehicle",
 {
@@ -747,6 +749,7 @@ Server_Setup_Compile = {
 
 	if ((count _db) != 0) then
 	{
+		clearItemCargoGlobal _veh; clearWeaponCargoGlobal _veh; clearMagazineCargoGlobal _veh;
 		_veh setFuel (_db select 0);
 		_veh setObjectTextureGlobal [0,(_db select 1)];
 		_veh setObjectMaterialGlobal [0,(_db select 4)];

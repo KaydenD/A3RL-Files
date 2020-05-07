@@ -290,7 +290,7 @@ class iPhone_X
 			y = safeZoneY + safeZoneH * 0.401;
 			w = safeZoneW * 0.02246094;
 			h = safeZoneH * 0.03993056;
-			action = "[] call A3PL_iPhoneX_appKeys;";
+			action = "[] call A3RL_iPhoneX_appKeys;";
 			show = false;
 		};
 		class iPhone_Icon_appGang: RscPicture
@@ -310,7 +310,7 @@ class iPhone_X
 			y = 0.401 * safezoneH + safezoneY;
 			w = 0.0224609 * safezoneW;
 			h = 0.0399306 * safezoneH;
-			action = "[] call A3PL_iPhoneX_appGang;";
+			action = "[] call A3RL_iPhoneX_appGang;";
 			show = false;
 		};
 

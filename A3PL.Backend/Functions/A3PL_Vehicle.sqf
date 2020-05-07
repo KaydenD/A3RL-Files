@@ -1097,7 +1097,7 @@
 	_truck = _this select 0;
 	_towpoint = "Land_HelipadEmpty_F" createVehicleLocal (getpos _truck);
 	_towpoint attachTo [_truck,[0,-6.41919,-2.1209]];
-	_towing = (getpos _towpoint) nearestObject "AllVehicles";
+	_towing = (getpos _towpoint) nearestObject "LandVehicle";
 	_alignment = [_truck, _towing] call BIS_fnc_relativeDirTo;
 	if ((_towpoint distance _towing) >= 6) exitWith {deleteVehicle _towpoint;["Towtruck: Vehicle too far away", Color_Yellow] call A3PL_Player_Notification;};
 	deleteVehicle _towpoint;

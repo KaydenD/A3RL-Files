@@ -804,24 +804,26 @@
 {
 	_obj = param [0, objNull];
 	_player = param [1, objNull];
-	_roommates = _obj getVariable ["roommates",[]] + [getPlayerUID _player];
+	_roommates = (_obj getVariable ["roommates",[]]) + [getPlayerUID _player];
 	_obj setVariable ["roommates", _roommates, true];
-	_query = format ["UPDATE houses SET roommates='%1' WHERE location='%2'", _roommates, getPlayerUID _player];
+	_query = format ["UPDATE houses SET roommates='%1' WHERE location='%2'", _roommates, getPos _obj];
 	[_query,1] spawn Server_Database_Async;
 
-	_player setVariable ["keys",_player getVariable ["keys", []] + [(_obj getVariable ["doorId"]) select 1],true];
+	_player setVariable ["keys",(_player getVariable ["keys", []]) + [(_obj getVariable "doorId") select 1],true];
 	_player setVariable ["house",_obj,true];
+	[_player] spawn Server_Housing_SaveKeys;
 }] call Server_Setup_Compile;
 
 ["Server_RemoveRoommate",
 {
 	_obj = param [0, objNull];
 	_player = param [1, objNull];
-	_roommates =  _obj getVariable ["roommates",[]] - [getPlayerUID _player];
+	_roommates = (_obj getVariable ["roommates",[]]) - [getPlayerUID _player];
 	_obj setVariable ["roommates", _roommates, true];
-	_query = format ["UPDATE houses SET roommates='%1' WHERE location='%2'", _roommates, getPlayerUID _player];
+	_query = format ["UPDATE houses SET roommates='%1' WHERE location='%2'", _roommates, getPos _obj];
 	[_query,1] spawn Server_Database_Async;
 
-	_player setVariable ["keys",_player getVariable ["keys", []] - [(_obj getVariable ["doorId"]) select 1],true];
+	_player setVariable ["keys",(_player getVariable ["keys", []]) - [(_obj getVariable "doorId") select 1],true];
 	_player setVariable ["house",objNull,true];
+	[_player] spawn Server_Housing_SaveKeys;
 }] call Server_Setup_Compile;

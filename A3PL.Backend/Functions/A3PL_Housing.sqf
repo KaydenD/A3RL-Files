@@ -425,6 +425,7 @@
 	[_owner getVariable ["house", objNull], player] remoteExec ["Server_AddRoommate", 2];
 	[format["%1 accepted your roommate invitation", player getVariable "name"], Color_Green] remoteExec ["A3PL_Player_Notification", _owner];
 	["Invitation accepted. You have been gived a copy of the keys", Color_Green] call A3PL_Player_Notification;
+	closeDialog 1;
 }] call Server_Setup_Compile;
 
 ["A3RL_RoommateDecline",
@@ -432,7 +433,7 @@
 	_owner = param [0,objNull];
 	[format["%1 denied your roommate invitation", player getVariable "name"], Color_Red] remoteExec ["A3PL_Player_Notification", _owner];
 	["Invitation Declined.", Color_Red] call A3PL_Player_Notification;
-
+	closeDialog 1;
 }] call Server_Setup_Compile;
 
 ["A3RL_RemoveRoommate",

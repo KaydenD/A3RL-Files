@@ -273,6 +273,43 @@ class iPhone_X
 			show = false;
 		};
 
+		class iPhone_Icon_appKeys: RscPicture
+		{
+			idc = 97018;
+			x = safeZoneX + safeZoneW * 0.773046878;
+			y = safeZoneY + safeZoneH * 0.401;
+			w = safeZoneW * 0.02246094;
+			h = safeZoneH * 0.03993056;
+			text = "A3PL_Common\GUI\phone\iPhone_X_icon_keys.paa";
+		};
+		class iPhone_Button_appKeys: RscButtonEmpty
+		{
+			idc = 97118;
+			x = safeZoneX + safeZoneW * 0.773046878;
+			y = safeZoneY + safeZoneH * 0.401;
+			w = safeZoneW * 0.02246094;
+			h = safeZoneH * 0.03993056;
+			action = "closeDialog 0; [] call A3PL_iPhoneX_appKeys;";
+		};
+		class iPhone_Icon_appGang: RscPicture
+		{
+			idc = 97019;
+			x = 0.805468754 * safezoneW + safezoneX;
+			y = 0.401 * safezoneH + safezoneY;
+			w = 0.0224609 * safezoneW;
+			h = 0.0399306 * safezoneH;
+			text = "A3PL_Common\GUI\phone\iPhone_X_icon_gang.paa";
+		};
+		class iPhone_Button_appGang: RscButtonEmpty
+		{
+			idc = 97119;
+			x = 0.805468754 * safezoneW + safezoneX;
+			y = 0.401 * safezoneH + safezoneY;
+			w = 0.0224609 * safezoneW;
+			h = 0.0399306 * safezoneH;
+			action = "closeDialog 0; [] call A3PL_iPhoneX_appGang;";
+		};
+
 		class iPhone_X_clock_home: Life_RscText
 		{
 			idc = 97500;
@@ -3409,6 +3446,210 @@ class iPhone_X
 					{
 						align = "center";
 					};
+				};
+			};
+		};
+
+		class iPhone_X_appGangCreate: Life_RscControlsGroup
+		{
+			idc = 97590;
+			w = 1.5 * safezoneW;
+			h = 1.5 * safezoneH;
+			show = false;
+
+			class VScrollbar : VScrollbar
+			{
+       			width = 0;
+    		};
+
+    		class HScrollbar : HScrollbar
+    		{
+        		height = 0;
+    		};
+
+			class Controls
+			{
+					class iPhone_GangName: RscEdit
+        			{
+        			    idc = 99201;
+        			    style = "16";
+        			    x = 0.711406 * safezoneW + safezoneX;
+						y = 0.434 * safezoneH + safezoneY;
+						w = 0.113437 * safezoneW;
+						h = 0.033 * safezoneH;
+        			    text = "";
+        			    sizeEx = 0.015 * safezoneW;
+        			    colorText[] = {0,0,0,1};
+        			    colorBackground[] = {0,0,0,0};
+        			    shadow = 0;
+        			    maxChars = 15;
+        			};
+					class iPhone_ButtonCreateGang: RscButtonEmpty
+					{
+						idc = -1;
+						x = 0.726875 * safezoneW + safezoneX;
+						y = 0.72 * safezoneH + safezoneY;
+						w = 0.0825 * safezoneW;
+						h = 0.044 * safezoneH;
+						action = "[] call A3PL_iPhoneX_CreateGang;";
+					};
+			};
+		};
+
+		class iPhone_X_appGangManage: Life_RscControlsGroup
+		{
+			idc = 97600;
+			w = 1.5 * safezoneW;
+			h = 1.5 * safezoneH;
+			show = false;
+
+			class VScrollbar : VScrollbar
+			{
+       			width = 0;
+    		};
+
+    		class HScrollbar : HScrollbar
+    		{
+        		height = 0;
+    		};
+
+			class Controls
+			{
+				class Listbox_AllMembers: RscListbox
+				{
+					idc = 1500;
+					x = 0.701094 * safezoneW + safezoneX;
+					y = 0.412 * safezoneH + safezoneY;
+					w = 0.134062 * safezoneW;
+					h = 0.077 * safezoneH;
+				};
+				class btn_kickmember: RscButtonEmpty
+				{
+					idc = 1600;
+					x = 0.742344 * safezoneW + safezoneX;
+					y = 0.5 * safezoneH + safezoneY;
+					w = 0.04125 * safezoneW;
+					h = 0.011 * safezoneH;
+					action = "[] call A3PL_iPhoneX_GangKick;";
+				};
+				class btn_leader: RscButtonEmpty
+				{
+					idc = 1601;
+					x = 0.78875 * safezoneW + safezoneX;
+					y = 0.5 * safezoneH + safezoneY;
+					w = 0.0464063 * safezoneW;
+					h = 0.011 * safezoneH;
+					action = "[] call A3PL_iPhoneX_GangSetLead;";
+				};
+				class btn_invite: RscButtonEmpty
+				{
+					idc = -1;
+					x = 0.793906 * safezoneW + safezoneX;
+					y = 0.566 * safezoneH + safezoneY;
+					w = 0.04125 * safezoneW;
+					h = 0.022 * safezoneH;
+					action = "[] call A3PL_iPhoneX_GangInvite;";
+				};
+				class btn_leavegang: RscButtonEmpty
+				{
+					idc = -1;
+					x = 0.701094 * safezoneW + safezoneX;
+					y = 0.797 * safezoneH + safezoneY;
+					w = 0.0567187 * safezoneW;
+					h = 0.022 * safezoneH;
+					action = "[] call A3PL_Gang_Leave;";
+				};
+				/*class btn_upgrade: RscButtonEmpty
+				{
+					idc = -1;
+					x = 0.778437 * safezoneW + safezoneX;
+					y = 0.775 * safezoneH + safezoneY;
+					w = 0.0567187 * safezoneW;
+					h = 0.022 * safezoneH;
+					action = "[] spawn A3PL_Gang_Upgrade;";
+				};*/
+				class btn_deletegang: RscButtonEmpty
+				{
+					idc = -1;
+					x = 0.778437 * safezoneW + safezoneX;
+					y = 0.797 * safezoneH + safezoneY;
+					w = 0.0567187 * safezoneW;
+					h = 0.022 * safezoneH;
+					action = "[] call A3PL_Gang_Delete;";
+				};
+				class Combo_AllPlayers: RscCombo
+				{
+					idc = 2100;
+					x = 0.70625 * safezoneW + safezoneX;
+					y = 0.566 * safezoneH + safezoneY;
+					w = 0.0825 * safezoneW;
+					h = 0.022 * safezoneH;
+				};
+				class text_bank: RscStructuredText
+				{
+					idc = 1100;
+					text = "1234567890";
+					x = 0.726875 * safezoneW + safezoneX;
+					y = 0.621 * safezoneH + safezoneY;
+					w = 0.0876563 * safezoneW;
+					h = 0.022 * safezoneH;
+				};
+				class text_money: RscStructuredText
+				{
+					idc = 1101;
+					text = "1234567890";
+					x = 0.737188 * safezoneW + safezoneX;
+					y = 0.654 * safezoneH + safezoneY;
+					w = 0.0721875 * safezoneW;
+					h = 0.022 * safezoneH;
+				};
+			};
+		};
+
+		class iPhone_X_appkey: Life_RscControlsGroup
+		{
+			idc = 97610;
+			w = 1.5 * safezoneW;
+			h = 1.5 * safezoneH;
+			show = false;
+
+			class VScrollbar : VScrollbar
+			{
+       			width = 0;
+    		};
+
+    		class HScrollbar : HScrollbar
+    		{
+        		height = 0;
+    		};
+
+			class Controls
+			{
+				class iPhone_Button_GiveKey: RscButtonEmpty
+				{
+					idc = -1;
+					x = 0.726875 * safezoneW + safezoneX;
+					y = 0.72 * safezoneH + safezoneY;
+					w = 0.0825 * safezoneW;
+					h = 0.044 * safezoneH;
+					action = "[] call A3PL_iPhoneX_GiveKeys;";
+				};
+				class iPhone_KeyPlayersList: RscCombo
+				{
+					idc = 99402;
+					x = 0.70625 * safezoneW + safezoneX;
+					y = 0.69 * safezoneH + safezoneY;
+					w = 0.12375 * safezoneW;
+					h = 0.022 * safezoneH;
+				};
+				class iPhone_KeysList: RscListbox
+				{
+					idc = 99500;
+					x = 0.70625 * safezoneW + safezoneX;
+					y = 0.38 * safezoneH + safezoneY;
+					w = 0.12375 * safezoneW;
+					h = 0.308 * safezoneH;
+					colorBackground[] = {0,0,0,0.1};
 				};
 			};
 		};

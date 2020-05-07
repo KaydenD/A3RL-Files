@@ -90,6 +90,7 @@
 ["A3RL_Blackjack_Hit", {
 	_splitIndex = param [0, -1];
 	_dir = "\A3PL_Common\gui\blackjack\cards\";
+	playSound "A3RL_Blackjack_Card_Deal"; 
 	if(_splitIndex == -1) then {
 		_nextIdc = 34000 + (count A3RL_Player_Cards) + 1;
 		_newCard = selectRandom A3RL_Blackjack_Icons;

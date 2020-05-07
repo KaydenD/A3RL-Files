@@ -1252,6 +1252,24 @@ A3PL_Interaction_Options =
 		{(player distance (nearestObject [player, "Box_GEN_Equip_F"]) < 5)}
 	],
 
+	[
+		"Make Roommate",
+		{
+			[player] remoteExec ["A3RL_RoommateInviteOpen", cursorObject];
+		},
+		{isPlayer cursorObject && {alive cursorObject} && {player distance (player getVariable ["house",objNull]) < 8} && {(getPlayerUID player) == ((player getVariable ["house",objNull]) getVariable ["owner", ""])} && {isNull (cursorObject getVariable ["house",objNull])}}
+	],
+
+	[
+		"Remove Roommate",
+		{
+			[player] remoteExec ["A3RL_RemoveRoommate", cursorObject];
+			[format ["%1's roommate agreement has been terminated. Their keys have been taken", cursorObject getVariable "name"], Color_Green] call A3PL_Player_Notification;
+
+		},
+		{isPlayer cursorObject && {alive cursorObject} && {player distance (player getVariable ["house",objNull]) < 8} && {(getPlayerUID player) == ((player getVariable ["house",objNull]) getVariable ["owner", ""])} && {(cursorObject getVariable ["house",objNull]) == (player getVariable ["house",objNull])}}
+	],
+
 	//greenhouses
 	[
 		localize "STR_INTER_RENTGH", //Rent ($350)

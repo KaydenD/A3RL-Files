@@ -988,6 +988,21 @@ Config_Shops_Items =
 		{[11008.7,8362.2,0.2]}
 	],
 
+	[
+		"Shop_GangAreas",
+		[
+				["item","Blueprint_Pistol_Illegal",15000,0],
+				["item","Blueprint_Pistol_Ammo_Illegal",3000,0],
+				["item","v_lockpick",3000,0],
+				["item","shrooms",999999,100],
+				["item","zipties",10000,0],
+				["item","drill_bit",30000,0],
+            	["backpack","A3PL_Backpack_Drill",40000,0],
+            	["backpack","A3PL_Backpack_Money",20000,0]
+		],
+		{[7277.94,11927.1,0.2]}
+	],
+
     /* [
         "Shop_Vehicles_Supplies_Vendor",
         [

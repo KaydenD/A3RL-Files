@@ -314,6 +314,10 @@ Config_IntersectArray =
 	["spine3","Remove Ankle Tag",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == npc_crime}],
 	["spine3","Chop Nearest Vehicle",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == npc_chopshop}], //Chop Vehicle
 
+	//Gang Areas
+	["spine3","Access Gang Supplies",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect IN [npc_gang_1,npc_gang_2,npc_gang_3] && {((group player) getVariable ["gang_data", false]) isEqualType []}}],
+	["stozar","Capture Gang Area",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect IN [hideout_obj_1,hideout_obj_2,hideout_obj_3] && {((group player) getVariable ["gang_data", false]) isEqualType []}}],
+
 
 	//factories
 	["spine3","Access Chemical Plant",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == npc_chemicalplant}],
@@ -2724,7 +2728,9 @@ Config_GenArray =
 	"Secure Door",
 	"Lockpick Cell Door",
 	"Lockpick Handcuffs",
-	"Open Management System"
+	"Open Management System",
+	"Access Gang Supplies",
+	"Capture Gang Area"
 ];
 publicVariable "Config_GenArray";
 

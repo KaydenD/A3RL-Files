@@ -216,6 +216,9 @@ class A3PL_mapAreas
 		},
 		{
 			"Impound lots", {"impoundlot_1","impoundlot_2","impoundlot_3","impoundretrieve","Scrapyard_2","Scrapyard_1","TruckRetrieval","TruckRetrieval_2"}
+		},
+		{
+			"Gang Areas", {"marker_gang_hideout_1","marker_gang_hideout_2","marker_gang_hideout_3","marker_gang_zone_1","marker_gang_zone_2","marker_gang_zone_3"}
 		}
 	};
 };

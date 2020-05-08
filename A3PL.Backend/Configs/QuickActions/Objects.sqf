@@ -950,4 +950,12 @@
 	{
 		[] spawn A3RL_PrisonBreak_Search;
 	}
+],
+
+[
+	"",
+	"Capture Gang Area",
+	{
+		[player_objintersect] spawn A3RL_Gang_Capture;
+	}
 ]

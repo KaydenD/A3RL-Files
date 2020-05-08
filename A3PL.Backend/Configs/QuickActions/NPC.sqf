@@ -994,6 +994,14 @@
 
 [
 	"",
+	"Access Gang Supplies",
+	{
+		["Shop_GangAreas"] call A3PL_Shop_Open;
+	}
+],
+
+[
+	"",
 	"Spawn DMV Tow Truck",
 	{
 		private ["_whitelist"];

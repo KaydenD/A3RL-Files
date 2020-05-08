@@ -8,18 +8,18 @@ class EditorData
 	toggles=10;
 	class ItemIDProvider
 	{
-		nextID=2763;
+		nextID=2788;
 	};
 	class MarkerIDProvider
 	{
-		nextID=138;
+		nextID=141;
 	};
 	class Camera
 	{
-		pos[]={2938.5793,30.286493,5874.6523};
-		dir[]={0.2840808,-0.55646265,0.78081608};
-		up[]={0.1902633,0.83085704,0.52295053};
-		aside[]={0.93974733,-1.0360964e-007,-0.34190464};
+		pos[]={8085.5713,14.797966,6764.1636};
+		dir[]={0.26094609,-0.66824305,0.69667965};
+		up[]={0.2343931,0.74394238,0.62578726};
+		aside[]={0.93646717,5.5937562e-008,-0.35075998};
 	};
 };
 binarizationWanted=0;
@@ -63,13 +63,14 @@ addons[]=
 	"A3_Structures_F_System",
 	"A3_Structures_F_EPC_Civ_Garbage",
 	"A3PL_John_ATM",
-	"A3RL_Slot_Machine"
+	"A3RL_Slot_Machine",
+	"A3RL_Objects"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=27;
+		items=28;
 		class Item0
 		{
 			className="A3_Structures_F_Mil";
@@ -234,6 +235,11 @@ class AddonsMetaData
 		{
 			className="A3RL_Slot_Machine";
 			name="A3RL_Slot_Machine";
+		};
+		class Item27
+		{
+			className="A3RL_Objects";
+			name="A3RL_Objects";
 		};
 	};
 };
@@ -535,7 +541,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=854;
+		items=866;
 		class Item0
 		{
 			dataType="Object";
@@ -12386,7 +12392,7 @@ class Mission
 					};
 					id=1494;
 					type="C_man_w_worker_F";
-					atlOffset=0.0012636185;
+					atlOffset=0.0012631416;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -14391,7 +14397,7 @@ class Mission
 					};
 					id=1974;
 					type="C_man_w_worker_F";
-					atlOffset=0.018299103;
+					atlOffset=0.01829958;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -33311,7 +33317,7 @@ class Mission
 			text="U-Haul";
 			type="A3PL_Markers_Truck";
 			colorName="ColorBlue";
-			angle=113.38884;
+			angle=113.38882;
 			id=2649;
 			atlOffset=0.019963264;
 		};
@@ -35930,7 +35936,355 @@ class Mission
 			};
 			id=2762;
 			type="A3RL_Blackjack";
-			atlOffset=0.77991819;
+			atlOffset=0.77991867;
+		};
+		class Item854
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={8088.4209,7.5823736,6767.8271};
+						angles[]={0,6.2338972,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						init="call{if (isServer) then { this enableSimulationGlobal false; this disableAI ""ALL""; this allowDamage false; this addUniform ""A3PL_Moonshine_Willy_Uniform""; this setFace ""GreekHead_A3_04"";};}";
+						name="npc_gang_1";
+					};
+					id=2767;
+					type="C_man_w_worker_F";
+					atlOffset=-0.0038542747;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male04GRE";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.02;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=2766;
+			atlOffset=-0.0038542747;
+		};
+		class Item855
+		{
+			dataType="Marker";
+			position[]={8085.77,7.5819998,6771.3179};
+			name="marker_gang_zone_1";
+			markerType="RECTANGLE";
+			type="rectangle";
+			colorName="ColorRed";
+			a=150;
+			b=150;
+			id=2768;
+			atlOffset=0.00013875961;
+		};
+		class Item856
+		{
+			dataType="Marker";
+			position[]={8085.2905,7.5693359,6770.2793};
+			name="marker_gang_hideout_1";
+			text="Gang Hideout 1";
+			type="A3PL_Markers_Gun";
+			colorName="ColorRed";
+			id=2770;
+			atlOffset=-0.011440277;
+		};
+		class Item857
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={8420.6094,40.01646,8125.3008};
+						angles[]={0,6.2338972,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						init="call{if (isServer) then { this enableSimulationGlobal false; this disableAI ""ALL""; this allowDamage false; this addUniform ""A3PL_Moonshine_Willy_Uniform""; this setFace ""GreekHead_A3_04"";};}";
+						name="npc_gang_2";
+					};
+					id=2773;
+					type="C_man_w_worker_F";
+					atlOffset=-0.0080032349;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male04GRE";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.02;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=2772;
+			atlOffset=-0.0080032349;
+		};
+		class Item858
+		{
+			dataType="Marker";
+			position[]={8417.959,40.016262,8128.7915};
+			name="marker_gang_zone_2";
+			markerType="RECTANGLE";
+			type="rectangle";
+			colorName="ColorRed";
+			a=150;
+			b=150;
+			id=2774;
+			atlOffset=0.11151123;
+		};
+		class Item859
+		{
+			dataType="Marker";
+			position[]={8417.4805,40.004002,8127.7529};
+			name="marker_gang_hideout_2";
+			text="Gang Hideout 2";
+			type="A3PL_Markers_Gun";
+			colorName="ColorRed";
+			id=2775;
+			atlOffset=0.046653748;
+		};
+		class Item860
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={4245.5205,25.756096,6950.5679};
+						angles[]={0,6.2338972,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						init="call{if (isServer) then { this enableSimulationGlobal false; this disableAI ""ALL""; this allowDamage false; this addUniform ""A3PL_Moonshine_Willy_Uniform""; this setFace ""GreekHead_A3_04"";};}";
+						name="npc_gang_3";
+					};
+					id=2778;
+					type="C_man_w_worker_F";
+					atlOffset=0.16900826;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male04GRE";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.02;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+			};
+			id=2777;
+			atlOffset=0.16900826;
+		};
+		class Item861
+		{
+			dataType="Marker";
+			position[]={4242.8701,25.756001,6954.0591};
+			name="marker_gang_zone_3";
+			markerType="RECTANGLE";
+			type="rectangle";
+			colorName="ColorRed";
+			a=100;
+			b=100;
+			id=2779;
+			atlOffset=0.24430275;
+		};
+		class Item862
+		{
+			dataType="Marker";
+			position[]={4242.3911,25.743,6953.02};
+			name="marker_gang_hideout_3";
+			text="Gang Hideout 3";
+			type="A3PL_Markers_Gun";
+			colorName="ColorRed";
+			id=2780;
+			atlOffset=0.24356079;
+		};
+		class Item863
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={8418.1699,44.006599,8125.4512};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+				name="hideout_obj_2";
+			};
+			id=2785;
+			type="Flag_A3RL";
+			atlOffset=0.0069961548;
+		};
+		class Item864
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={8086.4902,11.55863,6767.9248};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+				name="hideout_obj_1";
+			};
+			id=2786;
+			type="Flag_A3RL";
+			atlOffset=-4.7683716e-007;
+		};
+		class Item865
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={4243.5552,29.489326,6950.7769};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+				name="hideout_obj_3";
+			};
+			id=2787;
+			type="Flag_A3RL";
+			atlOffset=-0.021001816;
 		};
 	};
 };

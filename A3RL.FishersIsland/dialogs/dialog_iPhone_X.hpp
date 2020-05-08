@@ -3657,7 +3657,7 @@ class iPhone_X
 
 		class iPhone_X_appkey: Life_RscControlsGroup
 		{
-			idc = 97610;
+			idc = 97630;
 			w = 1.5 * safezoneW;
 			h = 1.5 * safezoneH;
 			show = false;

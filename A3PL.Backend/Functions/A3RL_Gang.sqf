@@ -145,7 +145,7 @@
 
 	if(isNil "_gang") exitWith {};
 	_groupName = _gang select 2;
-	[format ["You've created the gang ""%"" ",_groupName],Color_Green] call A3PL_Player_Notification;
+	[format ["You've created the gang ""%1"" ",_groupName],Color_Green] call A3PL_Player_Notification;
 }] call Server_Setup_Compile;
 
 ["A3RL_Gang_Delete", {

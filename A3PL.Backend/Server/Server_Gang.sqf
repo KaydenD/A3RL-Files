@@ -2,7 +2,6 @@
 	params [["_owner",objNull,[objNull]],["_gangName","",[""]]];
 	_uid = getPlayerUID _owner;
 	_group = group _owner;
-	_gangName = [_gangName] call Server_Database_EsapeString;
 	_query = format ["SELECT id FROM gangs WHERE name='%1'",_gangName];
 	_queryResult = [_query,2] call Server_Database_Async;
 

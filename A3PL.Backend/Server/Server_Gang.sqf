@@ -14,7 +14,7 @@
 	uiSleep 0.05;
 
 	_gang = [];
-	_req = format["SELECT id, owner, name, members, bank, maxmembers FROM gangs WHERE members LIKE '%2%1%2'",_uid,'%'];
+	_req = format["SELECT id, owner, name, members, bank, maxmembers, flag FROM gangs WHERE members LIKE '%2%1%2'",_uid,'%'];
 	while {_gang isEqualTo []} do {
 		_gang = [_req, 2] call Server_Database_Async;
 	};
@@ -34,10 +34,10 @@
 
 ["Server_Gang_Load", {
 	_player = param [0,objNull];
-	_req = format["SELECT id, owner, name, members, bank, maxmembers FROM gangs WHERE members LIKE '%2%1%2'",getPlayerUID _player,'%'];
+	_req = format["SELECT id, owner, name, members, bank, maxmembers, flag FROM gangs WHERE members LIKE '%2%1%2'",getPlayerUID _player,'%'];
 	_gang = [_req, 2] call Server_Database_Async;
 	if(count(_gang) > 0) then {
-		_gang = [_gang select 0, _gang select 1, _gang select 2, [_gang select 3] call Server_Database_ToArray, _gang select 4, _gang select 5];
+		_gang = [_gang select 0, _gang select 1, _gang select 2, [_gang select 3] call Server_Database_ToArray, _gang select 4, _gang select 5, _gang select 6];
 		[_gang] remoteExec ["A3RL_Gang_SetData",_player];
 	};
 }, true] call Server_Setup_Compile;

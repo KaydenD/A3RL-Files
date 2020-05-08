@@ -164,17 +164,18 @@
 
 ["A3PL_iPhoneX_Received911Message",
 {
-	private["_message","_location"];
+	private["_message","_location","_number"];
 
 	_message = [_this,0,"",[""]] call BIS_fnc_param;
 	_location = [_this,1,"",[]] call BIS_fnc_param;
+	_number = [_this,2,"",[""]] call BIS_fnc_param;
 	[player, "911", A3PL_phoneNumberPrimary, _message] remoteExec ["Server_iPhoneX_SendSMS", 2];
 	["You received a 911 message!",Color_Red] call A3PL_Player_Notification;
 
 	_marker = createMarkerLocal [format ["panic_btn_%1",(floor (random 1000))],_location];
 	_marker setMarkerShapeLocal "ICON";
 	_marker setMarkerTypeLocal "mil_warning";
-	_marker setMarkerTextLocal "Emergency Call!";
+	_marker setMarkerTextLocal (_number + " - " + "Emergency Call!");
 	_marker setMarkerColorLocal "ColorRed";
 	
 	//delete marker after 30 seconds

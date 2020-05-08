@@ -3681,7 +3681,7 @@ class iPhone_X
 					y = 0.72 * safezoneH + safezoneY;
 					w = 0.0825 * safezoneW;
 					h = 0.044 * safezoneH;
-					action = "[] call A3PL_iPhoneX_GiveKeys;";
+					action = "[] call A3RL_iPhoneX_GiveKeys;";
 				};
 				class iPhone_KeyPlayersList: RscCombo
 				{

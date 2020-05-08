@@ -96,7 +96,7 @@
 	Player_ActionCompleted = false;
 	["Capture...",20] spawn A3PL_Lib_LoadAction;
 	waitUntil{Player_ActionDoing};
-	[_obj, _gang select 6] spawn {[_this select 0, 0] call BIS_fnc_animateFlag; waitUntil {(flagAnimationPhase (_this select 0)) == 0}; [_this select 1] remoteExec ["setFlagTexture", format["%1", _this select 0]]; [_this select 0, 1] call BIS_fnc_animateFlag;};
+	[_obj, _gang select 6] spawn {[_this select 0, 0] call BIS_fnc_animateFlag; waitUntil {(flagAnimationPhase (_this select 0)) == 0}; [_this select 0, _this select 1] remoteExec ["setFlagTexture", format["%1", _this select 0]]; [_this select 0, 1] call BIS_fnc_animateFlag;};
 	_success = true;
 	_animTime = diag_tickTime;
 	while {Player_ActionDoing} do {

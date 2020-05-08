@@ -2714,6 +2714,45 @@
 	_iPhone_X_clock_home = _display displayCtrl 97500;
 	_background_iPhone_X_background ctrlSetText "A3PL_Common\GUI\phone\iPhone_X_appKeys.paa";
 	_iPhone_X_clock_home ctrlSetTextColor [0,0,0,1];
+
+	_control = _display displayCtrl 99500;
+	if(count(A3PL_Player_Vehicles) > 0) then {
+		{
+			_control lbAdd format ["%1",getText(configFile >> "CfgVehicles" >> (typeOf _x) >> "displayName")];
+			_control lbSetData [(lbSize _control)-1,str(_forEachIndex)];
+		} forEach A3PL_Player_Vehicles;
+	} else {
+		_control lbAdd "No keys";
+		_control lbSetData [(lbSize _control)-1,""];
+	};
+	_control = _display displayCtrl 99403;
+	{
+		if (player distance _x < 5) then {
+			_index = _control lbAdd format["%1", _x getVariable["name","0"]];
+			_control lbSetData [_index, str _x];
+		};
+	} forEach (playableUnits - [player]);
+
+}] call Server_Setup_Compile;
+
+["A3RL_iPhoneX_GiveKeys",{
+	disableSerialization;
+	_display = findDisplay 99500;
+	_control = _display displayCtrl 99500;
+	if ((_control lbData (lbCurSel _control)) isEqualTo "") exitWith {["Please select a key.",Color_Red] call A3PL_Player_Notification;};
+	_key = _control lbData (lbCurSel _control);
+	_key = A3PL_Player_Vehicles select parseNumber(_key);
+	_control = _display displayCtrl 99402;
+	if ((_control lbData (lbCurSel _control)) isEqualTo "") exitWith {["Please select a target.",Color_Red] call A3PL_Player_Notification;};
+	_target = _control lbData (lbCurSel _control);
+	_target = call compile _target;
+
+	_actualKeys = _key getVariable ["keyAccess",[""]];
+	_actualKeys pushBack (getPlayerUID _target);
+	_key setVariable ["keyAccess",_actualKeys,true];
+
+	[format["You gave the key of your %1.",getText(configFile >> "CfgVehicles" >> (typeOf _key) >> "displayName")],Color_Green] call A3PL_Player_Notification;
+	[format["You received the key of a %1.",getText(configFile >> "CfgVehicles" >> (typeOf _key) >> "displayName")],Color_Green] remoteExec ["A3PL_Player_Notification",_target];
 }] call Server_Setup_Compile;
 
 ["A3RL_iPhoneX_appGang",{

@@ -3588,7 +3588,7 @@ class iPhone_X
 					y = 0.797 * safezoneH + safezoneY;
 					w = 0.0567187 * safezoneW;
 					h = 0.022 * safezoneH;
-					action = "[] call A3RL_Gang_Leave;";
+					action = "[] call A3RL_Gang_Leave; [] call A3PL_iPhoneX_home;";
 				};
 				class btn_deletegang: RscButtonEmpty
 				{
@@ -3597,7 +3597,7 @@ class iPhone_X
 					y = 0.797 * safezoneH + safezoneY;
 					w = 0.0567187 * safezoneW;
 					h = 0.022 * safezoneH;
-					action = "[] call A3RL_Gang_Delete;";
+					action = "[] call A3RL_Gang_Delete; [] call A3PL_iPhoneX_home;";
 				};
 				class Combo_AllPlayers: RscCombo
 				{

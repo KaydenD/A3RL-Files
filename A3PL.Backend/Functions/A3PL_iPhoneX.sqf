@@ -2759,12 +2759,14 @@
 	if(isNil '_gang') exitWith {};
 
 	_control = _display displayCtrl 97612;
+	lbClear 97612;
 	{
 		_index = _control lbAdd format["%1", _x getVariable ["name","unknown"]];
 		_control lbSetData [_index, str _x];
 	} forEach (playableUnits - [player]);
 
 	_control = _display displayCtrl 97601;
+	lbClear 97601;
 	{
 		if((getPlayerUID _x) IN (_gang select 3)) then {
 			_index = _control lbAdd format["%1", _x getVariable ["name","unknown"]];
@@ -2794,8 +2796,8 @@
 
 ["A3RL_iPhoneX_GangKick",{
 	disableSerialization;
-	_display = findDisplay 99300;
-	_control = _display displayCtrl 1500;
+	_display = findDisplay 97000;
+	_control = _display displayCtrl 97601;
 	_target = _control lbData (lbCurSel _control);
 	if (_target isEqualTo "") exitWith {["Please select a target.", Color_Red] call A3PL_Player_Notification;};
 
@@ -2810,8 +2812,8 @@
 
 ["A3RL_iPhoneX_GangSetLead",{
 	disableSerialization;
-	_display = findDisplay 99300;
-	_control = _display displayCtrl 1500;
+	_display = findDisplay 97000;
+	_control = _display displayCtrl 97601;
 	_target = _control lbData (lbCurSel _control);
 	if (_target isEqualTo "") exitWith {["Please select a target.", Color_Red] call A3PL_Player_Notification;};
 	[_target] call A3RL_Gang_SetLead;
@@ -2820,8 +2822,8 @@
 
 ["A3RL_iPhoneX_GangInvite",{
 	disableSerialization;
-	_display = findDisplay 99300;
-	_control = _display displayCtrl 2100;
+	_display = findDisplay 97000;
+	_control = _display displayCtrl 97612;
 	if ((_control lbData (lbCurSel _control)) isEqualTo "") exitWith {["Please select a target.", Color_Red] call A3PL_Player_Notification;};
 	_target = _control lbData (lbCurSel _control);
 	_target = call compile _target;

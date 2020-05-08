@@ -11,10 +11,13 @@
 	_query = format ["INSERT INTO gangs(owner, name, members) VALUES('%1','%2','%3')",_uid,_gangName,_gangMembers];
 	[_query,1] call Server_Database_Async;
 
-	sleep 1;
+	uiSleep 0.05;
 
+	_gang = [];
 	_req = format["SELECT id, owner, name, members, bank, maxmembers FROM gangs WHERE members LIKE '%2%1%2'",_uid,'%'];
-	_gang = [_req, 2] call Server_Database_Async;
+	while {_gang isEqualTo []} do {
+		_gang = [_req, 2] call Server_Database_Async;
+	};
 	_group setVariable["gang_data",_gang,true];
 	[_group] remoteExecCall ["A3RL_Gang_Created",_owner];
 }, true] call Server_Setup_Compile;
@@ -24,6 +27,7 @@
 	_gang = _group getVariable["gang_data",nil];
 	if(isNil "_gang") exitWith {};
 	_groupID = _gang select 0;
+	_group setVariable["gang_data",nil,true];
 	deleteGroup _group;
 	[format["DELETE FROM gangs WHERE id = '%1'",_groupID], 1] call Server_Database_Async;
 }, true] call Server_Setup_Compile;

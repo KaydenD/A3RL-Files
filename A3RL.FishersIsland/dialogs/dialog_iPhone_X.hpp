@@ -3473,30 +3473,57 @@ class iPhone_X
 
 			class Controls
 			{
-					class iPhone_GangName: RscEdit
-        			{
-        			    idc = 99201;
-        			    style = "16";
-        			    x = 0.711406 * safezoneW + safezoneX;
-						y = 0.434 * safezoneH + safezoneY;
-						w = 0.113437 * safezoneW;
-						h = 0.033 * safezoneH;
-        			    text = "";
-        			    sizeEx = 0.015 * safezoneW;
-        			    colorText[] = {0,0,0,1};
-        			    colorBackground[] = {0,0,0,0};
-        			    shadow = 0;
-        			    maxChars = 15;
-        			};
-					class iPhone_ButtonCreateGang: RscButtonEmpty
+				class iPhone_GangName: RscEdit
+        		{
+        		    idc = 99201;
+        		    style = "16";
+        		    x = 0.711406 * safezoneW + safezoneX;
+					y = 0.434 * safezoneH + safezoneY;
+					w = 0.113437 * safezoneW;
+					h = 0.033 * safezoneH;
+        		    text = "";
+        		    sizeEx = 0.015 * safezoneW;
+        		    colorText[] = {0,0,0,1};
+        		    colorBackground[] = {0,0,0,0};
+        		    shadow = 0;
+        		    maxChars = 15;
+        		};
+				class iPhone_ButtonCreateGang: RscButtonEmpty
+				{
+					idc = -1;
+					x = 0.726875 * safezoneW + safezoneX;
+					y = 0.72 * safezoneH + safezoneY;
+					w = 0.0825 * safezoneW;
+					h = 0.044 * safezoneH;
+					action = "[] call A3PL_iPhoneX_CreateGang;";
+				};
+				class iPhone_X_icon_home_appGangCreate: Life_RscPicture
+				{
+					idc = -1;
+					x = safeZoneX + safeZoneW * 0.80948282;
+					y = safeZoneY + safeZoneH * 0.31525;
+					w = safeZoneW * 0.0175;
+					h = safeZoneH * 0.0175;
+					text = "A3PL_Common\GUI\phone\iPhone_X_icon_home.paa";
+				};
+
+				class iPhone_X_button_home_appGangCreate: Life_RscButtonMenu
+				{
+					idc = -1;
+					x = safeZoneX + safeZoneW * 0.80948282;
+					y = safeZoneY + safeZoneH * 0.31525;
+					w = safeZoneW * 0.0175;
+					h = safeZoneH * 0.0175;
+					action = "[] call A3PL_iPhoneX_home;";
+					colorBackground[] = {0,0,0,0};
+					colorBackground2[] = {0,0,0,0};
+					colorBackgroundFocused[] = {0,0,0,0};
+
+					class Attributes
 					{
-						idc = -1;
-						x = 0.726875 * safezoneW + safezoneX;
-						y = 0.72 * safezoneH + safezoneY;
-						w = 0.0825 * safezoneW;
-						h = 0.044 * safezoneH;
-						action = "[] call A3PL_iPhoneX_CreateGang;";
+						align = "center";
 					};
+				};
 			};
 		};
 
@@ -3607,6 +3634,33 @@ class iPhone_X
 					w = 0.0721875 * safezoneW;
 					h = 0.022 * safezoneH;
 				};
+				class iPhone_X_icon_home_appGangManage: Life_RscPicture
+				{
+					idc = -1;
+					x = safeZoneX + safeZoneW * 0.80948282;
+					y = safeZoneY + safeZoneH * 0.31525;
+					w = safeZoneW * 0.0175;
+					h = safeZoneH * 0.0175;
+					text = "A3PL_Common\GUI\phone\iPhone_X_icon_home.paa";
+				};
+
+				class iPhone_X_button_home_appGangManage: Life_RscButtonMenu
+				{
+					idc = -1;
+					x = safeZoneX + safeZoneW * 0.80948282;
+					y = safeZoneY + safeZoneH * 0.31525;
+					w = safeZoneW * 0.0175;
+					h = safeZoneH * 0.0175;
+					action = "[] call A3PL_iPhoneX_home;";
+					colorBackground[] = {0,0,0,0};
+					colorBackground2[] = {0,0,0,0};
+					colorBackgroundFocused[] = {0,0,0,0};
+
+					class Attributes
+					{
+						align = "center";
+					};
+				};
 			};
 		};
 
@@ -3640,7 +3694,7 @@ class iPhone_X
 				};
 				class iPhone_KeyPlayersList: RscCombo
 				{
-					idc = 99402;
+					idc = 99403;
 					x = 0.70625 * safezoneW + safezoneX;
 					y = 0.69 * safezoneH + safezoneY;
 					w = 0.12375 * safezoneW;
@@ -3654,6 +3708,33 @@ class iPhone_X
 					w = 0.12375 * safezoneW;
 					h = 0.308 * safezoneH;
 					colorBackground[] = {0,0,0,0.1};
+				};
+				class iPhone_X_icon_home_appKey: Life_RscPicture
+				{
+					idc = -1;
+					x = safeZoneX + safeZoneW * 0.80948282;
+					y = safeZoneY + safeZoneH * 0.31525;
+					w = safeZoneW * 0.0175;
+					h = safeZoneH * 0.0175;
+					text = "A3PL_Common\GUI\phone\iPhone_X_icon_home.paa";
+				};
+
+				class iPhone_X_button_home_appKey: Life_RscButtonMenu
+				{
+					idc = -1;
+					x = safeZoneX + safeZoneW * 0.80948282;
+					y = safeZoneY + safeZoneH * 0.31525;
+					w = safeZoneW * 0.0175;
+					h = safeZoneH * 0.0175;
+					action = "[] call A3PL_iPhoneX_home;";
+					colorBackground[] = {0,0,0,0};
+					colorBackground2[] = {0,0,0,0};
+					colorBackgroundFocused[] = {0,0,0,0};
+
+					class Attributes
+					{
+						align = "center";
+					};
 				};
 			};
 		};

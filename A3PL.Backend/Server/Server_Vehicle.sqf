@@ -711,17 +711,18 @@
 	//send message back to approve towing, we will do additional check client side to make sure both vehicles are actually local
 	[_truck,_car] remoteExec ["A3PL_Vehicle_AtegoTowResponse", _oPlayer];
 },true] call Server_Setup_Compile
-/*
+
 ['Server_Vehicle_Init_A3PL_Stinger',
 {
 	private ["_veh"];
 	_veh = param [0,objNull];
 
 	_veh addEventHandler ["EpeContact",
-	{
+	{		
+
 		_Stinger = param [0,objNull];
 		if (_Stinger animationSourcePhase "Deploy_Stinger" == 0) exitWith {};
-		_threshold = 0.5;
+		_threshold = 1;
 		_wheels = [];
 		_stingerPoints = [];
 		_wheelHits = [];
@@ -737,7 +738,6 @@
 				_wheels = _wheels + [[format ["%1_%2", _x, _y], _veh modelToWorld (_veh selectionPosition (format ["wheel_%1_%2_bound", _x, _y]))]];
 			};
 		};
-
 		for "_i" from 1 to 52 do
 		{
 			_stingerPoints = _stingerPoints + [[_i, _Stinger modelToWorld (_Stinger selectionPosition (format ["Arm_%1_Hit", _i]))]];
@@ -760,7 +760,7 @@
 		{
 			_wheel = _x;
 			_hitPoint = "";
-
+			"Wheel" remoteExec ["hint"];
 			if (_wheel == "1_1") then {
 				_hitPoint = "HitLFWheel";
 			};
@@ -782,5 +782,6 @@
 
 			_veh setHitPointDamage [_hitPoint, 1];
 		} forEach _wheelHits;
+		_wheelHits = [];
 	}];
-},true] call Server_Setup_Compile;*/
+},true] call Server_Setup_Compile;

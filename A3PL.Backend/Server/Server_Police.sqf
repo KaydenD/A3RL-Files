@@ -93,7 +93,7 @@
 
 			case "lookupaddress":
 			{
-				_query = format ["SELECT location FROM houses WHERE (uid = (SELECT uid FROM players WHERE name='%1'))",_name];
+				_query = format ["SELECT location FROM houses WHERE (uid = (SELECT uid FROM players WHERE name='%1')) OR (roommates LIKE CONCAT ('%',(SELECT uid FROM players WHERE name='%1'),'%'))",_name];
 				_return = [_query, 2,true] call Server_Database_Async;
 
 				[[_name,_call,_return],"A3PL_Police_DatabaseEnterReceive",(owner _player),false] call BIS_FNC_MP;

@@ -2753,6 +2753,28 @@
 	_iPhone_X_clock_home = _display displayCtrl 97500;
 	_background_iPhone_X_background ctrlSetText "A3PL_Common\GUI\phone\iPhone_X_appGangManagement.paa";
 	_iPhone_X_clock_home ctrlSetTextColor [0,0,0,1];
+
+	_group = group player;
+	_gang = _group getVariable ["gang_data",nil];
+	if(isNil '_gang') exitWith {};
+
+	_control = _display displayCtrl 97612;
+	{
+		_index = _control lbAdd format["%1", _x getVariable ["name","unknown"]];
+		_control lbSetData [_index, str _x];
+	} forEach (playableUnits - [player]);
+
+	_control = _display displayCtrl 97601;
+	{
+		if((getPlayerUID _x) IN (_gang select 3)) then {
+			_index = _control lbAdd format["%1", _x getVariable ["name","unknown"]];
+			_control lbSetData [_index, getPlayerUID _x];
+		};
+	} forEach AllPlayers;
+
+	_control = _display displayCtrl 97614;
+	_control ctrlSetStructuredText parseText format ["<t align='center' size='1.3'>$%1</t>",[(_gang select 4), 1, 0, true] call CBA_fnc_formatNumber];
+
 }] call Server_Setup_Compile;
 
 ["A3RL_iPhoneX_CreateGang",{

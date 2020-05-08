@@ -3548,7 +3548,7 @@ class iPhone_X
 			{
 				class Listbox_AllMembers: RscListbox
 				{
-					idc = 1500;
+					idc = 97601;
 					x = 0.701094 * safezoneW + safezoneX;
 					y = 0.412 * safezoneH + safezoneY;
 					w = 0.134062 * safezoneW;
@@ -3556,7 +3556,7 @@ class iPhone_X
 				};
 				class btn_kickmember: RscButtonEmpty
 				{
-					idc = 1600;
+					idc = -1;
 					x = 0.742344 * safezoneW + safezoneX;
 					y = 0.5 * safezoneH + safezoneY;
 					w = 0.04125 * safezoneW;
@@ -3565,7 +3565,7 @@ class iPhone_X
 				};
 				class btn_leader: RscButtonEmpty
 				{
-					idc = 1601;
+					idc = -1;
 					x = 0.78875 * safezoneW + safezoneX;
 					y = 0.5 * safezoneH + safezoneY;
 					w = 0.0464063 * safezoneW;
@@ -3601,7 +3601,7 @@ class iPhone_X
 				};
 				class Combo_AllPlayers: RscCombo
 				{
-					idc = 2100;
+					idc = 97612;
 					x = 0.70625 * safezoneW + safezoneX;
 					y = 0.566 * safezoneH + safezoneY;
 					w = 0.0825 * safezoneW;
@@ -3609,8 +3609,8 @@ class iPhone_X
 				};
 				class text_bank: RscStructuredText
 				{
-					idc = 1100;
-					text = "1234567890";
+					idc = -1;
+					text = "";
 					x = 0.726875 * safezoneW + safezoneX;
 					y = 0.621 * safezoneH + safezoneY;
 					w = 0.0876563 * safezoneW;
@@ -3618,7 +3618,7 @@ class iPhone_X
 				};
 				class text_money: RscStructuredText
 				{
-					idc = 1101;
+					idc = 97614;
 					text = "1234567890";
 					x = 0.737188 * safezoneW + safezoneX;
 					y = 0.654 * safezoneH + safezoneY;

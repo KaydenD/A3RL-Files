@@ -18,7 +18,7 @@
 	_gang = [_req, 2] call Server_Database_Async;
 	_group setVariable["gang_data",_gang,true];
 	[_group] remoteExecCall ["A3RL_Gang_Created",_owner];
-}] call Server_Setup_Compile;
+}, true] call Server_Setup_Compile;
 
 ["Server_Gang_DeleteGang", {
 	_group = param [0,grpNull];
@@ -27,7 +27,7 @@
 	_groupID = _gang select 0;
 	deleteGroup _group;
 	[format["DELETE FROM gangs WHERE id = '%1'",_groupID], 1] call Server_Database_Async;
-}] call Server_Setup_Compile;
+}, true] call Server_Setup_Compile;
 
 ["Server_Gang_Load", {
 	_player = param [0,objNull];
@@ -37,7 +37,7 @@
 		_gang = [_gang select 0, _gang select 1, _gang select 2, [_gang select 3] call Server_Database_ToArray, _gang select 4, _gang select 5];
 		[_gang] remoteExec ["A3RL_Gang_SetData",_player];
 	};
-}] call Server_Setup_Compile;
+}, true] call Server_Setup_Compile;
 
 ["Server_Gang_SaveBank", {
 	_group = param [0,grpNull];
@@ -46,7 +46,7 @@
 	_groupID = _gang select 0;
 	_bank = _gang select 4;
 	[format ["UPDATE gangs SET bank='%1' WHERE id='%2'",_bank,_groupID], 1] call Server_Database_Async;
-}] call Server_Setup_Compile;
+}, true] call Server_Setup_Compile;
 
 ["Server_Gang_SaveMaxMembers", {
 	_group = param [0,grpNull];
@@ -55,7 +55,7 @@
 	_groupID = _gang select 0;
 	_maxMembers = _gang select 5;
 	[format ["UPDATE gangs SET maxmembers='%1' WHERE id='%2'",_maxMembers,_groupID], 1] call Server_Database_Async;
-}] call Server_Setup_Compile;
+}, true] call Server_Setup_Compile;
 
 ["Server_Gang_SaveMembers", {
 	_group = param [0,grpNull];
@@ -64,7 +64,7 @@
 	_groupID = _gang select 0;
 	_members = _gang select 3;
 	[format ["UPDATE gangs SET members='%1' WHERE id='%2'",_members,_groupID], 1] call Server_Database_Async;
-}] call Server_Setup_Compile;
+}, true] call Server_Setup_Compile;
 
 ["Server_Gang_SetLead", {
 	_group = param [0,grpNull];
@@ -75,4 +75,4 @@
 	[format ["UPDATE gangs SET owner='%1' WHERE id='%2'",_owner,_groupID], 1] call Server_Database_Async;
 	_owner = [_owner] call A3PL_Lib_UIDToObject;
 	["You have been appointed leader of your gang", "#17ED00"] remoteExec ["A3PL_Player_Notification",_owner];
-}] call Server_Setup_Compile;
+}, true] call Server_Setup_Compile;

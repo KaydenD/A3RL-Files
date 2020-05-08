@@ -3495,7 +3495,7 @@ class iPhone_X
 					y = 0.72 * safezoneH + safezoneY;
 					w = 0.0825 * safezoneW;
 					h = 0.044 * safezoneH;
-					action = "[] call A3PL_iPhoneX_CreateGang;";
+					action = "[] call A3RL_iPhoneX_CreateGang;";
 				};
 				class iPhone_X_icon_home_appGangCreate: Life_RscPicture
 				{
@@ -3561,7 +3561,7 @@ class iPhone_X
 					y = 0.5 * safezoneH + safezoneY;
 					w = 0.04125 * safezoneW;
 					h = 0.011 * safezoneH;
-					action = "[] call A3PL_iPhoneX_GangKick;";
+					action = "[] call A3RL_iPhoneX_GangKick;";
 				};
 				class btn_leader: RscButtonEmpty
 				{
@@ -3570,7 +3570,7 @@ class iPhone_X
 					y = 0.5 * safezoneH + safezoneY;
 					w = 0.0464063 * safezoneW;
 					h = 0.011 * safezoneH;
-					action = "[] call A3PL_iPhoneX_GangSetLead;";
+					action = "[] call A3RL_iPhoneX_GangSetLead;";
 				};
 				class btn_invite: RscButtonEmpty
 				{
@@ -3579,7 +3579,7 @@ class iPhone_X
 					y = 0.566 * safezoneH + safezoneY;
 					w = 0.04125 * safezoneW;
 					h = 0.022 * safezoneH;
-					action = "[] call A3PL_iPhoneX_GangInvite;";
+					action = "[] call A3RL_iPhoneX_GangInvite;";
 				};
 				class btn_leavegang: RscButtonEmpty
 				{
@@ -3588,17 +3588,8 @@ class iPhone_X
 					y = 0.797 * safezoneH + safezoneY;
 					w = 0.0567187 * safezoneW;
 					h = 0.022 * safezoneH;
-					action = "[] call A3PL_Gang_Leave;";
+					action = "[] call A3RL_Gang_Leave;";
 				};
-				/*class btn_upgrade: RscButtonEmpty
-				{
-					idc = -1;
-					x = 0.778437 * safezoneW + safezoneX;
-					y = 0.775 * safezoneH + safezoneY;
-					w = 0.0567187 * safezoneW;
-					h = 0.022 * safezoneH;
-					action = "[] spawn A3PL_Gang_Upgrade;";
-				};*/
 				class btn_deletegang: RscButtonEmpty
 				{
 					idc = -1;
@@ -3606,7 +3597,7 @@ class iPhone_X
 					y = 0.797 * safezoneH + safezoneY;
 					w = 0.0567187 * safezoneW;
 					h = 0.022 * safezoneH;
-					action = "[] call A3PL_Gang_Delete;";
+					action = "[] call A3RL_Gang_Delete;";
 				};
 				class Combo_AllPlayers: RscCombo
 				{

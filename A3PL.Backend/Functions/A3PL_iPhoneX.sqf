@@ -2723,10 +2723,85 @@
 	{
 		(_display displayCtrl _x) ctrlShow false;
 	} forEach _ctrl;
+
+	_group = group player;
+	_gang = _group getVariable ["gang_data",nil];
+	if(isNil "_gang") then {
+		[] call A3RL_iPhoneX_appGangCreation;
+	} else {
+		[] call A3RL_iPhoneX_appGangManagement;
+	};
+}] call Server_Setup_Compile;
+
+["A3RL_iPhoneX_appGangCreation",{
+	disableSerialization;
+	_display = findDisplay 97000;
 	ctrlShow [97590,true];
 
 	_background_iPhone_X_background = _display displayCtrl 97002;
 	_iPhone_X_clock_home = _display displayCtrl 97500;
 	_background_iPhone_X_background ctrlSetText "A3PL_Common\GUI\phone\iPhone_X_appGang.paa";
 	_iPhone_X_clock_home ctrlSetTextColor [0,0,0,1];
+}] call Server_Setup_Compile;
+
+["A3RL_iPhoneX_appGangManagement",{
+	disableSerialization;
+	_display = findDisplay 97000;
+	ctrlShow [97600,true];
+
+	_background_iPhone_X_background = _display displayCtrl 97002;
+	_iPhone_X_clock_home = _display displayCtrl 97500;
+	_background_iPhone_X_background ctrlSetText "A3PL_Common\GUI\phone\iPhone_X_appGangManagement.paa";
+	_iPhone_X_clock_home ctrlSetTextColor [0,0,0,1];
+}] call Server_Setup_Compile;
+
+["A3RL_iPhoneX_CreateGang",{
+	disableSerialization;
+	_gangPrice = 100000;
+	_pBank = player getVariable["player_Bank",0];
+	if(_pBank < _gangPrice) exitWith {[format["You are missing $%1 in your bank account to create a gang",_gangPrice - _pBank], Color_Red] call A3PL_Player_Notification;};
+
+	_gangName = ctrlText 99201;
+	if((_gangName isEqualTo "") || {(count _gangName > 15)}) exitWith {
+		[format["Invalid name",_gangPrice - _pBank], Color_Red] call A3PL_Player_Notification;
+	};
+	player setVariable["player_Bank",_pBank-_gangPrice,true];
+	[_gangName] call A3RL_Gang_Create;
+	[] call A3PL_iPhoneX_home;
+}] call Server_Setup_Compile;
+
+["A3RL_iPhoneX_GangKick",{
+	disableSerialization;
+	_display = findDisplay 99300;
+	_control = _display displayCtrl 1500;
+	_target = _control lbData (lbCurSel _control);
+	if (_target isEqualTo "") exitWith {["Please select a target.", Color_Red] call A3PL_Player_Notification;};
+
+	_group = group player;
+	_gang = _group getVariable ["gang_data",nil];
+	if(isNil "_gang") exitWith {};
+	if((_target == (_gang select 1)) || _target isEqualTo (getPlayerUID player)) exitWith {[format ["You cannot fire yourself"], Color_Red] call A3PL_Player_Notification;};
+
+	[_target, true] call A3RL_Gang_RemoveMember;
+	[] call A3PL_iPhoneX_home;
+}] call Server_Setup_Compile;
+
+["A3RL_iPhoneX_GangSetLead",{
+	disableSerialization;
+	_display = findDisplay 99300;
+	_control = _display displayCtrl 1500;
+	_target = _control lbData (lbCurSel _control);
+	if (_target isEqualTo "") exitWith {["Please select a target.", Color_Red] call A3PL_Player_Notification;};
+	[_target] call A3RL_Gang_SetLead;
+	[] call A3PL_iPhoneX_home;
+}] call Server_Setup_Compile;
+
+["A3RL_iPhoneX_GangInvite",{
+	disableSerialization;
+	_display = findDisplay 99300;
+	_control = _display displayCtrl 2100;
+	if ((_control lbData (lbCurSel _control)) isEqualTo "") exitWith {["Please select a target.", Color_Red] call A3PL_Player_Notification;};
+	_target = _control lbData (lbCurSel _control);
+	_target = call compile _target;
+	[getPlayerUID _target] call A3RL_Gang_Invite;
 }] call Server_Setup_Compile;

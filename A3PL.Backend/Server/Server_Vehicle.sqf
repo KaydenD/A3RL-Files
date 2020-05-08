@@ -710,7 +710,7 @@
 
 	//send message back to approve towing, we will do additional check client side to make sure both vehicles are actually local
 	[_truck,_car] remoteExec ["A3PL_Vehicle_AtegoTowResponse", _oPlayer];
-},true] call Server_Setup_Compile
+},true] call Server_Setup_Compile;
 
 ['Server_Vehicle_Init_A3PL_Stinger',
 {

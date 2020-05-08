@@ -154,7 +154,7 @@
 	if(isNil "_gang") exitWith {};
 
 	if(((getPlayerUID player) != (_gang select 1))) exitWith {
-		[format ["Only the Leader can disband the gang",Color_Red] call A3PL_Player_Notification;
+		["Only the Leader can disband the gang",Color_Red] call A3PL_Player_Notification;
 	};
 
 	[_group] remoteExec ["Server_Gang_DeleteGang",2];

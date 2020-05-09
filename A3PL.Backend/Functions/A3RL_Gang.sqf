@@ -104,12 +104,11 @@
 			player playMoveNow "AinvPknlMstpSnonWnonDnon_medic_1";
 			_animTime = diag_tickTime;
 		};
-		if (Player_ActionInterrupted) exitWith {_success = false;};
 		if (!(player getVariable["A3PL_Medical_Alive",true])) exitWith {_success = false;};
 		if (!(vehicle player == player)) exitwith {_success = false;};
 		if (player getVariable ["Incapacitated",false]) exitwith {_success = false;};
 	};
-	if(Player_ActionInterrupted || !_success) exitWith {["Action canceled",Color_Red] call A3PL_Player_Notification;};
+	if(!_success) exitWith {["Action canceled",Color_Red] call A3PL_Player_Notification;};
 
 	_obj setVariable["captured",_gangID,true];
 	_obj setVariable["CapturedTime",serverTime,true];

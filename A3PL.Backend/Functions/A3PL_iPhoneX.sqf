@@ -2701,7 +2701,6 @@
 	};
 }] call Server_Setup_Compile;
 
-/*
 ["A3RL_iPhoneX_appKeys",{
 	disableSerialization;
 	_display = findDisplay 97000;
@@ -2755,7 +2754,7 @@
 	[format["You gave the key of your %1.",getText(configFile >> "CfgVehicles" >> (typeOf _key) >> "displayName")],Color_Green] call A3PL_Player_Notification;
 	[format["You received the key of a %1.",getText(configFile >> "CfgVehicles" >> (typeOf _key) >> "displayName")],Color_Green] remoteExec ["A3PL_Player_Notification",_target];
 }] call Server_Setup_Compile;
-*/
+
 
 ["A3RL_iPhoneX_appGang",{
 	disableSerialization;

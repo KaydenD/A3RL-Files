@@ -1572,7 +1572,7 @@
 		(findDisplay 97000) displayRemoveEventHandler ["KeyDown", noesckey];
 	};
 
-	_ctrl2 = [97004,97006,97007,97008,97009,97010,97011,97012,97013,97018,97019,97016,97106,97107,97108,97109,97110,97111,97112,97113,97118,97119,97117,97500];
+	_ctrl2 = [97004,97006,97007,97008,97009,97010,97011,97012,97013/*,97018*/,97019,97016,97106,97107,97108,97109,97110,97111,97112,97113/*,97118*/,97119,97117,97500];
 	{
 		(_display displayCtrl _x) ctrlShow true;
 	} forEach _ctrl2;
@@ -2701,6 +2701,7 @@
 	};
 }] call Server_Setup_Compile;
 
+/*
 ["A3RL_iPhoneX_appKeys",{
 	disableSerialization;
 	_display = findDisplay 97000;
@@ -2737,12 +2738,12 @@
 
 ["A3RL_iPhoneX_GiveKeys",{
 	disableSerialization;
-	_display = findDisplay 99500;
+	_display = findDisplay 97000;
 	_control = _display displayCtrl 99500;
 	if ((_control lbData (lbCurSel _control)) isEqualTo "") exitWith {["Please select a key.",Color_Red] call A3PL_Player_Notification;};
 	_key = _control lbData (lbCurSel _control);
 	_key = A3PL_Player_Vehicles select parseNumber(_key);
-	_control = _display displayCtrl 99402;
+	_control = _display displayCtrl 99403;
 	if ((_control lbData (lbCurSel _control)) isEqualTo "") exitWith {["Please select a target.",Color_Red] call A3PL_Player_Notification;};
 	_target = _control lbData (lbCurSel _control);
 	_target = call compile _target;
@@ -2754,6 +2755,7 @@
 	[format["You gave the key of your %1.",getText(configFile >> "CfgVehicles" >> (typeOf _key) >> "displayName")],Color_Green] call A3PL_Player_Notification;
 	[format["You received the key of a %1.",getText(configFile >> "CfgVehicles" >> (typeOf _key) >> "displayName")],Color_Green] remoteExec ["A3PL_Player_Notification",_target];
 }] call Server_Setup_Compile;
+*/
 
 ["A3RL_iPhoneX_appGang",{
 	disableSerialization;

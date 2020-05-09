@@ -81,7 +81,7 @@
 	_group = group player;
 
 	if((player getVariable ["job","unemployed"]) IN ["fifr","uscg","fisd","doj","dmv"]) exitWith {};
-	if ((currentWeapon player) == "") exitwith {["Your not brandishing any weapon",Color_Red] call A3PL_Player_Notification;};
+	if ((currentWeapon player) == "") exitwith {["Your not brandishing a weapon",Color_Red] call A3PL_Player_Notification;};
 	if ((currentWeapon player) IN ["A3PL_FireAxe","A3PL_Shovel","A3PL_Pickaxe","A3PL_Golf_Club","A3PL_Jaws","A3PL_High_Pressure","A3PL_Medium_Pressure","A3PL_Low_Pressure","A3PL_Taser","A3PL_FireExtinguisher","A3PL_Paintball_Marker","A3PL_Paintball_Marker_Camo","A3PL_Paintball_Marker_PinkCamo","A3PL_Paintball_Marker_DigitalBlue","A3PL_Paintball_Marker_Green","A3PL_Paintball_Marker_Purple","A3PL_Paintball_Marker_Red","A3PL_Paintball_Marker_Yellow","A3PL_Predator"]) exitwith {["Ha! You call that a weapon. Dumbass",Color_Red] call A3PL_Player_Notification;};
 
 	_capturedTime = _obj getVariable["CapturedTime",serverTime-1800];

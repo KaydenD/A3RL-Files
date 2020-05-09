@@ -996,6 +996,7 @@
 	"",
 	"Access Gang Supplies",
 	{
+		if !(((group player) getVariable ["gang_data", false]) isEqualType [] && {(((group player) getVariable ["gang_data", false]) select 0) == ((nearestObject [player, "Flag_A3RL"]) getVariable ["captured", -1])}) exitwith {[format ["System: You must capture the gang area to access this!",_whitelist],Color_Red] call A3PL_Player_Notification;};
 		["Shop_GangAreas"] call A3PL_Shop_Open;
 	}
 ],

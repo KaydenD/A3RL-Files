@@ -305,6 +305,7 @@ Config_IntersectArray =
 	["spine3","Fishers Island Security Services",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == npc_sfp_sign}],
 	["spine3",localize"STR_INTSECT_OPIMEXMENU",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == npc_import}], //Open Import/Export Menu
 	["spine3",localize"STR_INTSECT_CONVSTOLMONEY",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == npc_moneylaunderer}], //Convert stolen money
+	["spine3","Withdraw Gang Account Balance",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == npc_moneylaunderer && {((group player) getVariable ["gang_data", false]) isEqualType []}}], //Withdraw gang balance
 	["spine3","Open Silverton CCTV",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == NPC_Cameras_1}], //CCTV
 	["spine3","Open Elk City CCTV",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == NPC_Cameras_2}], //CCTV
 	["spine3","Open Central CCTV",_dir+"IGUI\Cfg\Actions\talk_ca.paa",{player_objintersect == NPC_Cameras_3}], //CCTV
@@ -2730,7 +2731,8 @@ Config_GenArray =
 	"Lockpick Handcuffs",
 	"Open Management System",
 	"Access Gang Supplies",
-	"Capture Gang Area"
+	"Capture Gang Area",
+	"Withdraw Gang Account Balance"
 ];
 publicVariable "Config_GenArray";
 

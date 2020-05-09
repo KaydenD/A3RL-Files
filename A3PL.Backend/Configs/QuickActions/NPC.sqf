@@ -1099,4 +1099,19 @@
 	{
 		[player getVariable ["faction", "unemployed"]] call A3RL_FactionManagment_Open;
 	}
+],
+
+[
+	"",
+	"Withdraw Gang Account Balance",
+	{
+		_gang = (group player) getVariable ["gang_data",nil];
+		if(isNil "_gang") exitWith {};
+		if((getPlayerUID player != _gang select 1)) exitWith {["Only the leader can withdraw the gang funds",Color_Red] call A3PL_Player_Notification;};
+		if((_gang select 4) < 1) exitWith {["There are no funds to withdraw",Color_Red] call A3PL_Player_Notification;};
+		[format["You withdrew $%1 from your gang account", _gang select 4],Color_Green] call A3PL_Player_Notification;
+		player setVariable ["player_cash",(player getVariable ["player_cash",0])+(_gang select 4),true];
+		[group player, _gang select 4] call A3RL_Gang_AddBank;
+
+	}
 ]

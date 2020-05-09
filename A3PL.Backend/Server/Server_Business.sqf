@@ -151,8 +151,14 @@
 				[_query,1] spawn Server_Database_Async; //set database
 			};
 
+			{
+				if((getPlayerUID _x) IN (_obj getVariable ["keyAccess",[]])) then {
+					[_obj, false] remoteExec ["A3RL_Vehicle_AddPlayerVehicles", _x];
+				};
+			} forEach allPlayers;
 
 			_obj setVariable ["keyAccess",[_buyerUID],true];
+			[_obj] remoteExec ["A3RL_Vehicle_AddPlayerVehicles", _buyer];
 
 		};
 

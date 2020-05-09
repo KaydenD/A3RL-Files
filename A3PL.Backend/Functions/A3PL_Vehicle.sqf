@@ -1581,3 +1581,15 @@ waitUntil {attachedTo _Ladder != player};
 	player switchMove "";
 	["System: The vehicle has been unflipped!", Color_Green] call A3PL_Player_Notification;
 }] call Server_Setup_Compile;
+
+
+["A3RL_Vehicle_AddPlayerVehicles",
+{
+	_veh = param [0,objNull];
+	_add = param [1, true];
+	if(_add) then {
+		A3RL_Player_Vehicles pushBack _veh;
+	} else {
+		A3RL_Player_Vehicles =  A3RL_Player_Vehicles - [_veh];
+	};
+}] call Server_Setup_Compile;

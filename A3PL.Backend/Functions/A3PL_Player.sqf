@@ -172,6 +172,8 @@
 
 	//increase long range freq range
 	TF_MAX_ASIP_FREQ = 130;
+
+	A3RL_Player_Vehicles = [];
 }] call Server_Setup_Compile;
 
 ["A3PL_Player_AntiSpam",

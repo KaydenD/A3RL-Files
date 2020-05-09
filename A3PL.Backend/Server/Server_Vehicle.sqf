@@ -138,6 +138,12 @@
 				[[],"A3PL_Vehicle_DestroyedMsg",_player,false] call BIS_FNC_MP;
 			};
 		};
+
+		{
+			if((getPlayerUID _x) IN (_veh getVariable ["keyAccess",[]])) then {
+				[_veh, false] remoteExec ["A3RL_Vehicle_AddPlayerVehicles", _x];
+			};
+		} forEach allPlayers;
 	};
 
 	uiSleep 600;
@@ -192,6 +198,7 @@
 	if (isNull _veh) exitwith {diag_log "Server_Vehicle_Spawn Error: _veh isNull"};
 
 	_veh setVariable ["keyAccess",[getPlayerUID _owner],true];
+	[_veh] remoteExec ["A3RL_Vehicle_AddPlayerVehicles", _owner];
 	_veh setFuelCargo 0;
 	_veh setVariable ["owner",[(getplayerUID _owner),_id],true];
 	Server_Storage_ListVehicles pushback _veh;

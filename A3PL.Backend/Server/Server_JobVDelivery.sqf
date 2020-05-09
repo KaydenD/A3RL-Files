@@ -302,7 +302,15 @@
 	_ownerUID = _deliveryVar select 0;
 	_carID = (_car getVariable ["owner",[]]) select 1;
 	_car setVariable ["owner",[_ownerUID,_carID],true];	
+	
+	{
+		if((getPlayerUID _x) IN (_car getVariable ["keyAccess",[]])) then {
+			[_car, false] remoteExec ["A3RL_Vehicle_AddPlayerVehicles", _x];
+		};
+	} forEach allPlayers;
 	_car setVariable ["keyAccess",[_ownerUID],true];
+	[_car] remoteExec ["A3RL_Vehicle_AddPlayerVehicles", _player];
+
 	
 	//remove from delivery list
 	{

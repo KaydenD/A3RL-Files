@@ -1572,7 +1572,7 @@
 		(findDisplay 97000) displayRemoveEventHandler ["KeyDown", noesckey];
 	};
 
-	_ctrl2 = [97004,97006,97007,97008,97009,97010,97011,97012,97013/*,97018*/,97019,97016,97106,97107,97108,97109,97110,97111,97112,97113/*,97118*/,97119,97117,97500];
+	_ctrl2 = [97004,97006,97007,97008,97009,97010,97011,97012,97013,97018,97019,97016,97106,97107,97108,97109,97110,97111,97112,97113,97118,97119,97117,97500];
 	{
 		(_display displayCtrl _x) ctrlShow true;
 	} forEach _ctrl2;
@@ -1582,6 +1582,9 @@
 		ctrlShow [97014,true];
 		ctrlShow [97015,true];
 	};
+
+	ctrlShow[97019, !((player getVariable ["job","unemployed"]) IN ["dispatch", "police", "uscg", "doj", "usms", "dao", "pdo", "fifr"])];
+	ctrlShow[97119, !((player getVariable ["job","unemployed"]) IN ["dispatch", "police", "uscg", "doj", "usms", "dao", "pdo", "fifr"])];
 
 	_background_iPhone_X_background ctrlSetText format[_wallpaperActive, (A3PL_settings select 0)];
 	_iPhone_X_clock_home ctrlSetTextColor [0,0,0,1];
@@ -2716,11 +2719,11 @@
 	_iPhone_X_clock_home ctrlSetTextColor [0,0,0,1];
 
 	_control = _display displayCtrl 99500;
-	if(count(A3PL_Player_Vehicles) > 0) then {
+	if(count(A3RL_Player_Vehicles) > 0) then {
 		{
 			_control lbAdd format ["%1",getText(configFile >> "CfgVehicles" >> (typeOf _x) >> "displayName")];
 			_control lbSetData [(lbSize _control)-1,str(_forEachIndex)];
-		} forEach A3PL_Player_Vehicles;
+		} forEach A3RL_Player_Vehicles;
 	} else {
 		_control lbAdd "No keys";
 		_control lbSetData [(lbSize _control)-1,""];
@@ -2741,7 +2744,7 @@
 	_control = _display displayCtrl 99500;
 	if ((_control lbData (lbCurSel _control)) isEqualTo "") exitWith {["Please select a key.",Color_Red] call A3PL_Player_Notification;};
 	_key = _control lbData (lbCurSel _control);
-	_key = A3PL_Player_Vehicles select parseNumber(_key);
+	_key = A3RL_Player_Vehicles select parseNumber(_key);
 	_control = _display displayCtrl 99403;
 	if ((_control lbData (lbCurSel _control)) isEqualTo "") exitWith {["Please select a target.",Color_Red] call A3PL_Player_Notification;};
 	_target = _control lbData (lbCurSel _control);

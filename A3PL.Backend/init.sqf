@@ -173,13 +173,7 @@ Server_Setup_Compile = {
 	_compileBlock = param [3,false];
 	_compile = formatText ["%1 = %2;", _name, _code];
 
-	if (isServer) then
-	{
-		call compile str(_compile);
-	} else
-	{
-		call compile str _compile;
-	};
+	call compile _compile;
 
 	if (_compileBlock) exitwith {}; //no need to go further, this is for singleplayer purpose
 

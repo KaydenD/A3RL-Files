@@ -605,124 +605,110 @@
 
 	switch(true) do {
 		case (typeOf _trailer isEqualTo "A3PL_Lowloader"): {
-    	        _trailer attachTo [_truck, [0, -6.185, -0.2]];
-    	        detach _trailer;
-    	};
-    	case (typeOf _trailer isEqualTo "A3PL_Tanker_Trailer"): {
-    	        _trailer attachTo [_truck, [0, -6.9, -0.05]];
-    	        detach _trailer;
-    	};
-    	case (typeOf _trailer isEqualTo "A3PL_Box_Trailer"): {
-    	        _trailer attachTo [_truck, [0, -7.9, -0.05]];
-    	        detach _trailer;
-    	};
+			_trailer attachTo [_truck, [0, -6.185, -0.2]];
+			detach _trailer;
+		};
+		case (typeOf _trailer isEqualTo "A3PL_Tanker_Trailer"): {
+			_trailer attachTo [_truck, [0, -6.9, -0.05]];
+			detach _trailer;
+		};
+		case (typeOf _trailer isEqualTo "A3PL_Box_Trailer"): {
+			_trailer attachTo [_truck, [0, -7.9, -0.05]];
+			detach _trailer;
+		};
 
 		//RAM
-    	case ((typeOf _trailer isEqualTo "A3PL_Car_Trailer") && (typeOf _truck isEqualTo "A3PL_Ram")): {
-    	        _trailer attachTo [_truck, [0, -7.55, -0.85]];
-    	        detach _trailer;
-    	};
-    	case ((typeOf _trailer isEqualTo "A3PL_Drill_Trailer") && (typeOf _truck isEqualTo "A3PL_Ram")): {
-    	        _trailer attachTo [_truck, [0, -4.485, -0.85]];
-    	        detach _trailer;
-    	};
-    	case ((typeOf _trailer isEqualTo "A3PL_Small_Boat_Trailer") && (typeOf _truck isEqualTo "A3PL_Ram")): {
-    	        _trailer attachTo [_truck, [0, -5.48, -0.85]];
-    	        detach _trailer;
-    	};
+		case ((typeOf _trailer isEqualTo "A3PL_Car_Trailer") && (typeOf _truck isEqualTo "A3PL_Ram")): {
+			_trailer attachTo [_truck, [0, -7.55, -0.85]];
+			detach _trailer;
+		};
+		case ((typeOf _trailer isEqualTo "A3PL_Drill_Trailer") && (typeOf _truck isEqualTo "A3PL_Ram")): {
+			_trailer attachTo [_truck, [0, -4.485, -0.85]];
+			detach _trailer;
+		};
+		case ((typeOf _trailer isEqualTo "A3PL_Small_Boat_Trailer") && (typeOf _truck isEqualTo "A3PL_Ram")): {
+			_trailer attachTo [_truck, [0, -5.48, -0.85]];
+			detach _trailer;
+		};
 
 		//F150
-    	case ((typeOf _trailer isEqualTo "A3PL_Car_Trailer") && (typeOf _truck IN["A3PL_F150"])): {
-    	        _trailer attachTo [_truck, [0, -7.73, -0.28]];
-    	        detach _trailer;
-    	};
-    	case ((typeOf _trailer isEqualTo "A3PL_Drill_Trailer") && (typeOf _truck IN["A3PL_F150"])): {
-    	        _trailer attachTo [_truck, [0, -4.73, -0.48]];
-    	        detach _trailer;
-    	};
-    	case ((typeOf _trailer isEqualTo "A3PL_Small_Boat_Trailer") && (typeOf _truck IN["A3PL_F150"])): {
-    	        _trailer attachTo [_truck, [0, -5.75, -0.48]];
-    	        detach _trailer;
-    	};
-
-		//F150 2
-    	case ((typeOf _trailer isEqualTo "A3PL_Car_Trailer") && (typeOf _truck IN["A3PL_F150_Marker"])): {
-    	        _trailer attachTo [_truck, [0, -8.05, 1.27]];
-    	        detach _trailer;
-    	};
-    	case ((typeOf _trailer isEqualTo "A3PL_Drill_Trailer") && (typeOf _truck IN["A3PL_F150_Marker"])): {
-    	        _trailer attachTo [_truck, [0, -5.025, 1.13]];
-    	        detach _trailer;
-    	};
-    	case ((typeOf _trailer isEqualTo "A3PL_Small_Boat_Trailer") && (typeOf _truck IN["A3PL_F150_Marker"])): {
-    	        _trailer attachTo [_truck, [0, -6.03, 1.2]];
-    	        detach _trailer;
-    	};
+		case ((typeOf _trailer isEqualTo "A3PL_Car_Trailer") && (typeOf _truck IN ["A3PL_F150","A3PL_F150_Marker"])): {
+			_trailer attachTo [_truck, [0, -7.73, -0.28]];
+			detach _trailer;
+		};
+		case ((typeOf _trailer isEqualTo "A3PL_Drill_Trailer") && (typeOf _truck IN ["A3PL_F150","A3PL_F150_Marker"])): {
+			_trailer attachTo [_truck, [0, -4.73, -0.48]];
+			detach _trailer;
+		};
+		case ((typeOf _trailer isEqualTo "A3PL_Small_Boat_Trailer") && (typeOf _truck IN ["A3PL_F150","A3PL_F150_Marker"])): {
+			_trailer attachTo [_truck, [0, -5.75, -0.48]];
+			detach _trailer;
+		};
 
 		//Silverado
-    	case ((typeOf _trailer isEqualTo "A3PL_Car_Trailer") && (typeOf _truck IN["A3PL_Silverado", "A3PL_Silverado_PD"])): {
-    	        _trailer attachTo [_truck, [0, -7.87, -0.42]];
-    	        detach _trailer;
-    	};
-    	case ((typeOf _trailer isEqualTo "A3PL_Drill_Trailer") && (typeOf _truck IN["A3PL_Silverado", "A3PL_Silverado_PD"])): {
-    	        _trailer attachTo [_truck, [0, -4.84, -0.53]];
-    	        detach _trailer;
-    	};
-    	case ((typeOf _trailer isEqualTo "A3PL_Small_Boat_Trailer") && (typeOf _truck IN["A3PL_Silverado", "A3PL_Silverado_PD"])): {
-    	        _trailer attachTo [_truck, [0, -5.84, -0.53]];
-    	        detach _trailer;
-    	};
+		case ((typeOf _trailer isEqualTo "A3PL_Car_Trailer") && (typeOf _truck == "A3PL_Silverado")): {
+			_trailer attachTo [_truck, [0, -7.87, -0.42]];
+			detach _trailer;
+		};
+		case ((typeOf _trailer isEqualTo "A3PL_Drill_Trailer") && (typeOf _truck == "A3PL_Silverado")): {
+			_trailer attachTo [_truck, [0, -4.84, -0.53]];
+			detach _trailer;
+		};
+		case ((typeOf _trailer isEqualTo "A3PL_Small_Boat_Trailer") && (typeOf _truck == "A3PL_Silverado")): {
+			_trailer attachTo [_truck, [0, -5.84, -0.53]];
+			detach _trailer;
+		};
 
 		//Tahoe
-    	case ((typeOf _trailer isEqualTo "A3PL_Car_Trailer") && (typeOf _truck IN["A3PL_Tahoe", "A3PL_Tahoe_PD", "A3PL_Tahoe_FD"])): {
-    	        _trailer attachTo [_truck, [0, -7.5, -0.13]];
-    	        detach _trailer;
-    	};
-    	case ((typeOf _trailer isEqualTo "A3PL_Drill_Trailer") && (typeOf _truck IN["A3PL_Tahoe", "A3PL_Tahoe_PD", "A3PL_Tahoe_FD"])): {
-    	        _trailer attachTo [_truck, [0, -4.48, -0.31]];
-    	        detach _trailer;
-    	};
-    	case ((typeOf _trailer isEqualTo "A3PL_Small_Boat_Trailer") && (typeOf _truck IN["A3PL_Tahoe", "A3PL_Tahoe_PD", "A3PL_Tahoe_FD"])): {
-    	        _trailer attachTo [_truck, [0, -5.5, -0.23]];
-    	        detach _trailer;
-    	};
+		case ((typeOf _trailer isEqualTo "A3PL_Car_Trailer") && (typeOf _truck == "A3PL_Tahoe")): {
+			_trailer attachTo [_truck, [0, -7.5, -0.13]];
+			detach _trailer;
+		};
+		case ((typeOf _trailer isEqualTo "A3PL_Drill_Trailer") && (typeOf _truck == "A3PL_Tahoe")): {
+			_trailer attachTo [_truck, [0, -4.48, -0.31]];
+			detach _trailer;
+		};
+		case ((typeOf _trailer isEqualTo "A3PL_Small_Boat_Trailer") && (typeOf _truck == "A3PL_Tahoe")): {
+			_trailer attachTo [_truck, [0, -5.5, -0.23]];
+			detach _trailer;
+		};
 
-		//Silverado
-    	case ((typeOf _trailer isEqualTo "A3PL_Car_Trailer") && (typeOf _truck == "A3PL_Wrangler")): {
-    	        _trailer attachTo [_truck, [0, -7.08, -0.9]];
-    	        detach _trailer;
-    	};
-    	case ((typeOf _trailer isEqualTo "A3PL_Drill_Trailer") && (typeOf _truck == "A3PL_Wrangler")): {
-    	        _trailer attachTo [_truck, [0, -4.02, -0.95]];
-    	        detach _trailer;
-    	};
-    	case ((typeOf _trailer isEqualTo "A3PL_Small_Boat_Trailer") && (typeOf _truck == "A3PL_Wrangler")): {
-    	        _trailer attachTo [_truck, [0, -5.02, -1]];
-    	        detach _trailer;
-    	};
+		//Wrangler
+		case ((typeOf _trailer isEqualTo "A3PL_Car_Trailer") && (typeOf _truck == "A3PL_Wrangler")): {
+			_trailer attachTo [_truck, [0, -7.08, -0.9]];
+			detach _trailer;
+		};
+		case ((typeOf _trailer isEqualTo "A3PL_Drill_Trailer") && (typeOf _truck == "A3PL_Wrangler")): {
+			_trailer attachTo [_truck, [0, -4.02, -0.95]];
+			detach _trailer;
+		};
+		case ((typeOf _trailer isEqualTo "A3PL_Small_Boat_Trailer") && (typeOf _truck == "A3PL_Wrangler")): {
+			_trailer attachTo [_truck, [0, -5.02, -1]];
+			detach _trailer;
+		};
 
 		//X5
-    	case ((typeOf _trailer isEqualTo "A3PL_Car_Trailer") && (typeOf _truck == "A3PL_Wrangler")): {
-    	        _trailer attachTo [_truck, [0, -7.28, -0.23]];
-    	        detach _trailer;
-    	};
-    	case ((typeOf _trailer isEqualTo "A3PL_Drill_Trailer") && (typeOf _truck == "A3PL_Wrangler")): {
-    	        _trailer attachTo [_truck, [0, -4.25, -0.35]];
-    	        detach _trailer;
-    	};
-    	case ((typeOf _trailer isEqualTo "A3PL_Small_Boat_Trailer") && (typeOf _truck == "A3PL_Wrangler")): {
-    	        _trailer attachTo [_truck, [0, -5.25, -0.32]];
-    	        detach _trailer;
-    	};
+		case ((typeOf _trailer isEqualTo "A3PL_Car_Trailer") && (typeOf _truck == "A3PL_Wrangler")): {
+			_trailer attachTo [_truck, [0, -7.28, -0.23]];
+			detach _trailer;
+		};
+		case ((typeOf _trailer isEqualTo "A3PL_Drill_Trailer") && (typeOf _truck == "A3PL_Wrangler")): {
+			_trailer attachTo [_truck, [0, -4.25, -0.35]];
+			detach _trailer;
+		};
+		case ((typeOf _trailer isEqualTo "A3PL_Small_Boat_Trailer") && (typeOf _truck == "A3PL_Wrangler")): {
+			_trailer attachTo [_truck, [0, -5.25, -0.32]];
+			detach _trailer;
+		};
 
 		//Camaro
-    	case ((typeOf _trailer isEqualTo "A3PL_Drill_Trailer") && (typeOf _truck == "A3PL_Camaro")): {
-    	        _trailer attachTo [_truck, [0, -4.38, -0.32]];
-    	        detach _trailer;
-    	};
-    	case ((typeOf _trailer isEqualTo "A3PL_Small_Boat_Trailer") && (typeOf _truck == "A3PL_Camaro")): {
-    	        _trailer attachTo [_truck, [0, -5.36, -0.22]];
-    	        detach _trailer;
+		case ((typeOf _trailer isEqualTo "A3PL_Drill_Trailer") && (typeOf _truck == "A3PL_Camaro")): {
+			_trailer attachTo [_truck, [0, -4.38, -0.32]];
+			detach _trailer;
+		};
+		case ((typeOf _trailer isEqualTo "A3PL_Small_Boat_Trailer") && (typeOf _truck == "A3PL_Camaro")): {
+			_trailer attachTo [_truck, [0, -5.36, -0.22]];
+			detach _trailer;
 		};
 
 		default {};

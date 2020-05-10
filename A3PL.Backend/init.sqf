@@ -171,7 +171,7 @@ Server_Setup_Compile = {
 	_code = param [1,{}];
 	_forServer = param [2,false];
 	_compileBlock = param [3,false];
-	_compile = formatText ["%1 = %2;", _name, _code];
+	_compile = str formatText ["%1 = %2;", _name, _code];
 
 	call compile _compile;
 

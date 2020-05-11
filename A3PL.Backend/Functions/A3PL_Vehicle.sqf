@@ -675,7 +675,7 @@
 
 		//Tahoe
 		case ((typeOf _trailer isEqualTo "A3PL_Car_Trailer") && (typeOf _truck IN ["A3PL_Tahoe", "A3PL_Tahoe_PD", "A3PL_Tahoe_FD"])): {
-			_trailer attachTo [_truck, [0, -7.5, -0.13]];
+			_trailer attachTo [_truck, [0, -7.5, -0.15]];
 			detach _trailer;
 		};
 		case ((typeOf _trailer isEqualTo "A3PL_Drill_Trailer") && (typeOf _truck IN ["A3PL_Tahoe", "A3PL_Tahoe_PD", "A3PL_Tahoe_FD"])): {

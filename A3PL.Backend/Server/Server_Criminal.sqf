@@ -1,7 +1,7 @@
 ["Server_Criminal_RemoveJail", {
   	_player = param [0,objNull];
 
-  _query = format ["UPDATE players SET jail='0' WHERE uid = '%1'",_player];
+  _query = format ["UPDATE players SET jail='0' WHERE uid = '%1'",getPlayerUID _player];
   _return = [_query, 2,true] call Server_Database_Async;
 
 

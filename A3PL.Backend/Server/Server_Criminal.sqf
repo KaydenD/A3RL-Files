@@ -5,8 +5,8 @@
   _return = [_query, 2,true] call Server_Database_Async;
 
 
-  _index = Server_Jailed_Players find _player;
+  _index = [Server_Jailed_Players, _player] call BIS_fnc_findNestedElement;
   
-  Server_Jailed_Players deleteAt _index;
+  Server_Jailed_Players deleteAt (_index select 0);
 
   },true] call Server_Setup_Compile;

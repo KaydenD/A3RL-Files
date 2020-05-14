@@ -24,8 +24,8 @@
 
 	if(isNil "_gang") exitWith {};
 	_members = _gang select 3;
-	_maxMembers = _gang select 5;
-	if((count _members) > _maxMembers) exitWith {[format ["You can not add another member to your group, limit of %1 members reached",_maxMembers],Color_Red] call A3PL_Player_Notification;};
+	//_maxMembers = _gang select 5;
+	//if((count _members) > _maxMembers) exitWith {[format ["You can not add another member to your group, limit of %1 members reached",_maxMembers],Color_Red] call A3PL_Player_Notification;};
 	{
 		if(_invited isEqualTo (getPlayerUID _x)) exitWith {
 			_hasGang = (group _x) getVariable["gang_data",nil];
@@ -185,27 +185,13 @@
 }] call Server_Setup_Compile;
 
 ["A3RL_Gang_InviteReceived", {
-	if (count A3RL_Gang_Data isEqualTo 0) exitWith {};
-	{
-		_groupData = _x getVariable ["gang_data",nil];
-		if (!isNil "_groupData") then {
-			_groupID = _x getVariable ["gang_id",nil];
-			if (isNil "_groupID") exitWith {};
-			if ((A3RL_Gang_Data select 0) isEqualTo _groupID) exitWith {
-				_group = _x;
-			};
-		};
-	} forEach allGroups;
-
-	if (!isNil "_group") then {
-		[player] joinSilent _group;
-		if ((A3RL_Gang_Data select 1) isEqualTo getPlayerUID player) then {
-			_group selectLeader player;
-		};
-	} else {
-		_group = group player;
-		_group setVariable ["gang_data",A3RL_Gang_Data,true];
+	_group = param [0, grpNull];
+	A3RL_Gang_Data = _group getVariable ["gang_data",nil];
+	[player] joinSilent _group;
+	if ((A3RL_Gang_Data select 1) isEqualTo getPlayerUID player) then {
+		_group selectLeader player;
 	};
+	[format ["You're now a member of %1", A3RL_Gang_Data select 2],Color_Green] call A3PL_Player_Notification;
 }] call Server_Setup_Compile;
 
 ["A3RL_Gang_Kicked", {

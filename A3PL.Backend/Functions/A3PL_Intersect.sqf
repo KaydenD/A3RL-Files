@@ -203,7 +203,7 @@
 			//Spikestrip code
 			if (count (nearestObjects [player, ["A3PL_Stinger"], 3]) > 0) then
 			{
-				if (_veh == player) exitwith {};
+				//if (_veh == player) exitwith {};
 				[] call A3PL_Intersect_Spikes;
 			};
 

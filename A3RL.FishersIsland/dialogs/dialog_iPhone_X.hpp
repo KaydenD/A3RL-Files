@@ -276,8 +276,8 @@ class iPhone_X
 		class iPhone_Icon_appKeys: RscPicture
 		{
 			idc = 97018;
-			x = safeZoneX + safeZoneW * 0.773046878;
-			y = safeZoneY + safeZoneH * 0.401;
+			x = safeZoneX + safeZoneW * 0.805468754;
+			y = safeZoneY + safeZoneH * 0.34541667;
 			w = safeZoneW * 0.02246094;
 			h = safeZoneH * 0.03993056;
 			text = "A3PL_Common\GUI\phone\iPhone_X_icon_keys.paa";
@@ -286,8 +286,8 @@ class iPhone_X
 		class iPhone_Button_appKeys: RscButtonEmpty
 		{
 			idc = 97118;
-			x = safeZoneX + safeZoneW * 0.773046878;
-			y = safeZoneY + safeZoneH * 0.401;
+			x = safeZoneX + safeZoneW * 0.805468754;
+			y = safeZoneY + safeZoneH * 0.34541667;
 			w = safeZoneW * 0.02246094;
 			h = safeZoneH * 0.03993056;
 			action = "[] call A3RL_iPhoneX_appKeys;";
@@ -296,7 +296,7 @@ class iPhone_X
 		class iPhone_Icon_appGang: RscPicture
 		{
 			idc = 97019;
-			x = 0.805468754 * safezoneW + safezoneX;
+			x = 0.708203126 * safezoneW + safezoneX;
 			y = 0.401 * safezoneH + safezoneY;
 			w = 0.0224609 * safezoneW;
 			h = 0.0399306 * safezoneH;
@@ -306,7 +306,7 @@ class iPhone_X
 		class iPhone_Button_appGang: RscButtonEmpty
 		{
 			idc = 97119;
-			x = 0.805468754 * safezoneW + safezoneX;
+			x = 0.708203126 * safezoneW + safezoneX;
 			y = 0.401 * safezoneH + safezoneY;
 			w = 0.0224609 * safezoneW;
 			h = 0.0399306 * safezoneH;

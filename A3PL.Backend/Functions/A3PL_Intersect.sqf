@@ -201,11 +201,11 @@
 		["A3PL_Intersect_Lines", "onEachFrame", {
 
 			//Spikestrip code
-			if (count (nearestObjects [player, ["A3PL_Stinger"], 3]) > 0) then
-			{
-				//if (_veh == player) exitwith {};
-				[] call A3PL_Intersect_Spikes;
-			};
+			//if (count (nearestObjects [player, ["A3PL_Stinger"], 3]) > 0) then
+			//{
+			//	//if (_veh == player) exitwith {};
+			//	[] call A3PL_Intersect_Spikes;
+			//};
 
 			//if we are inside a specific cockpit/vehicle we will exit here and switch to our alternative method of handling intersections
 			if (((typeOf vehicle player) IN Config_Intersect_Cockpits) && (cameraView == "INTERNAL")) exitwith

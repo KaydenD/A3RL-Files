@@ -830,6 +830,7 @@
         if (_veh animationSourcePhase "Deploy_Stinger" < 0.5) then
         {
             _veh animateSource ["Deploy_Stinger",1];
+			[_veh] call A3PL_Vehicle_Init_A3PL_Stinger;
 
         } else
         {

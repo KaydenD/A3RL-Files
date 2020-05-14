@@ -732,9 +732,8 @@
 ['A3PL_Vehicle_Init_A3PL_Stinger',
 {
 	private ["_veh"];
-	_veh = ((_this select 0) select 0) select 0; //fix this later jonzie
-
-	/*
+	_veh = param[0, objNull];
+	
 	_veh addEventHandler ["EpeContact",
 	{
 		_Stinger = _this select 0;
@@ -801,7 +800,6 @@
 			_veh setHitPointDamage [_hitPoint, 1];
 		} forEach _wheelHits;
 	}];
-	*/
 }] call Server_Setup_Compile;
 
 ["A3PL_Vehicle_Init_A3PL_P362_TowTruck",

@@ -1134,6 +1134,7 @@
 
 	_chance = random 100;
 	if((player getVariable ["job", "unemployed"]) == "fifr") then {_chance = _chance - 80;};
+	if(["cpr"] call A3PL_DMV_Check && {(player getVariable ["job", "unemployed"]) != "fifr"}) then {_chance = _chance - 50;};
 	if(_chance <= 5) then
 	{
 		[_target,[1200]] call A3PL_Medical_ApplyVar;

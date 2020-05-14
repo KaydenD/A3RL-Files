@@ -80,6 +80,13 @@
 			_index = _control lbAdd (["rppl","name"] call A3PL_Config_GetLicense);
 			_control lbSetData [_index,"rppl"];
 		};
+		case ("fifr"):
+		{
+			_index = _control lbAdd (["cpr","name"] call A3PL_Config_GetLicense);
+ 			_control lbSetData [_index,"cpr"];
+ 			_index = _control lbAdd (["firstaid","name"] call A3PL_Config_GetLicense);
+ 			_control lbSetData [_index,"firstaid"];
+		};
 	};
 }] call Server_Setup_Compile;
 

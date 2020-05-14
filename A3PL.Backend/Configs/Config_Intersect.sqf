@@ -1789,7 +1789,7 @@ Config_IntersectArray =
 
 	//medical
 	["spine3","Resuscitate","\a3\ui_f\data\IGUI\RscIngameUI\RscUnitInfo\si_prone_down_ca.paa",{(Player_ActionCompleted) && isPlayer player_objIntersect && !(player_objIntersect getVariable ["A3PL_Medical_Alive", true])}], //Chest Compressions
-	["spine3",localize"STR_INTSECT_OPENMEDICALMEN","\a3\ui_f\data\IGUI\RscIngameUI\RscUnitInfo\si_prone_down_ca.paa",{((player getVariable ["job","unemployed"]) == "fifr") || ((surfaceIsWater position player) && ((player getVariable ["job","unemployed"]) == "uscg"))}],
+	["spine3",localize"STR_INTSECT_OPENMEDICALMEN","\a3\ui_f\data\IGUI\RscIngameUI\RscUnitInfo\si_prone_down_ca.paa",{((player getVariable ["job","unemployed"]) == "fifr") || {((surfaceIsWater position player) && ((player getVariable ["job","unemployed"]) == "uscg"))} || {["firstaid"] call A3PL_DMV_Check}}],
 
 	//Ladder Actions
 	["Ladder_1",localize"STR_INTSECT_PICKUPLAD",_dir+"IGUI\Cfg\Actions\take_ca.paa",{typeof player_objintersect == "A3PL_Ladder"}], //Pickup Ladder

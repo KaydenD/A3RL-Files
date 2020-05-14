@@ -16,6 +16,8 @@ Config_Licenses =
 	["figl","Gambling License"],
 	["fml","Firearms Manufacturing License"],
 	["vfd","Volunteer Firefighter"],
-	["motorcycle","Motorcycle License"]
+	["motorcycle","Motorcycle License"],
+	["cpr","CPR Training"],
+	["firstaid","First Aid Training"]
 ];
 publicVariable "Config_Licenses";

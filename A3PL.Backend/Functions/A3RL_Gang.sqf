@@ -130,7 +130,7 @@
 	_gangID = _gang select 0;
 
 	{
-	if((_x getVariable["captured",-1]) isEqualTo _gangID) then {_win = _win + 1000;};
+		if((_x getVariable["captured",-1]) isEqualTo _gangID) then {_win = _win + 1000;};
 	} forEach _objects;
 
 	if(_win isEqualTo 0) exitWith {};

@@ -139,6 +139,7 @@
 		Player_PayCheckTime = 0;
 	};
 	profileNameSpace setVariable ["Player_PayCheckTime",Player_PayCheckTime];
+	call A3RL_Gang_CapturedPaycheck;
 }] call Server_Setup_Compile;
 
 //add second to player's playtime every 1 second

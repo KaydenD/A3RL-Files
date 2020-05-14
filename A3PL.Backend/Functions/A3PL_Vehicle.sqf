@@ -510,6 +510,7 @@
 	if (animationstate player == "Acts_carFixingWheel") exitwith {["You are already repairing a vehicle", Color_Red] call A3PL_Player_Notification;};
 	if (!(vehicle player == player)) exitwith {["System: You can't be inside a vehicle to repair this", Color_Red] call A3PL_Player_Notification;};
 	if (player getVariable ["repairing",false]) exitwith {["You are already repairing a vehicle", Color_Red] call A3PL_Player_Notification;};
+	if (!alive _car) exitwith {["Can't repair a compleatly destoryed vehicle", Color_Red] call A3PL_Player_Notification;};
 
 	player playmove "Acts_carFixingWheel";
 	["System: You are now repairing this vehicle", Color_Yellow] call A3PL_Player_Notification;

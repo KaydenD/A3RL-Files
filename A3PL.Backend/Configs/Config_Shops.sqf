@@ -994,7 +994,14 @@ Config_Shops_Items =
 		[
 				["item","zipties",5000,0],
 				["item","v_lockpick",7500,0],
-				["item","headbag",7500,0]
+				["item","headbag",7500,0],
+				["item","seed_marijuana",500,100],
+				["item","shrooms",999999,300],
+				["weapon","RH_g17",10000,0],
+				["magazine","RH_17Rnd_9x19_g17",500,0],
+				["weapon","RH_p226",10000,0],
+				["magazine","RH_15Rnd_9x19_SIG",500,0]
+
 		],
 		{[7277.94,11927.1,0.2]}
 	],

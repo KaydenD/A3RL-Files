@@ -2753,6 +2753,7 @@
 	_actualKeys = _key getVariable ["keyAccess",[""]];
 	_actualKeys pushBack (getPlayerUID _target);
 	_key setVariable ["keyAccess",_actualKeys,true];
+	[_key] remoteExec ["A3RL_Vehicle_AddPlayerVehicles", _target];
 
 	[format["You gave the key of your %1.",getText(configFile >> "CfgVehicles" >> (typeOf _key) >> "displayName")],Color_Green] call A3PL_Player_Notification;
 	[format["You received the key of a %1.",getText(configFile >> "CfgVehicles" >> (typeOf _key) >> "displayName")],Color_Green] remoteExec ["A3PL_Player_Notification",_target];

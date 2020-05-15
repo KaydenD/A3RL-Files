@@ -220,7 +220,12 @@ player getvariable "drugs_array";
 	if(_item in ["weed_5g", "weed_10g", "weed_15g", "weed_20g", "weed_25g", "weed_30g", "weed_35g", "weed_40g", "weed_45g", "weed_50g", "weed_55g", "weed_60g", "weed_65g", "weed_70g", "weed_80g", "weed_85g", "weed_90g", "weed_95g", "weed_100g"]) then {_item = "weed"};
 	_drugcooldown = player getVariable ["drugcooldown", diag_tickTime];
 	if (_drugcooldown > diag_tickTime) exitwith {["If you take drugs you will overdose, you must wait " + str(ceil((_drugcooldown-diag_tickTime)/60)) + " minutes!",Color_Red] call A3PL_Player_Notification;};
-	Player_Item = '';
+
+	detach Player_Item;
+	deleteVehicle Player_Item;
+	Player_Item = objNull;
+	Player_ItemClass = '';
+
 	switch (_item) do
 	{
 		case ("shrooms"): 

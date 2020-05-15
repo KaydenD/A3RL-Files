@@ -1111,7 +1111,7 @@
 		if((_gang select 4) < 1) exitWith {["There are no funds to withdraw",Color_Red] call A3PL_Player_Notification;};
 		[format["You withdrew $%1 from your gang account", _gang select 4],Color_Green] call A3PL_Player_Notification;
 		player setVariable ["player_cash",(player getVariable ["player_cash",0])+(_gang select 4),true];
-		[group player, -1 * _gang select 4] call A3RL_Gang_AddBank;
+		[group player, -(_gang select 4)] call A3RL_Gang_AddBank;
 
 	}
 ]

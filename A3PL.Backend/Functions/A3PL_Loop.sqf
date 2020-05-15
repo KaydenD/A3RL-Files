@@ -130,6 +130,7 @@
 	Player_PayCheckTime = Player_PayCheckTime + 1;
 	if (Player_PayCheckTime >= 20) then
 	{
+		call A3RL_Gang_CapturedPaycheck;
 		if(player getVariable ["job","unemployed"] in ["police", "usms", "fifr", "uscg", "doj", "dao", "pdo", "faa", "dmv", "dispatch", "gov"]) then {
 			[player] remoteExec ["Server_FactionManagment_HandlePayCheck", 2];
 		} else {
@@ -139,7 +140,6 @@
 		Player_PayCheckTime = 0;
 	};
 	profileNameSpace setVariable ["Player_PayCheckTime",Player_PayCheckTime];
-	call A3RL_Gang_CapturedPaycheck;
 }] call Server_Setup_Compile;
 
 //add second to player's playtime every 1 second

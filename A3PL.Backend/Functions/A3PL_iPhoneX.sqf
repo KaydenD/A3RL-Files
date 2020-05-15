@@ -2803,7 +2803,7 @@
 
 	_control = _display displayCtrl 97612;
 	lbClear 97612;
-	{	if((((group _x) getVariable ["gangData", []]) isEqualTo []) && ((_x getVariable ["job", "unemployed"]) == "unemployed")) then {
+	{	if((((group _x) getVariable ["gang_data", []]) isEqualTo []) && ((_x getVariable ["job", "unemployed"]) == "unemployed")) then {
 			_index = _control lbAdd format["%1", _x getVariable ["name","unknown"]];
 			_control lbSetData [_index, str _x];
 		};	

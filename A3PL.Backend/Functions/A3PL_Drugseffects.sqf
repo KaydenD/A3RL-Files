@@ -215,11 +215,9 @@ player getvariable "drugs_array";
 
 ["A3PL_Drugs_Use",
 {
-	private ["_item","_drugcooldown","_until"];
+	private ["_item","_until"];
 	_item = param [0,""];
 	if(_item in ["weed_5g", "weed_10g", "weed_15g", "weed_20g", "weed_25g", "weed_30g", "weed_35g", "weed_40g", "weed_45g", "weed_50g", "weed_55g", "weed_60g", "weed_65g", "weed_70g", "weed_80g", "weed_85g", "weed_90g", "weed_95g", "weed_100g"]) then {_item = "weed"};
-	_drugcooldown = player getVariable ["drugcooldown", diag_tickTime];
-	if (_drugcooldown > diag_tickTime) exitwith {["If you take drugs you will overdose, you must wait " + str(ceil((_drugcooldown-diag_tickTime)/60)) + " minutes!",Color_Red] call A3PL_Player_Notification;};
 
 	detach Player_Item;
 	deleteVehicle Player_Item;
@@ -230,15 +228,16 @@ player getvariable "drugs_array";
 	{
 		case ("shrooms"): 
 		{
-			player setVariable ["drugcooldown", diag_tickTime+(5*60), true];
-			"colorCorrections" ppEffectEnable true;
-			"colorCorrections" ppEffectAdjust [0.5, 0.5, 0, [(random 10),(random 10),(random 10),0.2], [1,1,5,2], [(random 5),(random 5),(random 5),(random 5)]]; 
-			"colorCorrections" ppEffectCommit 40;
-			player enableFatigue false;
+				[] spawn {
+					"colorCorrections" ppEffectEnable true;
+					"colorCorrections" ppEffectAdjust [0.5, 0.5, 0, [(random 10),(random 10),(random 10),0.2], [1,1,5,2], [(random 5),(random 5),(random 5),(random 5)]]; 
+					"colorCorrections" ppEffectCommit 40;
+					player enableFatigue false;
 
-			sleep 10;
-			player enableFatigue true;
-			"colorCorrections" ppEffectEnable false; 
+					sleep 60;
+					player enableFatigue true;
+					"colorCorrections" ppEffectEnable false; 
+				};
 		};
 		case ("weed"):
 		{
@@ -258,6 +257,7 @@ player getvariable "drugs_array";
 					sleep 1; 
 				}; 
 			};
+			_until = 0;
 			[_until] spawn {
 				waitUntil {
 					// Wait 20 seconds
@@ -280,7 +280,7 @@ player getvariable "drugs_array";
 				"chromAberration" ppEffectCommit 5; 
 				"radialBlur" ppEffectAdjust  [0,0,0,0]; 
 				"radialBlur" ppEffectCommit 5; 
-				sleep 4; 
+				sleep 18; 
 				
 				"chromAberration" ppEffectEnable false; 
 				"radialBlur" ppEffectEnable false; 

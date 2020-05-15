@@ -254,6 +254,7 @@
 		case ("Land_A3PL_ModernHouse1"): {_price = 600000;};
 		case ("Land_A3PL_ModernHouse2"): {_price = 400000;};
 		case ("Land_A3PL_ModernHouse3"): {_price = 800000;};
+		case ("Land_A3RL_modernhouse4"): {_price = 600000;};
 		case ("Land_A3PL_BostonHouse"): {_price = 50000;};
 		case ("Land_A3PL_Shed3"): {_price = 30000;};
 		case ("Land_A3PL_Shed4"): {_price = 10000;};
@@ -269,7 +270,7 @@
 	private ["_display","_control","_obj","_houses","_price"];
 	_obj = param [0,objNull];
 	if (isNull _obj) exitwith {};
-	_houses = nearestObjects [player, ["Land_Home1g_DED_Home1g_01_F","Land_Mansion01","Land_A3PL_Ranch3","Land_A3PL_Ranch2","Land_A3PL_Ranch1","Land_A3PL_ModernHouse1","Land_A3PL_ModernHouse2","Land_A3PL_ModernHouse3","Land_A3PL_BostonHouse","Land_A3PL_Shed3","Land_A3PL_Shed4","Land_A3PL_Shed2"], 20];
+	_houses = nearestObjects [player, ["Land_Home1g_DED_Home1g_01_F","Land_Mansion01","Land_A3PL_Ranch3","Land_A3PL_Ranch2","Land_A3PL_Ranch1","Land_A3PL_modernhouse1", "Land_A3RL_modernhouse4","Land_A3PL_ModernHouse2","Land_A3PL_ModernHouse3","Land_A3PL_BostonHouse","Land_A3PL_Shed3","Land_A3PL_Shed4","Land_A3PL_Shed2"], 20];
 	if (count _houses < 1) exitwith {["System: Can't find house nearby (Inform an admin this house is not working properly)",Color_red] call A3PL_Player_Notification;};
 	A3PL_Housing_Object = _houses select 0;
 

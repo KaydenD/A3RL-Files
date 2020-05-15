@@ -1228,7 +1228,7 @@ A3PL_Interaction_Options =
 		{
 			private ["_house"];
 			if(!([] call A3PL_Player_AntiSpam)) exitWith {};
-			_house = nearestObjects [player, ["Land_Home1g_DED_Home1g_01_F","Land_Mansion01","Land_A3PL_Ranch1","Land_A3PL_Ranch2","Land_A3PL_Ranch3","Land_A3PL_ModernHouse1","Land_A3PL_ModernHouse2","Land_A3PL_ModernHouse3","Land_A3PL_BostonHouse","Land_A3PL_Shed1","Land_A3PL_Shed2","Land_A3PL_Shed3","Land_A3PL_Shed4"], 10];
+			_house = nearestObjects [player, ["Land_Home1g_DED_Home1g_01_F","Land_Mansion01","Land_A3PL_Ranch1","Land_A3PL_Ranch2","Land_A3PL_Ranch3","Land_A3PL_modernhouse1", "Land_A3RL_modernhouse4","Land_A3PL_ModernHouse2","Land_A3PL_ModernHouse3","Land_A3PL_BostonHouse","Land_A3PL_Shed1","Land_A3PL_Shed2","Land_A3PL_Shed3","Land_A3PL_Shed4"], 10];
 			if (count _house < 1) exitwith {[localize "STR_INTER_FINDHOUSEN",Color_Red] call A3PL_Player_Notification;}; //System: Couldn't find house nearby, report this bug
 			_house = _house select 0;
 			[player,_house] remoteExec ["Server_Housing_LoadBox", 2];

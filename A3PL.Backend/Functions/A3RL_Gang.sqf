@@ -32,6 +32,11 @@
 			if(isNil "_hasGang") then {
 				[_group, player] remoteExec ["A3RL_Gang_InviteReceived",_x];
 				["Gang invitation sent",Color_Green] call A3PL_Player_Notification;
+				_members = _gang select 3;
+				_members = _members + [getPlayerUID _x];
+				_gang set[3,_members];
+				_group setVariable ["gang_data",_gang,true];
+				[_group] remoteExec ["Server_Gang_SaveMembers",2];
 			} else {
 				["This person is already in a gang.",Color_Red] call A3PL_Player_Notification;
 			};

@@ -62,7 +62,7 @@
 	{deleteVehicle _x} foreach _animals;
 
 	//find pos for the pest
-	_houses = nearestObjects [[7661.16,6609.34,0], ["Land_Home1g_DED_Home1g_01_F","Land_Mansion01","Land_A3PL_Ranch1","Land_A3PL_Ranch2","Land_A3PL_Ranch3","Land_A3PL_ModernHouse1","Land_A3PL_ModernHouse2","Land_A3PL_ModernHouse3","Land_A3PL_BostonHouse","Land_A3PL_Shed3","Land_A3PL_Shed4","Land_A3PL_Shed2"], 6000,true];
+	_houses = nearestObjects [[7661.16,6609.34,0], ["Land_Home1g_DED_Home1g_01_F","Land_Mansion01","Land_A3PL_Ranch1","Land_A3PL_Ranch2","Land_A3PL_Ranch3","Land_A3PL_modernhouse1", "Land_A3RL_modernhouse4","Land_A3PL_ModernHouse2","Land_A3PL_ModernHouse3","Land_A3PL_BostonHouse","Land_A3PL_Shed3","Land_A3PL_Shed4","Land_A3PL_Shed2"], 6000,true];
 	_pos = getpos (_houses select (floor(random ((count _houses)-1))));
 	if (isNil "_pos") exitwith {[] call A3PL_Exterminator_SpawnPest;}; //if selection failed
 

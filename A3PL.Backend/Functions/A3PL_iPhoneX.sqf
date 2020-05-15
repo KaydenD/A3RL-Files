@@ -2803,10 +2803,11 @@
 
 	_control = _display displayCtrl 97612;
 	lbClear 97612;
-	{
-		_index = _control lbAdd format["%1", _x getVariable ["name","unknown"]];
-		_control lbSetData [_index, str _x];
-	} forEach (playableUnits - [player]);
+	{	if((((group _x) getVariable ["gangData", []]) isEqualTo []) && ((_x getVariable ["job", "unemployed"]) == "unemployed")) then {
+			_index = _control lbAdd format["%1", _x getVariable ["name","unknown"]];
+			_control lbSetData [_index, str _x];
+		};	
+	} forEach (AllPlayers - [player]);
 
 	_control = _display displayCtrl 97601;
 	lbClear 97601;

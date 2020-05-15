@@ -41,7 +41,6 @@
 	waitUntil {(isNil 'A3PL_DatabaseSetup') isEqualTo false};
 	Server_Setup_SetupDatabase = Nil;
 
-	//setup server variables
 	[] call Server_Core_Variables;
 
 	//Setup 'HandleDisconnect' missionEventHandler (located in Server_Gear)
@@ -50,6 +49,15 @@
 	//Call the initial server storage
 	[] call Server_Storage_Init;
 
+	//Load Fuel in Gas Station
+	[] call Server_Hydrogen_Load;
+
+	//Load Evidnece Locker Stuff
+	[] call Server_EvidenceLocker_Load;
+
+	//Load Faction Managment Stuff
+	[] call Server_FactionManagment_Startup;
+	
 	//Temporary Hotfix
 	//all this crap runs into post-init
 	[] spawn {
@@ -67,13 +75,13 @@
 		[] call Server_JobFarming_DrugDealerPos;
 		[] call Server_Core_GetDefVehicles; //create the defaulte vehicles array (for use in cleanup script)
 		[] call Server_JobPicking_Init; //get the marker locations for picking locations
-		[] spawn Server_Lumber_TreeRespawn; //spawn trees for lumberyacking
+		[] spawn Server_Lumber_TreeRespawn;
 		//resource stuff, deprecated
 		//Server_Ores = [] call Server_Resources_SearchMarkers; //create a list of markers where we will spawn ores
 		//[] spawn Server_Resources_SpawnOres; //this will use Server_Ores
 
-		//load stock values
 		[] spawn Server_ShopStock_Load;
+		[] spawn Server_Locker_Load;
 
 		/*iPhoneX*/
 		//A3PL_iPhoneX_ListNumber = [];
@@ -85,9 +93,9 @@
 		Server_JobWildCat_Oil = [];
 		publicVariable "Server_JobWildCat_Res";
 		publicVariable "Server_JobWildCat_Oil";
-
+		
 		//Load fuel
-		//Get All FuelStations
+		/*Get All FuelStations*/
 		private _FuelPositions = [
 			[11293.7,9040.11,-0.00473404],
 			[10228.2,8490.94,-0.00918436],
@@ -107,6 +115,7 @@
 			FuelStations pushBack _tank;
 		} foreach _FuelPositions;
 
+		//load fuel to stations
 		//spawn cranes
 		_craneright = createVehicle ["A3PL_MobileCrane", [3693.044,7625.027,39.260], [], 0, "CAN_COLLIDE"];
 		_craneright setDir 52.482;
@@ -116,16 +125,14 @@
 		_craneleft = createVehicle ["A3PL_MobileCrane", [3659.797,7681.037,37.850], [], 0, "CAN_COLLIDE"];
 		_craneleft setDir 232.025;
 		_craneleft setFuel 0;
-
-		//Load locker
-		[] spawn Server_Locker_Load;
 	};
 
 	[] call Server_IE_Init; //init the ImportExport system
 
 	[] call Server_Setup_ResetPlayerDB;
 
-	//assign server loops - every 60 minutes
+
+	//assign server loops - every 60 seconds
 	//["itemAdd", ["Server_Youtube_Loop", { [] call Server_Youtube_Loop; }, 1]] call BIS_fnc_loop;
 	["itemAdd", ["Server_PoliceLoop", { [] call Server_Police_JailLoop; }, 60]] call BIS_fnc_loop;
 	["itemAdd", ["Server_Loop_BLaneCheck", {[] call Server_Bowling_BLaneCheck;}, 60]] call BIS_fnc_loop;
@@ -139,8 +146,12 @@
 	["itemAdd", ["Server_Loop_MDelivery", {[] spawn Server_JobMDelivery_Loop;}, 35]] call BIS_fnc_loop;
 	["itemAdd", ["Server_Loop_RepairTerrain", {[] spawn Server_Core_RepairTerrain;}, 300]] call BIS_fnc_loop;
 	["itemAdd", ["Server_Loop_BusinessLoop", {[] spawn Server_Business_Loop;}, 60]] call BIS_fnc_loop; //delete expired businesses etc
-	["itemAdd", ["Server_Loop_FogLoop", {10 setFog 0;}, 1800]] call BIS_fnc_loop;
+	["itemAdd", ["Server_Loop_FogLoop", {10 setFog 0;}, 1800]] call BIS_fnc_loop; 
 	["itemAdd", ["Server_Loop_TimeMultiLoop", {[] spawn Server_Core_SetTimeMulti;}, 60]] call BIS_fnc_loop;
+
+	// Save Gear and Player Variables //
+
+	["itemAdd", ["Server_Loop_Gear_Save", {[] spawn Server_Gear_SaveLoop}, 300]] call BIS_fnc_loop;
 
 	//deprecated ["itemAdd", ["Server_Loop_SpawnOres", {[] spawn Server_Resources_SpawnOres;}, 600]] call BIS_fnc_loop; //5min
 
@@ -164,22 +175,32 @@
 
 	//loop for import_export
 	["itemAdd", ["Server_Loop_IE", {[] spawn Server_IE_ShipImport;}, 2100]] call BIS_fnc_loop; //35 minutes
+	
+	//Gas Station Save
+	["itemAdd", ["Server_Loop_Server_GasSave", {[] spawn Server_Hydrogen_Save;}, 1800]] call BIS_fnc_loop; //30 minutes
+
+	//Evidence Locker Save
+	["itemAdd", ["Server_Loop_Server_EvidenceLockerSave", {[] spawn Server_EvidenceLocker_Save;}, 1800]] call BIS_fnc_loop; // 30 mintues
+
+	["itemAdd", ["Server_Loop_Server_FactionManagment_SaveFaction", {[] spawn Server_FactionManagment_SaveFaction;}, 1500]] call BIS_fnc_loop; // 25 mintues
+
+	["itemAdd", ["Server_Loop_Server_SaveTrunks", {[] spawn Server_Trunk_Save;}, 1500]] call BIS_fnc_loop; //Very database intensive, don't want it to run every 30 mins with the other loops. 
 
 	//loop for animals
 	["itemAdd", ["Server_Loop_Goats",
 	{
 		["goat",[8703.66,8172.92,0],["Goat","Goat02","Goat03"],200,13] spawn Server_Hunting_SpawnLoop;
-	}, 62]] call BIS_fnc_loop;
+	}, 120]] call BIS_fnc_loop;
 
 	["itemAdd", ["Server_Loop_Boars",
 	{
 		["wildboar",[6601.76,7517.37,0],["WildBoar"],230,13] spawn Server_Hunting_SpawnLoop;
-	}, 65]] call BIS_fnc_loop;
+	}, 123]] call BIS_fnc_loop;
 
 	["itemAdd", ["Server_Loop_Sheep",
 	{
 		["sheep",[6934.04,7442.04,0],["Sheep","Sheep02","Sheep03"],200,13] spawn Server_Hunting_SpawnLoop;
-	}, 68]] call BIS_fnc_loop;
+	}, 125]] call BIS_fnc_loop;
 
 	//save stock values every 70 sec
 	["itemAdd", ["Server_Loop_SaveStockValues",
@@ -187,10 +208,11 @@
 		[] spawn Server_ShopStock_Save;
 	}, 70]] call BIS_fnc_loop;
 
+
 	["itemAdd", ["Server_Loop_SaveLockers",
 	{
 		[] spawn Server_Locker_Save;
-	}, 600]] call BIS_fnc_loop;
+	}, 1200]] call BIS_fnc_loop;
 
 	//lastly load all the persistent vars from database
 	_pVars = ["SELECT * FROM persistent_vars", 2, true] call Server_Database_Async;

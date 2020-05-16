@@ -264,7 +264,7 @@
 	} foreach (attachedObjects _veh);
 
 	_owner = _veh getVariable ["owner", nil];
-	if((!(isNil "_owner")) && {(_owner select 1) == "UHAUL"}) then {
+	if((!(isNil "_owner")) && {_owner isEqualType []} && {(_owner select 1) == "UHAUL"}) then {
 		_find = [A3RL_Server_Rented_Vehicles, _owner select 0] call BIS_fnc_findNestedElement;
 		if !(_find isEqualTo []) then {
 			if ((count ((A3RL_Server_Rented_Vehicles select (_find select 0)) select 1)) < 2) then {

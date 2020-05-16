@@ -996,7 +996,9 @@ Config_Shops_Items =
 				["item","v_lockpick",7500,0],
 				["item","headbag",7500,0],
 				["item","seed_marijuana",500,100],
-				["item","shrooms",999999,300]
+				["item","shrooms",999999,300],
+				["item","Blueprint_Pistol_Illegal",10000,0],
+				["item","Blueprint_Pistol_Ammo_Illegal",1500,0]
 		],
 		{[7277.94,11927.1,0.2]}
 	],

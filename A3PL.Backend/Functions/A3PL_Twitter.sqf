@@ -286,11 +286,11 @@
 
 
 		// A3PL_Twitter_ReplyArr = [["911",player,player getvariable "name",time]];
-		/*if (_messageto select 0 == "reply") then {
+		if (_messageto select 0 == "reply") then {
 			if (player == (_messageto select 1) select 1) then {_cancelaction = false;};
 			if (((_messageto select 1) select 0 == "911") && (pVar_AdminTwitter OR ((player getVariable ["job","unemployed"]) IN ["fifr","police","uscg","dispatch","usms"]))) then {_cancelaction = false;};
 			if (((_messageto select 1) select 0 == "admin") && pVar_AdminTwitter) then {_cancelaction = false;};
-		};*/
+		};
 	};
 
 	if (typename _messageto == "STRING") then {

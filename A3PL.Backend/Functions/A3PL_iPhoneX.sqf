@@ -2690,7 +2690,7 @@
 	if(_sendTo isEqualTo "") exitWith {["Please select a recipient.", Color_Red] call A3PL_Player_Notification;};
 	_sendToCompile = call compile _sendTo;
 
-	[getPlayerUID player,"bankAppTransfer",[str(_sendToCompile getVariable["name","unknown"]), str(_amount)]] remoteExec ["Server_Log_New",2];
+	[getPlayerUID player,"bankAppTransfer",["to",str(_sendToCompile getVariable["name","unknown"]), str(_amount)], player getVariable "name"] remoteExec ["Server_Log_New",2];
 
 	[player, 'Player_Bank', ((player getVariable 'Player_Bank') - _amount)] remoteExec ["Server_Core_ChangeVar",2];
 	[format["You have transferred $%1 to %2's bank account", [_amount] call A3PL_Lib_FormatNumber, (_sendToCompile getVariable ["name","unknown"])], Color_Green] call A3PL_Player_Notification;

@@ -18,6 +18,7 @@
 	while {_gang isEqualTo []} do {
 		_gang = [_req, 2] call Server_Database_Async;
 	};
+	_gang = [_gang select 0, _gang select 1, _gang select 2, [_gang select 3] call Server_Database_ToArray, _gang select 4, _gang select 5, _gang select 6];
 	_group setVariable["gang_data",_gang,true];
 	[_group] remoteExecCall ["A3RL_Gang_Created",_owner];
 }, true] call Server_Setup_Compile;

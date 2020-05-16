@@ -197,11 +197,25 @@
 
 	if (isNull _veh) exitwith {diag_log "Server_Vehicle_Spawn Error: _veh isNull"};
 
-	_veh setVariable ["keyAccess",[getPlayerUID _owner],true];
-	[_veh] remoteExec ["A3RL_Vehicle_AddPlayerVehicles", _owner];
+	_key = [(getPlayerUID _owner)];
+	if(_veh in Config_Police_Vehs) then {
+		{
+			if(_x getVariable ["isManagment", false]) then {
+				_key pushBack (getPlayerUID _x);
+				[_veh] remoteExec ["A3RL_Vehicle_AddPlayerVehicles", _x]; 
+			};
+		}forEach allPlayers;
+	};
+
+	_veh setVariable ["keyAccess",_key,true];
+	[_veh] remoteExec ["A3RL_Vehicle_AddPlayerVehicles", _owner]; 
+
+
 	_veh setFuelCargo 0;
 	_veh setVariable ["owner",[(getplayerUID _owner),_id],true];
 	Server_Storage_ListVehicles pushback _veh;
+
+	
 
 	//check for job vehicles
 	if (_id IN ["WASTE","DELIVER","EXTERMY","KARTING","DMV", "ROADSID"]) then

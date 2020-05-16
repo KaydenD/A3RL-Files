@@ -64,9 +64,6 @@ Config_Police_Vehs = [
 	"A3PL_F150_PD",
 	"A3PL_Silverado_PD",
 	"A3PL_VetteZR1_PD",
-	"A3PL_E350",
-	"red_ambulance_14_p_base",
-	"red_ambulance_18_p_base",
-	"red_e350_14_e_base"
+	"A3PL_E350"
 ];
 publicVariable "Config_Police_Vehs";

@@ -1049,6 +1049,25 @@
 }] call Server_Setup_Compile;
 
 //toggles rope (ONLY DOWN, UP IS HANDLED BY TOW)
+
+["A3RL_PlayVideo", {
+	_object = cursorObject; 
+	[_object,3] call BIS_fnc_dataTerminalAnimate; 
+	sleep 2; 
+	with uiNamespace do { 
+		disableserialization; //thank you so much tankbuster 
+		_object setObjectTexture [0,"\A3\Missions_F_EPA\video\A_in_intro.ogv"];  
+		1100 cutRsc ["RscMissionScreen","PLAIN"]; 
+		_scr = BIS_RscMissionScreen displayCtrl 1100; 
+		_scr ctrlSetPosition [-10,-10,0,0]; 
+		_scr ctrlSetText "\A3\Missions_F_EPA\video\A_in_intro.ogv"; 
+		_scr ctrlAddEventHandler ["VideoStopped", { 
+			(uiNamespace getVariable "BIS_RscMissionScreen") closeDisplay 1; 
+		}]; 
+		_scr ctrlCommit 0; 
+	};
+}] call Server_Setup_Compile;
+
 ["A3PL_Vehicle_TowTruck_Unloadcar",
 {
 	private ["_truck","_towpoint","_towing","_alignment","_distance","_height","_Eheight","_angle","_shift","_roleon","_pullup","_traytilt","_unload","_pushdown","_roleoff","_Ramp_up","_Edistance","_towingmass","_truckmass","_Fuel_lvl","_Supported_Vehicles","_UnSupported_Vehicles","_wheel1","_wheel2","_type","_stablecar","_stablize"];

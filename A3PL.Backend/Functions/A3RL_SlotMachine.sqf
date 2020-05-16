@@ -9,6 +9,9 @@
 
 	if(_obj getVariable ["is_use", false]) exitWith {["This slot machine is already is use", Color_Red] call A3PL_Player_Notification;};
 	if((player getVariable ["player_cash",0]) < _bet) exitWith {[format ["You don't have $%1 to bet",_bet], Color_Red] call A3PL_Player_Notification;};
+	if(isNil "A3RL_Casino_Win") then {A3RL_Casino_Win = 0};
+	if(A3RL_Casino_Win > 100000) exitWith {["You've made more than $100k, You've been cutoff", Color_Red] call A3PL_Player_Notification;};
+
 	player setVariable ["player_cash",(player getVariable ["player_cash",0])-(_bet),true];
 
 	_obj setVariable ["is_use", true, true];
@@ -61,6 +64,7 @@
 		_structText ctrlSetStructuredText parseText (format ["<t align='center' size='2.0'>YOU WIN $%1</t>", [(_multi-1)*_bet, 1, 0, true] call CBA_fnc_formatNumber]);
 		playSound "A3RL_Slot_Sound_Win";
 		player setVariable ["player_cash",(player getVariable ["player_cash",0])+(_multi*_bet),true];
+		A3RL_Casino_Win = A3RL_Casino_Win + ((_multi-1)*_bet);
 	} else {
 		_structText = _display displayCtrl 1100;
 		_structText ctrlSetStructuredText parseText "<t align='center' size='2.0'>YOU LOSE</t>";

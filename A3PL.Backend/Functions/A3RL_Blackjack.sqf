@@ -7,8 +7,10 @@
 	if(_obj getVariable ["is_use", false]) exitWith {["This slot machine is already is use", Color_Red] call A3PL_Player_Notification;};
 
 	_bet = _obj getVariable ["bet", 500];
-	if(_bet > 50000) exitWith {["Error: Max bet is $50000", Color_Red] call A3PL_Player_Notification;};
+	if(_bet > 5000) exitWith {["Error: Max bet is $5000", Color_Red] call A3PL_Player_Notification;};
 	if((player getVariable ["player_cash",0]) < _bet) exitWith {[format ["You don't have $%1 to bet",_bet], Color_Red] call A3PL_Player_Notification;};
+	if(isNil "A3RL_Casino_Win") then {A3RL_Casino_Win = 0};
+	if(A3RL_Casino_Win > 100000) exitWith {["You've made more than $100k, You've been cutoff", Color_Red] call A3PL_Player_Notification;};
 	player setVariable ["player_cash",(player getVariable ["player_cash",0])-(_bet),true];
  	playSound "A3RL_Blackjack_Chip_Place"; 
 
@@ -226,30 +228,30 @@
 	_bet = player_objIntersect getVariable ["bet", 500];
 	if((typeName (A3RL_Player_Cards select 0)) == "STRING") then {
 		_playerValue = [A3RL_Player_Cards] call A3RL_Blackjack_CardsValue;
-		if(!isNil"A3RL_IsDouble") then {_bet = _bet * 2};
+		if(!isNil"A3RL_IsDouble") then {_bet = _bet * 2; A3RL_IsDouble = nil;};
 		switch (true) do {
-			case (_playerValue > 21 && _dealerValue > 21): { ["PUSH! Both the dealer and you busted. Your bet has been returned", Color_Yellow] call A3PL_Player_Notification; player setVariable ["player_cash",(player getVariable ["player_cash",0])+_bet,true]; };
+			case (_playerValue > 21 && _dealerValue > 21): { ["Your hand busted. You lose", Color_Yellow] call A3PL_Player_Notification; };
 			case (_playerValue > 21): {["Your hand busted", Color_Red] call A3PL_Player_Notification; playSound "A3RL_Slot_Sound_Lose";};
-			case (_dealerValue > 21): { ["The dealer busted. You win", Color_Green] call A3PL_Player_Notification; player setVariable ["player_cash",(player getVariable ["player_cash",0])+(_bet*2),true]; playSound "A3RL_Blackjack_Chip_Raking";};
+			case (_dealerValue > 21): { ["The dealer busted. You win", Color_Green] call A3PL_Player_Notification; player setVariable ["player_cash",(player getVariable ["player_cash",0])+(_bet*2),true]; playSound "A3RL_Blackjack_Chip_Raking"; A3RL_Casino_Win = A3RL_Casino_Win + _bet; };
 			case (_playerValue == 21 && _dealerValue == 21): { ["PUSH! Both the dealer and you blackjacked. Your bet has been returned", Color_Yellow] call A3PL_Player_Notification; player setVariable ["player_cash",(player getVariable ["player_cash",0])+_bet,true]; };
-			case (_playerValue == 21): { ["BLACKJACK!!! You win", Color_Green] call A3PL_Player_Notification; player setVariable ["player_cash",(player getVariable ["player_cash",0])+(_bet*2),true]; playSound "A3RL_Blackjack_Chip_Raking";};
+			case (_playerValue == 21): { ["BLACKJACK!!! You win", Color_Green] call A3PL_Player_Notification; player setVariable ["player_cash",(player getVariable ["player_cash",0])+(_bet*2),true]; playSound "A3RL_Blackjack_Chip_Raking"; A3RL_Casino_Win = A3RL_Casino_Win + _bet;  };
 			case (_dealerValue == 21): { ["Dealer Blackjack. You Lose", Color_Red] call A3PL_Player_Notification; playSound "A3RL_Slot_Sound_Lose";};
 			case (_dealerValue > _playerValue): {["Dealer's cards have a higher value. You Lose", Color_Red] call A3PL_Player_Notification; playSound "A3RL_Slot_Sound_Lose";};
-			case (_dealerValue < _playerValue): { ["Your cards have a higher value. You WIN", Color_Green] call A3PL_Player_Notification; player setVariable ["player_cash",(player getVariable ["player_cash",0])+(_bet*2),true]; playSound "A3RL_Blackjack_Chip_Raking";};
+			case (_dealerValue < _playerValue): { ["Your cards have a higher value. You WIN", Color_Green] call A3PL_Player_Notification; player setVariable ["player_cash",(player getVariable ["player_cash",0])+(_bet*2),true]; playSound "A3RL_Blackjack_Chip_Raking"; A3RL_Casino_Win = A3RL_Casino_Win + _bet; };
 			case (_dealerValue == _playerValue): { ["PUSH! You and the dealer have the same hand value. Your bet has been returned", Color_Yellow] call A3PL_Player_Notification; player setVariable ["player_cash",(player getVariable ["player_cash",0])+_bet,true];};
 		};
 	} else {
 		{
 			_playerValue = [_x] call A3RL_Blackjack_CardsValue;
 			switch (true) do {
-				case (_playerValue > 21 && _dealerValue > 21): { ["PUSH! Both the dealer and you busted. Your bet has been returned", Color_Yellow] call A3PL_Player_Notification; player setVariable ["player_cash",(player getVariable ["player_cash",0])+_bet,true]; };
-				case (_playerValue > 21): {["Your hand busted", Color_Red] call A3PL_Player_Notification;};
-				case (_dealerValue > 21): { ["The dealer busted. You win", Color_Green] call A3PL_Player_Notification; player setVariable ["player_cash",(player getVariable ["player_cash",0])+(_bet*2),true];};
+				case (_playerValue > 21 && _dealerValue > 21): { ["Your hand busted. You lose", Color_Yellow] call A3PL_Player_Notification; };
+				case (_playerValue > 21): {["Your hand busted", Color_Red] call A3PL_Player_Notification; playSound "A3RL_Slot_Sound_Lose";};
+				case (_dealerValue > 21): { ["The dealer busted. You win", Color_Green] call A3PL_Player_Notification; player setVariable ["player_cash",(player getVariable ["player_cash",0])+(_bet*2),true]; playSound "A3RL_Blackjack_Chip_Raking"; A3RL_Casino_Win = A3RL_Casino_Win + _bet; };
 				case (_playerValue == 21 && _dealerValue == 21): { ["PUSH! Both the dealer and you blackjacked. Your bet has been returned", Color_Yellow] call A3PL_Player_Notification; player setVariable ["player_cash",(player getVariable ["player_cash",0])+_bet,true]; };
-				case (_playerValue == 21): { ["BLACKJACK!!! You win", Color_Green] call A3PL_Player_Notification; player setVariable ["player_cash",(player getVariable ["player_cash",0])+(_bet*2),true];};
-				case (_dealerValue == 21): { ["Dealer Blackjack. You Lose", Color_Red] call A3PL_Player_Notification;};
-				case (_dealerValue > _playerValue): {["Dealer's cards have a higher value. You Lose", Color_Red] call A3PL_Player_Notification;};
-				case (_dealerValue < _playerValue): { ["Your cards have a higher value. You WIN", Color_Green] call A3PL_Player_Notification; player setVariable ["player_cash",(player getVariable ["player_cash",0])+(_bet*2),true];};
+				case (_playerValue == 21): { ["BLACKJACK!!! You win", Color_Green] call A3PL_Player_Notification; player setVariable ["player_cash",(player getVariable ["player_cash",0])+(_bet*2),true]; playSound "A3RL_Blackjack_Chip_Raking"; A3RL_Casino_Win = A3RL_Casino_Win + _bet;  };
+				case (_dealerValue == 21): { ["Dealer Blackjack. You Lose", Color_Red] call A3PL_Player_Notification; playSound "A3RL_Slot_Sound_Lose";};
+				case (_dealerValue > _playerValue): {["Dealer's cards have a higher value. You Lose", Color_Red] call A3PL_Player_Notification; playSound "A3RL_Slot_Sound_Lose";};
+				case (_dealerValue < _playerValue): { ["Your cards have a higher value. You WIN", Color_Green] call A3PL_Player_Notification; player setVariable ["player_cash",(player getVariable ["player_cash",0])+(_bet*2),true]; playSound "A3RL_Blackjack_Chip_Raking"; A3RL_Casino_Win = A3RL_Casino_Win + _bet; };
 				case (_dealerValue == _playerValue): { ["PUSH! You and the dealer have the same hand value. Your bet has been returned", Color_Yellow] call A3PL_Player_Notification; player setVariable ["player_cash",(player getVariable ["player_cash",0])+_bet,true];};
 			};
 		} forEach A3RL_Player_Cards;
